@@ -12,7 +12,7 @@
 
 + (NSString*) arrive
 {
-    return @"You entered the Twilight Zone! Luckily it is the FiM Twilight, not the vampire variety. Still, this is a default response and you shouldn't see it when you enter a valid place. So yeah, I'm not sure what's up. *shrugpony*";
+    return @"You find yourself sitting at your computer, completely unable to do anything but stare at the screen because you're so entranced by how amazing Nathan's challenges are.  You should probably get that looked at, that's not healthy bro.  You're supposed to play the game, not break it.";
 }
 
 // The default behavior for "look"
@@ -22,8 +22,7 @@
         return [NSString stringWithFormat:@"Don't look at %@ like that, it is very shy and self-conscious!", subject];
     else
     {
-        [Player setCurrentImage:[NSImage imageNamed:@"twilight.jpeg"]];
-        return @"You're totes in the Twilight Zone, probably no way out. Sorry about that. Luckily it is the FiM Twilight, not the vampire variety.";
+        return @"That's not what I meant when I told you to get it looked at, have a doctor do a checkup, you need help.";
     }
 
 }
@@ -32,14 +31,14 @@
 + (NSString*) get:(NSString*) subject
 {
     if(subject != nil) return [NSString stringWithFormat:@"Pockets are no place for a mighty %@!", subject];
-    else return @"Aha! You didn't specify anything to get, so that means I get to fill in the blank. I choose 'get that Rainbow Dash is best pony'                             \nYou got it!";
+    else return @"There's nothing to get, which just reminds you that no one gets you, and makes you want to cut yourself.\n \n Weirdo.";
 }
 
 // The default behavior for "talk"
 + (NSString*) talk:(NSString*) subject
 {
-    if(subject != nil)return [NSString stringWithFormat:@"%@ isn't talking to you. It must still be mad after what you said to it at the Christmas party....... jerk.", subject];
-    else return @"Ok fine, I'll talk! I admit it, Fluttershy is best pony!\n                \n            \n            \njk";
+    if(subject != nil)return [NSString stringWithFormat:@"%@ isn't talking to you. It must still be mad after what you did to it's mother....... jerk.", subject];
+    else return @"Talking to yourself isn't usually considered socially acceptable behavior, but if you want to do it so badly go ahead.";
 }
 
 + (NSString*) use:(NSString*) subject
@@ -49,16 +48,12 @@
         if([Player hasItem:subject]) return @"Professor Oak: 'There's a time and place for everything! But not now.' Wait, how did Professor Oak get here? Oh, he's just a disembodied voice. That's sorta creepy. But informative!";
        else return @"You no has.";
     }
-    else return @"You didn't specify anything to use, looks like I get to fill in the blank. Let's see...               \nUse Lugia            \nLugia used Aero Blast!                  \nSome stuff probably exploded.                    \nOh noes, Team Cipher is trying to catch your Lugia and turn it to the dark side!                     \nAnd now Team Rocket is joining in as well.                    \nAnd Luna randomly popped out and shouted 'The trouble has been doubled!'               \nThis looks pretty ugly. Looks like you're gonna have to juuump!                \nOk, I've had too much fun with this. Moral of the story: don't let me fill in the blanks for you!";
+    else return @"You probably think you're a hoot, trying to use nothing.  That would be funny if it weren't so sad.";
 }
 
 + (NSString*) go:(NSString*) subject
 {
-    if([subject isEqualToString:@"insane"])
-    {
-        return [Player setSaneLocation:@"InsaneLocation"];
-    }
-    else if(subject != nil) return [NSString stringWithFormat:@"You can't go to %@, it is under construction.                 \n                    \nYup, construction.                \n                \nThat's my story and I'm stickin' to it!", subject];
+    if(subject != nil) return [NSString stringWithFormat:@"You can't go to %@, it is under construction.                 \n                    \nYup, construction.                \n                \nThat's my story and I'm stickin' to it!", subject];
     else return @"You might want to be a little more specific there, sugar cube. Maybe you meant 'go insane'? 'go ponyville'? 'go Rainbow Dash'? Yeah you probably meant 'go Rainbow Dash'.";
 }
 
