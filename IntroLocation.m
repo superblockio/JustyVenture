@@ -19,7 +19,7 @@
 {
     if (subject == nil) 
     {
-        return @"BLAH!";
+        return @"Boo";
     }
     
     return [super look:subject];
