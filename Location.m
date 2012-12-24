@@ -57,6 +57,12 @@
     else return @"You might want to be a little more specific there, sugar cube. Maybe you meant 'go insane'? 'go ponyville'? 'go Rainbow Dash'? Yeah you probably meant 'go Rainbow Dash'.";
 }
 
++ (NSString*) whistle
+{
+    return @"You lift the whistle to your lips and blow it, but still seem unable to glue your eyes from your computer.  Some cats come into your room and just sit there watching you on the computer.";
+}
+
+
 // This method is called when an unrecognized verb gets used.
 // Subclasses should override this to support additional commands.
 + (NSString*) wildcardWithVerb:(NSString*)verb subject:(NSString*)subject
