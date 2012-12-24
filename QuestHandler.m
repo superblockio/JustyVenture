@@ -95,7 +95,7 @@
     if([verb isEqualToString:@"go"]) return [locationClass performSelector:@selector(go:) withObject:subject];
     
     // Handle 'dance'
-    if([verb isEqualToString:@"whistle"]) return [locationClass performSelector:@selector(dance)];
+    if([verb isEqualToString:@"whistle"]) return [locationClass performSelector:@selector(whistle)];
     
     // Handle wildcard
     return [locationClass performSelector:@selector(wildcardWithVerb:subject:) withObject:verb withObject:subject];

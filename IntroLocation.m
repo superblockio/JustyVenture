@@ -41,9 +41,9 @@
     return [super talk:subject];
 }
 
-+ (NSString*) whistle:(NSString *)subject
++ (NSString*) whistle
 {
-    return [super whistle:subject];
+    return [super whistle];
 }
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
