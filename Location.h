@@ -20,6 +20,7 @@
 + (NSString*) talk:(NSString*) subject;
 + (NSString*) use:(NSString*) subject;
 + (NSString*) go:(NSString*) subject;
++ (NSString*) whistle;
 + (NSString*) wildcardWithVerb:(NSString*)verb subject:(NSString*)subject;
 
 @end
