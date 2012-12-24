@@ -59,7 +59,7 @@
 
 + (NSString*) whistle
 {
-    return @"You lift the whistle to your lips and blow it, but still seem unable to glue your eyes from your computer.  Some cats come into your room and just sit there watching you on the computer.";
+    return @"You lift the whistle to your lips and blow it, but still seem unable to unglue your eyes from your computer.  Some cats come into your room and just sit there watching you on the computer.";
 }
 
 
