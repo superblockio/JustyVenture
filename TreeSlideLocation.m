@@ -34,7 +34,7 @@ static BOOL _lion;
     _lion = FALSE;
     _song = [[QTMovie movieNamed:@"06 Slider.mp3" error:nil] retain];
     [_song play];
-    return @"You enthusastically jump head-first into the tree's gaping mouth and promptly fall down a dark hole and land on a small ledge with a bendy wooden plank twisting down into a massive cavern in front of you! Stomachs are weird. You can feel yourself slipping off the ledge, and realize you're gonna have to act fast to avoid sliding off and falling to your death! You'll need to pay attention to what the slide in front of you looks like and lean to your LEFT or RIGHT, or JUMP over obstacles as you slide. If there are no turns or obstacles, don't enter text! And be careful, you'll only have time to perform one action at each junction! You'd better do something, you'll slip off any second!";
+    return @"You enthusastically jump head-first into the tree's gaping mouth and promptly fall down a dark hole and land on a small ledge with a bendy wooden plank twisting down into a massive cavern in front of you! Stomachs are weird. You can feel yourself slipping off the ledge, and realize you're gonna have to act fast to avoid sliding off and falling to your death! You'll need to pay attention to what the slide in front of you looks like and lean to your LEFT or RIGHT, or JUMP over obstacles as you slide. If there are no turns or obstacles, don't enter text! And be careful, you'll only have time to perform one action at each junction, so make sure you do the right thing, or you'll fall off!";
 }
 
 + (NSString*) whistle
@@ -83,8 +83,16 @@ static BOOL _lion;
     if (_timer != nil)
         [_timer invalidate];
     _actionNumber = -1;
-    _neededAction = SlideActionTypeNone;
-    return @"You fall off the edge into the abyss! You blink and suddenly you're back and the beginning of the course, about to slip off the ledge.";
+    if (_neededAction == SlideActionTypeJump)
+    {
+        _neededAction = SlideActionTypeNone;
+        return @"You hit into the Wailmer and it knocks the breath out of you causing you to slip sideways off the slide. As you fall you blink and suddenly you're back and the beginning of the course, about to slip off the ledge.";
+    }
+    else
+    {
+        _neededAction = SlideActionTypeNone;
+        return @"You don't turn soon enough and fall off the edge into the abyss! You blink and suddenly you're back and the beginning of the course, about to slip off the ledge.";
+    }
 }
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
