@@ -12,7 +12,7 @@
 
 + (NSString*) arrive
 {
-    return @"You reach the bottom of the slide and slide out of a fireplace into a cabin. You're in a big room with a kitchen and dining area and such all in one.";
+    return @"You come into a reasonably sized main room, although it is a little small. It has a fireplace, dining table, kitchen, and couches. The decor seems very cabiny. You know what I mean, like a cabin. It's difficult to describe okay! Don't judge me!";
 }
 
 + (NSString*) look:(NSString *)subject
@@ -23,7 +23,7 @@
     }
     if ([subject isEqualToString:@"kitchen"])
     {
-        return @"It's a rather basic kitchen, with an oven and stove and cupboards. There seems to be electricity, so maybe there's a generator powering the house or something. The fridge is a bit small, and tucked in the corner of the room. It has a kinda woodsy feel to it, not modern looking in any way.";
+        return @"It's a rather basic kitchen, with an oven and stove, drawers, and cupboards. There seems to be electricity, so maybe there's a generator powering the house or something. The fridge is a bit small, and tucked in the corner of the room. It has a kinda woodsy feel to it, not modern looking in any way.";
     }
     if ([subject isEqualToString:@"table"])
     {
@@ -31,19 +31,19 @@
     }
     if ([subject isEqualToString:@"fireplace"])
     {
-        return @"There's a moosehead mounted over a large ornate fireplace with pictures of a hunter on top.  A fire roars in the fireplace, lighting the cabing and=Wait, didn't you just slide out of there?  How is there a fire...";
+        return @"There's a moosehead mounted over a large ornate fireplace with pictures of a hunter on top.  A fire roars in the fireplace, lighting the cabin and-Wait, didn't you just slide out of there?  How is there a fire...";
     }
     if ([subject isEqualToString:@"cupboards"])
     {
-        return @"";
+        return @"You open the cupboards and find that they're full of empty bottles and various china for eating.";
     }
     if ([subject isEqualToString:@"couches"])
     {
-        return @"";
+        return @"Looking at the couches you can see that they use animal pelts for their throws, but actually look very comfortable.";
     }
     if ([subject isEqualToString:@"drawer"])
     {
-        return @"";
+        return @"Pulling open one of the drawers in the kitchen you find a matchbox and a screwdriver.";
     }
     return [super look:subject];
 }
@@ -64,6 +64,21 @@
 
 + (NSString*) get:(NSString *)subject
 {
+    if ([subject isEqualToString:@"matchbox"])
+    {
+        [Player giveItem:@"matchbox"];
+        return @"You pull open the kitchen drawer and take the matchbox out.";
+    }
+    if ([subject isEqualToString:@"screwdriver"])
+    {
+        [Player giveItem:@"screwdriver"];
+        return @"You pull open the kitchen drawer and take the screwdriver out.";
+    }
+    if ([subject isEqualToString:@"bottle"])
+    {
+        [Player giveItem:@"bottle"];
+        return @"You pull open the kitchen cupboard and take a bottle out.";
+    }
     return [super get:subject];
 }
 
@@ -80,7 +95,7 @@
 
 + (NSString*) whistle
 {
-    return @"";
+    return @"Upon blowing your whistle a cat pops out from under the sink, jump up on the kitchen counter and paws at the drawer and the cupboard doors.";
 }
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
