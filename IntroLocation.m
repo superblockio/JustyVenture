@@ -27,7 +27,7 @@ static BOOL _accessGranted = FALSE;
     {
         if (_tentOffend == FALSE && _whistleOffend == FALSE && _accessGranted == FALSE)
         {
-            return @"The man-eating trees surround you. Fortunately they can't move and appear to rely solely on social skills to lure victims to their doom. Even though the trees offer reassurances that their mouths are safe and that people sleep in there all the time, you can't help but thinking that your tent might be a competitive option as well. There are no obvious exits in this dense forest, which begs the question of how you got here in the first place. There's also a giant boulder and a stick.";
+            return @"The man-eating trees surround you. Fortunately they can't move and appear to rely solely on social skills to lure victims to their doom. Even though the trees offer reassurances that their mouths are safe and that people sleep in there all the time, you can't help but thinking that your tent might be a competitive option as well. There are no obvious exits in this dense forest, which begs the question of how you got here in the first place. There's also a giant boulder with a stick wedged under it.";
         }
         else if (_tentOffend == TRUE)
         {
@@ -80,15 +80,14 @@ static BOOL _accessGranted = FALSE;
     if ([subject isEqualToString:@"boulder"])
         return @"You crack your knuckles, do some warm up exercises, and lift up on the boulder with great force, but to no avail. After receiving some strange looks from the nearby trees, you decide to stop.";
     if ([subject isEqualToString:@"stick"])
-    {
-        [Player giveItem:@"stick"];
-        return @"Now you're talking! This stick is sure to be useful for something! After all, it's the only gettable item around here!";
-    }
+        return @"You try to pull the stick out but it's wedged too firmly under the boulder.  You might be able to use it to pry the boulder up anyway.";
     return [super get:subject];
 }
 
 + (NSString*) use:(NSString *)subject
 {
+    if ([subject isEqualToString:@"stick"])
+        return @"Success! Using the stick as leverage, you're able to pry the boulder away, revealing a secret passage under-- oh nevermind, that's just dirt. How disappointing. You let go of the stick and the boulder rolls back into place.";
     if(![Player hasItem:subject]) return [super use:subject];
     if ([subject isEqualToString:@"tent"])
     {
@@ -105,10 +104,6 @@ static BOOL _accessGranted = FALSE;
             [Player removeItem:@"tent"];
             return @"You offer the tree your tent as a peace offering, which it requests you feed it. Upon doing so it coughs a little and complains that it prefers to season its tents with onions first, but this did fine. The tree forgives you and allows you access to its mouth.";
         }
-    }
-    if ([subject isEqualToString:@"stick"])
-    {
-        return @"Success! Using the stick as leverage, you're able to pry the boulder away, revealing a secret passage under-- oh nevermind, that's just dirt. How disappointing. You remove the stick and the boulder rolls back into place.";
     }
     return [super use:subject];
 }
