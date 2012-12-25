@@ -27,7 +27,7 @@
 
 + (NSString*) go:(NSString *)subject
 {
-        return [super get:subject];
+    return [super get:subject];
 }
 
 

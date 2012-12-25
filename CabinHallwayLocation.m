@@ -42,11 +42,11 @@
     {
         return [Player setCurrentLocation:@"CabinBathroomLocation"];
     }
-    if ([subject isEqualToString:@"entryway"])
+    if ([subject isEqualToString:@"main room"])
     {
         return [Player setCurrentLocation:@"CabinLocation"];
     }
-        return [super get:subject];
+    return [super get:subject];
 }
 
 

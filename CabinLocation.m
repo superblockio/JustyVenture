@@ -43,7 +43,14 @@
     }
     if ([subject isEqualToString:@"drawer"])
     {
-        return @"Pulling open one of the drawers in the kitchen you find a matchbox and a screwdriver.";
+        if ([Player hasItem:@"screwdriver"])
+            return @"Pulling open one of the drawers in the kitchen you find a matchbox.";
+        else if ([Player hasItem:@"matchbox"])
+            return @"Pulling open one of the drawers in the kitchen you find a screwdriver.";
+        else if ([Player hasItem:@"screwdriver"] && [Player hasItem:@"matchbox"])
+            return @"Pulling open one of the drawers in the kitchen you find it empty.";
+        else
+            return @"Pulling open one of the drawers in the kitchen you find a matchbox and a screwdriver.";
     }
     return [super look:subject];
 }
@@ -52,13 +59,13 @@
 {
     if ([subject isEqualToString:@"hallway"])
     {
-            return [Player setCurrentLocation:@"CabinHallwayLocation"];
+        return [Player setCurrentLocation:@"CabinHallwayLocation"];
     }
     if ([subject isEqualToString:@"outside"])
     {
         return [Player setCurrentLocation:@"PoolLocation"];
     }
-        return [super get:subject];
+    return [super get:subject];
 }
 
 

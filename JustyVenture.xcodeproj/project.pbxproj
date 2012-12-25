@@ -15,6 +15,7 @@
 		63E05A15168980F200A21987 /* CabinHallwayLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E05A0E168980EE00A21987 /* CabinHallwayLocation.m */; };
 		63E05A16168980F200A21987 /* PoolLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E05A10168980EF00A21987 /* PoolLocation.m */; };
 		63E05A17168980F200A21987 /* TrineLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E05A12168980F200A21987 /* TrineLocation.m */; };
+		63E05A1A1689A0D400A21987 /* CabinFireplaceLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E05A191689A0D400A21987 /* CabinFireplaceLocation.m */; };
 		6B0AB06714A2D1DC009B4C95 /* IntroLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0AB06614A2D1DC009B4C95 /* IntroLocation.m */; };
 		6B28EA3516893EE800002E92 /* TreeSlideLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B28EA3416893EE800002E92 /* TreeSlideLocation.m */; };
 		6B28EA3B16894B8200002E92 /* slideforward.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B28EA3716894B8200002E92 /* slideforward.png */; };
@@ -58,6 +59,8 @@
 		63E05A10168980EF00A21987 /* PoolLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolLocation.m; sourceTree = "<group>"; };
 		63E05A11168980F000A21987 /* TrineLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrineLocation.h; sourceTree = "<group>"; };
 		63E05A12168980F200A21987 /* TrineLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrineLocation.m; sourceTree = "<group>"; };
+		63E05A181689A0D300A21987 /* CabinFireplaceLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CabinFireplaceLocation.h; sourceTree = "<group>"; };
+		63E05A191689A0D400A21987 /* CabinFireplaceLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CabinFireplaceLocation.m; sourceTree = "<group>"; };
 		6B0AB06514A2D1DC009B4C95 /* IntroLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroLocation.h; sourceTree = "<group>"; };
 		6B0AB06614A2D1DC009B4C95 /* IntroLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroLocation.m; sourceTree = "<group>"; };
 		6B28EA3316893EE800002E92 /* TreeSlideLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeSlideLocation.h; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				63E05A0A168980ED00A21987 /* CabinBathroomLocation.m */,
 				63E05A0B168980ED00A21987 /* CabinBedroomLocation.h */,
 				63E05A0C168980EE00A21987 /* CabinBedroomLocation.m */,
+				63E05A181689A0D300A21987 /* CabinFireplaceLocation.h */,
+				63E05A191689A0D400A21987 /* CabinFireplaceLocation.m */,
 				63E05A0D168980EE00A21987 /* CabinHallwayLocation.h */,
 				63E05A0E168980EE00A21987 /* CabinHallwayLocation.m */,
 				6B0AB06514A2D1DC009B4C95 /* IntroLocation.h */,
@@ -295,6 +300,7 @@
 				63E05A15168980F200A21987 /* CabinHallwayLocation.m in Sources */,
 				63E05A16168980F200A21987 /* PoolLocation.m in Sources */,
 				63E05A17168980F200A21987 /* TrineLocation.m in Sources */,
+				63E05A1A1689A0D400A21987 /* CabinFireplaceLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
