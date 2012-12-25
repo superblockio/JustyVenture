@@ -24,6 +24,7 @@ static NSImage* _image;
 static NSMutableDictionary* _attributes;
 static NSString* _prompt;
 static NSMutableDictionary* _achievements;
+static NSObject<PlayerDelegate>* _delegate;
 
 // Initializes the inventory when the class is first loaded
 + (void)initialize
@@ -112,6 +113,11 @@ static NSMutableDictionary* _achievements;
 + (NSString*) promptOverride
 {
     return _prompt;
+}
+
++ (void) forceInputUpdateWithString:(NSString*)input
+{
+    [self.delegate playerForcedInputUpdateWithString:input];
 }
 
 + (void) overridePrompt:(NSString*)prompt
@@ -234,6 +240,13 @@ static NSMutableDictionary* _achievements;
 }
 
 
-
++ (NSObject<PlayerDelegate>*) delegate
+{
+    return _delegate;
+}
++ (void) setDelegate:(NSObject<PlayerDelegate>*) delegate
+{
+    _delegate = delegate;
+}
 
 @end

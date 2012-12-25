@@ -16,6 +16,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification 
 {
+    [Player setDelegate:self];
 	_deathDelayTimer=nil;
     _currentPrompt = @"What wouldst thou deau?";
 	_won=FALSE;
@@ -125,6 +126,11 @@
 -(void)terminateApp
 {
 	[NSApp terminate:self];
+}
+
+- (void) playerForcedInputUpdateWithString:(NSString *)string
+{
+    [self textWasEntered:string];
 }
 
 @end

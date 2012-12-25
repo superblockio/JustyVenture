@@ -10,7 +10,7 @@
 #import "QuestView.h"
 #import "QuestHandler.h"
 
-@interface Quest2AppDelegate : NSObject <NSApplicationDelegate, NSTextFieldDelegate, QuestViewTextEntered, QuestHandlerDelegate, NSWindowDelegate> 
+@interface Quest2AppDelegate : NSObject <NSApplicationDelegate, NSTextFieldDelegate, QuestViewTextEntered, QuestHandlerDelegate, NSWindowDelegate, PlayerDelegate>
 {
     NSWindow *_window;
 	QuestView *_view;

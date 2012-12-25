@@ -8,11 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol PlayerDelegate <NSObject>
+
+- (void) playerForcedInputUpdateWithString:(NSString*)string;
+
+@end
+
 // A static class to represent the player, including their inventory,
 // location, attributes pertaining to the game (such as whether they've
 // talked to a certain character or done a certain thing), achievements,
 // the image to display along with the text, and resetting the game.
 @interface Player : NSObject
+
++ (NSObject<PlayerDelegate>*) delegate;
++ (void) setDelegate:(NSObject<PlayerDelegate>*) delegate;
 
 + (void)initialize;
 
@@ -53,6 +62,7 @@
 // Prompt stuff
 + (NSString*) promptOverride;
 + (void) overridePrompt:(NSString*)prompt;
++ (void) forceInputUpdateWithString:(NSString*)input;
 
 
 // Attribute stuff
