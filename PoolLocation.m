@@ -62,11 +62,11 @@
 {
     if (([verb isEqualToString:@"give"] || [verb isEqualToString:@"throw"]) && [Player hasItem:subject])
     {
-        if ([subject isEqualToString:@"matchbox"])
+        if ([subject isEqualToString:@"screw"])
         {
-            [Player removeItem:@"matchbox"];
+            [Player removeItem:@"screw"];
             [Player giveItem:@"screwdriver"];
-            return @"You throw the matchbox into the pool and a screwdriver comes flying back out and you catch it in your hand. That's certainly interesting.";
+            return @"You throw the screw into the pool and a screwdriver comes flying back out and you catch it in your hand. That's certainly interesting.";
         }
         else if ([subject isEqualToString:@"screwdriver"])
         {

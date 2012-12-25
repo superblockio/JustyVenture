@@ -43,10 +43,10 @@
     }
     if ([subject isEqualToString:@"drawer"])
     {
-        if ([Player hasItem:@"screwdriver"] || [Player hasItem:@"matchbox"])
+        if ([Player hasItem:@"screwdriver"] || [Player hasItem:@"screw"])
             return @"Pulling open one of the drawers in the kitchen you find it empty.";
         else
-            return @"Pulling open one of the drawers in the kitchen you find a matchbox of waterproof matches.";
+            return @"Pulling open one of the drawers in the kitchen you find a single screw with \"Crusty Man Jenkins Water Activated Screw\" etched in the side.";
     }
     return [super look:subject];
 }
@@ -67,10 +67,10 @@
 
 + (NSString*) get:(NSString *)subject
 {
-    if ([subject isEqualToString:@"matchbox"])
+    if ([subject isEqualToString:@"screw"])
     {
-        [Player giveItem:@"matchbox"];
-        return @"You pull open the kitchen drawer and take the matchbox out.";
+        [Player giveItem:@"screw"];
+        return @"You pull open the kitchen drawer and take the screw labeled \"Crusty Man Jenkins Water Activated Screw\" out.";
     }
     if ([subject isEqualToString:@"pine cone"])
     {
