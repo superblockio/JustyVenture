@@ -1,9 +1,9 @@
 //
 //  IntroLocation.m
-//  Adventure 2
+//  JustyVenture
 //
-//  Created by Nathan Swenson on 12/21/11.
-//  Copyright (c) 2011 University of Utah. All rights reserved.
+//  Created by Nathan Swenson on 12/24/12.
+//
 //
 
 #import "IntroLocation.h"
@@ -124,7 +124,7 @@ static BOOL _pointyStick = FALSE;
 
 + (NSString*) talk:(NSString*) subject
 {
-    if (subject == nil || [subject isEqualToString:@"tree"] || [subject isEqualToString:@"trees"])
+    if ([subject isEqualToString:@"tree"] || [subject isEqualToString:@"trees"])
     {
         if (_tentOffend == FALSE && _whistleOffend == FALSE && _accessGranted == FALSE)
         {

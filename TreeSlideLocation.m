@@ -29,8 +29,7 @@ static SlideActionType _neededAction;
     _actionNumber = -1;
     _song = [[QTMovie movieNamed:@"06 Slider.mp3" error:nil] retain];
     [_song play];
-    [Player setCurrentImage:[NSImage imageNamed:@"slideforward"]];
-    return @"You enthusastically jump head-first into the tree's gaping mouth and promptly fall down a dark hole and land on a small ledge with a bendy wooden plank twisting down into a massive cavern in front of you! Stomachs are weird. You can feel yourself slipping off the ledge, and realize you're gonna have to act fast to avoid sliding off and falling to your death.! You'll need to lean to your LEFT or RIGHT and jump over obstacles as you slide, but you might get a chance to do things while it's straight. You'd better do something, you'll slip off any second!";
+    return @"You enthusastically jump head-first into the tree's gaping mouth and promptly fall down a dark hole and land on a small ledge with a bendy wooden plank twisting down into a massive cavern in front of you! Stomachs are weird. You can feel yourself slipping off the ledge, and realize you're gonna have to act fast to avoid sliding off and falling to your death! You'll need to pay attention to what the slide in front of you looks like and lean to your LEFT or RIGHT, or JUMP over obstacles as you slide.  And be careful, you'll only have time to perform one action at each junction! You'd better do something, you'll slip off any second!";
 }
 
 + (NSString*) whistle
@@ -80,9 +79,6 @@ static SlideActionType _neededAction;
     
     NSString* returnString = @"Oops, error happened.";
     
-    if ([verb isEqualToString:@"lion"] && [subject isEqualToString:@"helper"])
-        returnString = @"A giant lion comes sliding in after you. It bites onto the back of your collar and sinks its claws into the wooden slide, slowing you down a bit. This pushes you off the ledge and you start sliding down.";
-    
     // If they got it right, pick a new one.
     if (pickedAction == _neededAction)
     {
@@ -115,15 +111,34 @@ static SlideActionType _neededAction;
                     [Player setCurrentImage:[NSImage imageNamed:@"slideforward"]];
                     break;
             }
+            if (pickedAction == SlideActionTypeNone)
+            {
+                returnString = @"You continue straight down the slide for several more feet.";
+            }
+            else if (pickedAction == SlideActionTypeLeft)
+            {
+                returnString = @"You slide left around the corner and continue sliding.";
+            }
+            else if (pickedAction == SlideActionTypeRight)
+            {
+                returnString = @"You slide right around the corner and continue sliding.";
+            }
+            else if (pickedAction == SlideActionTypeJump)
+            {
+                returnString = @"You jump over Wailmer and continue to slide straight.";
+            }
         }
     }
     else
     {
         _actionNumber = -1;
         _neededAction = SlideActionTypeNone;
-        [Player setCurrentImage:[NSImage imageNamed:@"slideforward"]];
-        returnString = @"You fall off the edge into the abyss! You blink and suddenly you're back and the beginning of the course, about to fall off the ledge.";
+        returnString = @"You fall off the edge into the abyss! You blink and suddenly you're back and the beginning of the course, about to slip off the ledge.";
     }
+    if (_actionNumber == 0)
+        returnString = @"You slip off the ledge and begin to slide down. Act quick so you don't fall off!";
+    if ([verb isEqualToString:@"lion"] && [subject isEqualToString:@"helper"])
+        returnString = @"A giant lion comes sliding in after you. It bites onto the back of your collar and sinks its claws into the wooden slide, slowing you down a bit. This pushes you off the ledge and you start sliding down.";
     
     return returnString;
 }
