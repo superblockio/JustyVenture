@@ -46,7 +46,7 @@
     {
         return [Player setCurrentLocation:@"CabinHallwayLocation"];
     }
-        return [super get:subject];
+    return [super get:subject];
 }
 
 
