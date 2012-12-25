@@ -1,18 +1,18 @@
 //
-//  CabinLocation.m
+//  PoolLocation.m
 //  JustyVenture
 //
 //  Created by Nathan Swenson on 12/24/12.
 //
 //
 
-#import "CabinLocation.h"
+#import "PoolLocation.h"
 
-@implementation CabinLocation
+@implementation PoolLocation
 
 + (NSString*) arrive
 {
-    return @"You reach the bottom of the slide and slide out of a fireplace into a cabin. You're in a big room with a kitchen and dining area and such all in one.";
+    return @"You reach the bottom of the slide and slide out of a fireplace into a cabin.";
 }
 
 + (NSString*) look:(NSString *)subject
@@ -27,14 +27,6 @@
 
 + (NSString*) go:(NSString *)subject
 {
-    if ([subject isEqualToString:@"hallway"])
-    {
-            return [Player setCurrentLocation:@"CabinHallwayLocation"];
-    }
-    if ([subject isEqualToString:@"outside"])
-    {
-        return [Player setCurrentLocation:@"PoolLocation"];
-    }
         return [super get:subject];
 }
 
