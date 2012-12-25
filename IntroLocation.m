@@ -45,9 +45,7 @@ static BOOL _pointyStick = FALSE;
     }
     
     else if ([subject isEqualToString:@"boulder"])
-    {
         return @"I like that boulder. That is a nice boulder! It looks like it probably has a secret passage under it too.";
-    }
     
     else if ([subject isEqualToString:@"stick"])
     {
@@ -55,6 +53,15 @@ static BOOL _pointyStick = FALSE;
             return @"The stick is all pointy on one end now. It makes your teeth ache just looking at it. What in the world were you thinking?  You're not a beaver, man.";
         else
             return @"It's what appears to be the greatest stick in the world.  Look at it just sitting there, all stick-like and... sticky?  It's a stick, what do you want from me?";
+    }
+    
+    else if ([subject isEqualToString:@"sky"])
+        return @"The stars are starting to come out, and you can see the moon.  It's starting to get very dark, so you should definitely find a place to stay the night quickly.";
+    
+    else if ([subject isEqualToString:@"tent"])
+    {
+        if (_tentOffend == true)
+            return @"Your rather ramshackle tent is pitched here next to you in the middle of the trees.  There's nothing remarkable about it, although now that you look at it you can't shake the feeling that you pitched it wrong.";
     }
     
     return [super look:subject];
@@ -86,9 +93,9 @@ static BOOL _pointyStick = FALSE;
     if ([subject isEqualToString:@"stick"])
     {
         if (_pointyStick == TRUE)
-            return @"You can't get a good hold on the stick anymore because it's all slippery from your saliva and sharp on one end.  You end up poking your hand on the stick several times before you give up and decide it isn't worth it.";
+            return @"You can't get a good hold on the stick anymore because it's all slippery from your saliva and sharp on one end.  You end up poking your hand on the stick several times before you give up and decide it isn't worth the effort.";
         else
-            return @"You try to pull the stick out but it's wedged too firmly under the boulder.  Your attempts to dislodge the stick pry the boulder up enough for you to see that there's nothing underneath but dirt, which is too bad seeing as you were hoping for a secret, and exhausted you let go of the stick and the boulder falls back to where it used to be.";
+            return @"You try to pull the stick out but it's wedged too firmly under the boulder.  Your attempts to dislodge the stick pry the boulder up enough for you to see that there's nothing underneath but dirt, which is too bad seeing as you were hoping for a secret, and exhausted you let go of the stick and the boulder falls back to where it used to be. What would you do with a stick anyway, whittle it to a point?";
     }
     return [super get:subject];
 }
@@ -161,7 +168,7 @@ static BOOL _pointyStick = FALSE;
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
 {
-    if ([verb isEqualToString:@"whittle"] || [subject isEqualToString:@"stick"])
+    if ([verb isEqualToString:@"whittle"] && [subject isEqualToString:@"stick"])
     {
         _pointyStick = TRUE;
         return @"You go to whittle the stick, but having no knife you're forced to resort to using your teeth. You manage to make the end of the stick rather pointy, but it's still clearly trapped under the boulder.  You're not sure if all the effort was worth the pain it's causing your teeth.";
