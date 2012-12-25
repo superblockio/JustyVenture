@@ -55,7 +55,7 @@
 
 + (NSString*) whistle
 {
-    return @"";
+    return @"A cat walks out of the forest and throws a mouse in the pool. The pool promptly jettisons the mouse back out and the cats picks it up and goes on its way.";
 }
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject

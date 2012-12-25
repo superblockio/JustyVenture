@@ -12,7 +12,7 @@
 
 + (NSString*) arrive
 {
-    return @"You step through the door into the bedroom, which is a bit small, has a bed in one corner, a desk in another, and a closet in the third.  There's a windows along the south side.";
+    return @"You step through the door into the bedroom, which is a bit small, has a bed in one corner, a desk in another, and a closet in the third.  There are windows on the south and west sides.";
 }
 
 + (NSString*) look:(NSString *)subject
@@ -52,6 +52,11 @@
 
 + (NSString*) get:(NSString *)subject
 {
+    if ([subject isEqualToString:@"gun"])
+    {
+        [Player giveItem:@"gun"];
+        return @"You pull open the dresser drawer and take the gun out.";
+    }
     return [super get:subject];
 }
 
@@ -68,7 +73,7 @@
 
 + (NSString*) whistle
 {
-    return @"";
+    return @"A cat pops out from under the dresser and jumps up and try to grab at the drawer handle, but falls in an amusing way.";
 }
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject

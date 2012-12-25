@@ -44,6 +44,11 @@
 
 + (NSString*) get:(NSString *)subject
 {
+    if ([subject isEqualToString:@"soap"])
+    {
+        [Player giveItem:@"soap"];
+        return @"You lean into the shower and pick up the soap.";
+    }
     return [super get:subject];
 }
 
@@ -60,7 +65,7 @@
 
 + (NSString*) whistle
 {
-    return @"";
+    return @"A cat jumps through the open window and lands feet deep in the shower. It goes crazy and run away into the hallway with it's fur sticking straight up.";
 }
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
