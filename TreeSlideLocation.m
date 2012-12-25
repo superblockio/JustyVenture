@@ -30,42 +30,41 @@ static SlideActionType _neededAction;
     _song = [[QTMovie movieNamed:@"06 Slider.mp3" error:nil] retain];
     [_song play];
     [Player setCurrentImage:[NSImage imageNamed:@"slideforward"]];
-    return @"You enthusastically jump head-first into the tree's gaping mouth and find yourself sliding down a bendy wooden plank inside a massive underground cavern at breakneck speeds! Stomachs are weird. You'll need quick reflexes to avoid being thrown off into the abyss! Type LEFT, RIGHT, NONE, or JUMP based on what image is shown. Type START to start!";
+    return @"You enthusastically jump head-first into the tree's gaping mouth and promptly fall down a dark hole and land on a small ledge with a bendy wooden plank twisting down into a massive cavern in front of you! Stomachs are weird. You can feel yourself slipping off the ledge, and realize you're gonna have to act fast to avoid sliding off and falling to your death.! You'll need to lean to your LEFT or RIGHT and jump over obstacles as you slide, but you might get a chance to do things while it's straight. You'd better do something, you'll slip off any second!";
 }
 
 + (NSString*) whistle
 {
     if (_actionNumber == -1)
     {
-        [Player setCurrentImage:[NSImage imageNamed:@"slideforward"]];
-        return @"A giant lion comes sliding in after you. It bites onto the back of your collar and sinks its claws into the wooden slide, slowing you down a bit. Type anything else to start now.";
+        return [self wildcardWithVerb:@"lion" subject:@"helper"];
     }
-    else return [self wildcardWithVerb:@"none" subject:@""];
+    else return [self wildcardWithVerb:@"none" subject:@"whistle"];
 }
 
 + (NSString*) look:(NSString*) subject
 {
-    return [self wildcardWithVerb:@"none" subject:@""];
+    return [self wildcardWithVerb:@"none" subject:@"look"];
 }
 
 + (NSString*) get:(NSString*) subject
 {
-    return [self wildcardWithVerb:@"none" subject:@""];
+    return [self wildcardWithVerb:@"none" subject:@"get"];
 }
 
 + (NSString*) talk:(NSString*) subject
 {
-    return [self wildcardWithVerb:@"none" subject:@""];
+    return [self wildcardWithVerb:@"none" subject:@"talk"];
 }
 
 + (NSString*) use:(NSString*) subject
 {
-    return [self wildcardWithVerb:@"none" subject:@""];
+    return [self wildcardWithVerb:@"none" subject:@"use"];
 }
 
 + (NSString*) go:(NSString*) subject
 {
-    return [self wildcardWithVerb:@"none" subject:@""];
+    return [self wildcardWithVerb:@"none" subject:@"go"];
 }
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
@@ -80,6 +79,9 @@ static SlideActionType _neededAction;
         pickedAction = SlideActionTypeJump;
     
     NSString* returnString = @"Oops, error happened.";
+    
+    if ([verb isEqualToString:@"lion"] && [subject isEqualToString:@"helper"])
+        returnString = @"A giant lion comes sliding in after you. It bites onto the back of your collar and sinks its claws into the wooden slide, slowing you down a bit. This pushes you off the ledge and you start sliding down.";
     
     // If they got it right, pick a new one.
     if (pickedAction == _neededAction)
@@ -110,9 +112,9 @@ static SlideActionType _neededAction;
     }
     else
     {
-        _actionNumber = 0;
+        _actionNumber = -1;
         _neededAction = SlideActionTypeNone;
-        returnString = @"You crash! Type START to start over.";
+        returnString = @"You fall off the edge into the abyss! You blink and suddenly you're back and the beginning of the course, about to fall off the ledge.";
     }
     
     return returnString;
