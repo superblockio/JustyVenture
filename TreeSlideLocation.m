@@ -122,7 +122,7 @@ static BOOL _lion;
                     [_timer invalidate];
                 [_timer release];
             }
-            return [Player setCurrentLocation:@"CabinLocation"];
+            return [Player setCurrentLocation:@"CabinFireplaceLocation"];
         }
         else
         {
