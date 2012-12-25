@@ -66,11 +66,14 @@ static BOOL _pointyStick = FALSE;
     {
         if (_accessGranted == TRUE)
         {
-            return @"You climb into the waiting mouth of the biggest tree and fall down a hole inside, unharmed for the time being. It seems the trees upheld their promise not to eat you after all, but you're still not sure this was such a great idea.";
+            return [Player setCurrentLocation:@"TreeSlideLocation"];
         }
         else if (_tentOffend == TRUE || _whistleOffend == TRUE) return @"The trees all have their mouths firmly shut, so you've probably missed your chance to climb inside. Not that I'd think much of you, climbing into a man-eating tree and all.";
         else
-            return @"You climb into the mouth of one of the trees and it bites down and chews you in half.  You can feel your body slide down a hole of some sort just before you die.  I can't say you shouldn't have seen that one coming.  After all it's pretty much the first thing I told you about the trees.  They must be more suave and convincing then I remember programming them...";
+        {
+            _pointyStick = FALSE;
+            return @"You climb into the mouth of one of the trees and it bites down and chews you in half.  You can feel your body slide down a hole of some sort just before you die.  I can't say you shouldn't have seen that one coming.  After all it's pretty much the first thing I told you about the trees.  They must be more suave and convincing then I remember programming them...  Anyway, you totally died so you'll have to start over, not that you've made any progress anyway.";
+        }
     }
     return [super get:subject];
 }
@@ -85,7 +88,7 @@ static BOOL _pointyStick = FALSE;
         if (_pointyStick == TRUE)
             return @"You can't get a good hold on the stick anymore because it's all slippery from your saliva and sharp on one end.  You end up poking your hand on the stick several times before you give up and decide it isn't worth it.";
         else
-            return @"You try to pull the stick out but it's wedged too firmly under the boulder.  Your attempts to dislodge the stick pry the boulder up enough for you to see that there's nothing underneath but dirt, and exhausted you let go of the stick and the boulder falls back to where it used to be.";
+            return @"You try to pull the stick out but it's wedged too firmly under the boulder.  Your attempts to dislodge the stick pry the boulder up enough for you to see that there's nothing underneath but dirt, which is too bad seeing as you were hoping for a secret, and exhausted you let go of the stick and the boulder falls back to where it used to be.";
     }
     return [super get:subject];
 }
