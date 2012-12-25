@@ -12,7 +12,7 @@
 
 + (NSString*) arrive
 {
-    return @"You reach the bottom of the slide and slide out of a fireplace into a cabin.";
+    return @"You step through the door into the bedroom, which is a bit small, has a bed in one corner, a desk in another, and a closet in the third.  There's a windows along the south side.";
 }
 
 + (NSString*) look:(NSString *)subject
@@ -27,6 +27,10 @@
 
 + (NSString*) go:(NSString *)subject
 {
+    if ([subject isEqualToString:@"hallway"])
+    {
+        return [Player setCurrentLocation:@"CabinHallwayLocation"];
+    }
         return [super get:subject];
 }
 
