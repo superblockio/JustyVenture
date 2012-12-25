@@ -21,6 +21,10 @@
     {
         return @"The crawl space looks small, but you think you'll be able to fit. The old man looks to be playing some sort of game on his phone and isn't really paying all that much attention to you. He's sitting next to a pile of salt.";
     }
+    if ([subject isEqualToString:@"salt"])
+    {
+        return @"All of your attempts look directly at the pile of salt fail and you're forced to look at it out of the corner of your eye. It's your standard run of the mill pile of salt, nothing much to say about it. Probably the result of one of those pesky hurricanes... inside... a fireplace. Yep, sticking with that story.";
+    }
     return [super look:subject];
 }
 
