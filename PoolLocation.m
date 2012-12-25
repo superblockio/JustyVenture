@@ -60,11 +60,13 @@
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
 {
-    if ([verb isEqualToString:@"give"] && [Player hasItem:subject])
+    if (([verb isEqualToString:@"give"] || [verb isEqualToString:@"throw"]) && [Player hasItem:subject])
     {
         if ([subject isEqualToString:@"matchbox"])
         {
-            return @"You throw the matchbox into the pool and get back a matchbox full of wet, useless matches. What did you expect?";
+            [Player removeItem:@"matchbox"];
+            [Player giveItem:@"screwdriver"];
+            return @"You throw the matchbox into the pool and a screwdriver comes flying back out and you catch it in your hand. That's certainly interesting.";
         }
         else if ([subject isEqualToString:@"screwdriver"])
         {

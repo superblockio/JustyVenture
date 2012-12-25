@@ -43,14 +43,10 @@
     }
     if ([subject isEqualToString:@"drawer"])
     {
-        if ([Player hasItem:@"screwdriver"])
-            return @"Pulling open one of the drawers in the kitchen you find a matchbox.";
-        else if ([Player hasItem:@"matchbox"])
-            return @"Pulling open one of the drawers in the kitchen you find a screwdriver.";
-        else if ([Player hasItem:@"screwdriver"] && [Player hasItem:@"matchbox"])
+        if ([Player hasItem:@"screwdriver"] || [Player hasItem:@"matchbox"])
             return @"Pulling open one of the drawers in the kitchen you find it empty.";
         else
-            return @"Pulling open one of the drawers in the kitchen you find a matchbox and a screwdriver.";
+            return @"Pulling open one of the drawers in the kitchen you find a matchbox of waterproof matches.";
     }
     return [super look:subject];
 }
@@ -76,10 +72,10 @@
         [Player giveItem:@"matchbox"];
         return @"You pull open the kitchen drawer and take the matchbox out.";
     }
-    if ([subject isEqualToString:@"screwdriver"])
+    if ([subject isEqualToString:@"pine cone"])
     {
-        [Player giveItem:@"screwdriver"];
-        return @"You pull open the kitchen drawer and take the screwdriver out.";
+        [Player giveItem:@"pine cone"];
+        return @"You walk over to the table and take one of the pine cones out of the basket.";
     }
     if ([subject isEqualToString:@"bottle"])
     {
