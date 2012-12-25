@@ -24,7 +24,7 @@
     {
         return @"That's not what I meant when I told you to get it looked at, have a doctor do a checkup, you need help.";
     }
-
+    
 }
 
 // The default behavior for "get"
@@ -45,8 +45,9 @@
 {
     if(subject != nil)
     {
-        if([Player hasItem:subject]) return @"Professor Oak: 'There's a time and place for everything! But not now.' Wait, how did Professor Oak get here? Oh, he's just a disembodied voice. That's sorta creepy. But informative!";
-       else return @"You no has.";
+        if ([subject isEqualToString:@"whistle"]) return @"You pull out your whistle and look at the inscription: \"If you WHISTLE, they will come!\"";
+        else if([Player hasItem:subject]) return @"Professor Oak: 'There's a time and place for everything! But not now.' Wait, how did Professor Oak get here? Oh, he's just a disembodied voice. That's sorta creepy. But informative!";
+        else return @"You no has.";
     }
     else return @"You probably think you're a hoot, trying to use nothing.  That would be funny if it weren't so sad.";
 }
