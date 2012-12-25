@@ -62,7 +62,7 @@ static BOOL _pointyStick = FALSE;
 
 + (NSString*) go:(NSString *)subject
 {
-    if ([subject isEqualToString:@"tree"])
+    if ([subject isEqualToString:@"tree"] || [subject isEqualToString:@"mouth"])
     {
         if (_accessGranted == TRUE)
         {
