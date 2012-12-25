@@ -39,7 +39,7 @@ static BOOL _accessGranted = FALSE;
         }
         else if (_accessGranted == TRUE)
         {
-            return @"";
+            return @"The man-eating trees still surround you. They seem a bit more wary of trying eat you now, but still opening invite you into their mouths. Now that your tent is gone you really don't seem to have any place left to go, and it's starting to get cold out. The trees promise you warmth and safety in their mouths, but that seems a bit farfetched. The giant boulder and stick are still sitting there.";
         }
     }
     
@@ -61,8 +61,15 @@ static BOOL _accessGranted = FALSE;
     if ([subject isEqualToString:@"tree"])
     {
         if (_accessGranted == TRUE)
-        return @"";
-        else return @"";
+        {
+            return @"";
+        }
+        else if (_tentOffend == TRUE || _whistleOffend == TRUE) return @"The trees all have their mouths firmly shut, so you're not gonna be able to get in them at all.";
+        else
+        {
+            [Player removeItem:@"stick"];
+            return @"You climb into the mouth of one of the trees but you die on account of it eating you and all.  I can't say you shouldn't have seen that one coming.  After all I told you they were man eating.  They must be more suave and convincing then I remember programming them...";
+        }
     }
     return [super get:subject];
 }
@@ -83,7 +90,7 @@ static BOOL _accessGranted = FALSE;
 + (NSString*) use:(NSString *)subject
 {
     if(![Player hasItem:subject]) return [super use:subject];
-    else if ([subject isEqualToString:@"tent"])
+    if ([subject isEqualToString:@"tent"])
     {
         if (!_whistleOffend)
         {
@@ -96,10 +103,10 @@ static BOOL _accessGranted = FALSE;
             _whistleOffend = FALSE;
             _accessGranted = TRUE;
             [Player removeItem:@"tent"];
-            return @"You feed the tree your mangy old tent, which gets the taste of cat hair out of its mouth. The tree forgives you and allows you access to its mouth.";
+            return @"You offer the tree your tent as a peace offering, which it requests you feed it. Upon doing so it coughs a little and complains that it prefers to season its tents with onions first, but this did fine. The tree forgives you and allows you access to its mouth.";
         }
     }
-    else if ([subject isEqualToString:@"stick"])
+    if ([subject isEqualToString:@"stick"])
     {
         return @"Success! Using the stick as leverage, you're able to pry the boulder away, revealing a secret passage under-- oh nevermind, that's just dirt. How disappointing. You remove the stick and the boulder rolls back into place.";
     }
@@ -132,16 +139,20 @@ static BOOL _accessGranted = FALSE;
 
 + (NSString*) whistle
 {
-    if(!_tentOffend)
+    if(!_tentOffend && !_accessGranted)
     {
         _whistleOffend = TRUE;
-        return @"A massive surge of cats comes out of nowhere and pours down the throat of the chief tree. After coughing up several hairballs, the tree becomes greatly offended at this outrage and refuses to grant you entry to its mouth on the grounds that you are a crazy cat lady.  This is certainly news to you seeing as you're clearly not a lady, and from what you can remember you're not crazy.  Although, you are standing in a grove of carnivorous, talking trees, and despite our insistence to the contrary you can't seem to remember how you got there at all.";
+        return @"A massive surge of cats comes out of nowhere and pours down the throat of the chief tree. After coughing up several hairballs, the tree becomes greatly offended at this outrage and refuses to grant you entry to its mouth on the grounds that you are a crazy cat lady.  This is certainly news to you seeing as you're clearly not a lady, and from what you can remember you're not crazy.  Although, you are standing in a grove of carnivorous, talking trees, and despite my insistence to the contrary you can't seem to remember how you got here at all...";
     }
-    else
+    else if (!_accessGranted)
     {
         _tentOffend = FALSE;
         _accessGranted = TRUE;
-        return @"A cat climbs out from under the boulder, bearing a cute mini DJ setup on its back. Music starts to play \" Wub Wub Wub.\" As you cover your ears and contemplate kicking the cat, you notice that the trees are starting to sway back in forth in rhythm. They thank you for introducing them to the wonders of dubstep and offer you \"safe\" passage into their mouths!";
+        return @"A cat climbs out from under the boulder, bearing a cute mini DJ setup on its back. Music starts to play \" Wub Wub Wub.\" As you cover your ears and contemplate kicking the cat, you notice that the trees are starting to sway back in forth in rhythm. They thank you for introducing them to the wonders of dubstep and offer you \"safe\" passage into their mouths!  A stray wind picks up and blows your tent away, reminding you why they always include those stakes.  Oh well.";
+    }
+    else
+    {
+        return @"You hear a meowing and look up at a cat in a nest.  It just stares at you for a while, then it looks at the open mouth of the tree, almost like it's trying to tell you something.  You ponder on why there's a cat in what is clearly a bird's nest, and about the possibility that cat's have decided to make nests high up in trees.  That doesn't seem horribly practical, given that the kittens would just fall out and die, but then again, you're not one to judge.";
     }
     return [super whistle];
 }
