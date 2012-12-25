@@ -86,34 +86,42 @@ static SlideActionType _neededAction;
     // If they got it right, pick a new one.
     if (pickedAction == _neededAction)
     {
-        int rando = floor(drand48() * 4);
-        switch (rando)
+        if (_actionNumber == 10)
         {
-            case 0:
-                _neededAction = SlideActionTypeLeft;
-                [Player setCurrentImage:[NSImage imageNamed:@"slideleft"]];
-                break;
-                
-            case 1:
-                _neededAction = SlideActionTypeRight;
-                [Player setCurrentImage:[NSImage imageNamed:@"slideright"]];
-                break;
-                
-            case 2:
-                _neededAction = SlideActionTypeJump;
-                [Player setCurrentImage:[NSImage imageNamed:@"slidewailmer"]];
-                break;
-           
-            default:
-                _neededAction = SlideActionTypeNone;
-                [Player setCurrentImage:[NSImage imageNamed:@"slideforward"]];
-                break;
+            return [Player setCurrentLocation:@"CabinLocation"];
+        }
+        else
+        {
+            int rando = floor(drand48() * 4);
+            switch (rando)
+            {
+                case 0:
+                    _neededAction = SlideActionTypeLeft;
+                    [Player setCurrentImage:[NSImage imageNamed:@"slideleft"]];
+                    break;
+                    
+                case 1:
+                    _neededAction = SlideActionTypeRight;
+                    [Player setCurrentImage:[NSImage imageNamed:@"slideright"]];
+                    break;
+                    
+                case 2:
+                    _neededAction = SlideActionTypeJump;
+                    [Player setCurrentImage:[NSImage imageNamed:@"slidewailmer"]];
+                    break;
+                    
+                default:
+                    _neededAction = SlideActionTypeNone;
+                    [Player setCurrentImage:[NSImage imageNamed:@"slideforward"]];
+                    break;
+            }
         }
     }
     else
     {
         _actionNumber = -1;
         _neededAction = SlideActionTypeNone;
+        [Player setCurrentImage:[NSImage imageNamed:@"slideforward"]];
         returnString = @"You fall off the edge into the abyss! You blink and suddenly you're back and the beginning of the course, about to fall off the ledge.";
     }
     
