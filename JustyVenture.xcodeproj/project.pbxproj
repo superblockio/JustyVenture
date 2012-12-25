@@ -23,6 +23,7 @@
 		6B28EA3D16894B8200002E92 /* slideright.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B28EA3916894B8200002E92 /* slideright.png */; };
 		6B28EA3E16894B8200002E92 /* slidewailmer.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B28EA3A16894B8200002E92 /* slidewailmer.png */; };
 		6B28EA4016894EA700002E92 /* 06 Slider.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B28EA3F16894EA700002E92 /* 06 Slider.mp3 */; };
+		6B28EA4E168A39A800002E92 /* Horse_Race_Finish_Line.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6B28EA4D168A39A800002E92 /* Horse_Race_Finish_Line.mp3 */; };
 		6B2D0DB312C00D1F00E22A89 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6B2D0DB212C00D1F00E22A89 /* icon.icns */; };
 		6B2F8DFD12AE835100D9676F /* QuestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F8DFC12AE835100D9676F /* QuestView.m */; };
 		6B4BDE3A14A287D300A6C37A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BDE3914A287D300A6C37A /* Player.m */; };
@@ -70,6 +71,7 @@
 		6B28EA3916894B8200002E92 /* slideright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideright.png; sourceTree = "<group>"; };
 		6B28EA3A16894B8200002E92 /* slidewailmer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slidewailmer.png; sourceTree = "<group>"; };
 		6B28EA3F16894EA700002E92 /* 06 Slider.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "06 Slider.mp3"; sourceTree = "<group>"; };
+		6B28EA4D168A39A800002E92 /* Horse_Race_Finish_Line.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse_Race_Finish_Line.mp3; sourceTree = "<group>"; };
 		6B2D0DB212C00D1F00E22A89 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		6B2F8DFB12AE835100D9676F /* QuestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestView.h; sourceTree = "<group>"; };
 		6B2F8DFC12AE835100D9676F /* QuestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestView.m; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B28EA4D168A39A800002E92 /* Horse_Race_Finish_Line.mp3 */,
 				6B28EA3F16894EA700002E92 /* 06 Slider.mp3 */,
 				6B2D0DB212C00D1F00E22A89 /* icon.icns */,
 				8D1107310486CEB800E47090 /* JustyVenture-Info.plist */,
@@ -274,6 +277,7 @@
 				6B28EA3D16894B8200002E92 /* slideright.png in Resources */,
 				6B28EA3E16894B8200002E92 /* slidewailmer.png in Resources */,
 				6B28EA4016894EA700002E92 /* 06 Slider.mp3 in Resources */,
+				6B28EA4E168A39A800002E92 /* Horse_Race_Finish_Line.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

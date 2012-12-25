@@ -7,7 +7,6 @@
 //
 
 #import "TreeSlideLocation.h"
-#import <QTKit/QTKit.h>
 
 @implementation TreeSlideLocation
 
@@ -34,6 +33,7 @@ static BOOL _lion;
     _lion = FALSE;
     _song = [[QTMovie movieNamed:@"06 Slider.mp3" error:nil] retain];
     [_song play];
+    [_song setAttribute:[NSNumber numberWithBool:YES] forKey: @"QTMovieLoopsAttribute"];
     return @"You enthusastically jump head-first into the tree's gaping mouth and promptly fall down a dark hole and land on a small ledge with a bendy wooden plank twisting down into a massive cavern in front of you! Stomachs are weird. You can feel yourself slipping off the ledge, and realize you're gonna have to act fast to avoid sliding off and falling to your death! You'll need to pay attention to what the slide in front of you looks like and lean to your LEFT or RIGHT, or JUMP over obstacles as you slide. If there are no turns or obstacles, don't enter text! And be careful, you'll only have time to perform one action at each junction, so make sure you do the right thing, or you'll fall off!";
 }
 
@@ -114,6 +114,8 @@ static BOOL _lion;
         if (_actionNumber == 10)
         {
             [_song stop];
+            _song = [[QTMovie movieNamed:@"Horse_Race_Finish_Line.mp3" error:nil] retain];
+            [_song play];
             if (_timer != nil)
             {
                 if ([_timer isValid])

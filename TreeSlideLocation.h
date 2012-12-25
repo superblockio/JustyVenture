@@ -7,6 +7,7 @@
 //
 
 #import "Location.h"
+#import <QTKit/QTKit.h>
 
 @interface TreeSlideLocation : Location
 
