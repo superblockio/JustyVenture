@@ -19,7 +19,7 @@
 {
     if (subject == nil)
     {
-        return @"The crawl space looks small, but you think you'll be able to fit. The old man looks to be playing some sort of game on his phone and isn't really paying all that much attention to you.";
+        return @"The crawl space looks small, but you think you'll be able to fit. The old man looks to be playing some sort of game on his phone and isn't really paying all that much attention to you. He's sitting next to a pile of salt.";
     }
     return [super look:subject];
 }
