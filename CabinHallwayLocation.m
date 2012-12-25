@@ -21,7 +21,14 @@
     {
         return @"";
     }
-    
+    if ([subject isEqualToString:@"painting"])
+    {
+        return @"";
+    }
+    if ([subject isEqualToString:@"floor"])
+    {
+        return @"";
+    }
     return [super look:subject];
 }
 

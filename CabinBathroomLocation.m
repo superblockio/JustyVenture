@@ -12,7 +12,7 @@
 
 + (NSString*) arrive
 {
-    return @"You step into a small bathroom that's just got a shower, a toilet, and a sink.";
+    return @"You step into the rather small bathroom. It's just a tad bit cramped, with a sink and mirror on one side next to the toilet and a shower/tub combination on the other side.  There's a little window on the south wall.";
 }
 
 + (NSString*) look:(NSString *)subject
@@ -21,7 +21,14 @@
     {
         return @"";
     }
-    
+    if ([subject isEqualToString:@"cupboard"])
+    {
+        return @"";
+    }
+    if ([subject isEqualToString:@"shower"])
+    {
+        return @"";
+    }
     return [super look:subject];
 }
 

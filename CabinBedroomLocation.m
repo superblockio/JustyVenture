@@ -21,7 +21,22 @@
     {
         return @"";
     }
-    
+    if ([subject isEqualToString:@"drawer"])
+    {
+        return @"";
+    }
+    if ([subject isEqualToString:@"bed"])
+    {
+        return @"";
+    }
+    if ([subject isEqualToString:@"dresser"])
+    {
+        return @"";
+    }
+    if ([subject isEqualToString:@"desk"])
+    {
+        return @"";
+    }
     return [super look:subject];
 }
 
