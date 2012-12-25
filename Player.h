@@ -56,7 +56,6 @@
 
 
 // Attribute stuff
-
 + (void) setAttribute:(NSString*)attribute toValue:(NSObject*)value;
 + (NSObject*) attributeValue:(NSString*)attribute;
 
