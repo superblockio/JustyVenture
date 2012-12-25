@@ -111,7 +111,7 @@ static BOOL _lion;
     // If they got it right (even implicitly by not entering text), pick a new one or have them win.
     if ((pickedAction == _neededAction && !_timeOut) || (_timeOut && _neededAction == SlideActionTypeNone) || _actionNumber == 0)
     {
-        if (_actionNumber == 11)
+        if (_actionNumber == 10)
         {
             [_song stop];
             if (_timer != nil)
@@ -159,7 +159,7 @@ static BOOL _lion;
             NSTimeInterval time = 4.0f - 0.2f * _actionNumber + (_lion ? 1.0f : 0.0f);
             
             // Add some feedback so they can see how much time they have
-            returnString = [NSString stringWithFormat:@"%i / 10\nTime:", _actionNumber];
+            returnString = [NSString stringWithFormat:@"%i / 10\nTime:", _actionNumber + 1];
             for (double i = time - 0.6666665; i > 0.0f; i-=0.0333332)
             {
                 if (i < floor(i) + 0.03)

@@ -10,16 +10,20 @@
 
 @implementation TrineLocation
 
+static BOOL _beardUsed;
+static BOOL _eelUsed;
+static BOOL _grapplingHookUsed;
+
 + (NSString*) arrive
 {
-    return @"You reach the bottom of the slide and slide out of a fireplace into a cabin.";
+    return @"You leap into the pool and find yourself inside a whole new world, full of wonderful magic and giant snails! This place is also a forest, but has much better graphics than the one you left behind. You see three travelers. One is battling goblins, one is trying her best to reach a treasure chest through a narrow tunnel, and one is conjuring up boxes and planks in an attempt to cross a chasm.";
 }
 
 + (NSString*) look:(NSString *)subject
 {
     if (subject == nil)
     {
-        return @"";
+        return @"You are inside a magical, good graphics forest. There are three travelers. One is battling fierce goblins, one is trying her best to reach a treasure chest through a narrow tunnel, and one is conjuring up boxes and planks in an attempt to cross a chasm. Only obvious exit is back through the PORTAL.";
     }
     
     return [super look:subject];
@@ -27,6 +31,10 @@
 
 + (NSString*) go:(NSString *)subject
 {
+    if ([subject isEqualToString:@"portal"])
+    {
+        return [Player setCurrentLocation:@"PoolLocation"];
+    }
     return [super get:subject];
 }
 
