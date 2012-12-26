@@ -61,7 +61,7 @@
     {
         return [Player setCurrentLocation:@"PoolLocation"];
     }
-    return [super get:subject];
+    return [super go:subject];
 }
 
 

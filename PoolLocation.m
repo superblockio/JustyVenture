@@ -56,7 +56,7 @@ static PoolState _poolState;
         [Player setCurrentLocation:@"CabinLocation"];
     else if ([subject isEqualToString:@"portal"] && _poolState == PoolStatePortal)
         [Player setCurrentLocation:@"TrineLocation"];
-    return [super get:subject];
+    return [super go:subject];
 }
 
 + (NSString*) get:(NSString *)subject

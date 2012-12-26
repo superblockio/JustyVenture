@@ -82,7 +82,7 @@ static BOOL _pointyStick = FALSE;
             return @"You climb into the mouth of one of the trees and it bites down and chews you in half.  You can feel your body slide down a hole of some sort just before you die.  I can't say you shouldn't have seen that one coming.  After all it's pretty much the first thing I told you about the trees.  They must be more suave and convincing then I remember programming them...  Anyway, you totally died so you'll have to start over, not that you've made any progress anyway.";
         }
     }
-    return [super get:subject];
+    return [super go:subject];
 }
 
 

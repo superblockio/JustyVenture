@@ -62,7 +62,7 @@
         else
             return @"The door is locked and you can't get through.";
     }
-    return [super get:subject];
+    return [super go:subject];
 }
 
 
