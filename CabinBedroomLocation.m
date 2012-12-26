@@ -24,6 +24,10 @@
     {
         return @"It's a cozy little bedroom, with a bear skin rug and such. There's the bed, the dresser with a vanity on it, with all it's drawers for clothing, a work desk with books and papers on it, and some windows along the south and west sides. Not much of note, but still cozy anyway.";
     }
+    if ([subject isEqualToString:@"window"] || [subject isEqualToString:@"windows"])
+    {
+        return @"Looking out the windows you see some sort of body of water outside.";
+    }
     if ([subject isEqualToString:@"drawer"] || [subject isEqualToString:@"drawers"])
     {
         if ([Player hasItem:@"gun"] || isGunCollected == TRUE)

@@ -40,6 +40,14 @@
 
 + (NSString*) get:(NSString *)subject
 {
+    if ([subject isEqualToString:@"salt"])
+    {
+        return @"You can't seem to aim very well out of the corner of your eye as you try to grab the salt, and somehow you end up not grabbing any of it.";
+    }
+    if ([subject isEqualToString:@"phone"])
+    {
+        return @"You grab the phone out of the old man's hands and he yells at you and grabs it back.";
+    }
     return [super get:subject];
 }
 

@@ -26,6 +26,10 @@
         else
             return @"It's a rather simple bathroom really. Nothing too ornate or anything.  Just a shower with a shower curtain, a medicine cabinet, a toilet, and a window. The windows cracked open just barely, and there's no toilet paper on the toilet paper roll. There's a toothbrush sitting on the side of the sink, and some towels hanging up next to it.";
     }
+    if ([subject isEqualToString:@"window"] || [subject isEqualToString:@"windows"])
+    {
+        return @"Looking out the windows you see some sort of body of water outside.";
+    }
     if ([subject isEqualToString:@"cabinet"] || [subject isEqualToString:@"medicine cabinet"])
     {
         if ([Player hasItem:@"shaving cream"])

@@ -25,6 +25,18 @@
     {
         return @"It's a rather basic kitchen, with an oven and stove, drawers, and cupboards. There seems to be electricity, so maybe there's a generator powering the house or something. The fridge is a bit small, and tucked in the corner of the room. It has a kinda woodsy feel to it, not modern looking in any way.";
     }
+    if ([subject isEqualToString:@"stove"] || [subject isEqualToString:@"oven"])
+    {
+        return @"It's a just a regular oven with a stove top.";
+    }
+    if ([subject isEqualToString:@"fridge"])
+    {
+        return @"There's nothing out of the ordinary about this fridge.";
+    }
+    if ([subject isEqualToString:@"window"] || [subject isEqualToString:@"windows"])
+    {
+        return @"Looking out the windows you see some sort of body of water outside.";
+    }
     if ([subject isEqualToString:@"table"])
     {
         return @"It's a simple wooden table with four chairs pulled up around it. There's a simple table cloth on the table, with some candles and a basket of pine cones for decor.";
