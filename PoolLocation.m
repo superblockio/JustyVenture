@@ -53,9 +53,9 @@ static PoolState _poolState;
 + (NSString*) go:(NSString *)subject
 {
     if ([subject isEqualToString:@"cabin"])
-        [Player setCurrentLocation:@"CabinLocation"];
+        return [Player setCurrentLocation:@"CabinLocation"];
     else if ([subject isEqualToString:@"portal"] && _poolState == PoolStatePortal)
-        [Player setCurrentLocation:@"TrineLocation"];
+        return [Player setCurrentLocation:@"TrineLocation"];
     return [super go:subject];
 }
 
@@ -146,7 +146,7 @@ static PoolState _poolState;
         }
         else if ([subject isEqualToString:@"water"] || [subject isEqualToString:@"beard"] || [subject isEqualToString:@"eel"] || [subject isEqualToString:@"hookshot"])
         {
-            return @"Your offering is ejected and flies back into your hands, leaving you with the distinct feeling that the pool knows you'll need it later.";
+            return @"Your offering is rejected and flies back into your hands, leaving you with the distinct feeling that the pool knows you'll need it later.";
         }
         else if ([subject isEqualToString:@"soap"])
         {

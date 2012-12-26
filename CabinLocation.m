@@ -57,7 +57,7 @@
     {
         return [Player setCurrentLocation:@"CabinHallwayLocation"];
     }
-    if ([subject isEqualToString:@"outside"])
+    if ([subject isEqualToString:@"front door"] || [subject isEqualToString:@"outside"])
     {
         return [Player setCurrentLocation:@"PoolLocation"];
     }

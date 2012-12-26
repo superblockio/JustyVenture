@@ -25,7 +25,6 @@ static BOOL _hookshotUsed;
     {
         return @"You are inside a magical, good graphics forest. There are three travelers. One is battling fierce goblins, one is trying her best to reach a treasure chest through a narrow tunnel, and one is conjuring up boxes and planks in an attempt to cross a chasm. Only obvious exit is back through the PORTAL.";
     }
-    
     return [super look:subject];
 }
 
