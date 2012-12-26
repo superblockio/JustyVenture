@@ -148,10 +148,6 @@ static PoolState _poolState;
             [Player giveItem:@"electric eel"];
             return @"You throw in the toothbrush and out pops an electric eel! A deep voice booms from within the heart of the pool: \"I was going to give you an electric toothbrush but then I started thinking of electric eels because I'm a body of water.\" You rejoice at your good fortune and promptly stuff the eel into your pants, even though it kinda stings your skin.";
         }
-        else if ([subject isEqualToString:@"water"] || [subject isEqualToString:@"beard"] || [subject isEqualToString:@"eel"] || [subject isEqualToString:@"hookshot"])
-        {
-            return @"Your offering is rejected and flies back into your hands, leaving you with the distinct feeling that the pool knows you'll need it later.";
-        }
         else if ([subject isEqualToString:@"soap"])
         {
             threwKeyItem = TRUE;
@@ -172,6 +168,10 @@ static PoolState _poolState;
             [Player removeItem:@"gun"];
             [Player setAttribute:@"gunInPool" toValue:[NSNumber numberWithBool:TRUE]];
             [self updatePoolState];
+        }
+        else 
+        {
+            return @"Your offering is rejected and flies back into your hands, leaving you with the distinct feeling that the pool knows you'll need it later. Or maybe you're just crazy.";
         }
         
         if (threwKeyItem)
