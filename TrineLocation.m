@@ -12,7 +12,7 @@
 
 static BOOL _waterUsed;
 static BOOL _eelUsed;
-static BOOL _grapplingHookUsed;
+static BOOL _hookshotUsed;
 
 + (NSString*) arrive
 {
@@ -50,18 +50,21 @@ static BOOL _grapplingHookUsed;
     
     if ([subject isEqualToString:@"water"])
     {
+        _waterUsed = TRUE;
         [Player giveItem:@"chasm key"];
         return @"You empty your water bottle on top of a plant, causing it to grow huge and stretch across the chasm. Upon reaching the other side, Amadeus finds a small key and offers it to you as a reward.";
     }
     if ([subject isEqualToString:@"eel"])
     {
+        _eelUsed = TRUE;
         [Player giveItem:@"goblin key"];
-        return @"You lend Pontius your electric eel, and he uses it to embue his sword with electrical energy. Pontius makes quick work of the goblins, firing great balls of lightning from his sword. While this doesn't mesh well with your current understanding of electrictiy, you are too busy looting the fallen goblins to care. In one of their pockets, you find a small key!";
+        return @"You throw Pontius your electric eel, and he uses it to embue his sword with electrical energy. Pontius makes quick work of the goblins, firing great balls of lightning from his sword. While this doesn't mesh well with your current understanding of electrictiy, you are too busy looting the fallen goblins to care. In one of their pockets, you find a small key!";
     }
     if ([subject isEqualToString:@"hookshot"])
     {
+        _hookshotUsed = TRUE;
         [Player giveItem:@"chest key"];
-        return @"You lend Zoya your hookshot in exchange for some of whatever is in the chest. She latches onto it with the hookshot and pulls it through the narrow tunnel. Inside the chest is some gold and a small key! She leaves you the key and takes the gold for herself.";
+        return @"You lend Zoya your hookshot in exchange for a portion of whatever is in the chest. She latches onto it with the hookshot and pulls it through the narrow tunnel. Inside the chest is some gold and a small key! She leaves you the key and takes the gold for herself.";
     }
     
     return [super use:subject];
@@ -69,6 +72,29 @@ static BOOL _grapplingHookUsed;
 
 + (NSString*) talk:(NSString*) subject
 {
+    if ([subject isEqualToString:@"pontius"])
+    {
+        if (!_eelUsed)
+            return @"Sorry, I'm a bit busy here. These goblins are putting up quite a fight! If only my sword was more powerful.";
+        else
+            return @"You saved me a bundle, thanks!";
+    }
+    else if ([subject isEqualToString:@"amadeus"])
+    {
+        if (![Player hasItem:@"beard"] && !_waterUsed)
+            return @"It seems I'm in somewhat of a predicament. If only I had a fellow wizard to help me.";
+        else if ([Player hasItem:@"beard"] && !_waterUsed)
+            return @"Bless my beard! A fellow wizard! Perhaps you can help me, good sir. My friends and I need passage across this chasm but these boxes and planks are not doing the trick. The plants here react rather strongly to mystical water. Perhaps you can find us some?";
+        else if (_waterUsed)
+            return @"Thanks, friend!";
+    }
+    else if ([subject isEqualToString:@"zoya"])
+    {
+        if (!_hookshotUsed)
+            return @"My thief insticts forbid me to leave until I can reach this chest! If only I had something that stretches and shrinks...";
+        else
+            return @"I'm sorry but deal was that I give you something from the chest. Well, the key is something. Now leave my gold alone!";
+    }
     return [super talk:subject];
 }
 

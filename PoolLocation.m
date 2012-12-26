@@ -79,6 +79,14 @@ static PoolState _poolState;
 + (NSString*) use:(NSString *)subject
 {
     if(![Player hasItem:subject]) return [super use:subject];
+    
+    if ([subject isEqualToString:@"bottle"])
+    {
+        [Player removeItem:@"bottle"];
+        [Player giveItem:@"water"];
+        return @"You dip your bottle in the pool and retrieve some WATER from it.";
+    }
+    
     return [super use:subject];
 }
 
@@ -136,6 +144,10 @@ static PoolState _poolState;
             [Player giveItem:@"electric eel"];
             return @"You throw in the toothbrush and out pops an electric eel! A deep voice booms from within the heart of the pool: \"I was going to give you an electric toothbrush but then I started thinking of electric eels because I'm a body of water.\" You rejoice at your good fortune and promptly stuff the eel into your pants, even though it kinda stings your skin.";
         }
+        else if ([subject isEqualToString:@"water"] || [subject isEqualToString:@"beard"] || [subject isEqualToString:@"eel"] || [subject isEqualToString:@"hookshot"])
+        {
+            return @"Your offering is ejected and flies back into your hands, leaving you with the distinct feeling that the pool knows you'll need it later.";
+        }
         else if ([subject isEqualToString:@"soap"])
         {
             threwKeyItem = TRUE;
@@ -163,7 +175,7 @@ static PoolState _poolState;
             }
             else
             {
-                return [NSString stringWithFormat:@"You throw the %@ into the pool and wait for a reward. Instead, the pool changes slightly in hue and begins bubbling more rapidly. You feel as though the pool is waiting for something more.", subject];
+                return [NSString stringWithFormat:@"You throw the %@ into the pool and wait for a reward. Instead, the pool changes slightly in hue and begins bubbling more rapidly. You feel as though the pool is still waiting for something more.", subject];
             }
         }
     }
