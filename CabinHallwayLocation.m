@@ -10,8 +10,6 @@
 
 @implementation CabinHallwayLocation
 
-static BOOL _doorLocked = TRUE;
-
 + (NSString*) arrive
 {
     return @"You step through the doorway out into the hallway.  It's a cosy little hallway with doors leading off it in four different directions.";
@@ -59,9 +57,6 @@ static BOOL _doorLocked = TRUE;
     }
     if ([subject isEqualToString:@"locked door"])
     {
-        if (_doorLocked == FALSE)
-            return @"You open the door and step through. Looking around you realize that you're in Nathan's basement and the door has disappeared behind you. Going upstairs you find Nathan typing away at his computer and you- Wait, you're standing right behind me aren't you?  Uh, wow, were you trapped in my spatial anomaly this whole time? That's really odd. I can't imagine how you got in there. <.< >.>\nAnyway, would you like a ride home?\n\nYou win!";
-        else
             return @"The door is locked and you can't get through.";
     }
     return [super go:subject];
@@ -88,15 +83,15 @@ static BOOL _doorLocked = TRUE;
     }
     if ([subject isEqualToString:@"goblin key"])
     {
-            
+        return @"There isn't much you can do with this other than unlock the door.";
     }
     if ([subject isEqualToString:@"chasm key"])
     {
-        
+        return @"There isn't much you can do with this other than unlock the door.";
     }
     if ([subject isEqualToString:@"chest key"])
     {
-        
+        return @"There isn't much you can do with this other than unlock the door.";
     }
     return [super use:subject];
 }
@@ -117,6 +112,7 @@ static BOOL _doorLocked = TRUE;
     {
         if ([Player hasItem:@"goblin key"] && [Player hasItem:@"chasm key"] && [Player hasItem:@"chest key"])
         return @"You unlock the door and step through. Looking around you realize that you're in Nathan's basement and the door has disappeared behind you. Going upstairs you find Nathan typing away at his computer and you- Wait, you're standing right behind me aren't you?  Uh, wow, were you trapped in my spatial anomaly this whole time? That's really odd. I can't imagine how you got in there. <.< >.>\nAnyway, would you like a ride home?\n\nYou win!";
+        else return @"You don't have all of the keys necessary to unlock the door.";
     }
     return [super wildcardWithVerb:verb subject:subject];
 }

@@ -30,7 +30,7 @@
 
 + (NSString*) go:(NSString *)subject
 {
-    if ([subject isEqualToString:@"crawl space"])
+    if ([subject isEqualToString:@"crawl space"] || [subject isEqualToString:@"cabin"])
     {
         return [Player setCurrentLocation:@"CabinLocation"];
     }

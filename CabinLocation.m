@@ -67,20 +67,26 @@
 
 + (NSString*) get:(NSString *)subject
 {
-    if ([subject isEqualToString:@"screw"])
+    BOOL isPineConeCollected = [(NSNumber*)[Player attributeValue:@"pineConeCollected"] boolValue];
+    
+    if(![Player hasItem:subject])
     {
-        [Player giveItem:@"screw"];
-        return @"You pull open the kitchen drawer and take the screw labeled \"Crusty Man Jenkins Water Activated Screw\" out.";
-    }
-    if ([subject isEqualToString:@"pine cone"])
-    {
-        [Player giveItem:@"pine cone"];
-        return @"You walk over to the table and take one of the pine cones out of the basket.";
-    }
-    if ([subject isEqualToString:@"bottle"])
-    {
-        [Player giveItem:@"bottle"];
-        return @"You pull open the kitchen cupboard and take a bottle out.";
+        if ([subject isEqualToString:@"screw"] && ![Player hasItem:@"screwdriver"])
+        {
+            [Player giveItem:@"screw"];
+            return @"You pull open the kitchen drawer and take the screw labeled \"Crusty Man Jenkins Water Activated Screw\" out.";
+        }
+        if ([subject isEqualToString:@"pine cone"] && isPineConeCollected == FALSE)
+        {
+            [Player giveItem:@"pine cone"];
+            [Player setAttribute:@"pineConeCollected" toValue:[NSNumber numberWithBool:TRUE]];
+            return @"You walk over to the table and take one of the pine cones out of the basket.";
+        }
+        if ([subject isEqualToString:@"bottle"] && ![Player hasItem:@"water"])
+        {
+            [Player giveItem:@"bottle"];
+            return @"You pull open the kitchen cupboard and take a bottle out.";
+        }
     }
     return [super get:subject];
 }
