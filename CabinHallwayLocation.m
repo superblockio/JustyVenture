@@ -23,7 +23,7 @@
     }
     if ([subject isEqualToString:@"painting"] || [subject isEqualToString:@"paintings"])
     {
-        return @"They're those paintings you always see in cabins or hunters houses.  Mostly of animals and stuff, not really anything especially interesting. Although you do notice something odd about one of the paintings, and when you shift it to the side you see someone's scribbled, \"The key rests at the top of the vine.\" in small print.";
+        return @"They're those paintings you always see in cabins or hunters houses.  Mostly of animals and stuff, not really anything especially interesting. Although you do notice something odd about one of the paintings, and when you shift it to the side you see someone's scribbled, \"The keys rest with three adventurers.\" in small print.";
     }
     if ([subject isEqualToString:@"floor"])
     {
@@ -36,7 +36,7 @@
     return [super look:subject];
     if ([subject isEqualToString:@"locked door"])
     {
-        return @"It's an ornate looking door with a keyhole and no door knob.  You must have to find the key somewhere.";
+        return @"It's an ornate looking door with a complex series of keyholes.  You must have to find the keys somewhere.";
     }
     return [super look:subject];
 }

@@ -33,15 +33,15 @@
     {
         return @"There's a moosehead mounted over a large ornate fireplace with pictures of a hunter on top.  A fire roars in the fireplace, lighting the cabin and-Wait, didn't you just slide out of there?  How is there a fire...";
     }
-    if ([subject isEqualToString:@"cupboards"])
+    if ([subject isEqualToString:@"cupboards"] || [subject isEqualToString:@"cupboard"])
     {
         return @"You open the cupboards and find that they're full of empty bottles and various china for eating.";
     }
-    if ([subject isEqualToString:@"couches"])
+    if ([subject isEqualToString:@"couches"] || [subject isEqualToString:@"couch"])
     {
         return @"Looking at the couches you can see that they use animal pelts for their throws, but actually look very comfortable.";
     }
-    if ([subject isEqualToString:@"drawer"])
+    if ([subject isEqualToString:@"drawer"] || [subject isEqualToString:@"drawers"])
     {
         if ([Player hasItem:@"screwdriver"] || [Player hasItem:@"screw"])
             return @"Pulling open one of the drawers in the kitchen you find it empty.";
