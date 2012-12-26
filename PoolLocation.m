@@ -10,45 +10,68 @@
 
 @implementation PoolLocation
 
-static int _keyItemsInPool;
+typedef enum
+{
+    PoolStateNormal,
+    PoolStateGreen,
+    PoolStatePortal
+} PoolState;
+
+static PoolState _poolState;
 
 + (NSString*) arrive
 {
-    _keyItemsInPool = 0;
-    return @"I accidentally the arrive text";
+    return @"You arrive at a mystical pool of water outside the cabin.";
 }
 
 + (NSString*) look:(NSString *)subject
 {
     if (subject == nil)
     {
-        return @"The pool is surrounded by grass, some mushrooms, and and a few stones, one of which has some writing carved into it. The whole scene seems very serene. There are small bubbles percolating up from the center of the pool. It's pretty bubbly, pretty likely magical. Magical bubbly, you know? Likely?";
+        if (_poolState == PoolStateNormal)
+            return @"The pool is surrounded by grass and a few large stones, one of which has some writing carved into it. The whole scene seems very serene. There are small bubbles percolating up from the center of the pool. It's pretty bubbly, pretty likely magical. Magical bubbly, you know? Likely? the CABIN is back in the cabin direction.";
+        else if (_poolState == PoolStateGreen)
+            return @"The pool bubbles rapidly and glows a greenish hue. It is still surrounded by grass and and a few large stones, one of which has some writing carved into it. The CABIN is back wherever.";
+        else if (_poolState == PoolStatePortal)
+            return @"A mysterious PORTAL has formed inside the archway on the ice island. The rest of the pool seems pretty normal. There's still stones and grass around the pool.";
     }
     else if ([subject isEqualToString:@"pool"] || [subject isEqualToString:@"bubbles"])
     {
         return @"As you stare deep into the pool, it appears to stare back into your very soul. That's deep, man.";
     }
-    else if ([subject isEqualToString:@"writing"] || [subject isEqualToString:@"stone"])
+    else if ([subject isEqualToString:@"writing"] || [subject isEqualToString:@"stone"] || [subject isEqualToString:@"stones"])
     {
-        return @"The carving reads: \"The Pool of Might. Give of your worldly possesions and receive a fitting reward.\" Seems Legit.";
+        return @"The carving reads: \"The Pool of Might. GIVE of your worldly possesions and receive a fitting reward.\" Seems Legit.";
     }
-    else if ([subject isEqualToString:@"mushroom"] || [subject isEqualToString:@"mushrooms"])
+    else if ([subject isEqualToString:@"grass"])
     {
-        return @"They look like very gettable mushrooms!";
+        return @"It looks like very gettable, I mean beautiful, grass.";
     }
     return [super look:subject];
 }
 
 + (NSString*) go:(NSString *)subject
 {
+    if ([subject isEqualToString:@"cabin"])
+        [Player setCurrentLocation:@"CabinLocation"];
+    else if ([subject isEqualToString:@"portal"] && _poolState == PoolStatePortal)
+        [Player setCurrentLocation:@"TrineLocation"];
     return [super get:subject];
 }
 
 + (NSString*) get:(NSString *)subject
 {
-    if ([subject isEqualToString:@"mushroom"] || [subject isEqualToString:@"mushrooms"])
+    if ([subject isEqualToString:@"grass"])
     {
-        [Player giveItem:@"mushroom"];
+        if (![Player hasItem:@"hookshot"])
+        {
+        [Player giveItem:@"hookshot"];
+        return @"You go off the path a ways to grab some grass from the side of the pool. As you're walking, you suddenly fall into a hole! This hole is full of skeletons which you bravely fight your way through (despite them not being hostile or even in your way) and you arrive at a stone doorway where you meet the ghost of Dampe. After beating him in a race, he gives you his stretching shrinking keepsake, otherwise known as a HOOKSHOT! He returns you back to the pool.";
+        }
+        else
+        {
+            return @"You grab a tuft of grass, realize it can't possibly be important, then get bored and put it back.";
+        }
     }
     return [super get:subject];
 }
@@ -73,6 +96,9 @@ static int _keyItemsInPool;
 {
     if (([verb isEqualToString:@"give"] || [verb isEqualToString:@"throw"]) && [Player hasItem:subject])
     {
+        // Set to true if you threw in a key item this time around
+        BOOL threwKeyItem = FALSE;
+        
         if ([subject isEqualToString:@"screw"])
         {
             [Player removeItem:@"screw"];
@@ -110,12 +136,56 @@ static int _keyItemsInPool;
             [Player giveItem:@"electric eel"];
             return @"You throw in the toothbrush and out pops an electric eel! A deep voice booms from within the heart of the pool: \"I was going to give you an electric toothbrush but then I started thinking of electric eels because I'm a body of water.\" You rejoice at your good fortune and promptly stuff the eel into your pants, even though it kinda stings your skin.";
         }
+        else if ([subject isEqualToString:@"soap"])
+        {
+            threwKeyItem = TRUE;
+            [Player setAttribute:@"soapInPool" toValue:[NSNumber numberWithBool:TRUE]];
+            [self updatePoolState];
+        }
+        else if ([subject isEqualToString:@"murder book"])
+        {
+            threwKeyItem = TRUE;
+            [Player setAttribute:@"murderBookInPool" toValue:[NSNumber numberWithBool:TRUE]];
+            [self updatePoolState];
+        }
+        else if ([subject isEqualToString:@"gun"])
+        {
+            threwKeyItem = TRUE;
+            [Player setAttribute:@"gunInPool" toValue:[NSNumber numberWithBool:TRUE]];
+            [self updatePoolState];
+        }
+        
+        if (threwKeyItem)
+        {
+            if (_poolState == PoolStatePortal)
+            {
+                return [NSString stringWithFormat:@"As you throw in the %@, the pool begins to erupt violently! Two jets of water shoot up from opposite ends of the pool, arching across the sky until they hit each other. The green water suddenly crystalizes into ice, forming an island with a crystal archway on it. A PORTAL to another world forms inside the archway and the rest of the water returns to normal.", subject];
+            }
+            else
+            {
+                return [NSString stringWithFormat:@"You throw the %@ into the pool and wait for a reward. Instead, the pool changes slightly in hue and begins bubbling more rapidly. You feel as though the pool is waiting for something more.", subject];
+            }
+        }
     }
     else if ([verb isEqualToString:@"give"] && ![Player hasItem:subject])
     {
         return @"No giving the pool things you don't have.";
     }
     return [super wildcardWithVerb:verb subject:subject];
+}
+
++ (void) updatePoolState
+{
+    if ([(NSNumber*)[Player attributeValue:@"soapInPool"] boolValue] && [(NSNumber*)[Player attributeValue:@"murderBookInPool"] boolValue] && [(NSNumber*)[Player attributeValue:@"gunInPool"] boolValue])
+    {
+        _poolState = PoolStatePortal;
+    }
+    else if ([(NSNumber*)[Player attributeValue:@"soapInPool"] boolValue] || [(NSNumber*)[Player attributeValue:@"murderBookInPool"] boolValue] || [(NSNumber*)[Player attributeValue:@"gunInPool"] boolValue])
+    {
+        _poolState = PoolStateGreen;
+    }
+    else
+        _poolState = PoolStateNormal;
 }
 
 @end
