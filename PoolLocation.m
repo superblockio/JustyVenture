@@ -21,6 +21,7 @@ static PoolState _poolState;
 
 + (NSString*) arrive
 {
+    [self updatePoolState];
     return @"You arrive at a mystical pool of water outside the cabin.";
 }
 

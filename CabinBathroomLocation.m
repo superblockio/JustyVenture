@@ -17,12 +17,18 @@
 
 + (NSString*) look:(NSString *)subject
 {
+    BOOL isSoapCollected = [(NSNumber*)[Player attributeValue:@"soapCollected"] boolValue];
+    
     if (subject == nil)
     {
         if ([Player hasItem:@"toothbrush"])
             return @"It's a rather simple bathroom really. Nothing too ornate or anything.  Just a bathtub with a shower curtain (it's probably also a shower), a medicine cabinet, a toilet, and a window. The windows cracked open just barely, and there's no toilet paper on the toilet paper roll. There some towels hanging on the wall next to a slightly grimy sink.";
         else
             return @"It's a rather simple bathroom really. Nothing too ornate or anything.  Just a shower with a shower curtain, a medicine cabinet, a toilet, and a window. The windows cracked open just barely, and there's no toilet paper on the toilet paper roll. There's a toothbrush sitting on the side of the sink, and some towels hanging up next to it.";
+    }
+    if ([subject isEqualToString:@"window"] || [subject isEqualToString:@"windows"])
+    {
+        return @"Looking out the windows you see some sort of body of water outside.";
     }
     if ([subject isEqualToString:@"cabinet"] || [subject isEqualToString:@"medicine cabinet"])
     {
@@ -33,10 +39,10 @@
     }
     if ([subject isEqualToString:@"bathtub"] || [subject isEqualToString:@"shower"])
     {
-        if ([Player hasItem:@"soap"])
-            return @"Pulling back the shower curtain reveals a bathtub with just a scant amount of water in the bottom.";
-        else
+        if (![Player hasItem:@"soap"] && isSoapCollected == FALSE)
             return @"You pull back the shower curtain to reveal a grimy tub with a bar of soap sitting on the side and just a small amount of water in the bottom.";
+        else
+            return @"Pulling back the shower curtain reveals a bathtub with just a scant amount of water in the bottom.";
     }
     return [super look:subject];
 }
@@ -53,20 +59,25 @@
 
 + (NSString*) get:(NSString *)subject
 {
-    if ([subject isEqualToString:@"soap"])
+    BOOL isSoapCollected = [(NSNumber*)[Player attributeValue:@"soapCollected"] boolValue];
+    
+    if(![Player hasItem:subject])
     {
-        [Player giveItem:@"soap"];
-        return @"You pull back the shower curtain and lean across the bathtub to pick up the soap.";
-    }
-    if ([subject isEqualToString:@"shaving cream"])
-    {
-        [Player giveItem:@"shaving cream"];
-        return @"You open the medicine cabinet and take the shaving cream out, leaving it bare.";
-    }
-    if ([subject isEqualToString:@"toothbrush"])
-    {
-        [Player giveItem:@"toothbrush"];
-        return @"You pick the toothbrush up off the side of the sink.";
+        if ([subject isEqualToString:@"soap"] && isSoapCollected == FALSE)
+        {
+            [Player giveItem:@"soap"];
+            return @"You pull back the shower curtain and lean across the bathtub to pick up the soap.";
+        }
+        if ([subject isEqualToString:@"shaving cream"] && ![Player hasItem:@"beard"])
+        {
+            [Player giveItem:@"shaving cream"];
+            return @"You open the medicine cabinet and take the shaving cream out, leaving it bare.";
+        }
+        if ([subject isEqualToString:@"toothbrush"] && ![Player hasItem:@"electric eel"])
+        {
+            [Player giveItem:@"toothbrush"];
+            return @"You pick the toothbrush up off the side of the sink.";
+        }
     }
     return [super get:subject];
 }

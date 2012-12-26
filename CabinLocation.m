@@ -25,6 +25,18 @@
     {
         return @"It's a rather basic kitchen, with an oven and stove, drawers, and cupboards. There seems to be electricity, so maybe there's a generator powering the house or something. The fridge is a bit small, and tucked in the corner of the room. It has a kinda woodsy feel to it, not modern looking in any way.";
     }
+    if ([subject isEqualToString:@"stove"] || [subject isEqualToString:@"oven"])
+    {
+        return @"It's a just a regular oven with a stove top.";
+    }
+    if ([subject isEqualToString:@"fridge"])
+    {
+        return @"There's nothing out of the ordinary about this fridge.";
+    }
+    if ([subject isEqualToString:@"window"] || [subject isEqualToString:@"windows"])
+    {
+        return @"Looking out the windows you see some sort of body of water outside.";
+    }
     if ([subject isEqualToString:@"table"])
     {
         return @"It's a simple wooden table with four chairs pulled up around it. There's a simple table cloth on the table, with some candles and a basket of pine cones for decor.";
@@ -67,20 +79,26 @@
 
 + (NSString*) get:(NSString *)subject
 {
-    if ([subject isEqualToString:@"screw"])
+    BOOL isPineConeCollected = [(NSNumber*)[Player attributeValue:@"pineConeCollected"] boolValue];
+    
+    if(![Player hasItem:subject])
     {
-        [Player giveItem:@"screw"];
-        return @"You pull open the kitchen drawer and take the screw labeled \"Crusty Man Jenkins Water Activated Screw\" out.";
-    }
-    if ([subject isEqualToString:@"pine cone"])
-    {
-        [Player giveItem:@"pine cone"];
-        return @"You walk over to the table and take one of the pine cones out of the basket.";
-    }
-    if ([subject isEqualToString:@"bottle"])
-    {
-        [Player giveItem:@"bottle"];
-        return @"You pull open the kitchen cupboard and take a bottle out.";
+        if ([subject isEqualToString:@"screw"] && ![Player hasItem:@"screwdriver"])
+        {
+            [Player giveItem:@"screw"];
+            return @"You pull open the kitchen drawer and take the screw labeled \"Crusty Man Jenkins Water Activated Screw\" out.";
+        }
+        if ([subject isEqualToString:@"pine cone"] && isPineConeCollected == FALSE)
+        {
+            [Player giveItem:@"pine cone"];
+            [Player setAttribute:@"pineConeCollected" toValue:[NSNumber numberWithBool:TRUE]];
+            return @"You walk over to the table and take one of the pine cones out of the basket.";
+        }
+        if ([subject isEqualToString:@"bottle"] && ![Player hasItem:@"water"])
+        {
+            [Player giveItem:@"bottle"];
+            return @"You pull open the kitchen cupboard and take a bottle out.";
+        }
     }
     return [super get:subject];
 }

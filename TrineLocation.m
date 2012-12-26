@@ -53,7 +53,7 @@ static BOOL _hookshotUsed;
         [Player giveItem:@"chasm key"];
         return @"You empty your water bottle on top of a plant, causing it to grow huge and stretch across the chasm. Upon reaching the other side, Amadeus finds a small key and offers it to you as a reward.";
     }
-    if ([subject isEqualToString:@"eel"])
+    if ([subject isEqualToString:@"electric eel"])
     {
         _eelUsed = TRUE;
         [Player giveItem:@"goblin key"];

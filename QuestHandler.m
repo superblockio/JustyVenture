@@ -46,10 +46,10 @@
 // this method returns nil
 - (NSString*) handleUniversalCommand:(NSString*)input
 {
-    if([input isEqualToString:@"help"] || [input isEqualToString:@"halp"])return @"In this adventure game, the standard commands are look, get, talk, use, go, whistle, inventory, and help. Most of these commands expect a second word to specify what you want to get, who you want to talk to, what item to use, etc. Look can be used by itself to look at the general area or with a second word to look at a specific thing. Whistle, inventory, and help are single-word commands. Certain locations in the game may specify their own commands as well, in which case they will (hopefully) be kind enough to tell you what they are. You can view achivements by typing 'achievements' and view hints by typing 'hint <achievement name>'. To start over, type 'reset'. To clear achievements, type 'clear data'.";
+    if([input isEqualToString:@"help"] || [input isEqualToString:@"halp"])return @"In this adventure game, the standard commands are look, get, talk, use, go, whistle, inventory, and help. Most of these commands expect a second word to specify what you want to get, who you want to talk to, what item to use, etc. Look can be used by itself to look at the general area or with a second word to look at a specific thing. Whistle, inventory, and help are single-word commands. Certain locations in the game may specify their own commands as well, in which case they will (hopefully) be kind enough to tell you what they are. To start over, type 'reset'. To clear achievements, type 'clear data'.";
     if([input isEqualToString:@"inventory"])return [NSString stringWithFormat:@"Your inventory contains %@", [Player items]];
     if([input isEqualToString:@"get flask"]) return @"You cannot get ye flask. It had to house-sit for a vacationing bear who lives in a cave.";
-    if([input isEqualToString:@"achievements"]) return [Player showAchievements];
+    //if([input isEqualToString:@"achievements"]) return [Player showAchievements];
     if([input isEqualToString:@"reset"])
     {
         return [Player softReset];
@@ -74,7 +74,7 @@
     if(verb == nil) return @"You fail at word make. Type 'help' if you need it.";
     
     // See if they want something to do with achievements
-    if([verb isEqualToString:@"hint"]) return [Player hintAchievement:subject];
+    //if([verb isEqualToString:@"hint"]) return [Player hintAchievement:subject];
     
     // Get our current location's class
     Class locationClass = NSClassFromString([Player currentLocation]);
