@@ -71,17 +71,21 @@ static BOOL _hookshotUsed;
 
 + (NSString*) talk:(NSString*) subject
 {
+    if ([subject isEqualToString:@"travelers"])
+    {
+        return @"You shout some words in the general direction of the travelers, but they are all too preoccupied to hear you. Maybe if you tried talking to each one individually?";
+    }
     if ([subject isEqualToString:@"pontius"])
     {
         if (!_eelUsed)
-            return @"Sorry, I'm a bit busy here. These goblins are putting up quite a fight! If only my sword was more powerful.";
+            return @"Sorry, I'm a bit busy here. These goblins are putting up quite a fight! If only my sword was more powerful...";
         else
             return @"You saved me a bundle, thanks!";
     }
     else if ([subject isEqualToString:@"amadeus"])
     {
         if (![Player hasItem:@"beard"] && !_waterUsed)
-            return @"It seems I'm in somewhat of a predicament. If only I had a fellow wizard to help me.";
+            return @"It seems I'm in somewhat of a predicament. If only I had a fellow wizard to help me...";
         else if ([Player hasItem:@"beard"] && !_waterUsed)
             return @"Bless my beard! A fellow wizard! Perhaps you can help me, good sir. My friends and I need passage across this chasm but these boxes and planks are not doing the trick. The plants here react rather strongly to mystical water. Perhaps you can find us some?";
         else if (_waterUsed)

@@ -34,9 +34,9 @@
     if ([subject isEqualToString:@"bathtub"] || [subject isEqualToString:@"shower"])
     {
         if ([Player hasItem:@"soap"])
-            return @"You pull back the shower curtain to reveal a grimy tub with a bar of soap sitting on the side and just a small amount of water in the bottom.";
-        else
             return @"Pulling back the shower curtain reveals a bathtub with just a scant amount of water in the bottom.";
+        else
+            return @"You pull back the shower curtain to reveal a grimy tub with a bar of soap sitting on the side and just a small amount of water in the bottom.";
     }
     return [super look:subject];
 }

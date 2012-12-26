@@ -33,7 +33,7 @@ static PoolState _poolState;
         else if (_poolState == PoolStateGreen)
             return @"The pool bubbles rapidly and glows a greenish hue. It is still surrounded by grass and and a few large stones, one of which has some writing carved into it. The CABIN is back wherever.";
         else if (_poolState == PoolStatePortal)
-            return @"A mysterious PORTAL has formed inside the archway on the ice island. The rest of the pool seems pretty normal. There's still stones and grass around the pool.";
+            return @"A mysterious PORTAL has formed inside the archway on the ice island, in response to you solving the murder mystery. Yes, you understand perfectly now. It's clear that the owner of this cabin slipped on a bar of soap while in the shower, sending him into a violent rage and causing him to commit several pre-meditated murders. Then he dumped the bodies into this pool. Throwing the murder items into the pool allowed the spirits of the victims to pass on, and they made you this portal as a gift. Anyway, aside from the weird portal island the rest of the pool seems pretty normal. There's still stones and grass around and the CABIN is in a place.";
     }
     else if ([subject isEqualToString:@"pool"] || [subject isEqualToString:@"bubbles"])
     {
@@ -72,6 +72,10 @@ static PoolState _poolState;
         {
             return @"You grab a tuft of grass, realize it can't possibly be important, then get bored and put it back.";
         }
+    }
+    else if ([subject isEqualToString:@"water"])
+    {
+        return @"You cup your hands and scoop up some water to put in your pants. Unfortunately, half of the water slips through your fingers and the other half gets absorbed by your pocket. Now it kinda looks like you peed your pants. If only you had something to put the water in!";
     }
     return [super get:subject];
 }
@@ -151,18 +155,21 @@ static PoolState _poolState;
         else if ([subject isEqualToString:@"soap"])
         {
             threwKeyItem = TRUE;
+            [Player removeItem:@"soap"];
             [Player setAttribute:@"soapInPool" toValue:[NSNumber numberWithBool:TRUE]];
             [self updatePoolState];
         }
         else if ([subject isEqualToString:@"murder book"])
         {
             threwKeyItem = TRUE;
+            [Player removeItem:@"murder book"];
             [Player setAttribute:@"murderBookInPool" toValue:[NSNumber numberWithBool:TRUE]];
             [self updatePoolState];
         }
         else if ([subject isEqualToString:@"gun"])
         {
             threwKeyItem = TRUE;
+            [Player removeItem:@"gun"];
             [Player setAttribute:@"gunInPool" toValue:[NSNumber numberWithBool:TRUE]];
             [self updatePoolState];
         }
