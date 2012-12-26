@@ -10,6 +10,8 @@
 
 @implementation CabinHallwayLocation
 
+static BOOL _doorLocked = TRUE;
+
 + (NSString*) arrive
 {
     return @"You step through the doorway out into the hallway.  It's a cosy little hallway with doors leading off it in four different directions.";
@@ -36,7 +38,7 @@
     return [super look:subject];
     if ([subject isEqualToString:@"locked door"])
     {
-        return @"It's an ornate looking door with a complex series of keyholes.  You must have to find the keys somewhere.";
+        return @"It's an ornate looking door with three strange keyholes.  You must have to find the keys somewhere.";
     }
     return [super look:subject];
 }
@@ -57,8 +59,8 @@
     }
     if ([subject isEqualToString:@"locked door"])
     {
-        if ([Player hasItem:@"key"])
-            return [self use:@"key"];
+        if (_doorLocked == FALSE)
+            return @"You open the door and step through. Looking around you realize that you're in Nathan's basement and the door has disappeared behind you. Going upstairs you find Nathan typing away at his computer and you- Wait, you're standing right behind me aren't you?  Uh, wow, were you trapped in my spatial anomaly this whole time? That's really odd. I can't imagine how you got in there. <.< >.>\nAnyway, would you like a ride home?\n\nYou win!";
         else
             return @"The door is locked and you can't get through.";
     }
@@ -84,9 +86,17 @@
             return @"You use the screwdriver to pry up the floorboard, and looking inside you find a little book filled with crossed off names, as if these targets have been eliminated.  You pull it out and tap the floorboard back down into place.";
         }
     }
-    if ([subject isEqualToString:@"key"])
+    if ([subject isEqualToString:@"goblin key"])
     {
-            return @"You unlock the door and step through. Looking around you realize that you're in Nathan's basement and the door has disappeared behind you. Going upstairs you find Nathan typing away at his computer and you- Wait, you're standing right behind me aren't you?  Uh, wow, were you trapped in my spatial anomaly this whole time? That's really odd. I can't imagine how you got in there. <.< >.>\nAnyway, would you like a ride home?\n\nYou win!";
+            
+    }
+    if ([subject isEqualToString:@"chasm key"])
+    {
+        
+    }
+    if ([subject isEqualToString:@"chest key"])
+    {
+        
     }
     return [super use:subject];
 }
@@ -103,6 +113,11 @@
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
 {
+    if ([verb isEqualToString:@"unlock"] && [subject isEqualToString:@"door"])
+    {
+        if ([Player hasItem:@"goblin key"] && [Player hasItem:@"chasm key"] && [Player hasItem:@"chest key"])
+        return @"You unlock the door and step through. Looking around you realize that you're in Nathan's basement and the door has disappeared behind you. Going upstairs you find Nathan typing away at his computer and you- Wait, you're standing right behind me aren't you?  Uh, wow, were you trapped in my spatial anomaly this whole time? That's really odd. I can't imagine how you got in there. <.< >.>\nAnyway, would you like a ride home?\n\nYou win!";
+    }
     return [super wildcardWithVerb:verb subject:subject];
 }
 
