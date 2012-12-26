@@ -86,7 +86,7 @@
     }
     if ([subject isEqualToString:@"key"])
     {
-            return @"You unlock the door and step through. Looking around you realize that you're in Nathan's basement and the door has disappeared behind you. Going upstairs you run into Nathan who seems surprised to see you. Oh right, that's me-Uh, wow, were you trapped in my spatial anomaly this whole time? That's really odd. <.< >.>\nAnyway, would you like a ride home?\n\nYou win!";
+            return @"You unlock the door and step through. Looking around you realize that you're in Nathan's basement and the door has disappeared behind you. Going upstairs you find Nathan typing away at his computer and you- Wait, you're standing right behind me aren't you?  Uh, wow, were you trapped in my spatial anomaly this whole time? That's really odd. I can't imagine how you got in there. <.< >.>\nAnyway, would you like a ride home?\n\nYou win!";
     }
     return [super use:subject];
 }
