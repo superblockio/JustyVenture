@@ -12,7 +12,7 @@
 
 + (NSString*) arrive
 {
-    return @"You step through the doorway out into the hallway.  It's a cosy little hallway with doors leading off it in four different directions.";
+    return @"You step through the doorway into the hallway.  It's a cosy little hallway with doors leading off it in four different directions.";
 }
 
 + (NSString*) look:(NSString *)subject
