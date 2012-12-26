@@ -10,6 +10,6 @@
 
 @interface PoolLocation : Location
 
-+ (void) updatePoolState
++ (void) updatePoolState;
 
 @end
