@@ -53,6 +53,14 @@
     {
         return @"No, you're in a cabin, not Asia. How would you even look at China?  Be in space?";
     }
+    if ([subject isEqualToString:@"moose head"])
+    {
+        return @"It's what appears to be the decapitated head of a moose, were you expecting something different?";
+    }
+    if ([subject isEqualToString:@"pictures"] || [subject isEqualToString:@"picture"])
+    {
+        return @"Looking at the couches you can see that-You wanted to look at the pictures?  Too bad, I'm showing you the couches!";
+    }
     if ([subject isEqualToString:@"couches"] || [subject isEqualToString:@"couch"])
     {
         return @"Looking at the couches you can see that they use animal pelts for their throws, but actually look very comfortable.";
