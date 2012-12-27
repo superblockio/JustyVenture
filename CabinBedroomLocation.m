@@ -83,7 +83,7 @@
             [Player setAttribute:@"pillowCollected" toValue:[NSNumber numberWithBool:TRUE]];
             return @"You pick the pillow up off the bed and smooth out the comforter to look good without the pillow.  It doesn't help very much, the bed just looks empty without the pillow.";
         }
-        if ([subject isEqualToString:@"pencil"] && isPencilCollected == FALSE)
+        if (([subject isEqualToString:@"pencil"] ||  [subject isEqualToString:@"pencils"]) && isPencilCollected == FALSE)
         {
             [Player giveItem:@"pencil"];
             [Player setAttribute:@"pencilCollected" toValue:[NSNumber numberWithBool:TRUE]];
