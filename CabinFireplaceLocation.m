@@ -25,6 +25,10 @@
     {
         return @"All of your attempts to look directly at the pile of salt fail and you're forced to look at it out of the corner of your eye. It's your standard run of the mill pile of salt, nothing much to say about it. Probably the result of one of those pesky hurricanes... inside... a fireplace. Yep, sticking with that story.";
     }
+    if ([subject isEqualToString:@"phone"])
+    {
+        return @"You try to look at what the old man is doing on his phone but he turns to block you. That beligerant old man! I should teach him a lesson! Meh, too lazy.";
+    }
     return [super look:subject];
 }
 
