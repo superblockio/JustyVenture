@@ -22,11 +22,23 @@
     
     if (subject == nil)
     {
-        return @"It's a cozy little bedroom, with a bear skin rug and such. There's the bed, the dresser with a vanity on it, with all it's drawers for clothing, a work desk with books and papers on it, and some windows along the south and west sides. Not much of note, but still cozy anyway.";
+        return @"It's a cozy little bedroom, with a bear skin rug and such. There's the bed, the dresser with a mirror on it, with all it's drawers for clothing, a work desk with books and papers on it, and some windows along the south and west sides. The doorway leading back out into the hallway is behind you.";
     }
     if ([subject isEqualToString:@"window"] || [subject isEqualToString:@"windows"])
     {
-        return @"Looking out the windows you see some sort of body of water outside.";
+        return @"Looking out the windows you see a generator to the side of the house. That must be how it has electricity.";
+    }
+    if ([subject isEqualToString:@"gloves"] || [subject isEqualToString:@"bloodstained gloves"])
+    {
+        return @"This fine pair of black leather gloves look a little worn and are covered in blood, but they could be yours if you guess the correct price! I mean, I'm not Bob Barker I swear!";
+    }
+    if ([subject isEqualToString:@"books"] || [subject isEqualToString:@"book"])
+    {
+        return @"They're just a bunch of cheap detective novels.";
+    }
+    if ([subject isEqualToString:@"paper"] || [subject isEqualToString:@"papers"])
+    {
+        return @"There's just a mess of papers on the desk, it's nothing worth looking at.";
     }
     if ([subject isEqualToString:@"drawer"] || [subject isEqualToString:@"drawers"])
     {
@@ -44,7 +56,11 @@
     }
     if ([subject isEqualToString:@"dresser"])
     {
-        return @"There's a dresser here with a mirror attached to it so that one may inspect their appearance while they dress.  It has several draws in it to hold clothing.";
+        return @"There's a dresser here with a mirror attached to it so that one may inspect their appearance while they dress.  It has several drawers in it to hold clothing.";
+    }
+    if ([subject isEqualToString:@"mirror"])
+    {
+        return @"You look into the mirror and see yourself. You jump back in fright and hiss, then snap out of it and slowly realize in horror that you're Chad. Suddenly you wake up from your daydream and it's just you in the mirror.";
     }
     if ([subject isEqualToString:@"desk"])
     {
@@ -90,6 +106,8 @@
             return @"You walk over to the desk and pick up one of the pencils. As you do so a scrap of paper catches your eye, and bending over it you read \"The three items must be brought in order to cleanse the sealed gateway.\"";
         }
     }
+    else return @"You don't need to get the same thing more than once.";
+    
     return [super get:subject];
 }
 

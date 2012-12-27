@@ -53,6 +53,14 @@
     {
         return @"No, you're in a cabin, not Asia. How would you even look at China?  Be in space?";
     }
+    if ([subject isEqualToString:@"moose head"])
+    {
+        return @"It's what appears to be the decapitated head of a moose, were you expecting something different?";
+    }
+    if ([subject isEqualToString:@"pictures"] || [subject isEqualToString:@"picture"])
+    {
+        return @"Looking at the couches you can see that-You wanted to look at the pictures?  Too bad, I'm showing you the couches!";
+    }
     if ([subject isEqualToString:@"couches"] || [subject isEqualToString:@"couch"])
     {
         return @"Looking at the couches you can see that they use animal pelts for their throws, but actually look very comfortable.";
@@ -104,10 +112,12 @@
             return @"You pull open the kitchen cupboard and take a bottle out.";
         }
     }
-    if ([subject isEqualToString:@"china"])
+    else if ([subject isEqualToString:@"china"])
     {
         return @"Stop trying to pick up entire countries that aren't even nearby!";
     }
+    else return @"You don't need to get the same thing more than once.";
+    
     return [super get:subject];
 }
 

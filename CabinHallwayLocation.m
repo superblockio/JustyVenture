@@ -55,7 +55,7 @@
     {
         return [Player setCurrentLocation:@"CabinLocation"];
     }
-    if ([subject isEqualToString:@"locked door"])
+    if ([subject isEqualToString:@"locked door"] || [subject isEqualToString:@"locked room"])
     {
             return @"The door is locked and you can't get through.";
     }
