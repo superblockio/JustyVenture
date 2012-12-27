@@ -91,6 +91,8 @@
             return @"You pick the toothbrush up off the side of the sink.";
         }
     }
+    else if ([subject isEqualToString:@"towel"] || [subject isEqualToString:@"towels"])
+        return @"You actually want such girly towels? What would you even do with them? If you want them that bad you can't have them, I'm saving you from yourself!";
     else return @"You don't need to get the same thing more than once.";
     
     return [super get:subject];
