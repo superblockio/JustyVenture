@@ -16,14 +16,27 @@ static BOOL _hookshotUsed;
 
 + (NSString*) arrive
 {
-    return @"You walk through the portal and find yourself inside a whole new world, full of wonderful magic and giant snails! This place is also a forest, but has much better graphics than the one you left behind. You see three travelers. One is battling goblins, one is trying her best to reach a treasure chest through a narrow tunnel, and one is conjuring up boxes and planks in an attempt to cross a chasm.";
+    return @"You walk through the portal and find yourself inside a whole new world, full of wonderful magic and giant snails! This place is also a forest, but has much better graphics than the one you left behind. You see three travelers engaged in various persuits.";
 }
 
 + (NSString*) look:(NSString *)subject
 {
     if (subject == nil)
     {
-        return @"You are inside a magical, good graphics forest. There are three travelers. One is battling fierce goblins, one is trying her best to reach a treasure chest through a narrow tunnel, and one is conjuring up boxes and planks in an attempt to cross a chasm. Only obvious exit is back through the PORTAL.";
+        NSString* lookText = @"You are inside a magical good graphics forest, with the only way out being the PORTAL. There are three travelers.";
+        if (!_eelUsed)
+            lookText = [lookText stringByAppendingString:@"One of them is battling fierce goblins."];
+        else
+            lookText = [lookText stringByAppendingString:@"One of them is mercilessly electrocuting goblins."];
+        if (!_hookshotUsed)
+            lookText = [lookText stringByAppendingString:@"One is trying her best to reach a treasure chest through a narrow tunnel."];
+        else
+            lookText = [lookText stringByAppendingString:@"One is counting her gold coins."];
+        if (!_waterUsed)
+            lookText = [lookText stringByAppendingString:@"The other is conjuring up boxes and planks in an attempt to cross a chasm."];
+        else
+            lookText = [lookText stringByAppendingString:@"The other is admiring a large plant from the opposite edge of the chasm."];
+        return lookText;
     }
     else if ([subject isEqualToString:@"travelers"])
     {
@@ -31,19 +44,36 @@ static BOOL _hookshotUsed;
     }
     else if ([subject isEqualToString:@"pontius"] || [subject isEqualToString:@"knight"])
     {
-        return @"Heavily armored goblins keep pouring out from a doorway, and the knight does his best to beat them back. Unfortunately his sword is not very effective against their armor.";
+        if (!_eelUsed)
+            return @"Heavily armored goblins keep pouring out from a doorway, and the knight does his best to beat them back. Unfortunately his sword is not very effective against their armor.";
+        else
+            return @"Pontius is all up on the remaining goblins, who are now retreating back through their door.";
     }
     else if ([subject isEqualToString:@"amadeus"] || [subject isEqualToString:@"wizard"])
     {
-        return @"The wizard is conjuring a series of boxes and planks, proping them against whatever he can find to form a bridge across the chasm. His attempts appear to be unsuccessful. If only his friends were willing to throw him across. Maybe his friendship isn't magic enough. He clearly needs more ponies.";
+        if (!_waterUsed)
+            return @"The wizard is conjuring a series of boxes and planks, proping them against whatever he can find to form a bridge across the chasm. His attempts appear to be unsuccessful. If only his friends were willing to throw him across. Maybe his friendship isn't magic enough. He clearly needs more ponies.";
+        else
+            return @"Amadeus is on the other side of the chasm now. What do you want from me?";
     }
     else if ([subject isEqualToString:@"zoya"] || [subject isEqualToString:@"zoidberg"] || [subject isEqualToString:@"thief"])
     {
-        return @"The thief reaches desperately through the tunnel, trying to reach the treasure chest on the other side. She tries her grappling hook but it cannot pull the chest back to her.";
+        if (!_hookshotUsed)
+            return @"The thief reaches desperately through the tunnel, trying to reach the treasure chest on the other side. She tries her grappling hook but it cannot pull the chest back to her.";
+        else
+            return @"Zoya is cheerfully counting her gold, glancing back and forth occasionally to make sure nobody tries to steal it.";
     }
     else if ([subject isEqualToString:@"chasm"])
     {
         return @"A sign overlooking the chasm reads: \"The Chasm of Sar. It is /so/ easy to cross!\"";
+    }
+    else if ([subject isEqualToString:@"chest"] && !_hookshotUsed)
+    {
+        return @"It's a small wooden chest that can fit through the tunnel its in. If only you could hookshot it somehow... My, that was certainly a revealing hint.";
+    }
+    else if ([subject isEqualToString:@"goblins"])
+    {
+        return @"They are goblins with upgraded steel armor that is hard to cut through. I bet they wouldn't do well against an electric shock though!";
     }
     return [super look:subject];
 }

@@ -49,7 +49,7 @@ static PoolState _poolState;
     }
     else if ([subject isEqualToString:@"portal"] && _poolState == PoolStatePortal)
     {
-        return @"The glow of the portal reflects brilliantly against the green ice of the island. Through the portal you can see a forest of some kind.";
+        return @"The glow of the portal reflects brilliantly against the green ice composing the island. Small blue particals swirl around the frame of the portal, and through it you can see what appear to be trees and a cliff face.";
     }
     return [super look:subject];
 }
