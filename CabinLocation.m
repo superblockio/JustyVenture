@@ -91,8 +91,6 @@
 
 + (NSString*) get:(NSString *)subject
 {
-    BOOL isPineConeCollected = [(NSNumber*)[Player attributeValue:@"pineConeCollected"] boolValue];
-    
     if(![Player hasItem:subject])
     {
         if ([subject isEqualToString:@"screw"] && ![Player hasItem:@"screwdriver"])
@@ -100,7 +98,7 @@
             [Player giveItem:@"screw"];
             return @"You pull open the kitchen drawer and take the screw labeled \"Crusty Man Jenkins Water Activated Screw\" out.";
         }
-        if ([subject isEqualToString:@"pine cone"] && isPineConeCollected == FALSE)
+        if ([subject isEqualToString:@"pine cone"] && ![(NSNumber*)[Player attributeValue:@"pineConeCollected"] boolValue])
         {
             [Player giveItem:@"pine cone"];
             [Player setAttribute:@"pineConeCollected" toValue:[NSNumber numberWithBool:TRUE]];

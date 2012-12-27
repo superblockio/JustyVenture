@@ -67,7 +67,7 @@
     if(![Player hasItem:subject]) return [super use:subject];
     if ([subject isEqualToString:@"screwdriver"])
     {
-        if ([Player hasItem:@"murder book"])
+        if ([Player hasItem:@"murder book"] || [(NSNumber*)[Player attributeValue:@"murderBookInPool"] boolValue])
             return @"You already opened it up and collected what was to be had.";
         else
         {

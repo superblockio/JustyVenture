@@ -17,9 +17,6 @@
 
 + (NSString*) look:(NSString *)subject
 {
-    BOOL isGunCollected = [(NSNumber*)[Player attributeValue:@"gunCollected"] boolValue];
-    BOOL isPillowCollected = [(NSNumber*)[Player attributeValue:@"pillowCollected"] boolValue];
-    
     if (subject == nil)
     {
         return @"It's a cozy little bedroom, with a bear skin rug and such. There's the bed, the dresser with a mirror on it, with all it's drawers for clothing, a work desk with books and papers on it, and some windows along the south and west sides. The doorway leading back out into the hallway is behind you.";
@@ -42,14 +39,14 @@
     }
     if ([subject isEqualToString:@"drawer"] || [subject isEqualToString:@"drawers"])
     {
-        if ([Player hasItem:@"gun"] || isGunCollected == TRUE)
+        if ([Player hasItem:@"gun"] || [(NSNumber*)[Player attributeValue:@"gunCollected"] boolValue])
             return @"Opening the drawer reveals a bloodstained pair of gloves.";
         else
             return @"You pull open the top dresser drawer and find a gun stashed neatly inside, along with a bloodstained pair of gloves.";
     }
     if ([subject isEqualToString:@"bed"])
     {
-        if ([Player hasItem:@"pillow"] || isPillowCollected == TRUE)
+        if ([Player hasItem:@"pillow"] || [(NSNumber*)[Player attributeValue:@"pillowCollected"] boolValue])
             return @"It looks oddly bare without a pillow, even with the comforter.";
         else
             return @"The bed looks to be rather comfortable, although not flashy in any way. It has a single pillow and a modest comforter.";
@@ -81,25 +78,21 @@
 
 + (NSString*) get:(NSString *)subject
 {
-    BOOL isGunCollected = [(NSNumber*)[Player attributeValue:@"gunCollected"] boolValue];
-    BOOL isPencilCollected = [(NSNumber*)[Player attributeValue:@"pencilCollected"] boolValue];
-    BOOL isPillowCollected = [(NSNumber*)[Player attributeValue:@"pillowCollected"] boolValue];
-    
     if(![Player hasItem:subject])
     {
-        if ([subject isEqualToString:@"gun"] && isGunCollected == FALSE)
+        if ([subject isEqualToString:@"gun"] && ![(NSNumber*)[Player attributeValue:@"gunCollected"] boolValue])
         {
             [Player giveItem:@"gun"];
             [Player setAttribute:@"gunCollected" toValue:[NSNumber numberWithBool:TRUE]];
             return @"You pull open the dresser drawer and take the gun out.";
         }
-        if ([subject isEqualToString:@"pillow"] && isPillowCollected == FALSE)
+        if ([subject isEqualToString:@"pillow"] && ![(NSNumber*)[Player attributeValue:@"pillowCollected"] boolValue])
         {
             [Player giveItem:@"pillow"];
             [Player setAttribute:@"pillowCollected" toValue:[NSNumber numberWithBool:TRUE]];
             return @"You pick the pillow up off the bed and smooth out the comforter to look good without the pillow.  It doesn't help very much, the bed just looks empty without the pillow.";
         }
-        if (([subject isEqualToString:@"pencil"] ||  [subject isEqualToString:@"pencils"]) && isPencilCollected == FALSE)
+        if (([subject isEqualToString:@"pencil"] ||  [subject isEqualToString:@"pencils"]) && ![(NSNumber*)[Player attributeValue:@"pencilCollected"] boolValue])
         {
             [Player giveItem:@"pencil"];
             [Player setAttribute:@"pencilCollected" toValue:[NSNumber numberWithBool:TRUE]];

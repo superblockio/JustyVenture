@@ -17,8 +17,6 @@
 
 + (NSString*) look:(NSString *)subject
 {
-    BOOL isSoapCollected = [(NSNumber*)[Player attributeValue:@"soapCollected"] boolValue];
-    
     if (subject == nil)
     {
         if ([Player hasItem:@"toothbrush"])
@@ -51,7 +49,7 @@
     }
     if ([subject isEqualToString:@"bathtub"] || [subject isEqualToString:@"shower"])
     {
-        if (![Player hasItem:@"soap"] && isSoapCollected == FALSE)
+        if (![Player hasItem:@"soap"] && ![(NSNumber*)[Player attributeValue:@"soapInPool"] boolValue])
             return @"You pull back the shower curtain to reveal a grimy tub with a bar of soap sitting on the side and just a small amount of water in the bottom.";
         else
             return @"Pulling back the shower curtain reveals a bathtub with just a scant amount of water in the bottom.";
@@ -71,11 +69,9 @@
 
 + (NSString*) get:(NSString *)subject
 {
-    BOOL isSoapCollected = [(NSNumber*)[Player attributeValue:@"soapCollected"] boolValue];
-    
     if(![Player hasItem:subject])
     {
-        if ([subject isEqualToString:@"soap"] && isSoapCollected == FALSE)
+        if ([subject isEqualToString:@"soap"] && ![(NSNumber*)[Player attributeValue:@"soapInPool"] boolValue])
         {
             [Player giveItem:@"soap"];
             return @"You pull back the shower curtain and lean across the bathtub to pick up the soap.";
