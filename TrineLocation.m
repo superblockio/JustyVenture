@@ -25,6 +25,26 @@ static BOOL _hookshotUsed;
     {
         return @"You are inside a magical, good graphics forest. There are three travelers. One is battling fierce goblins, one is trying her best to reach a treasure chest through a narrow tunnel, and one is conjuring up boxes and planks in an attempt to cross a chasm. Only obvious exit is back through the PORTAL.";
     }
+    else if ([subject isEqualToString:@"travelers"])
+    {
+        return @"The travelers consist of a wizard, a knight, and a thief. Unfortunately, there are three travelers and you only have two eyes. Try looking at just one of them at a trine, I mean time!";
+    }
+    else if ([subject isEqualToString:@"pontius"] || [subject isEqualToString:@"knight"])
+    {
+        return @"Heavily armored goblins keep pouring out from a doorway, and the knight does his best to beat them back. Unfortunately his sword is not very effective against their armor.";
+    }
+    else if ([subject isEqualToString:@"amadeus"] || [subject isEqualToString:@"wizard"])
+    {
+        return @"The wizard is conjuring a series of boxes and planks, proping them against whatever he can find to form a bridge across the chasm. His attempts appear to be unsuccessful. If only his friends were willing to throw him across. Maybe his friendship isn't magic enough. He clearly needs more ponies.";
+    }
+    else if ([subject isEqualToString:@"zoya"] || [subject isEqualToString:@"zoidberg"] || [subject isEqualToString:@"thief"])
+    {
+        return @"The thief reaches desperately through the tunnel, trying to reach the treasure chest on the other side. She tries her grappling hook but it cannot pull the chest back to her.";
+    }
+    else if ([subject isEqualToString:@"chasm"])
+    {
+        return @"A sign overlooking the chasm reads: \"The Chasm Of Sar. It is /so/ easy to cross!\"";
+    }
     return [super look:subject];
 }
 
@@ -75,6 +95,10 @@ static BOOL _hookshotUsed;
     {
         return @"You shout some words in the general direction of the travelers, but they are all too preoccupied to hear you. Maybe if you tried talking to each one individually?";
     }
+    if ([subject isEqualToString:@"knight"] || [subject isEqualToString:@"wizard"] || [subject isEqualToString:@"thief"])
+    {
+        return [NSString stringWithFormat:@"You try talking to the %@ but they don't seem to be paying attention to you. Maybe if you tried calling them by name?", subject];
+    }
     if ([subject isEqualToString:@"pontius"])
     {
         if (!_eelUsed)
@@ -91,7 +115,7 @@ static BOOL _hookshotUsed;
         else if (_waterUsed)
             return @"Thanks, friend!";
     }
-    else if ([subject isEqualToString:@"zoya"])
+    else if ([subject isEqualToString:@"zoya"] || [subject isEqualToString:@"zoidberg"])
     {
         if (!_hookshotUsed)
             return @"My thief insticts forbid me to leave until I can reach this chest! If only I had something that stretches and shrinks...";
