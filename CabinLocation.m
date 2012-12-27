@@ -112,10 +112,12 @@
             return @"You pull open the kitchen cupboard and take a bottle out.";
         }
     }
-    if ([subject isEqualToString:@"china"])
+    else if ([subject isEqualToString:@"china"])
     {
         return @"Stop trying to pick up entire countries that aren't even nearby!";
     }
+    else return @"You don't need to get the same thing more than once.";
+    
     return [super get:subject];
 }
 
