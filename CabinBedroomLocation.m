@@ -55,6 +55,10 @@
     {
         return @"There's a dresser here with a mirror attached to it so that one may inspect their appearance while they dress.  It has several drawers in it to hold clothing.";
     }
+    if ([subject isEqualToString:@"comforter"])
+    {
+        return @"It's a blanket meant to keep you warm when you sleep.";
+    }
     if ([subject isEqualToString:@"mirror"])
     {
         return @"You look into the mirror and see yourself. You jump back in fright and hiss, then snap out of it and slowly realize in horror that you're Chad. Suddenly you wake up from your daydream and it's just you in the mirror.";
@@ -62,6 +66,10 @@
     if ([subject isEqualToString:@"desk"])
     {
         return @"There's a desk with various scraps of paper and pencils strewn all about.  A few books as well, just light reading material really.";
+    }
+    if ([subject isEqualToString:@"rug"] || [subject isEqualToString:@"bear rug"] || [subject isEqualToString:@"bear skin rug"])
+    {
+        return @"It's one of those creepy rugs that has an actual head on it.";
     }
     return [super look:subject];
 }
@@ -99,6 +107,12 @@
             return @"You walk over to the desk and pick up one of the pencils. As you do so a scrap of paper catches your eye, and bending over it you read \"The three items must be brought in order to cleanse the sealed gateway.\"";
         }
     }
+    else if ([subject isEqualToString:@"glove"] || [subject isEqualToString:@"gloves"])
+        return @"The blood dried them to the drawer and you can't get them unstuck.  I'm pretty sure blood can do that!  About 30% sure!";
+    else if ([subject isEqualToString:@"comforter"])
+        return @"We understand you're going through some difficult times, but that isn't going to help, you'll have to just continue one without it.";
+    else if ([subject isEqualToString:@"paper"] || [subject isEqualToString:@"papers"])
+        return @"You try to pick up the paper but it's too slippery and small for your hands. Must be photo paper or something. Photo paper covered in butter...";
     else return @"You don't need to get the same thing more than once.";
     
     return [super get:subject];

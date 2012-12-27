@@ -32,6 +32,14 @@
     {
         return @"It's so inviting, you just want to sit on in and do your business. Unfortunately your business involves toilet paper, and given that there's none of that left you'll need to hold it a bit longer.";
     }
+    if ([subject isEqualToString:@"sink"])
+    {
+        return @"You look into the bowl of the sink without looking around the outside edge at whatever objects may or may not be sitting on it. I'm not surprised you're not seeing anything of note, insisting on looking at the sink!";
+    }
+    if ([subject isEqualToString:@"shower curtain"])
+    {
+        return @"It's a really manly shower curtain. Covered in... fire trucks and... police cars!  Yeah... manly!";
+    }
     if ([subject isEqualToString:@"towel"] || [subject isEqualToString:@"towels"])
     {
         return @"They're dry and hanging on a towel bar. One's pink and the other is turquoise. That seems odd given the rest of the decor of the house. Oh well.";
