@@ -49,6 +49,10 @@
     {
         return @"You open the cupboards and find that they're full of empty bottles and various china for eating.";
     }
+    if ([subject isEqualToString:@"china"])
+    {
+        return @"No, you're in a cabin, not Asia. How would you even look at China?  Be in space?";
+    }
     if ([subject isEqualToString:@"couches"] || [subject isEqualToString:@"couch"])
     {
         return @"Looking at the couches you can see that they use animal pelts for their throws, but actually look very comfortable.";
@@ -94,11 +98,15 @@
             [Player setAttribute:@"pineConeCollected" toValue:[NSNumber numberWithBool:TRUE]];
             return @"You walk over to the table and take one of the pine cones out of the basket.";
         }
-        if ([subject isEqualToString:@"bottle"] && ![Player hasItem:@"water"])
+        if (([subject isEqualToString:@"bottle"] || [subject isEqualToString:@"empty bottle"]) && ![Player hasItem:@"bottle"] && ![Player hasItem:@"water"])
         {
             [Player giveItem:@"bottle"];
             return @"You pull open the kitchen cupboard and take a bottle out.";
         }
+    }
+    if ([subject isEqualToString:@"china"])
+    {
+        return @"Stop trying to pick up entire countries that aren't even nearby!";
     }
     return [super get:subject];
 }
