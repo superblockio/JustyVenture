@@ -43,7 +43,7 @@ static BOOL _hookshotUsed;
     }
     else if ([subject isEqualToString:@"chasm"])
     {
-        return @"A sign overlooking the chasm reads: \"The Chasm Of Sar. It is /so/ easy to cross!\"";
+        return @"A sign overlooking the chasm reads: \"The Chasm of Sar. It is /so/ easy to cross!\"";
     }
     return [super look:subject];
 }
