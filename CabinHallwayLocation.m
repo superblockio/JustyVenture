@@ -62,12 +62,6 @@
     return [super go:subject];
 }
 
-
-+ (NSString*) get:(NSString *)subject
-{
-    return [super get:subject];
-}
-
 + (NSString*) use:(NSString *)subject
 {
     if(![Player hasItem:subject]) return [super use:subject];
@@ -94,11 +88,6 @@
         return @"There isn't much you can do with this other than unlock the door.";
     }
     return [super use:subject];
-}
-
-+ (NSString*) talk:(NSString*) subject
-{
-    return [super talk:subject];
 }
 
 + (NSString*) whistle

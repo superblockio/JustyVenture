@@ -55,12 +55,6 @@
     return [super get:subject];
 }
 
-+ (NSString*) use:(NSString *)subject
-{
-    if(![Player hasItem:subject]) return [super use:subject];
-    return [super use:subject];
-}
-
 + (NSString*) talk:(NSString*) subject
 {
     if ([subject isEqualToString:@"old man"])
@@ -73,11 +67,6 @@
 + (NSString*) whistle
 {
     return @"Blowing your whistle causes cats to come rushing in from the holes too small for you to crawl in on the walls and running out through the one you can fit into.";
-}
-
-+ (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
-{
-    return [super wildcardWithVerb:verb subject:subject];
 }
 
 @end
