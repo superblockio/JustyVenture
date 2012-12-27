@@ -22,7 +22,7 @@ static PoolState _poolState;
 + (NSString*) arrive
 {
     [self updatePoolState];
-    return @"You arrive at a mystical pool of water outside the cabin.";
+    return @"There's a large pool of shimmering water here. It's almost completely clear, and yet it shimmers in an odd way. It's difficult to take your eyes off of it, almost like it's enchanted in some way.";
 }
 
 + (NSString*) look:(NSString *)subject
