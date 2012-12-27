@@ -21,7 +21,6 @@ static PoolState _poolState;
 
 + (NSString*) arrive
 {
-    [self updatePoolState];
     return @"There's a large pool of shimmering water here. It's almost completely clear, and yet it shimmers and bubbles in an odd way. It's difficult to take your eyes off of it, almost like it's enchanted in some way.";
 }
 
@@ -70,8 +69,8 @@ static PoolState _poolState;
     {
         if (![Player hasItem:@"hookshot"])
         {
-        [Player giveItem:@"hookshot"];
-        return @"You go off the path a ways to grab some grass from the side of the pool. As you're walking, you suddenly fall into a hole! This hole is full of skeletons which you bravely fight your way through (despite them not being hostile or even in your way) and you arrive at a stone doorway where you meet the ghost of Dampe. After beating him in a race, he gives you his stretching shrinking keepsake, otherwise known as a HOOKSHOT! He returns you back to the pool.";
+            [Player giveItem:@"hookshot"];
+            return @"You go off the path a ways to grab some grass from the side of the pool. As you're walking, you suddenly fall into a hole! This hole is full of skeletons which you bravely fight your way through (despite them not being hostile or even in your way) and you arrive at a stone doorway where you meet the ghost of Dampe. After beating him in a race, he gives you his stretching shrinking keepsake, otherwise known as a HOOKSHOT! He returns you back to the pool.";
         }
         else
         {
@@ -194,6 +193,13 @@ static PoolState _poolState;
     else if ([verb isEqualToString:@"give"] && ![Player hasItem:subject])
     {
         return @"No giving the pool things you don't have.";
+    }
+    else if ([verb isEqualToString:@"throw"] && ![Player hasItem:subject])
+    {
+        if ([verb isEqualToString:@"throw"])
+            return @"I see what you're trying to do, but the joke's on you! You don't have a baby to throw in! *fistpump* Victory is mine!";
+        else
+            return @"No throwing things in the pool that you don't have! It gums up the imaginary works!";
     }
     return [super wildcardWithVerb:verb subject:subject];
 }
