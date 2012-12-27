@@ -25,7 +25,7 @@ static PoolState _poolState;
         return @"There's a large pool of shimmering water here. It's almost completely clear, and yet it shimmers and bubbles in an odd way. It's difficult to take your eyes off of it, almost like it's enchanted in some way.";
     else if (_poolState == PoolStateGreen)
         return @"There's a large pool of shimmering water here. It's almost completely clear and what color is there is green rather than blue. It lets off a strange glow and shimmers and bubbles in an odd way. It's difficult to take your eyes off of it, almost like it's enchanted in some way.";
-    else if (_poolState == PoolStatePortal)
+    else
         return @"There's a large pool of shimmering water here. It's almost completely clear, and yet it shimmers and bubbles in an odd way. There's a portal resting on green ice in the middle of the pool. It's difficult to take your eyes off of it, almost like it's enchanted in some way.";
 }
 
