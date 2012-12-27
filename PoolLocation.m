@@ -183,7 +183,7 @@ static PoolState _poolState;
             }
             else
             {
-                return [NSString stringWithFormat:@"You throw the %@ into the pool and wait for a reward. Instead, the pool changes slightly in hue and begins bubbling more rapidly. You feel as though the pool is still waiting for something more.", subject];
+                return [NSString stringWithFormat:@"You throw the %@ into the pool and wait for a reward. Instead, the pool changes slightly in hue to a more greenish color, and it begins bubbling more rapidly. You feel as though the pool is still waiting for something more.", subject];
             }
         }
     }

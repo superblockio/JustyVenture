@@ -51,13 +51,13 @@ static BOOL _hookshotUsed;
     {
         _waterUsed = TRUE;
         [Player giveItem:@"chasm key"];
-        return @"You empty your water bottle on top of a plant, causing it to grow huge and stretch across the chasm. Upon reaching the other side, Amadeus finds a small key and offers it to you as a reward.";
+        return @"You empty your water bottle on top of the plant, causing it to grow huge and stretch across the chasm. Upon reaching the other side, Amadeus finds a small key and offers it to you as a reward.";
     }
     if ([subject isEqualToString:@"electric eel"])
     {
         _eelUsed = TRUE;
         [Player giveItem:@"goblin key"];
-        return @"You throw Pontius your electric eel, and he uses it to embue his sword with electrical energy. Pontius makes quick work of the goblins, firing great balls of lightning from his sword. While this doesn't mesh well with your current understanding of electrictiy, you are too busy looting the fallen goblins to care. In one of their pockets, you find a small key!";
+        return @"You throw Pontius your eel, and he uses it to embue his sword with electrical energy. Pontius makes quick work of the goblins, firing great balls of lightning from his sword. While this doesn't mesh well with your current understanding of electrictiy, you are too busy looting the fallen goblins to care. In one of their pockets, you find a small key!";
     }
     if ([subject isEqualToString:@"hookshot"])
     {
@@ -78,7 +78,7 @@ static BOOL _hookshotUsed;
     if ([subject isEqualToString:@"pontius"])
     {
         if (!_eelUsed)
-            return @"Sorry, I'm a bit busy here. These goblins are putting up quite a fight! If only my sword was more powerful...";
+            return @"Sorry, I'm a bit busy here. I can't seem to penetrate the metal armor of these goblins! If only my sword was embued with magical energy that was strong against steel...";
         else
             return @"You saved me a bundle, thanks!";
     }
@@ -96,14 +96,14 @@ static BOOL _hookshotUsed;
         if (!_hookshotUsed)
             return @"My thief insticts forbid me to leave until I can reach this chest! If only I had something that stretches and shrinks...";
         else
-            return @"I'm sorry but deal was that I give you something from the chest. Well, the key is something. Now leave my gold alone!";
+            return @"I'm sorry but the deal was that I give you something from the chest. Well, the key is something. Now leave my gold alone!";
     }
     return [super talk:subject];
 }
 
 + (NSString*) whistle
 {
-    return @"";
+    return @"A good-graphics cat springs out of a nearby tree, does a few flips in midair, and lands gracefully. You applaud this feat, and the cat hands you a note from its mouth: \"Shaving Cream, Toothbrush, Grass\" Is this some kind of cat burgler's shopping list?";
 }
 
 + (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
