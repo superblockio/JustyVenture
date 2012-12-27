@@ -158,7 +158,7 @@ static BOOL _lion;
                 [_timer release];
             }
             // Calculate how much time the user has to react, based on how far we are into the game, as well as lion-have
-            NSTimeInterval time = 4.0f - 0.2f * _actionNumber + (_lion ? 1.0f : 0.0f);
+            NSTimeInterval time = 3.0f - 0.2f * _actionNumber + (_lion ? 1.0f : 0.0f);
             
             // Add some feedback so they can see how much time they have
             returnString = [NSString stringWithFormat:@"%i / 10\nTime:", _actionNumber + 1];

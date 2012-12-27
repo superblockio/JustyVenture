@@ -111,7 +111,7 @@
     if ([verb isEqualToString:@"unlock"] && [subject isEqualToString:@"door"])
     {
         if ([Player hasItem:@"goblin key"] && [Player hasItem:@"chasm key"] && [Player hasItem:@"chest key"])
-            return @"You unlock the door and step through. Looking around you realize that you're in Nathan's basement and the door has disappeared behind you. Going upstairs you find Nathan typing away at his computer and you- Wait, you're standing right behind me aren't you?  Uh, wow, were you trapped in my spatial anomaly this whole time? That's really odd. I can't imagine how you got in there. <.< >.>\nAnyway, would you like a ride home?\n\nYou win!";
+            return @"You unlock the door and step through. Looking around you realize that you're in Nathan's basement and the door has disappeared behind you. Going upstairs you find Nathan typing away at his computer and you- Wait, you're standing right behind me aren't you?  Uh, wow, were you trapped in my spatial anomaly this whole time? That's really odd. I can't imagine how you got in there. <.< >.>\nAnyway, would you like a ride home?\n\nYou win! Now open that dan present.";
         else return @"You don't have all of the keys necessary to unlock the door.";
     }
     return [super wildcardWithVerb:verb subject:subject];
