@@ -21,7 +21,7 @@
     {
         return @"It's clearly a hunters cabin. It's kinda cozy, with the front door on the south wall, the kitchen area on the east and a table to eat at on the west.  There's a big fireplace on the north wall. There are several couches pulled around the fireplace to form a sitting area. A door opens onto a hallway in the northwest corner of the room between the couches and the dining area. You can see windows on the south wall next to the front door and on the east wall opposite of the hallway.";
     }
-    if ([subject isEqualToString:@"kitchen"])
+    if ([subject isEqualToString:@"kitchen"] || [subject isEqualToString:@"kitchen area"])
     {
         return @"It's a rather basic kitchen, with an oven and stove, drawers, and cupboards. There seems to be electricity, so maybe there's a generator powering the house or something. The fridge is a bit small, and tucked in the corner of the room. It has a kinda woodsy feel to it, not modern looking in any way.";
     }
@@ -37,7 +37,7 @@
     {
         return @"Looking out the windows you see some sort of body of water outside.";
     }
-    if ([subject isEqualToString:@"table"])
+    if ([subject isEqualToString:@"table"] || [subject isEqualToString:@"dining table"])
     {
         return @"It's a simple wooden table with four chairs pulled up around it. There's a simple table cloth on the table, with some candles and a basket of pine cones for decor.";
     }
