@@ -16,7 +16,7 @@ static BOOL _hookshotUsed;
 
 + (NSString*) arrive
 {
-    return @"You walk through the portal and find yourself inside a whole new world, full of wonderful magic and giant snails! This place is also a forest, but has much better graphics than the one you left behind. You see three travelers engaged in various persuits.";
+    return @"You walk through the portal and find yourself inside a whole new world, full of wonderful magic and giant snails! This place is also a forest, but has much better graphics than the one you left behind. You see three travelers engaged in various pursuits.";
 }
 
 + (NSString*) look:(NSString *)subject
