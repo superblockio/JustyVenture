@@ -23,19 +23,19 @@ static BOOL _hookshotUsed;
 {
     if (subject == nil)
     {
-        NSString* lookText = @"You are inside a magical good graphics forest, with the only way out being the PORTAL. There are three travelers.";
+        NSString* lookText = @"You are inside a magical good graphics forest, with the only way out being the PORTAL. There are three travelers. ";
         if (!_eelUsed)
-            lookText = [lookText stringByAppendingString:@"One of them is battling fierce goblins."];
+            lookText = [lookText stringByAppendingString:@"One of them is battling fierce goblins. "];
         else
-            lookText = [lookText stringByAppendingString:@"One of them is mercilessly electrocuting goblins."];
+            lookText = [lookText stringByAppendingString:@"One of them is mercilessly electrocuting goblins. "];
         if (!_hookshotUsed)
-            lookText = [lookText stringByAppendingString:@"One is trying her best to reach a treasure chest through a narrow tunnel."];
+            lookText = [lookText stringByAppendingString:@"One is trying her best to reach a treasure chest through a narrow tunnel. "];
         else
-            lookText = [lookText stringByAppendingString:@"One is counting her gold coins."];
+            lookText = [lookText stringByAppendingString:@"One is counting her gold coins. "];
         if (!_waterUsed)
-            lookText = [lookText stringByAppendingString:@"The other is conjuring up boxes and planks in an attempt to cross a chasm."];
+            lookText = [lookText stringByAppendingString:@"The other is conjuring up boxes and planks in an attempt to cross a chasm. "];
         else
-            lookText = [lookText stringByAppendingString:@"The other is admiring a large plant from the opposite edge of the chasm."];
+            lookText = [lookText stringByAppendingString:@"The other is admiring a large plant from the opposite edge of the chasm. "];
         return lookText;
     }
     else if ([subject isEqualToString:@"travelers"])
