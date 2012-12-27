@@ -61,7 +61,7 @@
 {
     if ([subject isEqualToString:@"old man"])
     {
-        return @"Why won't you leave me alone! Every year around Christmas you show up on one of your crazy adventures and interupt my peace!  Can't an old man crouch is strange places and play with his phone in peace!?";
+        return @"Why won't you leave me alone! Every year around Christmas you show up on one of your crazy adventures and interupt my peace!  Can't an old man crouch in strange places and play with his phone in peace!?";
     }
     return [super talk:subject];
 }
