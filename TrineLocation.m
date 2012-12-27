@@ -87,12 +87,6 @@ static BOOL _hookshotUsed;
     return [super go:subject];
 }
 
-
-+ (NSString*) get:(NSString *)subject
-{
-    return [super get:subject];
-}
-
 + (NSString*) use:(NSString *)subject
 {
     if(![Player hasItem:subject]) return [super use:subject];
@@ -158,11 +152,6 @@ static BOOL _hookshotUsed;
 + (NSString*) whistle
 {
     return @"A good-graphics cat springs out of a nearby tree, does a few flips in midair, and lands gracefully. You applaud this feat, and the cat hands you a note from its mouth: \"Shaving Cream, Toothbrush, Grass\" Is this some kind of cat burgler's shopping list?";
-}
-
-+ (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
-{
-    return [super wildcardWithVerb:verb subject:subject];
 }
 
 @end

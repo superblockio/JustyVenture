@@ -98,25 +98,9 @@
     return [super get:subject];
 }
 
-+ (NSString*) use:(NSString *)subject
-{
-    if(![Player hasItem:subject]) return [super use:subject];
-    return [super use:subject];
-}
-
-+ (NSString*) talk:(NSString*) subject
-{
-    return [super talk:subject];
-}
-
 + (NSString*) whistle
 {
     return @"A cat jumps through the open window and lands feet deep in the shower. It goes crazy and run away into the hallway with it's fur sticking straight up.";
-}
-
-+ (NSString*)wildcardWithVerb:(NSString *)verb subject:(NSString *)subject
-{
-    return [super wildcardWithVerb:verb subject:subject];
 }
 
 @end
