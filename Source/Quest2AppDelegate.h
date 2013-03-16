@@ -10,7 +10,7 @@
 #import "QuestView.h"
 #import "QuestHandler.h"
 
-@interface Quest2AppDelegate : NSObject <NSApplicationDelegate, NSTextFieldDelegate, QuestViewTextEntered, QuestHandlerDelegate, NSWindowDelegate, PlayerDelegate>
+@interface Quest2AppDelegate : NSObject <NSApplicationDelegate, NSTextFieldDelegate, QuestViewTextEntered,  NSWindowDelegate, PlayerDelegate>
 {
     NSWindow *_window;
 	QuestView *_view;
@@ -20,8 +20,6 @@
     NSString* _currentPrompt;
 	NSString* _wWTDString;
 	NSTimer* _textDelayTimer;
-	NSTimer* _deathDelayTimer;
-	BOOL _won;
 }
 
 -(void)updateYeTextSlowly;

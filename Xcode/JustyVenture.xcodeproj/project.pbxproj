@@ -28,8 +28,6 @@
 		6B28EA51168BFC0200002E92 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6B28EA50168BFC0200002E92 /* icon.icns */; };
 		6B2F8DFD12AE835100D9676F /* QuestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F8DFC12AE835100D9676F /* QuestView.m */; };
 		6B4BDE3A14A287D300A6C37A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BDE3914A287D300A6C37A /* Player.m */; };
-		6B4C4AD914AB192B005964A1 /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4C4AD814AB192B005964A1 /* Achievement.m */; };
-		6B4C4ADC14AB3F3F005964A1 /* AchievementHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4C4ADB14AB3F3F005964A1 /* AchievementHelper.m */; };
 		6B5B7BF214A7EAC5008F4F27 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B7BF114A7EAC5008F4F27 /* QTKit.framework */; };
 		6B893F5412AFE35E007F858E /* QuestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B893F5312AFE35E007F858E /* QuestHandler.m */; };
 		6BDBBD7614A3DFFD00C74EBA /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBBD6E14A3DFFD00C74EBA /* Location.m */; };
@@ -77,10 +75,6 @@
 		6B2F8DFC12AE835100D9676F /* QuestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestView.m; sourceTree = "<group>"; };
 		6B4BDE3814A287D300A6C37A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		6B4BDE3914A287D300A6C37A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		6B4C4AD714AB192B005964A1 /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
-		6B4C4AD814AB192B005964A1 /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
-		6B4C4ADA14AB3F3F005964A1 /* AchievementHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementHelper.h; sourceTree = "<group>"; };
-		6B4C4ADB14AB3F3F005964A1 /* AchievementHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementHelper.m; sourceTree = "<group>"; };
 		6B5B7BF114A7EAC5008F4F27 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		6B893F5212AFE35E007F858E /* QuestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestHandler.h; sourceTree = "<group>"; };
 		6B893F5312AFE35E007F858E /* QuestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestHandler.m; sourceTree = "<group>"; };
@@ -106,10 +100,6 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6B4C4AD714AB192B005964A1 /* Achievement.h */,
-				6B4C4AD814AB192B005964A1 /* Achievement.m */,
-				6B4C4ADA14AB3F3F005964A1 /* AchievementHelper.h */,
-				6B4C4ADB14AB3F3F005964A1 /* AchievementHelper.m */,
 				6BDBBD7814A3E08C00C74EBA /* Location.h */,
 				6BDBBD6E14A3DFFD00C74EBA /* Location.m */,
 				6366FDAF16F194AE000D5A4E /* Locations */,
@@ -278,8 +268,6 @@
 				6B893F5412AFE35E007F858E /* QuestHandler.m in Sources */,
 				6B4BDE3A14A287D300A6C37A /* Player.m in Sources */,
 				6BDBBD7614A3DFFD00C74EBA /* Location.m in Sources */,
-				6B4C4AD914AB192B005964A1 /* Achievement.m in Sources */,
-				6B4C4ADC14AB3F3F005964A1 /* AchievementHelper.m in Sources */,
 				6366FDC216F194AE000D5A4E /* CabinBathroomLocation.m in Sources */,
 				6366FDC316F194AE000D5A4E /* CabinBedroomLocation.m in Sources */,
 				6366FDC416F194AE000D5A4E /* CabinFireplaceLocation.m in Sources */,
