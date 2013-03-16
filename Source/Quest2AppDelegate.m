@@ -16,8 +16,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification 
 {
-    [Player setDelegate:self];
-	_deathDelayTimer=nil;
     _currentPrompt = @"What wouldst thou deau?";
 	_won=FALSE;
 	_wWTDString=[@"" retain];
@@ -31,7 +29,7 @@
 	[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 	_displayText=[@"" retain];
 	[_window setDelegate:self];
-	_bufferedText=[[Player setCurrentLocation:@"IntroLocation"] retain];
+	_bufferedText=[[Player setCurrentRoom:@"SampleRoom"] retain];
     [[_view imageView] setHidden:YES];
     [[_view imageView] setImageFrameStyle:NSImageFrameNone];
 }
@@ -45,7 +43,7 @@
 	
 	if(_won==FALSE)
 	{
-		if(_bufferedText!=@"")
+		if(![_bufferedText isEqualToString:@""])
 		{
 			[[_view textView] setStringValue:@"Woah, too fast!"];
 		}
@@ -82,7 +80,7 @@
 -(void)updateYeTextSlowly
 {
     if(_currentPrompt == nil) _currentPrompt = @"What wouldst thou deau?";
-	if(![_displayText isEqualToString:_bufferedText] && _bufferedText!=@"")
+	if(![_displayText isEqualToString:_bufferedText] && ![_bufferedText isEqualToString:@""])
 	{
 		int oldIndex=[_displayText length];
 		_displayText=[[_bufferedText substringWithRange:NSMakeRange(0, oldIndex+1)] retain];
@@ -107,20 +105,6 @@
 -(void)won
 {
 	_won=TRUE;
-}
--(void)failed
-{
-	_deathDelayTimer=[[NSTimer scheduledTimerWithTimeInterval:7.75f target:self selector:@selector(terminateApp) userInfo:nil repeats:NO] retain];
-}
-
--(void)cancelDeath
-{
-	if(_deathDelayTimer != nil)
-	{
-		[_deathDelayTimer invalidate];
-		[_deathDelayTimer release];
-		_deathDelayTimer=nil;
-	}
 }
 
 -(void)terminateApp

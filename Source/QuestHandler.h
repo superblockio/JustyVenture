@@ -7,13 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Location.h"
+#import "Room.h"
 
 @protocol QuestHandlerDelegate
 
--(void)failed;
 -(void)won;
--(void)cancelDeath;
 
 @end
 

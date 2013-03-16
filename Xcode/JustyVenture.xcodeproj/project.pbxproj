@@ -15,24 +15,20 @@
 		6366FDAC16F193B5000D5A4E /* slideleft.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366FDA616F193B5000D5A4E /* slideleft.png */; };
 		6366FDAD16F193B5000D5A4E /* slideright.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366FDA716F193B5000D5A4E /* slideright.png */; };
 		6366FDAE16F193B5000D5A4E /* slidewailmer.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366FDA816F193B5000D5A4E /* slidewailmer.png */; };
-		6366FDC216F194AE000D5A4E /* CabinBathroomLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDB116F194AE000D5A4E /* CabinBathroomLocation.m */; };
-		6366FDC316F194AE000D5A4E /* CabinBedroomLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDB316F194AE000D5A4E /* CabinBedroomLocation.m */; };
-		6366FDC416F194AE000D5A4E /* CabinFireplaceLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDB516F194AE000D5A4E /* CabinFireplaceLocation.m */; };
-		6366FDC516F194AE000D5A4E /* CabinHallwayLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDB716F194AE000D5A4E /* CabinHallwayLocation.m */; };
-		6366FDC616F194AE000D5A4E /* CabinLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDB916F194AE000D5A4E /* CabinLocation.m */; };
-		6366FDC716F194AE000D5A4E /* IntroLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDBB16F194AE000D5A4E /* IntroLocation.m */; };
-		6366FDC816F194AE000D5A4E /* PoolLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDBD16F194AE000D5A4E /* PoolLocation.m */; };
-		6366FDC916F194AE000D5A4E /* TreeSlideLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDBF16F194AE000D5A4E /* TreeSlideLocation.m */; };
-		6366FDCA16F194AE000D5A4E /* TrineLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDC116F194AE000D5A4E /* TrineLocation.m */; };
 		6366FDCC16F194BE000D5A4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6366FDCB16F194BD000D5A4E /* main.m */; };
+		63B4541F16F42C3F001A9CA0 /* SampleRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B4541E16F42C3F001A9CA0 /* SampleRoom.m */; };
+		63B4542C16F42FF1001A9CA0 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B4542116F42FF0001A9CA0 /* Container.m */; };
+		63B4542D16F42FF1001A9CA0 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B4542416F42FF0001A9CA0 /* Item.m */; };
+		63B4542E16F42FF1001A9CA0 /* Mobile.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B4542716F42FF1001A9CA0 /* Mobile.m */; };
+		63B4543216F43848001A9CA0 /* SampleMobile.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B4543116F43848001A9CA0 /* SampleMobile.m */; };
+		63B4543516F43851001A9CA0 /* SampleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B4543416F43851001A9CA0 /* SampleItem.m */; };
+		63B4543816F43857001A9CA0 /* SampleContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B4543716F43857001A9CA0 /* SampleContainer.m */; };
 		6B28EA51168BFC0200002E92 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6B28EA50168BFC0200002E92 /* icon.icns */; };
 		6B2F8DFD12AE835100D9676F /* QuestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F8DFC12AE835100D9676F /* QuestView.m */; };
 		6B4BDE3A14A287D300A6C37A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BDE3914A287D300A6C37A /* Player.m */; };
-		6B4C4AD914AB192B005964A1 /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4C4AD814AB192B005964A1 /* Achievement.m */; };
-		6B4C4ADC14AB3F3F005964A1 /* AchievementHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B4C4ADB14AB3F3F005964A1 /* AchievementHelper.m */; };
 		6B5B7BF214A7EAC5008F4F27 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B7BF114A7EAC5008F4F27 /* QTKit.framework */; };
 		6B893F5412AFE35E007F858E /* QuestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B893F5312AFE35E007F858E /* QuestHandler.m */; };
-		6BDBBD7614A3DFFD00C74EBA /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBBD6E14A3DFFD00C74EBA /* Location.m */; };
+		6BDBBD7614A3DFFD00C74EBA /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BDBBD6E14A3DFFD00C74EBA /* Room.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -53,39 +49,31 @@
 		6366FDA616F193B5000D5A4E /* slideleft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slideleft.png; path = ../Resources/slideleft.png; sourceTree = "<group>"; };
 		6366FDA716F193B5000D5A4E /* slideright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slideright.png; path = ../Resources/slideright.png; sourceTree = "<group>"; };
 		6366FDA816F193B5000D5A4E /* slidewailmer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slidewailmer.png; path = ../Resources/slidewailmer.png; sourceTree = "<group>"; };
-		6366FDB016F194AE000D5A4E /* CabinBathroomLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CabinBathroomLocation.h; sourceTree = "<group>"; };
-		6366FDB116F194AE000D5A4E /* CabinBathroomLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CabinBathroomLocation.m; sourceTree = "<group>"; };
-		6366FDB216F194AE000D5A4E /* CabinBedroomLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CabinBedroomLocation.h; sourceTree = "<group>"; };
-		6366FDB316F194AE000D5A4E /* CabinBedroomLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CabinBedroomLocation.m; sourceTree = "<group>"; };
-		6366FDB416F194AE000D5A4E /* CabinFireplaceLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CabinFireplaceLocation.h; sourceTree = "<group>"; };
-		6366FDB516F194AE000D5A4E /* CabinFireplaceLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CabinFireplaceLocation.m; sourceTree = "<group>"; };
-		6366FDB616F194AE000D5A4E /* CabinHallwayLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CabinHallwayLocation.h; sourceTree = "<group>"; };
-		6366FDB716F194AE000D5A4E /* CabinHallwayLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CabinHallwayLocation.m; sourceTree = "<group>"; };
-		6366FDB816F194AE000D5A4E /* CabinLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CabinLocation.h; sourceTree = "<group>"; };
-		6366FDB916F194AE000D5A4E /* CabinLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CabinLocation.m; sourceTree = "<group>"; };
-		6366FDBA16F194AE000D5A4E /* IntroLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroLocation.h; sourceTree = "<group>"; };
-		6366FDBB16F194AE000D5A4E /* IntroLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroLocation.m; sourceTree = "<group>"; };
-		6366FDBC16F194AE000D5A4E /* PoolLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoolLocation.h; sourceTree = "<group>"; };
-		6366FDBD16F194AE000D5A4E /* PoolLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoolLocation.m; sourceTree = "<group>"; };
-		6366FDBE16F194AE000D5A4E /* TreeSlideLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeSlideLocation.h; sourceTree = "<group>"; };
-		6366FDBF16F194AE000D5A4E /* TreeSlideLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeSlideLocation.m; sourceTree = "<group>"; };
-		6366FDC016F194AE000D5A4E /* TrineLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrineLocation.h; sourceTree = "<group>"; };
-		6366FDC116F194AE000D5A4E /* TrineLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrineLocation.m; sourceTree = "<group>"; };
 		6366FDCB16F194BD000D5A4E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		63B4541D16F42C3F001A9CA0 /* SampleRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleRoom.h; sourceTree = "<group>"; };
+		63B4541E16F42C3F001A9CA0 /* SampleRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleRoom.m; sourceTree = "<group>"; };
+		63B4542016F42FF0001A9CA0 /* Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
+		63B4542116F42FF0001A9CA0 /* Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Container.m; sourceTree = "<group>"; };
+		63B4542316F42FF0001A9CA0 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		63B4542416F42FF0001A9CA0 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		63B4542616F42FF0001A9CA0 /* Mobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mobile.h; sourceTree = "<group>"; };
+		63B4542716F42FF1001A9CA0 /* Mobile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mobile.m; sourceTree = "<group>"; };
+		63B4543016F43848001A9CA0 /* SampleMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleMobile.h; sourceTree = "<group>"; };
+		63B4543116F43848001A9CA0 /* SampleMobile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleMobile.m; sourceTree = "<group>"; };
+		63B4543316F43851001A9CA0 /* SampleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleItem.h; sourceTree = "<group>"; };
+		63B4543416F43851001A9CA0 /* SampleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleItem.m; sourceTree = "<group>"; };
+		63B4543616F43857001A9CA0 /* SampleContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleContainer.h; sourceTree = "<group>"; };
+		63B4543716F43857001A9CA0 /* SampleContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleContainer.m; sourceTree = "<group>"; };
 		6B28EA50168BFC0200002E92 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		6B2F8DFB12AE835100D9676F /* QuestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestView.h; sourceTree = "<group>"; };
 		6B2F8DFC12AE835100D9676F /* QuestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestView.m; sourceTree = "<group>"; };
 		6B4BDE3814A287D300A6C37A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		6B4BDE3914A287D300A6C37A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		6B4C4AD714AB192B005964A1 /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
-		6B4C4AD814AB192B005964A1 /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
-		6B4C4ADA14AB3F3F005964A1 /* AchievementHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementHelper.h; sourceTree = "<group>"; };
-		6B4C4ADB14AB3F3F005964A1 /* AchievementHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementHelper.m; sourceTree = "<group>"; };
 		6B5B7BF114A7EAC5008F4F27 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		6B893F5212AFE35E007F858E /* QuestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestHandler.h; sourceTree = "<group>"; };
 		6B893F5312AFE35E007F858E /* QuestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestHandler.m; sourceTree = "<group>"; };
-		6BDBBD6E14A3DFFD00C74EBA /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
-		6BDBBD7814A3E08C00C74EBA /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		6BDBBD6E14A3DFFD00C74EBA /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		6BDBBD7814A3E08C00C74EBA /* Room.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* JustyVenture-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JustyVenture-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* JustyVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustyVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -106,14 +94,16 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6B4C4AD714AB192B005964A1 /* Achievement.h */,
-				6B4C4AD814AB192B005964A1 /* Achievement.m */,
-				6B4C4ADA14AB3F3F005964A1 /* AchievementHelper.h */,
-				6B4C4ADB14AB3F3F005964A1 /* AchievementHelper.m */,
-				6BDBBD7814A3E08C00C74EBA /* Location.h */,
-				6BDBBD6E14A3DFFD00C74EBA /* Location.m */,
-				6366FDAF16F194AE000D5A4E /* Locations */,
+				63B4542016F42FF0001A9CA0 /* Container.h */,
+				63B4542116F42FF0001A9CA0 /* Container.m */,
+				63B4541A16F42B4F001A9CA0 /* Containers */,
+				63B4542316F42FF0001A9CA0 /* Item.h */,
+				63B4542416F42FF0001A9CA0 /* Item.m */,
+				63B4541C16F42B6A001A9CA0 /* Items */,
 				6366FDCB16F194BD000D5A4E /* main.m */,
+				63B4542616F42FF0001A9CA0 /* Mobile.h */,
+				63B4542716F42FF1001A9CA0 /* Mobile.m */,
+				63B4541B16F42B5E001A9CA0 /* Mobiles */,
 				6B4BDE3814A287D300A6C37A /* Player.h */,
 				6B4BDE3914A287D300A6C37A /* Player.m */,
 				256AC3D80F4B6AC300CF3369 /* Quest2AppDelegate.h */,
@@ -122,6 +112,9 @@
 				6B893F5312AFE35E007F858E /* QuestHandler.m */,
 				6B2F8DFB12AE835100D9676F /* QuestView.h */,
 				6B2F8DFC12AE835100D9676F /* QuestView.m */,
+				6BDBBD7814A3E08C00C74EBA /* Room.h */,
+				6BDBBD6E14A3DFFD00C74EBA /* Room.m */,
+				6366FDAF16F194AE000D5A4E /* Rooms */,
 			);
 			name = Source;
 			path = ../Source;
@@ -176,29 +169,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6366FDAF16F194AE000D5A4E /* Locations */ = {
+		6366FDAF16F194AE000D5A4E /* Rooms */ = {
 			isa = PBXGroup;
 			children = (
-				6366FDB016F194AE000D5A4E /* CabinBathroomLocation.h */,
-				6366FDB116F194AE000D5A4E /* CabinBathroomLocation.m */,
-				6366FDB216F194AE000D5A4E /* CabinBedroomLocation.h */,
-				6366FDB316F194AE000D5A4E /* CabinBedroomLocation.m */,
-				6366FDB416F194AE000D5A4E /* CabinFireplaceLocation.h */,
-				6366FDB516F194AE000D5A4E /* CabinFireplaceLocation.m */,
-				6366FDB616F194AE000D5A4E /* CabinHallwayLocation.h */,
-				6366FDB716F194AE000D5A4E /* CabinHallwayLocation.m */,
-				6366FDB816F194AE000D5A4E /* CabinLocation.h */,
-				6366FDB916F194AE000D5A4E /* CabinLocation.m */,
-				6366FDBA16F194AE000D5A4E /* IntroLocation.h */,
-				6366FDBB16F194AE000D5A4E /* IntroLocation.m */,
-				6366FDBC16F194AE000D5A4E /* PoolLocation.h */,
-				6366FDBD16F194AE000D5A4E /* PoolLocation.m */,
-				6366FDBE16F194AE000D5A4E /* TreeSlideLocation.h */,
-				6366FDBF16F194AE000D5A4E /* TreeSlideLocation.m */,
-				6366FDC016F194AE000D5A4E /* TrineLocation.h */,
-				6366FDC116F194AE000D5A4E /* TrineLocation.m */,
+				63B4541D16F42C3F001A9CA0 /* SampleRoom.h */,
+				63B4541E16F42C3F001A9CA0 /* SampleRoom.m */,
 			);
-			path = Locations;
+			path = Rooms;
+			sourceTree = "<group>";
+		};
+		63B4541A16F42B4F001A9CA0 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				63B4543616F43857001A9CA0 /* SampleContainer.h */,
+				63B4543716F43857001A9CA0 /* SampleContainer.m */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
+		63B4541B16F42B5E001A9CA0 /* Mobiles */ = {
+			isa = PBXGroup;
+			children = (
+				63B4543016F43848001A9CA0 /* SampleMobile.h */,
+				63B4543116F43848001A9CA0 /* SampleMobile.m */,
+			);
+			path = Mobiles;
+			sourceTree = "<group>";
+		};
+		63B4541C16F42B6A001A9CA0 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				63B4543316F43851001A9CA0 /* SampleItem.h */,
+				63B4543416F43851001A9CA0 /* SampleItem.m */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,19 +281,15 @@
 				6B2F8DFD12AE835100D9676F /* QuestView.m in Sources */,
 				6B893F5412AFE35E007F858E /* QuestHandler.m in Sources */,
 				6B4BDE3A14A287D300A6C37A /* Player.m in Sources */,
-				6BDBBD7614A3DFFD00C74EBA /* Location.m in Sources */,
-				6B4C4AD914AB192B005964A1 /* Achievement.m in Sources */,
-				6B4C4ADC14AB3F3F005964A1 /* AchievementHelper.m in Sources */,
-				6366FDC216F194AE000D5A4E /* CabinBathroomLocation.m in Sources */,
-				6366FDC316F194AE000D5A4E /* CabinBedroomLocation.m in Sources */,
-				6366FDC416F194AE000D5A4E /* CabinFireplaceLocation.m in Sources */,
-				6366FDC516F194AE000D5A4E /* CabinHallwayLocation.m in Sources */,
-				6366FDC616F194AE000D5A4E /* CabinLocation.m in Sources */,
-				6366FDC716F194AE000D5A4E /* IntroLocation.m in Sources */,
-				6366FDC816F194AE000D5A4E /* PoolLocation.m in Sources */,
-				6366FDC916F194AE000D5A4E /* TreeSlideLocation.m in Sources */,
-				6366FDCA16F194AE000D5A4E /* TrineLocation.m in Sources */,
+				6BDBBD7614A3DFFD00C74EBA /* Room.m in Sources */,
 				6366FDCC16F194BE000D5A4E /* main.m in Sources */,
+				63B4541F16F42C3F001A9CA0 /* SampleRoom.m in Sources */,
+				63B4542C16F42FF1001A9CA0 /* Container.m in Sources */,
+				63B4542D16F42FF1001A9CA0 /* Item.m in Sources */,
+				63B4542E16F42FF1001A9CA0 /* Mobile.m in Sources */,
+				63B4543216F43848001A9CA0 /* SampleMobile.m in Sources */,
+				63B4543516F43851001A9CA0 /* SampleItem.m in Sources */,
+				63B4543816F43857001A9CA0 /* SampleContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

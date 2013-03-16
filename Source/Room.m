@@ -1,14 +1,14 @@
 //
-//  Location.m
-//  Adventure 2
+//  Room.m
+//  JustyVenture
 //
-//  Created by Nathan Swenson on 12/20/11.
-//  Copyright 2011 Nathan Swenson. All rights reserved.
+//  Created by Chad Ian Anderson on 03/15/13.
+//  Copyright 2013 Nathan Swenson. All rights reserved.
 //
 
-#import "Location.h"
+#import "Room.h"
 
-@implementation Location
+@implementation Room
 
 + (NSString*) arrive
 {
