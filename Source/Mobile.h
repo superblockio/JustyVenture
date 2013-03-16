@@ -11,10 +11,6 @@
 // A static class to represent mobiles, including their
 // inventory, room, and attributes pertaining to the game.
 @interface Mobile : NSObject
-{
-    NSMutableArray* _inventory;
-    NSMutableDictionary* _attributes;
-}
 
 + (void)initialize;
 

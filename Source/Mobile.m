@@ -10,6 +10,9 @@
 
 @implementation Mobile
 
+static NSMutableArray* _inventory;
+static NSMutableDictionary* _attributes;
+
 // Initializes the inventory and attributes when the class is first loaded
 + (void)initialize
 {

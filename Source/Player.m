@@ -10,9 +10,11 @@
 
 @implementation Player
 
+static NSMutableArray* _inventory;
 static NSString* _currentRoom;
 static NSImage* _image;
 static NSString* _prompt;
+static NSMutableDictionary* _attributes;
 
 // Initializes the inventory when the class is first loaded
 + (void)initialize

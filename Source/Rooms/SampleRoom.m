@@ -10,4 +10,10 @@
 
 @implementation SampleRoom
 
++ (NSString*) arrive
+{
+    [Player giveItem:@"ham"];
+    return [super arrive];
+}
+
 @end
