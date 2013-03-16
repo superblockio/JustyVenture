@@ -3,7 +3,7 @@
 //  Adventure 2
 //
 //  Created by Nathan Swenson on 12/21/11.
-//  Copyright (c) 2011 University of Utah. All rights reserved.
+//  Copyright 2011 Nathan Swenson. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

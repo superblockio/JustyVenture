@@ -2,7 +2,7 @@
 //  Quest2AppDelegate.h
 //  Quest2
 //
-//  Created by Nathan Swenson on 12/2/10.
+//  Created by Nathan Swenson on 12/02/10.
 //  Copyright 2010 Nathan Swenson. All rights reserved.
 //
 

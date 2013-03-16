@@ -2,7 +2,7 @@
 //  QuestView.h
 //  Quest2
 //
-//  Created by Nathan Swenson on 12/7/10.
+//  Created by Nathan Swenson on 12/07/10.
 //  Copyright 2010 Nathan Swenson. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  QuestHandler.m
 //  Quest2
 //
-//  Created by Nathan Swenson on 12/8/10.
+//  Created by Nathan Swenson on 12/08/10.
 //  Copyright 2010 Nathan Swenson. All rights reserved.
 //
 
