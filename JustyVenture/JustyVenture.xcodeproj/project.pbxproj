@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6BE60F8B181B98240063BB35 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60F8A181B98240063BB35 /* Cocoa.framework */; };
+		6BE60F95181B98240063BB35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F93181B98240063BB35 /* InfoPlist.strings */; };
+		6BE60F97181B98240063BB35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE60F96181B98240063BB35 /* main.m */; };
+		6BE60F9B181B98240063BB35 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F99181B98240063BB35 /* Credits.rtf */; };
+		6BE60F9E181B98240063BB35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE60F9D181B98240063BB35 /* AppDelegate.m */; };
+		6BE60FA1181B98240063BB35 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F9F181B98240063BB35 /* MainMenu.xib */; };
+		6BE60FA3181B98240063BB35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60FA2181B98240063BB35 /* Images.xcassets */; };
+		6BE60FAA181B98240063BB35 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60FA9181B98240063BB35 /* XCTest.framework */; };
+		6BE60FAB181B98240063BB35 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60F8A181B98240063BB35 /* Cocoa.framework */; };
+		6BE60FB3181B98240063BB35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60FB1181B98240063BB35 /* InfoPlist.strings */; };
+		6BE60FB5181B98240063BB35 /* JustyVentureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE60FB4181B98240063BB35 /* JustyVentureTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6BE60FAC181B98240063BB35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6BE60F7F181B98240063BB35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BE60F86181B98240063BB35;
+			remoteInfo = JustyVenture;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6BE60F87181B98240063BB35 /* JustyVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustyVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BE60F8A181B98240063BB35 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		6BE60F8D181B98240063BB35 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		6BE60F8E181B98240063BB35 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6BE60F8F181B98240063BB35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6BE60F92181B98240063BB35 /* JustyVenture-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JustyVenture-Info.plist"; sourceTree = "<group>"; };
+		6BE60F94181B98240063BB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6BE60F96181B98240063BB35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6BE60F98181B98240063BB35 /* JustyVenture-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JustyVenture-Prefix.pch"; sourceTree = "<group>"; };
+		6BE60F9A181B98240063BB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		6BE60F9C181B98240063BB35 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6BE60F9D181B98240063BB35 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6BE60FA0181B98240063BB35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6BE60FA2181B98240063BB35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6BE60FA8181B98240063BB35 /* JustyVentureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JustyVentureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BE60FA9181B98240063BB35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6BE60FB0181B98240063BB35 /* JustyVentureTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JustyVentureTests-Info.plist"; sourceTree = "<group>"; };
+		6BE60FB2181B98240063BB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6BE60FB4181B98240063BB35 /* JustyVentureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JustyVentureTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6BE60F84181B98240063BB35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE60F8B181B98240063BB35 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BE60FA5181B98240063BB35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE60FAB181B98240063BB35 /* Cocoa.framework in Frameworks */,
+				6BE60FAA181B98240063BB35 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6BE60F7E181B98240063BB35 = {
+			isa = PBXGroup;
+			children = (
+				6BE60F90181B98240063BB35 /* JustyVenture */,
+				6BE60FAE181B98240063BB35 /* JustyVentureTests */,
+				6BE60F89181B98240063BB35 /* Frameworks */,
+				6BE60F88181B98240063BB35 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6BE60F88181B98240063BB35 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6BE60F87181B98240063BB35 /* JustyVenture.app */,
+				6BE60FA8181B98240063BB35 /* JustyVentureTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6BE60F89181B98240063BB35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BE60F8A181B98240063BB35 /* Cocoa.framework */,
+				6BE60FA9181B98240063BB35 /* XCTest.framework */,
+				6BE60F8C181B98240063BB35 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6BE60F8C181B98240063BB35 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BE60F8D181B98240063BB35 /* AppKit.framework */,
+				6BE60F8E181B98240063BB35 /* CoreData.framework */,
+				6BE60F8F181B98240063BB35 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		6BE60F90181B98240063BB35 /* JustyVenture */ = {
+			isa = PBXGroup;
+			children = (
+				6BE60F9C181B98240063BB35 /* AppDelegate.h */,
+				6BE60F9D181B98240063BB35 /* AppDelegate.m */,
+				6BE60F9F181B98240063BB35 /* MainMenu.xib */,
+				6BE60FA2181B98240063BB35 /* Images.xcassets */,
+				6BE60F91181B98240063BB35 /* Supporting Files */,
+			);
+			path = JustyVenture;
+			sourceTree = "<group>";
+		};
+		6BE60F91181B98240063BB35 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BE60F92181B98240063BB35 /* JustyVenture-Info.plist */,
+				6BE60F93181B98240063BB35 /* InfoPlist.strings */,
+				6BE60F96181B98240063BB35 /* main.m */,
+				6BE60F98181B98240063BB35 /* JustyVenture-Prefix.pch */,
+				6BE60F99181B98240063BB35 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6BE60FAE181B98240063BB35 /* JustyVentureTests */ = {
+			isa = PBXGroup;
+			children = (
+				6BE60FB4181B98240063BB35 /* JustyVentureTests.m */,
+				6BE60FAF181B98240063BB35 /* Supporting Files */,
+			);
+			path = JustyVentureTests;
+			sourceTree = "<group>";
+		};
+		6BE60FAF181B98240063BB35 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BE60FB0181B98240063BB35 /* JustyVentureTests-Info.plist */,
+				6BE60FB1181B98240063BB35 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6BE60F86181B98240063BB35 /* JustyVenture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BE60FB8181B98240063BB35 /* Build configuration list for PBXNativeTarget "JustyVenture" */;
+			buildPhases = (
+				6BE60F83181B98240063BB35 /* Sources */,
+				6BE60F84181B98240063BB35 /* Frameworks */,
+				6BE60F85181B98240063BB35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JustyVenture;
+			productName = JustyVenture;
+			productReference = 6BE60F87181B98240063BB35 /* JustyVenture.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6BE60FA7181B98240063BB35 /* JustyVentureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BE60FBB181B98240063BB35 /* Build configuration list for PBXNativeTarget "JustyVentureTests" */;
+			buildPhases = (
+				6BE60FA4181B98240063BB35 /* Sources */,
+				6BE60FA5181B98240063BB35 /* Frameworks */,
+				6BE60FA6181B98240063BB35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6BE60FAD181B98240063BB35 /* PBXTargetDependency */,
+			);
+			name = JustyVentureTests;
+			productName = JustyVentureTests;
+			productReference = 6BE60FA8181B98240063BB35 /* JustyVentureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6BE60F7F181B98240063BB35 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "JustinTime Enterprises";
+				TargetAttributes = {
+					6BE60FA7181B98240063BB35 = {
+						TestTargetID = 6BE60F86181B98240063BB35;
+					};
+				};
+			};
+			buildConfigurationList = 6BE60F82181B98240063BB35 /* Build configuration list for PBXProject "JustyVenture" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6BE60F7E181B98240063BB35;
+			productRefGroup = 6BE60F88181B98240063BB35 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6BE60F86181B98240063BB35 /* JustyVenture */,
+				6BE60FA7181B98240063BB35 /* JustyVentureTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6BE60F85181B98240063BB35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE60F95181B98240063BB35 /* InfoPlist.strings in Resources */,
+				6BE60FA3181B98240063BB35 /* Images.xcassets in Resources */,
+				6BE60F9B181B98240063BB35 /* Credits.rtf in Resources */,
+				6BE60FA1181B98240063BB35 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BE60FA6181B98240063BB35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE60FB3181B98240063BB35 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6BE60F83181B98240063BB35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE60F9E181B98240063BB35 /* AppDelegate.m in Sources */,
+				6BE60F97181B98240063BB35 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BE60FA4181B98240063BB35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE60FB5181B98240063BB35 /* JustyVentureTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6BE60FAD181B98240063BB35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BE60F86181B98240063BB35 /* JustyVenture */;
+			targetProxy = 6BE60FAC181B98240063BB35 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6BE60F93181B98240063BB35 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BE60F94181B98240063BB35 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6BE60F99181B98240063BB35 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BE60F9A181B98240063BB35 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		6BE60F9F181B98240063BB35 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BE60FA0181B98240063BB35 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		6BE60FB1181B98240063BB35 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BE60FB2181B98240063BB35 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6BE60FB6181B98240063BB35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6BE60FB7181B98240063BB35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6BE60FB9181B98240063BB35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
+				INFOPLIST_FILE = "JustyVenture/JustyVenture-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6BE60FBA181B98240063BB35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
+				INFOPLIST_FILE = "JustyVenture/JustyVenture-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6BE60FBC181B98240063BB35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JustyVenture.app/Contents/MacOS/JustyVenture";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "JustyVentureTests/JustyVentureTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		6BE60FBD181B98240063BB35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JustyVenture.app/Contents/MacOS/JustyVenture";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
+				INFOPLIST_FILE = "JustyVentureTests/JustyVentureTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6BE60F82181B98240063BB35 /* Build configuration list for PBXProject "JustyVenture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BE60FB6181B98240063BB35 /* Debug */,
+				6BE60FB7181B98240063BB35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BE60FB8181B98240063BB35 /* Build configuration list for PBXNativeTarget "JustyVenture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BE60FB9181B98240063BB35 /* Debug */,
+				6BE60FBA181B98240063BB35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6BE60FBB181B98240063BB35 /* Build configuration list for PBXNativeTarget "JustyVentureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BE60FBC181B98240063BB35 /* Debug */,
+				6BE60FBD181B98240063BB35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6BE60F7F181B98240063BB35 /* Project object */;
+}
