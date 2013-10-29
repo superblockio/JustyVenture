@@ -10,9 +10,14 @@
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    self.questView.delegate = self;
+    self.questView.whatWouldstThouDeauField.stringValue = @"What wouldst thou deau?";
+}
+
+- (void)textWasEntered:(NSString *)input {
+    [self.questView.textView setStringValue:input];
 }
 
 @end

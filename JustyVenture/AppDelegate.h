@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "QuestView.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, QuestViewTextEntered>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet QuestView *questView;
 
 @end

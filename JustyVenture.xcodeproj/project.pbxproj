@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B7B5ED31820365D00325259 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED21820365D00325259 /* MainMenu.xib */; };
+		6B7B5ED61820389200325259 /* QuestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED51820389200325259 /* QuestView.m */; };
 		6BE60F8B181B98240063BB35 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60F8A181B98240063BB35 /* Cocoa.framework */; };
 		6BE60F95181B98240063BB35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F93181B98240063BB35 /* InfoPlist.strings */; };
 		6BE60F97181B98240063BB35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE60F96181B98240063BB35 /* main.m */; };
 		6BE60F9B181B98240063BB35 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F99181B98240063BB35 /* Credits.rtf */; };
 		6BE60F9E181B98240063BB35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE60F9D181B98240063BB35 /* AppDelegate.m */; };
-		6BE60FA1181B98240063BB35 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F9F181B98240063BB35 /* MainMenu.xib */; };
 		6BE60FA3181B98240063BB35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60FA2181B98240063BB35 /* Images.xcassets */; };
 		6BE60FAA181B98240063BB35 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60FA9181B98240063BB35 /* XCTest.framework */; };
 		6BE60FAB181B98240063BB35 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60F8A181B98240063BB35 /* Cocoa.framework */; };
@@ -31,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B7B5ED21820365D00325259 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		6B7B5ED41820389200325259 /* QuestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestView.h; sourceTree = "<group>"; };
+		6B7B5ED51820389200325259 /* QuestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestView.m; sourceTree = "<group>"; };
 		6BE60F87181B98240063BB35 /* JustyVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustyVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE60F8A181B98240063BB35 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6BE60F8D181B98240063BB35 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -43,7 +47,6 @@
 		6BE60F9A181B98240063BB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		6BE60F9C181B98240063BB35 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BE60F9D181B98240063BB35 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6BE60FA0181B98240063BB35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6BE60FA2181B98240063BB35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6BE60FA8181B98240063BB35 /* JustyVentureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JustyVentureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE60FA9181B98240063BB35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -115,9 +118,11 @@
 		6BE60F90181B98240063BB35 /* JustyVenture */ = {
 			isa = PBXGroup;
 			children = (
+				6B7B5ED41820389200325259 /* QuestView.h */,
+				6B7B5ED51820389200325259 /* QuestView.m */,
+				6B7B5ED21820365D00325259 /* MainMenu.xib */,
 				6BE60F9C181B98240063BB35 /* AppDelegate.h */,
 				6BE60F9D181B98240063BB35 /* AppDelegate.m */,
-				6BE60F9F181B98240063BB35 /* MainMenu.xib */,
 				6BE60FA2181B98240063BB35 /* Images.xcassets */,
 				6BE60F91181B98240063BB35 /* Supporting Files */,
 			);
@@ -233,7 +238,7 @@
 				6BE60F95181B98240063BB35 /* InfoPlist.strings in Resources */,
 				6BE60FA3181B98240063BB35 /* Images.xcassets in Resources */,
 				6BE60F9B181B98240063BB35 /* Credits.rtf in Resources */,
-				6BE60FA1181B98240063BB35 /* MainMenu.xib in Resources */,
+				6B7B5ED31820365D00325259 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BE60F9E181B98240063BB35 /* AppDelegate.m in Sources */,
+				6B7B5ED61820389200325259 /* QuestView.m in Sources */,
 				6BE60F97181B98240063BB35 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,14 +296,6 @@
 				6BE60F9A181B98240063BB35 /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		6BE60F9F181B98240063BB35 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6BE60FA0181B98240063BB35 /* Base */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 		6BE60FB1181B98240063BB35 /* InfoPlist.strings */ = {
@@ -464,6 +462,7 @@
 				6BE60FBA181B98240063BB35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6BE60FBB181B98240063BB35 /* Build configuration list for PBXNativeTarget "JustyVentureTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +471,7 @@
 				6BE60FBD181B98240063BB35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
