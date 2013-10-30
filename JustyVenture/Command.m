@@ -10,4 +10,12 @@
 
 @implementation Command
 
+- (BOOL)respondsToVerb:(NSString *)verb subject:(NSString *)subject {
+    if ([self.verbs containsObject:verb] && (([self.subjects containsObject:subject] || [self.subjects containsObject:@"*"]))) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

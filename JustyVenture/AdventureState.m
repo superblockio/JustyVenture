@@ -21,4 +21,12 @@ static AdventureState *_sharedState;
     }
 }
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        // TODO: Initialize ourself with the adventure!
+    }
+    return self;
+}
+
 @end

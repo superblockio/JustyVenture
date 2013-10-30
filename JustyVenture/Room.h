@@ -10,4 +10,7 @@
 
 @interface Room : NSObject
 
+@property(nonatomic, strong) NSString *name;
+@property(nonatomic, strong) NSArray *commands;
+
 @end

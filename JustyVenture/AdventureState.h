@@ -17,7 +17,7 @@
 @property (nonatomic, readonly) NSDictionary *rooms;
 @property (nonatomic, readonly) NSDictionary *variables;
 @property (nonatomic, readonly) NSDictionary *items;
-@property (nonatomic, strong) NSString *introText;
 @property (nonatomic, readonly) NSArray *commands;
+@property (nonatomic, strong) NSString *introText;
 
 @end

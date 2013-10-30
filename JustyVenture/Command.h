@@ -10,4 +10,12 @@
 
 @interface Command : NSObject
 
+- (BOOL)respondsToVerb:(NSString*)verb subject:(NSString*)subject;
+
+@property(nonatomic, strong) NSArray *verbs;
+@property(nonatomic, strong) NSArray *subjects;
+
+// The XML body to be processed when this command executes.
+@property(nonatomic, strong) NSString *result;
+
 @end
