@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "JustyVenture.h"
 
 @implementation AppDelegate
 
@@ -14,10 +15,11 @@
     // Insert code here to initialize your application
     self.questView.delegate = self;
     self.questView.whatWouldstThouDeauField.stringValue = @"What wouldst thou deau?";
+    [self.questView.textView setStringValue:[JustyVenture mainVenture].introText];
 }
 
 - (void)textWasEntered:(NSString *)input {
-    [self.questView.textView setStringValue:input];
+    [self.questView.textView setStringValue:[[JustyVenture mainVenture] runUserInput:input]];
 }
 
 @end

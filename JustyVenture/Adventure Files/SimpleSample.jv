@@ -1,0 +1,8 @@
+<JustyVenture>
+<Intro room="FirstRoom">I know, you know, that I'm not telling the truth.</Intro>
+<Room name="FirstRoom">
+<Arrive>
+</Arrive>
+<Look>I know, you know, they just don't have any proof.</Look>
+</Room>
+</JustyVenture>
