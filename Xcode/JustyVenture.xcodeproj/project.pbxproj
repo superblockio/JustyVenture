@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63D816331820F28D0064F802 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63D816321820F28D0064F802 /* icon.icns */; };
 		6B7B5ED31820365D00325259 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED21820365D00325259 /* MainMenu.xib */; };
 		6B7B5ED61820389200325259 /* QuestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED51820389200325259 /* QuestView.m */; };
 		6B7B5ED91820631D00325259 /* JustyVenture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED81820631D00325259 /* JustyVenture.m */; };
@@ -21,24 +22,11 @@
 		6BE60F9B181B98240063BB35 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F99181B98240063BB35 /* Credits.rtf */; };
 		6BE60F9E181B98240063BB35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE60F9D181B98240063BB35 /* AppDelegate.m */; };
 		6BE60FA3181B98240063BB35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60FA2181B98240063BB35 /* Images.xcassets */; };
-		6BE60FAA181B98240063BB35 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60FA9181B98240063BB35 /* XCTest.framework */; };
-		6BE60FAB181B98240063BB35 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60F8A181B98240063BB35 /* Cocoa.framework */; };
-		6BE60FB3181B98240063BB35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60FB1181B98240063BB35 /* InfoPlist.strings */; };
-		6BE60FB5181B98240063BB35 /* JustyVentureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE60FB4181B98240063BB35 /* JustyVentureTests.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		6BE60FAC181B98240063BB35 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6BE60F7F181B98240063BB35 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BE60F86181B98240063BB35;
-			remoteInfo = JustyVenture;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		6B7B5ED21820365D00325259 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		63D816321820F28D0064F802 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = SOURCE_ROOT; };
+		6B7B5ED21820365D00325259 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6B7B5ED41820389200325259 /* QuestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestView.h; sourceTree = "<group>"; };
 		6B7B5ED51820389200325259 /* QuestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestView.m; sourceTree = "<group>"; };
 		6B7B5ED71820631D00325259 /* JustyVenture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JustyVenture.h; sourceTree = "<group>"; };
@@ -51,7 +39,7 @@
 		6B7B5EE118207A7B00325259 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
 		6B7B5EE31820B77A00325259 /* AdventureFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdventureFileParser.h; sourceTree = "<group>"; };
 		6B7B5EE41820B77A00325259 /* AdventureFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdventureFileParser.m; sourceTree = "<group>"; };
-		6BB0478A1820D7B8000AD239 /* Adventure Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Adventure Files"; path = "JustyVenture/Adventure Files"; sourceTree = "<group>"; };
+		6BB0478A1820D7B8000AD239 /* Adventure Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Adventure Files"; path = "../Resources/Adventure Files"; sourceTree = "<group>"; };
 		6BE60F87181B98240063BB35 /* JustyVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustyVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE60F8A181B98240063BB35 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6BE60F8D181B98240063BB35 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -65,11 +53,7 @@
 		6BE60F9C181B98240063BB35 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BE60F9D181B98240063BB35 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6BE60FA2181B98240063BB35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6BE60FA8181B98240063BB35 /* JustyVentureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JustyVentureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE60FA9181B98240063BB35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		6BE60FB0181B98240063BB35 /* JustyVentureTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JustyVentureTests-Info.plist"; sourceTree = "<group>"; };
-		6BE60FB2181B98240063BB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6BE60FB4181B98240063BB35 /* JustyVentureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JustyVentureTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,26 +65,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6BE60FA5181B98240063BB35 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BE60FAB181B98240063BB35 /* Cocoa.framework in Frameworks */,
-				6BE60FAA181B98240063BB35 /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63115DF31820F1DE00E163E1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6BE60F99181B98240063BB35 /* Credits.rtf */,
+				63D816321820F28D0064F802 /* icon.icns */,
+				6BE60FA2181B98240063BB35 /* Images.xcassets */,
+				6BE60F93181B98240063BB35 /* InfoPlist.strings */,
+				6BE60F92181B98240063BB35 /* JustyVenture-Info.plist */,
+				6BE60F98181B98240063BB35 /* JustyVenture-Prefix.pch */,
+				6B7B5ED21820365D00325259 /* MainMenu.xib */,
+			);
+			name = Resources;
+			path = Source;
+			sourceTree = "<group>";
+		};
 		6BE60F7E181B98240063BB35 = {
 			isa = PBXGroup;
 			children = (
 				6BB0478A1820D7B8000AD239 /* Adventure Files */,
-				6BE60F90181B98240063BB35 /* JustyVenture */,
-				6BE60FAE181B98240063BB35 /* JustyVentureTests */,
 				6BE60F89181B98240063BB35 /* Frameworks */,
 				6BE60F88181B98240063BB35 /* Products */,
+				63115DF31820F1DE00E163E1 /* Resources */,
+				6BE60F90181B98240063BB35 /* Source */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				6BE60F87181B98240063BB35 /* JustyVenture.app */,
-				6BE60FA8181B98240063BB35 /* JustyVentureTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,58 +122,27 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		6BE60F90181B98240063BB35 /* JustyVenture */ = {
+		6BE60F90181B98240063BB35 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6B7B5ED41820389200325259 /* QuestView.h */,
-				6B7B5ED51820389200325259 /* QuestView.m */,
-				6B7B5ED21820365D00325259 /* MainMenu.xib */,
-				6BE60F9C181B98240063BB35 /* AppDelegate.h */,
-				6BE60F9D181B98240063BB35 /* AppDelegate.m */,
-				6B7B5ED71820631D00325259 /* JustyVenture.h */,
-				6B7B5ED81820631D00325259 /* JustyVenture.m */,
-				6B7B5EDA1820755A00325259 /* Room.h */,
-				6B7B5EDB1820755A00325259 /* Room.m */,
-				6B7B5EDD182077DD00325259 /* Item.h */,
-				6B7B5EDE182077DD00325259 /* Item.m */,
-				6B7B5EE018207A7B00325259 /* Command.h */,
-				6B7B5EE118207A7B00325259 /* Command.m */,
-				6BE60FA2181B98240063BB35 /* Images.xcassets */,
-				6BE60F91181B98240063BB35 /* Supporting Files */,
 				6B7B5EE31820B77A00325259 /* AdventureFileParser.h */,
 				6B7B5EE41820B77A00325259 /* AdventureFileParser.m */,
-			);
-			path = JustyVenture;
-			sourceTree = "<group>";
-		};
-		6BE60F91181B98240063BB35 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6BE60F92181B98240063BB35 /* JustyVenture-Info.plist */,
-				6BE60F93181B98240063BB35 /* InfoPlist.strings */,
+				6BE60F9C181B98240063BB35 /* AppDelegate.h */,
+				6BE60F9D181B98240063BB35 /* AppDelegate.m */,
+				6B7B5EE018207A7B00325259 /* Command.h */,
+				6B7B5EE118207A7B00325259 /* Command.m */,
+				6B7B5EDD182077DD00325259 /* Item.h */,
+				6B7B5EDE182077DD00325259 /* Item.m */,
+				6B7B5ED71820631D00325259 /* JustyVenture.h */,
+				6B7B5ED81820631D00325259 /* JustyVenture.m */,
 				6BE60F96181B98240063BB35 /* main.m */,
-				6BE60F98181B98240063BB35 /* JustyVenture-Prefix.pch */,
-				6BE60F99181B98240063BB35 /* Credits.rtf */,
+				6B7B5ED41820389200325259 /* QuestView.h */,
+				6B7B5ED51820389200325259 /* QuestView.m */,
+				6B7B5EDA1820755A00325259 /* Room.h */,
+				6B7B5EDB1820755A00325259 /* Room.m */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6BE60FAE181B98240063BB35 /* JustyVentureTests */ = {
-			isa = PBXGroup;
-			children = (
-				6BE60FB4181B98240063BB35 /* JustyVentureTests.m */,
-				6BE60FAF181B98240063BB35 /* Supporting Files */,
-			);
-			path = JustyVentureTests;
-			sourceTree = "<group>";
-		};
-		6BE60FAF181B98240063BB35 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6BE60FB0181B98240063BB35 /* JustyVentureTests-Info.plist */,
-				6BE60FB1181B98240063BB35 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
+			name = Source;
+			path = ../Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,24 +164,6 @@
 			productName = JustyVenture;
 			productReference = 6BE60F87181B98240063BB35 /* JustyVenture.app */;
 			productType = "com.apple.product-type.application";
-		};
-		6BE60FA7181B98240063BB35 /* JustyVentureTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6BE60FBB181B98240063BB35 /* Build configuration list for PBXNativeTarget "JustyVentureTests" */;
-			buildPhases = (
-				6BE60FA4181B98240063BB35 /* Sources */,
-				6BE60FA5181B98240063BB35 /* Frameworks */,
-				6BE60FA6181B98240063BB35 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6BE60FAD181B98240063BB35 /* PBXTargetDependency */,
-			);
-			name = JustyVentureTests;
-			productName = JustyVentureTests;
-			productReference = 6BE60FA8181B98240063BB35 /* JustyVentureTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -253,7 +193,6 @@
 			projectRoot = "";
 			targets = (
 				6BE60F86181B98240063BB35 /* JustyVenture */,
-				6BE60FA7181B98240063BB35 /* JustyVentureTests */,
 			);
 		};
 /* End PBXProject section */
@@ -268,14 +207,7 @@
 				6BE60FA3181B98240063BB35 /* Images.xcassets in Resources */,
 				6BE60F9B181B98240063BB35 /* Credits.rtf in Resources */,
 				6B7B5ED31820365D00325259 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6BE60FA6181B98240063BB35 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BE60FB3181B98240063BB35 /* InfoPlist.strings in Resources */,
+				63D816331820F28D0064F802 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,23 +229,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6BE60FA4181B98240063BB35 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BE60FB5181B98240063BB35 /* JustyVentureTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6BE60FAD181B98240063BB35 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6BE60F86181B98240063BB35 /* JustyVenture */;
-			targetProxy = 6BE60FAC181B98240063BB35 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6BE60F93181B98240063BB35 /* InfoPlist.strings */ = {
@@ -330,14 +246,6 @@
 				6BE60F9A181B98240063BB35 /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		6BE60FB1181B98240063BB35 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6BE60FB2181B98240063BB35 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -418,7 +326,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
-				INFOPLIST_FILE = "JustyVenture/JustyVenture-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/JustyVenture-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -431,49 +339,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
-				INFOPLIST_FILE = "JustyVenture/JustyVenture-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/JustyVenture-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		6BE60FBC181B98240063BB35 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JustyVenture.app/Contents/MacOS/JustyVenture";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "JustyVentureTests/JustyVentureTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		6BE60FBD181B98240063BB35 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JustyVenture.app/Contents/MacOS/JustyVenture";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
-				INFOPLIST_FILE = "JustyVentureTests/JustyVentureTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -494,15 +362,6 @@
 			buildConfigurations = (
 				6BE60FB9181B98240063BB35 /* Debug */,
 				6BE60FBA181B98240063BB35 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6BE60FBB181B98240063BB35 /* Build configuration list for PBXNativeTarget "JustyVentureTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6BE60FBC181B98240063BB35 /* Debug */,
-				6BE60FBD181B98240063BB35 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
