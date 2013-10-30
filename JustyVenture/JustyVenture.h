@@ -1,5 +1,5 @@
 //
-//  AdventureState.h
+//  JustyVenture.h
 //  JustyVenture
 //
 //  Created by Nathan Swenson on 10/29/13.
@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "Room.h"
 
-@interface AdventureState : NSObject
+@interface JustyVenture : NSObject <NSXMLParserDelegate>
 
-+ (AdventureState*)sharedState;
++ (JustyVenture*)mainVenture;
 
 @property (nonatomic, strong) Room *currentRoom;
 @property (nonatomic, readonly) NSDictionary *rooms;
@@ -19,5 +19,8 @@
 @property (nonatomic, readonly) NSDictionary *items;
 @property (nonatomic, readonly) NSArray *commands;
 @property (nonatomic, strong) NSString *introText;
+
+// This is where all the magic happens
+- (NSString*)runUserInput:(NSString*)input;
 
 @end
