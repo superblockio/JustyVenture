@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		63D816331820F28D0064F802 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63D816321820F28D0064F802 /* icon.icns */; };
-		6B7B5ED31820365D00325259 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED21820365D00325259 /* MainMenu.xib */; };
+		63D89CF11820FD0900CE5AC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED21820365D00325259 /* MainMenu.xib */; };
+		63D89CF21820FD1500CE5AC4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F99181B98240063BB35 /* Credits.rtf */; };
 		6B7B5ED61820389200325259 /* QuestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED51820389200325259 /* QuestView.m */; };
 		6B7B5ED91820631D00325259 /* JustyVenture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED81820631D00325259 /* JustyVenture.m */; };
 		6B7B5EDC1820755A00325259 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5EDB1820755A00325259 /* Room.m */; };
@@ -19,9 +20,7 @@
 		6BE60F8B181B98240063BB35 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60F8A181B98240063BB35 /* Cocoa.framework */; };
 		6BE60F95181B98240063BB35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F93181B98240063BB35 /* InfoPlist.strings */; };
 		6BE60F97181B98240063BB35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE60F96181B98240063BB35 /* main.m */; };
-		6BE60F9B181B98240063BB35 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F99181B98240063BB35 /* Credits.rtf */; };
 		6BE60F9E181B98240063BB35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BE60F9D181B98240063BB35 /* AppDelegate.m */; };
-		6BE60FA3181B98240063BB35 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60FA2181B98240063BB35 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +51,6 @@
 		6BE60F9A181B98240063BB35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		6BE60F9C181B98240063BB35 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6BE60F9D181B98240063BB35 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6BE60FA2181B98240063BB35 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6BE60FA9181B98240063BB35 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,14 +70,12 @@
 			children = (
 				6BE60F99181B98240063BB35 /* Credits.rtf */,
 				63D816321820F28D0064F802 /* icon.icns */,
-				6BE60FA2181B98240063BB35 /* Images.xcassets */,
 				6BE60F93181B98240063BB35 /* InfoPlist.strings */,
 				6BE60F92181B98240063BB35 /* JustyVenture-Info.plist */,
 				6BE60F98181B98240063BB35 /* JustyVenture-Prefix.pch */,
 				6B7B5ED21820365D00325259 /* MainMenu.xib */,
 			);
 			name = Resources;
-			path = Source;
 			sourceTree = "<group>";
 		};
 		6BE60F7E181B98240063BB35 = {
@@ -106,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				6BE60F8A181B98240063BB35 /* Cocoa.framework */,
-				6BE60FA9181B98240063BB35 /* XCTest.framework */,
 				6BE60F8C181B98240063BB35 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -204,9 +198,8 @@
 			files = (
 				6BB0478C1820D807000AD239 /* Adventure Files in Resources */,
 				6BE60F95181B98240063BB35 /* InfoPlist.strings in Resources */,
-				6BE60FA3181B98240063BB35 /* Images.xcassets in Resources */,
-				6BE60F9B181B98240063BB35 /* Credits.rtf in Resources */,
-				6B7B5ED31820365D00325259 /* MainMenu.xib in Resources */,
+				63D89CF21820FD1500CE5AC4 /* Credits.rtf in Resources */,
+				63D89CF11820FD0900CE5AC4 /* MainMenu.xib in Resources */,
 				63D816331820F28D0064F802 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,9 +275,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -314,20 +307,24 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};
 		6BE60FB9181B98240063BB35 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/JustyVenture-Info.plist";
+				GCC_PREFIX_HEADER = "JustyVenture-Prefix.pch";
+				INFOPLIST_FILE = "JustyVenture-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -335,12 +332,16 @@
 		6BE60FBA181B98240063BB35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "JustyVenture/JustyVenture-Prefix.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/JustyVenture-Info.plist";
+				GCC_PREFIX_HEADER = "JustyVenture-Prefix.pch";
+				INFOPLIST_FILE = "JustyVenture-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
