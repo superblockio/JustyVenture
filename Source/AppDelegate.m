@@ -20,8 +20,10 @@
 }
 
 - (void)textWasEntered:(NSString *)input {
-    self.currentOutput = [[JustyVenture mainVenture] runUserInput:input];
-    [self startTyping];
+    if (input && [input length] > 0) {
+        self.currentOutput = [[JustyVenture mainVenture] runUserInput:input];
+        [self startTyping];
+    }
 }
 
 - (void)startTyping {
