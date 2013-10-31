@@ -27,5 +27,12 @@ you know
 they just don't have any PROOF.</truth>
 <proof>Embrace the deception, learn how to bend, your worst inhibitions tend to PSYCH you out in the end!</proof>
 <psych>Pineapples!</psych>
+<go>@go(FluffyRoom);</go>
 </Room>
+
+<room name="FluffyRoom">
+<arrive>
+You have arrived at the fluffy room! It's got very plushy carpet!
+</arrive>
+</room>
 </JustyVenture>

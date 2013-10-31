@@ -85,7 +85,7 @@ static JustyVenture *_sharedState;
     for (int i = 0; i < [currentRoom commands].count; i++) {
         Command *command = [[currentRoom commands] objectAtIndex:i];
         if ([command respondsToVerb:verb subject:subject]) {
-            return [command result];
+            return [self JustinTimeInterpret:[command result]];
         }
     }
     
@@ -93,7 +93,7 @@ static JustyVenture *_sharedState;
     for (int i = 0; i <self.commands.count; i++) {
         Command *command = [self.commands objectAtIndex:i];
         if ([command respondsToVerb:verb subject:subject]) {
-            return [command result];
+            return [self JustinTimeInterpret:[command result]];
         }
     }
     
@@ -302,6 +302,29 @@ static JustyVenture *_sharedState;
         return JVXMLCommandsContext;
     }
     return JVXMLOuterContext;
+}
+
+- (NSString*)JustinTimeInterpret:(NSString*)input {
+    NSString *output = [input copy];
+    
+    // HACK: just look for a go command and parse it for now!
+    NSUInteger goLocation = [output rangeOfString:@"@go("].location;
+    if (goLocation != NSNotFound) {
+        NSUInteger endLocation = [[output substringFromIndex:goLocation] rangeOfString:@");"].location;
+        NSString *roomName = [output substringWithRange:NSMakeRange(goLocation + 4, endLocation - (goLocation + 4))];
+        self.currentRoomName = roomName;
+        // Find the arrive command for this room
+        NSArray *commands = [[self.rooms objectForKey:self.currentRoomName] commands];
+        for (int i = 0; i < commands.count; i++) {
+            Command *command = [commands objectAtIndex:i];
+            if ([command respondsToInternalName:@"arrive"]) {
+                return [command result];
+            }
+        }
+        
+    }
+    
+    return output;
 }
 
 
