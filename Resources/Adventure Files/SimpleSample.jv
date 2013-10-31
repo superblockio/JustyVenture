@@ -1,15 +1,20 @@
 <JustyVenture>
 <Intro firstRoom="FirstRoom" type="append">In between the lines there's a lot of obscurity, I'm not inclined to resign to maturity.
 If it's alright,
-then you're all wrong,
-why bounce around to the same dan song?
+then you're all wrong.
+
+Why bounce around to the same dan song?
 </Intro>
 <Room name="FirstRoom">
 <Arrive>
 You'd rather run when you can't crawl...
 </Arrive>
-<Look alt=" woo!">I know, you know, that I'm not telling the TRUTH.</Look>
-<truth>I know, you know, they just don't have any PROOF.</truth>
+<Look alt=" woo!">I know
+you know
+that I'm not telling the TRUTH.</Look>
+<truth>I know
+you know
+they just don't have any PROOF.</truth>
 <proof>Embrace the deception, learn how to bend, your worst inhibitions tend to PSYCH you out in the end!</proof>
 <psych>Pineapples!</psych>
 </Room>
