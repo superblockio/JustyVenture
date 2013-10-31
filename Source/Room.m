@@ -10,4 +10,13 @@
 
 @implementation Room
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.name = @"";
+        self.commands = [NSArray array];
+    }
+    return self;
+}
+
 @end

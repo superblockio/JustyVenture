@@ -13,5 +13,7 @@
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet QuestView *questView;
+@property (nonatomic, strong) NSString *currentOutput;
+@property (assign) int typingIndex;
 
 @end

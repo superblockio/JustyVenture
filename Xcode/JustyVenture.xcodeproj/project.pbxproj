@@ -15,7 +15,6 @@
 		6B7B5EDC1820755A00325259 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5EDB1820755A00325259 /* Room.m */; };
 		6B7B5EDF182077DD00325259 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5EDE182077DD00325259 /* Item.m */; };
 		6B7B5EE218207A7B00325259 /* Command.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5EE118207A7B00325259 /* Command.m */; };
-		6B7B5EE51820B77A00325259 /* AdventureFileParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5EE41820B77A00325259 /* AdventureFileParser.m */; };
 		6BB0478C1820D807000AD239 /* Adventure Files in Resources */ = {isa = PBXBuildFile; fileRef = 6BB0478A1820D7B8000AD239 /* Adventure Files */; };
 		6BE60F8B181B98240063BB35 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE60F8A181B98240063BB35 /* Cocoa.framework */; };
 		6BE60F95181B98240063BB35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F93181B98240063BB35 /* InfoPlist.strings */; };
@@ -36,8 +35,6 @@
 		6B7B5EDE182077DD00325259 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		6B7B5EE018207A7B00325259 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
 		6B7B5EE118207A7B00325259 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
-		6B7B5EE31820B77A00325259 /* AdventureFileParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdventureFileParser.h; sourceTree = "<group>"; };
-		6B7B5EE41820B77A00325259 /* AdventureFileParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdventureFileParser.m; sourceTree = "<group>"; };
 		6BB0478A1820D7B8000AD239 /* Adventure Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Adventure Files"; path = "../Resources/Adventure Files"; sourceTree = "<group>"; };
 		6BE60F87181B98240063BB35 /* JustyVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustyVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE60F8A181B98240063BB35 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -119,21 +116,19 @@
 		6BE60F90181B98240063BB35 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6B7B5EE31820B77A00325259 /* AdventureFileParser.h */,
-				6B7B5EE41820B77A00325259 /* AdventureFileParser.m */,
 				6BE60F9C181B98240063BB35 /* AppDelegate.h */,
 				6BE60F9D181B98240063BB35 /* AppDelegate.m */,
+				6B7B5ED71820631D00325259 /* JustyVenture.h */,
+				6B7B5ED81820631D00325259 /* JustyVenture.m */,
+				6B7B5EDA1820755A00325259 /* Room.h */,
+				6B7B5EDB1820755A00325259 /* Room.m */,
 				6B7B5EE018207A7B00325259 /* Command.h */,
 				6B7B5EE118207A7B00325259 /* Command.m */,
 				6B7B5EDD182077DD00325259 /* Item.h */,
 				6B7B5EDE182077DD00325259 /* Item.m */,
-				6B7B5ED71820631D00325259 /* JustyVenture.h */,
-				6B7B5ED81820631D00325259 /* JustyVenture.m */,
 				6BE60F96181B98240063BB35 /* main.m */,
 				6B7B5ED41820389200325259 /* QuestView.h */,
 				6B7B5ED51820389200325259 /* QuestView.m */,
-				6B7B5EDA1820755A00325259 /* Room.h */,
-				6B7B5EDB1820755A00325259 /* Room.m */,
 			);
 			name = Source;
 			path = ../Source;
@@ -209,7 +204,6 @@
 				6B7B5EDF182077DD00325259 /* Item.m in Sources */,
 				6B7B5EDC1820755A00325259 /* Room.m in Sources */,
 				6BE60F9E181B98240063BB35 /* AppDelegate.m in Sources */,
-				6B7B5EE51820B77A00325259 /* AdventureFileParser.m in Sources */,
 				6B7B5EE218207A7B00325259 /* Command.m in Sources */,
 				6B7B5ED61820389200325259 /* QuestView.m in Sources */,
 				6B7B5ED91820631D00325259 /* JustyVenture.m in Sources */,

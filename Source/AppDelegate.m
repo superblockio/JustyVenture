@@ -15,11 +15,29 @@
     // Insert code here to initialize your application
     self.questView.delegate = self;
     self.questView.whatWouldstThouDeauField.stringValue = @"What wouldst thou deau?";
-    [self.questView.textView setStringValue:[JustyVenture mainVenture].introText];
+    self.currentOutput = [[JustyVenture mainVenture] introText];
+    [self startTyping];
 }
 
 - (void)textWasEntered:(NSString *)input {
-    [self.questView.textView setStringValue:[[JustyVenture mainVenture] runUserInput:input]];
+    self.currentOutput = [[JustyVenture mainVenture] runUserInput:input];
+    [self startTyping];
+}
+
+- (void)startTyping {
+    self.typingIndex = 0;
+    [NSTimer scheduledTimerWithTimeInterval:1/30.0f target:self selector:@selector(typeLetter:) userInfo:nil repeats:YES];
+}
+
+- (void)typeLetter:(NSTimer*)timer {
+    self.typingIndex++;
+    if (self.typingIndex <= self.currentOutput.length) {
+        [self.questView.textView setStringValue:[self.currentOutput substringToIndex:self.typingIndex]];
+    }
+    else {
+        [timer invalidate];
+        self.typingIndex = 0;
+    }
 }
 
 @end

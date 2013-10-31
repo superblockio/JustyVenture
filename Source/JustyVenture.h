@@ -13,11 +13,11 @@
 
 + (JustyVenture*)mainVenture;
 
-@property (nonatomic, strong) Room *currentRoom;
-@property (nonatomic, readonly) NSDictionary *rooms;
-@property (nonatomic, readonly) NSDictionary *variables;
-@property (nonatomic, readonly) NSDictionary *items;
-@property (nonatomic, readonly) NSArray *commands;
+@property (nonatomic, strong) NSString *currentRoomName;
+@property (nonatomic, readonly) NSMutableDictionary *rooms;
+@property (nonatomic, readonly) NSMutableDictionary *variables;
+@property (nonatomic, readonly) NSMutableDictionary *items;
+@property (nonatomic, readonly) NSMutableArray *commands;
 @property (nonatomic, strong) NSString *introText;
 
 // This is where all the magic happens
