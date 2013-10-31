@@ -227,6 +227,25 @@ static JustyVenture *_sharedState;
     }
 }
 
+- (void)parserDidEndDocument:(NSXMLParser *)parser {
+    // We have to do the intro text here because the room might not be loaded when the intro tag is first read
+    Room *firstRoom = [self.rooms objectForKey:self.currentRoomName];
+    if (self.introType != JVIntroTypeReplace) {
+        for (int i = 0; i < firstRoom.commands.count; i++) {
+            if ([[firstRoom.commands objectAtIndex:i] respondsToInternalName:@"arrive"]) {
+                NSString *arrive = [[firstRoom.commands objectAtIndex:i] result];
+                if (self.introType == JVIntroTypeAppend) {
+                    self.introText = [self.introText stringByAppendingString:arrive];
+                }
+                else {
+                    self.introText = arrive;
+                }
+            }
+        }
+        
+    }
+}
+
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     NSLog(@"XML parsing failed with error: %@", parseError);
 }

@@ -48,7 +48,9 @@
 }
 
 - (BOOL)respondsToInternalName:(NSString *)internalName {
-    if (self.internal && self.verbs.count == 1 && [[self.verbs objectAtIndex:0] isEqualToString:internalName]) {
+    if (self.internal &&
+        self.verbs.count == 1 &&
+        [[self.verbs objectAtIndex:0] caseInsensitiveCompare:internalName] == NSOrderedSame) {
         return YES;
     }
     return NO;
