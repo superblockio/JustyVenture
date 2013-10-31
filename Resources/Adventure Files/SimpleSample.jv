@@ -5,6 +5,14 @@ then you're all wrong.
 
 Why bounce around to the same dan song?
 </Intro>
+<Commands>
+<help>The following commands are commonly used in our game:
+Look: looks at stuff. Try looking at specific objects that you don't trust.
+Go: go to one of the adjacent exits.
+Yolo: don't use this command.
+</help>
+</Commands>
+
 <Room name="FirstRoom">
 <Arrive>
 You'd rather run when you can't crawl...

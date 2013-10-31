@@ -80,10 +80,18 @@ static JustyVenture *_sharedState;
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
         subject = [input substringFromIndex:verb.length + 1];
     }
-    // For now, just check the room to see if there's a suitable command.
+    // First, look to see if the room can handle this shiz
     Room *currentRoom = [self.rooms objectForKey:self.currentRoomName];
     for (int i = 0; i < [currentRoom commands].count; i++) {
         Command *command = [[currentRoom commands] objectAtIndex:i];
+        if ([command respondsToVerb:verb subject:subject]) {
+            return [command result];
+        }
+    }
+    
+    // Next, see if one of our fallback commands can handle it.
+    for (int i = 0; i <self.commands.count; i++) {
+        Command *command = [self.commands objectAtIndex:i];
         if ([command respondsToVerb:verb subject:subject]) {
             return [command result];
         }
@@ -161,8 +169,8 @@ static JustyVenture *_sharedState;
         }
     }
     
-    // If we're /in/ a room, interpret each tag as a command
-    if ([self context] == JVXMLRoomContext) {
+    // If we're in a room or command tag, interpret each tag as a command
+    if ([self context] == JVXMLRoomContext || [self context] == JVXMLCommandsContext) {
         Command *command = [[Command alloc] init];
         
         // First, find all verbs associated with this command
@@ -225,6 +233,11 @@ static JustyVenture *_sharedState;
         [self.currentCommandXML setResult:self.currentElementBody];
         [self.currentRoomXML setCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
     }
+    
+    else if ([self context] == JVXMLCommandsContext) {
+        [self.currentCommandXML setResult:self.currentElementBody];
+        [self.commands addObject:self.currentCommandXML];
+    }
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
@@ -242,7 +255,6 @@ static JustyVenture *_sharedState;
                 }
             }
         }
-        
     }
 }
 

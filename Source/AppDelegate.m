@@ -28,7 +28,7 @@
 
 - (void)startTyping {
     self.typingIndex = 0;
-    [NSTimer scheduledTimerWithTimeInterval:1/20.0f target:self selector:@selector(typeLetter:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:1/26.0f target:self selector:@selector(typeLetter:) userInfo:nil repeats:YES];
 }
 
 - (void)typeLetter:(NSTimer*)timer {
