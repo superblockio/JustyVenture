@@ -28,7 +28,7 @@
 
 - (void)startTyping {
     self.typingIndex = 0;
-    [NSTimer scheduledTimerWithTimeInterval:1/30.0f target:self selector:@selector(typeLetter:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:1/20.0f target:self selector:@selector(typeLetter:) userInfo:nil repeats:YES];
 }
 
 - (void)typeLetter:(NSTimer*)timer {
@@ -40,6 +40,10 @@
         [timer invalidate];
         self.typingIndex = 0;
     }
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+    return YES;
 }
 
 @end
