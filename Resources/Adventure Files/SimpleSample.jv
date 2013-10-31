@@ -17,7 +17,9 @@ Yolo: don't use this command.
 <Arrive>
 You'd rather run when you can't crawl...
 </Arrive>
-<Look alt=" woo!">I know
+<Look>Say woo! slender man
+Do it.</Look>
+<Look alt="    woo!" subject="[   doggy,  pie,    slender man]">I know
 you know
 that I'm not telling the TRUTH.</Look>
 <truth>I know

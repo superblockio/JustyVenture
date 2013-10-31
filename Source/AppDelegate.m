@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 #import "JustyVenture.h"
 
+@interface AppDelegate ()
+@property (nonatomic, strong) NSTimer *typingTimer;
+@end
+
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -28,16 +32,19 @@
 
 - (void)startTyping {
     self.typingIndex = 0;
-    [NSTimer scheduledTimerWithTimeInterval:1/26.0f target:self selector:@selector(typeLetter:) userInfo:nil repeats:YES];
+    if (self.typingTimer) {
+        [self.typingTimer invalidate];
+    }
+    self.typingTimer = [NSTimer scheduledTimerWithTimeInterval:1/26.0f target:self selector:@selector(typeLetter) userInfo:nil repeats:YES];
 }
 
-- (void)typeLetter:(NSTimer*)timer {
+- (void)typeLetter {
     self.typingIndex++;
     if (self.typingIndex <= self.currentOutput.length) {
         [self.questView.textView setStringValue:[self.currentOutput substringToIndex:self.typingIndex]];
     }
     else {
-        [timer invalidate];
+        [self.typingTimer invalidate];
         self.typingIndex = 0;
     }
 }

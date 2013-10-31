@@ -264,7 +264,16 @@ static JustyVenture *_sharedState;
 
 - (NSArray*)parseAttribute:(NSString*)attribute {
     // See if it's a list or just a single thing
-    attribute = [attribute stringByReplacingOccurrencesOfString:@" " withString:@""];
+    // (first, get rid of leading whitespace)
+    while ([[attribute substringWithRange:NSMakeRange(0, 1)] isEqualToString:@" "]) {
+        attribute = [attribute substringFromIndex:1];
+    }
+    while ([attribute rangeOfString:@"[ "].location != NSNotFound) {
+        attribute = [attribute stringByReplacingOccurrencesOfString:@"[ " withString:@"["];
+    }
+    while ([attribute rangeOfString:@", "].location != NSNotFound) {
+        attribute = [attribute stringByReplacingOccurrencesOfString:@", " withString:@","];
+    }
     if ([attribute length] < 1) {
         return [NSArray array];
     }
