@@ -214,6 +214,12 @@ static JustyVenture *_sharedState;
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     [self.currentTags removeLastObject];
     
+    // First, remove leading linebreak if there is one because that gunk is ill and we need to be able to have a new line
+    // in the XML for formatting reasons n stuff
+    if ([[self.currentElementBody substringToIndex:1] isEqualToString:@"\n"]) {
+        self.currentElementBody = [self.currentElementBody substringFromIndex:1];
+    }
+    
     // Use our context to figure out what to do with the body (text)
     
     // If this was one of the top-level elements (room, intro, commands, etc) treat it as such
