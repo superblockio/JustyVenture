@@ -33,7 +33,7 @@
         }
     }
     if (([self.subjects count] == 0 && subject == nil) ||
-        ([self.subjects count] == 1 && [[self.subjects objectAtIndex:1] isEqualToString:@"*"] && subject != nil)){
+        ([self.subjects count] == 1 && [[self.subjects objectAtIndex:0] isEqualToString:@"*"] && subject != nil)){
         respondsToSubject = YES;
     }
     else {

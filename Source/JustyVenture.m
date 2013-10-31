@@ -78,7 +78,7 @@ static JustyVenture *_sharedState;
     NSString *verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
     NSString *subject = nil;
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
-        subject = [input substringFromIndex:verb.length];
+        subject = [input substringFromIndex:verb.length + 1];
     }
     // For now, just check the room to see if there's a suitable command.
     Room *currentRoom = [self.rooms objectForKey:self.currentRoomName];
