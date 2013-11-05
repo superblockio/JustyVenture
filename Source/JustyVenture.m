@@ -97,7 +97,8 @@ static JustyVenture *_sharedState;
         }
     }
     
-    return @"Error: Invalid Command";
+    if (subject != nil && ![subject isEqual: @""])return [NSString stringWithFormat:@"You attempt to %@ the %@ but it-What's wrong with you!?  Why would even try such a thing?!  You need some serious HELP man.", verb, subject];
+    return @"What you say?! Type HELP if you need it.";
 }
 
 // Taken and modified from: http://stackoverflow.com/questions/5836587/how-do-i-get-all-resource-paths-in-my-bundle-recursively-in-ios
