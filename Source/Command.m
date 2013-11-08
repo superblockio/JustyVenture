@@ -32,8 +32,8 @@
             respondsToVerb = YES;
         }
     }
-    if (([self.subjects count] == 0 && subject == nil) ||
-        ([self.subjects count] == 1 && [[self.subjects objectAtIndex:0] isEqualToString:@"*"] && subject != nil)){
+    if (([self.subjects count] == 0 && [subject isEqualToString:@""]) ||
+        ([self.subjects count] == 1 && [[self.subjects objectAtIndex:0] isEqualToString:@"*"] && ![subject isEqualToString:@""])){
         respondsToSubject = YES;
     }
     else {

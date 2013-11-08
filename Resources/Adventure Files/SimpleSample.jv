@@ -86,7 +86,7 @@ There’s a crack here, but no door. The crack is totally shaped like a metal do
 </Go>
 
 <Fly subject="American Border">
-The helicopter takes off and heads towards what appears to be a giant mountain that’s totally been sitting on the border between the countries this whole time. Worried, you ask the pilot what’s going on, and he tells you that the oil in the helicopter needs changing, so he’s making a pit stop at the Jiffy Lube in this active volcano. Unable to escape you watch as the helicopter flies down into the volcano and lands. Getting out you look around, and see a yellow stripe down the center of the landing pad where the border is. Surprisingly enough there actually is a Jiffy Lube here on the Canadian side, and also a 7 Eleven on the American side.@go(VolcanoLanding);
+The helicopter takes off and heads towards what appears to be a giant mountain that’s totally been sitting on the border between the countries this whole time. Worried, you ask the pilot what’s going on, and he tells you that the oil in the helicopter needs changing, so he’s making a pit stop at the Jiffy Lube in this active volcano. Unable to escape you watch as the helicopter flies down into the volcano and lands. Getting out you look around, and see a yellow stripe down the center of the landing pad where the border is. Surprisingly enough there actually is a Jiffy Lube here on the Canadian side, and also a 7 Eleven on the American side.@go(VolcanoLanding, replace);
 </Fly>
 </Room>
 
@@ -235,10 +235,13 @@ You don’t have any Doritos, Einstein. You have to go get them first.
 You walk into the 7 Eleven and look around. There’s the most frail looking old man standing behind the counter, and the entire store seems to be empty other than a single bag of Doritos.  The air conditioning is running at full blast just to keep the place at a reasonable temperature and there’s a smell in the air that makes you wonder if anybody else has been in here for years.
 </Arrive>
 
+<Look>
+
+</Look>
+
 <Exit alt="leave">
 @go(VolcanoLanding);
 </Exit>
-</Room>
 
 <Buy alt="get" subject="Doritos">
 @go(VolcanoTakeoff);
@@ -251,8 +254,32 @@ You walk into the 7 Eleven and look around. There’s the most frail looking old
 You take the bag of Doritos to the front of the store and pay for them with the cash you have in your wallet.  You walk out of the door and the old man locks to door behind you and flips the open sign to closed.  With nothing left to sell there’s no reason to stay open I suppose.  You walk back over to the helicopter as the Jiffy Lube technicians finish up changing the oil and head back into the Jiffy Lube.
 </Arrive>
 
+<Look>
+You’re just standing off to the side on the helicopter landing pad as the pilot paces back and forth and the technicians replace the oil.  It looks about like your standard volcano in here, bubbling lava, shear walls to a little opening above, and Jiffy Lube in case your helicopter needs an oil change.  The yellow stripe marking the border is a bit different, but then again, there isn’t usually a 7 Eleven either.
+</Look>
+
+<Talk subject="pilot">
+Pilot: “I’ve been meaning to change my oil for a while, eh. I’ve been oot and aboot for so long that I haven’t gotten the chance to though.”
+
+He paces over the yellow line onto the American side.
+
+Pilot: “You c’n go get me a bag o’ Doritos from that 7 Eleven can’ ya?”
+
+He crosses back over into the Canadian side again.
+
+Pilot: “I don’t have any American money, so you’ll have to use some of your own, eh.”
+</Talk>
+
+<Go subject="7 Eleven">
+
+</Go>
+
+<Go subject="Jiffy Lube">
+You walk over to the Jiffy Lube, but there’s no door for customers to go in and out because it’s fitted up specifically to handle helicopters.  It’s basically just a shop with air conditioning and such for the workers to hang out in while they wait for a helicopter to change the oil in.  You see a couple people sitting at a table playing poker through a window, but you can’t go inside, so you walk back over to the helicopter.
+</Go>
+
 <Give subject="Doritos">
-You hand the bag of Doritos over to the pilot and he opens it and rubs some all over his skin, then tells you to get into the helicopter so you can go. The helicopter takes off and heads down the border towards the Baraffe base, where you find yourself descending into an identical secret base hole. It’s the same type of trapdoor and everything, the kind that just opens when it detects a helicopter. They must be popular among secret base enthusiasts. You make a mental note to tell your mission president about this so he can change our door to one that is less mainstream. You little hipster, you. You land and find yourself in a room that’s sort of cylindrical but bulges out halfway up and is brown with a slightly woodish texture.@go(BarrelBase);
+You hand the bag of Doritos over to the pilot and he opens it and rubs some all over his skin, then tells you to get into the helicopter so you can go. The helicopter takes off and heads down the border towards the Baraffe base, where you find yourself descending into an identical secret base hole. It’s the same type of trapdoor and everything, the kind that just opens when it detects a helicopter. They must be popular among secret base enthusiasts. You make a mental note to tell your mission president about this so he can change our door to one that is less mainstream. You little hipster, you. You land and find yourself in a room that’s sort of cylindrical but bulges out halfway up and is brown with a slightly woodish texture.@go(BarrelBase, replace);
 </Give>
 
 <Inventory alt="inv">
@@ -371,5 +398,4 @@ Regis: “Are you ready to start?” Possible choices are YES, NO, or UMM.
 Regis: “WRONG ANSWER! You get one million years dungeon.” Suddenly a trapdoor opens up behind you, and your seat whirls around and tilts, dumping you into the pit. You don’t remember this being part of the game show the barrels are trying so hard to imitate, but you don’t have long to think on this, as you hit your head against the hard stone floor of the dungeon and are knocked unconscious.
 </Arrive>
 </Room>
-
 </CameronVenture>

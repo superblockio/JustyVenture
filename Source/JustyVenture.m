@@ -79,7 +79,7 @@ static JustyVenture *_sharedState;
 
 - (NSString*)runUserInput:(NSString*)input {
     self.verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
-    self.subject = nil;
+    self.subject = @"";
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
         self.subject = [input substringFromIndex:self.verb.length + 1];
     }
@@ -100,7 +100,7 @@ static JustyVenture *_sharedState;
         }
     }
     
-    if (self.subject != nil && ![self.subject isEqual: @""])return [NSString stringWithFormat:@"You attempt to %@ the %@ but it-What's wrong with you!?  Why would even try such a thing?!  You need some serious HELP man.", self.verb, self.subject];
+    if (![self.subject isEqual: @""])return [NSString stringWithFormat:@"You attempt to %@ the %@ but it-What's wrong with you!?  Why would even try such a thing?!  You need some serious HELP man.", self.verb, self.subject];
     return @"What you say?! Type HELP if you need it.";
 }
 
