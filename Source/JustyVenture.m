@@ -35,6 +35,9 @@ typedef enum {
 @property (nonatomic, strong) NSMutableDictionary *variables;
 @property (nonatomic, strong) NSMutableDictionary *items;
 @property (nonatomic, strong) NSMutableArray *commands;
+    
+@property (nonatomic, strong) NSString *subject;
+@property (nonatomic, strong) NSString *verb;
 
 @end
 
@@ -75,16 +78,16 @@ static JustyVenture *_sharedState;
 }
 
 - (NSString*)runUserInput:(NSString*)input {
-    NSString *verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
-    NSString *subject = nil;
+    self.verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
+    self.subject = nil;
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
-        subject = [input substringFromIndex:verb.length + 1];
+        self.subject = [input substringFromIndex:self.verb.length + 1];
     }
     // First, look to see if the room can handle this shiz
     Room *currentRoom = [self.rooms objectForKey:self.currentRoomName];
     for (int i = 0; i < [currentRoom commands].count; i++) {
         Command *command = [[currentRoom commands] objectAtIndex:i];
-        if ([command respondsToVerb:verb subject:subject]) {
+        if ([command respondsToVerb:self.verb subject:self.subject]) {
             return [self JustinTimeInterpret:[command result]];
         }
     }
@@ -92,12 +95,12 @@ static JustyVenture *_sharedState;
     // Next, see if one of our fallback commands can handle it.
     for (int i = 0; i <self.commands.count; i++) {
         Command *command = [self.commands objectAtIndex:i];
-        if ([command respondsToVerb:verb subject:subject]) {
+        if ([command respondsToVerb:self.verb subject:self.subject]) {
             return [self JustinTimeInterpret:[command result]];
         }
     }
     
-    if (subject != nil && ![subject isEqual: @""])return [NSString stringWithFormat:@"You attempt to %@ the %@ but it-What's wrong with you!?  Why would even try such a thing?!  You need some serious HELP man.", verb, subject];
+    if (self.subject != nil && ![self.subject isEqual: @""])return [NSString stringWithFormat:@"You attempt to %@ the %@ but it-What's wrong with you!?  Why would even try such a thing?!  You need some serious HELP man.", self.verb, self.subject];
     return @"What you say?! Type HELP if you need it.";
 }
 
@@ -314,21 +317,62 @@ static JustyVenture *_sharedState;
 - (NSString*)JustinTimeInterpret:(NSString*)input {
     NSString *output = [input copy];
     
-    // HACK: just look for a go command and parse it for now!
+    // HACK: just look for go, verb, and subject for now!
+    output = [output stringByReplacingOccurrencesOfString:@"@verb;" withString:self.verb];
+    output = [output stringByReplacingOccurrencesOfString:@"@subject;" withString:self.subject];
+    
+    
     NSUInteger goLocation = [output rangeOfString:@"@go("].location;
     if (goLocation != NSNotFound) {
-        NSUInteger endLocation = [[output substringFromIndex:goLocation] rangeOfString:@");"].location;
-        NSString *roomName = [output substringWithRange:NSMakeRange(goLocation + 4, endLocation - (goLocation + 4))];
-        self.currentRoomName = roomName;
+        NSUInteger endLocation = [output rangeOfString:@");"].location;
+        NSString *args = [output substringWithRange:NSMakeRange(goLocation + 4, endLocation - goLocation - 4)];
+        NSArray *argsList = [args componentsSeparatedByString:@","];
+        JVIntroType type = JVIntroTypeReplace;
+        if (argsList.count > 0) {
+            self.currentRoomName = [argsList objectAtIndex:0];
+        }
+        if (argsList.count > 1) {
+            NSString *typeStr = [argsList objectAtIndex:1];
+            typeStr = [typeStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+            if ([typeStr isEqualToString:@"append"]) {
+                type = JVIntroTypeAppend;
+            }
+            else if ([typeStr isEqualToString:@"replace"]) {
+                type = JVIntroTypeReplace;
+            }
+            else if ([typeStr isEqualToString:@"ignore"]) {
+                type = JVIntroTypeIgnore;
+            }
+        }
+        
+        NSString *arriveText = @"";
         // Find the arrive command for this room
         NSArray *commands = [[self.rooms objectForKey:self.currentRoomName] commands];
         for (int i = 0; i < commands.count; i++) {
             Command *command = [commands objectAtIndex:i];
             if ([command respondsToInternalName:@"arrive"]) {
-                return [command result];
+                arriveText = [command result];
             }
         }
         
+        // Do the right thing based on mode
+        NSString *goCommand = @"";
+        if (output.length > endLocation + 2 && [output characterAtIndex:endLocation + 2] == '\n') {
+            goCommand = [output substringWithRange:NSMakeRange(goLocation, endLocation - goLocation + 3)];
+        }
+        else {
+            goCommand = [output substringWithRange:NSMakeRange(goLocation, endLocation - goLocation + 2)];
+        }
+        NSString *processedOutput = [output stringByReplacingOccurrencesOfString:goCommand withString:@""];
+        if (type == JVIntroTypeIgnore) {
+            return processedOutput;
+        }
+        else if (type == JVIntroTypeAppend) {
+            return [processedOutput stringByAppendingString:arriveText];
+        }
+        else {
+            return arriveText;
+        }
     }
     
     return output;

@@ -35,11 +35,10 @@
     if (self.typingTimer) {
         [self.typingTimer invalidate];
     }
-    self.typingTimer = [NSTimer scheduledTimerWithTimeInterval:1/26.0f target:self selector:@selector(typeLetter) userInfo:nil repeats:YES];
+    self.typingTimer = [NSTimer scheduledTimerWithTimeInterval:1/32.0f target:self selector:@selector(typeLetter) userInfo:nil repeats:YES];
 }
 
 - (void)typeLetter {
-    self.typingIndex++;
     if (self.typingIndex <= self.currentOutput.length) {
         [self.questView.textView setStringValue:[self.currentOutput substringToIndex:self.typingIndex]];
     }
@@ -47,6 +46,7 @@
         [self.typingTimer invalidate];
         self.typingIndex = 0;
     }
+    self.typingIndex++;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {

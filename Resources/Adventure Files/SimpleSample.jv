@@ -1,39 +1,375 @@
-<JustyVenture>
-<Intro firstRoom="FirstRoom" type="append">In between the lines there's a lot of obscurity, I'm not inclined to resign to maturity.
-If it's alright,
-then you're all wrong.
-
-Why bounce around to the same dan song?
-</Intro>
+<CameronVenture>
 <Commands>
-<help>
-The following commands are commonly used in our game:
-Look: looks at stuff. Try looking at specific objects that you don't trust.
-Go: go to one of the adjacent exits.
-Yolo: don't use this command.
-</help>
+<Help>
+Why are you asking for help? They spent two years training you while faking your LDS mission so they could send you on these missions! You already know everything you need to know!
+</Help>
+<Clubbing alt="spike" subject="[clubbing, spike]">
+Wow Cameron, I’m extremely surprised you thought to try this, seeing as its a reference to something from a fandom you’re not a part of.
+</Clubbing>
+<Talk>
+You talk to yourself out loud for a minute before you decide it’s not helping anything.
+</Talk>
+<Talk subject="*">
+There’s nobody like that around here.
+</Talk>
+<Look>
+What in the world are you even trying to look at anyway?
+</Look>
+<Look subject="*">
+I don’t even know what you’re referring to here.
+</Look>
+<Go>
+You can’t go anywhere if you don’t even specify a place to go.
+</Go>
+<Go subject="*">
+That place doesn’t seem to exist.  In fact I’m pretty sure you made it just now.
+</Go>
+<Inventory alt="inv">
+Your inventory is completely empty.
+</Inventory>
+<Secret subject="tunnels">
+Are you secretly here?
+Yes
+Õ_Õ  There’s a green cursor near the top of the document.  I’m pretty sure we’re being watched.
+It’s the NSA, I invited them to view this document, not that they need an invitation.
+So why aren’t they listed at the top then?
+Because vampire
+Where are you even at?
+I’m home now
+Then why aren’t you in the group chat?
+Your FACE needs progress.
+Okay, what’s next?
+</Secret>
 </Commands>
 
-<Room name="FirstRoom">
+<Intro firstRoom="SecretBase" type="replace">
+You find yourself once again dozing off in your Survey of Jazz class, waiting for it to end so you can get home and do fun things, when you hear a faint vibration in your backpack. Knowing this can only mean one thing, you discretely unzip the secret compartment and whip out your HTC One. As expected, there’s a text from none other than your mission president. He informs you that a situation has arisen and your skills are needed. You hastily make your way to the nearest bathroom and push the secret button. By some extremely cool looking process that we’re too lazy to describe you end up in a fancy car speeding down a tunnel to the secret rendevous point where you get in a helicopter. You buckle up, nod to the pilot, and the two of you whimsically fly over to the church’s secret base just inside Canada’s border, where a trapdoor opens up and you descend inside. You exit the chopper and are greeted by two men.
+</Intro>
+
+
+
+<Room name="SecretBase">
 <Arrive>
-You'd rather run when you can't crawl...
+You arrive back at the entrance to the base. The helicopter is still there, being caressed by the pilot in a loving and ever so slightly creepy fashion. At least we know it’s appreciated. It’s a pretty great helicopter after all. It even has a cup holder and dock for the HTC One. To the EAST and WEST are hallways and the briefing room is to the NORTH.  The south is racist, so we don’t talk about them. The two men who initially greeted you run over to gesture you to the NORTH again. You explain to them that you already spoke to the mission president, but they don’t seem to understand. It’s as if they only existed for that moment when they initially gestured you into the briefing room, and are incapable of performing any other function.
 </Arrive>
-<Look>Say woo! slender man
-Do it.</Look>
-<Look alt="    woo!" subject="[   doggy,  pie,    slender man]">I know
-you know
-that I'm not telling the TRUTH.</Look>
-<truth>I know
-you know
-they just don't have any PROOF.</truth>
-<proof>Embrace the deception, learn how to bend, your worst inhibitions tend to PSYCH you out in the end!</proof>
-<psych>Pineapples!</psych>
-<go>@go(FluffyRoom);</go>
+
+<Look>
+You are in a fairly bare cylindrical cement room housing a couple helicopters and boxes of various components used in helicopter maintenance. It has an aperture-like steel roof that opens up when a helicopter takes off or lands. There are small piles of snow peppering the area from when the roof was opened, which are slowly melting and flowing into a drain. To the EAST and WEST lie hallways behind inviting wooden doors, and there are metal doors to the NORTH and SOUTH. There are two men dressed in suits who gesture you to the NORTH room.
+</Look>
+
+<Look subject="[men, two men, guards]">
+Upon actually looking at them you see that they’re actually mimes, and it makes sense now why they won’t say a word to you.  You’d think you’d notice that when you talk to them, but then again you are a spy, and spies don’t look at people they talk to unless they’re the villain or an attractive young woman.
+</Look>
+
+<Look subject="[bowl, dog bowl, feeding dish, dish]">
+Interestingly enough there appears to be some sort of food dish in the corner with the name Lewis on it.
+</Look>
+
+<Talk subject="[men, two men, guards]">
+Your attempts to talk to the men are completely futile, and the helicopter pilot looks at you like you’re crazy.
+</Talk>
+
+<Go subject="north">
+@go(BriefingRoom);
+</Go>
+
+<Go subject="west">
+@go(WestHall);
+</Go>
+
+<Go subject="east">
+You walk up to the door and try to get through but it’s locked. A sign reads “Level 7 Clearance required beyond this point” and a little scanner is next to the door. You swipe your library card in front of it just in case, but still nothing.
+</Go>
+
+<Go subject="south">
+There’s a crack here, but no door. The crack is totally shaped like a metal door and we didn’t do a terrible job of describing the room at all. Okay, maybe it doesn’t /look/ like a metal door, but it sounds like one! Yes, this crack makes noises. Keeps going on about Prisoner Zero or some such nonsense. In a metal door like way of course. &lt;.&lt; &gt;.&gt;
+</Go>
+
+<Fly subject="American Border">
+The helicopter takes off and heads towards what appears to be a giant mountain that’s totally been sitting on the border between the countries this whole time. Worried, you ask the pilot what’s going on, and he tells you that the oil in the helicopter needs changing, so he’s making a pit stop at the Jiffy Lube in this active volcano. Unable to escape you watch as the helicopter flies down into the volcano and lands. Getting out you look around, and see a yellow stripe down the center of the landing pad where the border is. Surprisingly enough there actually is a Jiffy Lube here on the Canadian side, and also a 7 Eleven on the American side.@go(VolcanoLanding);
+</Fly>
 </Room>
 
-<room name="FluffyRoom">
-<arrive>
-You have arrived at the fluffy room! It's got very plushy carpet!
-</arrive>
-</room>
-</JustyVenture>
+
+<Room name="BriefingRoom">
+<Arrive>
+You walk through the door and find yourself in a warmly lit office adorned with various pleasantries such as a wooden desk with a candy jar and family photos, cushy chairs, and church presidency photos and inspirational quotes and such on the walls. This stands in (tony) stark contrast to the bare concrete entrance of the building. The mission president welcomes you in, offers you a seat, and begins the meeting with a prayer. He then briefs you on the situation. It seems that a global crime syndicate known as the Cult of Baraffe has made off with Canada’s entire supply of maple syrup to use as part of their heinous worship rituals. Knowing that you’re Canada’s finest, and needing this to stay strictly confidential, he’s entrusting you to bring down Baraffe and return the maple syrup safe and sound.
+</Arrive>
+
+<Look>
+This is a nice dang office. The walls have a nice, umm... churchy... tone to them. Yeah, that’s it… churchy... Anyway, there are paintings of the First Presidency on the walls along with various framed church documents and maps and the like. The wooden desk has a jar full of Milky Ways, Reese's, Hersheys, Star Burst, you name it. It always strikes you as odd that he’s hung up all his church stuff in his spy office, but perhaps it makes it easier to take fewer trips between locations. Curiously there appears to be natural-looking light coming through the CURTAINS on the wall. You can get back to the main hanger through the SOUTH door.
+</Look>
+
+<Look subject="curtains">
+Mish Prez: “You like them? I just had them installed the other day, eh. Don’t worry, that’s not real sunlight, it’s our original invention blunlight. I figured it would be nice if this place didn’t feel like a dungeon given how much time I’ve been spending here lately, eh.”
+
+Evidently being a mission president and a spy commander takes its toll , it’s probably all the rushing back and forth between offices.
+</Look>
+
+<Talk subject="[mission president, president]">
+Mish Prez: “You heard the ridiculous monologue while entering the room! Now get to it, eh!”
+</Talk>
+
+<Go subject="south">
+@go(SecretBase);
+</Go>
+
+<Leave alt="exit">
+@go(SecretBase);
+</Leave>
+</Room>
+
+
+<Room name="WestHall">
+<Arrive>
+You are now in the long western hallway, which is known as the R&amp;D wing of the secret base. It contains many different rooms, all of which are locked electronically. However, your library card I mean secret agent keycard grants you access to the LOCKER ROOM, TECH LAB 7, and the BREAK ROOM.
+</Arrive>
+
+<Look>
+It’s a long cement hallway with dozens of rooms. Your keycard that totally isn’t just your library card grants you access to the LOCKER ROOM, TECH LAB 7, and the BREAK ROOM. You can also get back to the main hanger to the EAST.
+</Look>
+
+<Go subject="locker room">
+@go(LockerRoom);
+</Go>
+<Go subject="[tech lab, tech lab 7]">
+@go(TechLab7);
+</Go>
+<Go subject="break room">
+It appears that the key card reader has been replaced by a Nintendo E-Reader. Jerry and Tom from accounting must be up to their antics again. Also, your card doesn’t work. Maybe if you had some Pokémon cards handy...
+</Go>
+<Go subject="[tech lab 1, tech lab 2, tech lab 3, tech lab 4, tech lab 5, tech lab 6]">
+Nope, there’s only ever been tech lab 7. The other rooms leading up to it are mostly janitor’s closets and top secret rooms, and the occasional top secret janitor’s closet. I guess the name tech lab 7 is only to make this place sound like a bigger operation than it really is.
+</Go>
+</Room>
+
+<Room name="TechLab7">
+<Arrive>
+You enter a room filled to the brim with electrical equipment and gadgets, set out on tables and lining every wall, even hanging from the ceiling in some places.  The most nerdy guy ever sees you and pulls you over to the tables and tables of sweet sweet gadgets that you hope you’ll get to use in this mission. He’s clearly the tech specialist the Canadian government keeps here to create spy gadgets.  He’s kind of like the base pet, they leave a food bowl for him in the main room, although it’s hard to tell how he feels about this.
+</Arrive>
+
+<Look>
+Looking around you see all the same things as when you walked in, except from a slightly different perspective on account of being pulled over to the tables by the tech specialist, none of which is even remotely important to the narrative. He appears eager to talk to you about your mission.  A bit too eager if you ask me, as there appears to be something liquid running down his leg.  We’ll give him the benefit of the doubt and hope it’s just blood. The door leading back to the HALLWAY is behind you.
+</Look>
+
+<Talk subject="[tech specialist, specialist, Lewis]">
+Techman Jones: “We’re using our totally real and not at all made-up equipment to search for the maple syrup on an atomic level. So far, I’ve been able to narrow down the syrup’s location to somewhere in the Northern Americas. I’ll notify you on the intercom once I have a specific location. For now, go and get your basic equipment, which is still in your locker, but also we’ve upgraded all of our phones to the HTC Two, which also functions as a screwdriver and a pocket knife, and even comes with a toothpick compartment.”
+</Talk>
+
+<Talk subject="[Jones, Techman Jones]">
+You call out Jones but nobody seems to respond to the name. What gave you the idea that there was anyone named Jones here anyway? Jones isn’t anything but a great game that you should totally be playing with Justin and Nathan all the time!
+</Talk>
+
+<Go subject="[back, out, door, hall, hallway, west hall]">
+@go(WestHall);
+</Go>
+
+<Exit alt="leave">
+@go(WestHall);
+</Exit>
+</Room>
+
+
+<Room name="LockerRoom">
+<Arrive>
+You arrive in the locker room. There are lockers, and not much else. Well there is a disco ball duct taped to the ceiling, but that probably won’t be of much use. Apparently Canadian secret agents get bored sometimes. Probably because their missions consist mainly of apologizing to bad guys and politely asking them to stop being evil. You’d be surprised at how often that works.  At least in Canada.
+</Arrive>
+
+<Look>
+You don’t see why anyone thought a disco ball in this room was a good idea. The room is too well-lit for the light reflecting off the disco ball to make you want to party. Anyway, there’s a few rows of greenish… blueish… cyan? hmm… Anyway, that color, of lockers. One LOCKER has your name on it. You should probably OPEN it if you haven’t already. You can also GO back to the HALLWAY. Some WORDS are in ALL CAPS for EMPHASIS.
+</Look>
+
+<Open subject="locker">
+You open up your locker and equip your “spy” outfit. You look in the mirror, straighten your bowtie, and comb your hair back. “Bowties are cool” you tell yourself. You hear the ping from your intercom and tap the button to hear the location.
+
+Techtite: “Cameron, we’ve got a fix on the location of the missing syrup, eh. Turns out it’s just inside the American border, approximately 300 feet south from our current location! Convenient, eh? I’ve briefed your pilot on the situation, just tell him to FLY AMERICAN BORDER and he’ll take you there. Good luck, eh!”
+</Open>
+
+<Go subject="[back, out, door, hall, hallway, west hall]">
+@go(WestHall);
+</Go>
+
+<Exit alt="leave">
+@go(WestHall);
+</Exit>
+</Room>
+
+
+<Room name="VolcanoLanding">
+<Arrive>
+You walk out of the 7 Eleven and walk back over to the landing pad a little ways away.  Everything is how you left it, unsurprisingly, seeing as all you did was walk into a 7 Eleven and back out again. The helicopter pilot keeps pacing back and forth across the line while Jiffy Lube technicians replace the oil in the helicopter.
+</Arrive>
+
+<Look>
+You’re just standing off to the side on the helicopter landing pad as the pilot paces back and forth and the technicians replace the oil.  It looks about like your standard volcano in here, bubbling lava, shear walls to a little opening above, and Jiffy Lube in case your helicopter needs an oil change.  The yellow stripe marking the border is a bit different, but then again, there isn’t usually a 7 Eleven either.
+</Look>
+
+<Talk subject="pilot">
+Pilot: “I’ve been meaning to change my oil for a while, eh. I’ve been oot and aboot for so long that I haven’t gotten the chance to though.”
+
+He paces over the yellow line onto the American side.
+
+Pilot: “You c’n go get me a bag o’ Doritos from that 7 Eleven can’ ya?”
+
+He crosses back over into the Canadian side again.
+
+Pilot: “I don’t have any American money, so you’ll have to use some of your own, eh.”
+</Talk>
+
+<Go subject="7 Eleven">
+@go(7Eleven);
+</Go>
+
+<Go subject="Jiffy Lube">
+You walk over to the Jiffy Lube, but there’s no door for customers to go in and out because it’s fitted up specifically to handle helicopters.  It’s basically just a shop with air conditioning and such for the workers to hang out in while they wait for a helicopter to change the oil in.  You see a couple people sitting at a table playing poker through a window, but you can’t go inside, so you walk back over to the helicopter.
+</Go>
+
+<Give subject="Doritos">
+You don’t have any Doritos, Einstein. You have to go get them first.
+</Give>
+</Room>
+
+
+<Room name="7Eleven">
+<Arrive>
+You walk into the 7 Eleven and look around. There’s the most frail looking old man standing behind the counter, and the entire store seems to be empty other than a single bag of Doritos.  The air conditioning is running at full blast just to keep the place at a reasonable temperature and there’s a smell in the air that makes you wonder if anybody else has been in here for years.
+</Arrive>
+
+<Exit alt="leave">
+@go(VolcanoLanding);
+</Exit>
+</Room>
+
+<Buy alt="get" subject="Doritos">
+@go(VolcanoTakeoff);
+</Buy>
+</Room>
+
+
+<Room name="VolcanoTakeOff">
+<Arrive>
+You take the bag of Doritos to the front of the store and pay for them with the cash you have in your wallet.  You walk out of the door and the old man locks to door behind you and flips the open sign to closed.  With nothing left to sell there’s no reason to stay open I suppose.  You walk back over to the helicopter as the Jiffy Lube technicians finish up changing the oil and head back into the Jiffy Lube.
+</Arrive>
+
+<Give subject="Doritos">
+You hand the bag of Doritos over to the pilot and he opens it and rubs some all over his skin, then tells you to get into the helicopter so you can go. The helicopter takes off and heads down the border towards the Baraffe base, where you find yourself descending into an identical secret base hole. It’s the same type of trapdoor and everything, the kind that just opens when it detects a helicopter. They must be popular among secret base enthusiasts. You make a mental note to tell your mission president about this so he can change our door to one that is less mainstream. You little hipster, you. You land and find yourself in a room that’s sort of cylindrical but bulges out halfway up and is brown with a slightly woodish texture.@go(BarrelBase);
+</Give>
+
+<Inventory alt="inv">
+You’re holding a bag of Doritos in your hand.
+</Inventory>
+</Room>
+
+
+<Room name="BarrelBase">
+<Arrive>
+You walk back out of the hallway into the landing chamber, looking just the same as when you left it with the metal door to the NORTH and the wood door to the WEST. The pilot is sitting in the helicopter watching you and waiting for you to find the syrup so he can fly you out of here, and the other helicopters remain where they were, untouched while you were gone.
+</Arrive>
+
+<Look>
+You don’t see any enemies around. At the very least, it doesn’t appear that your arrival alerted anyone inside the base. However, you do see a couple other helicopters, which fills you with a sense of foreboding. Unlike our Canadian secret base, there are only two rooms, one to the WEST with an inviting wooden door, and one to the NORTH with a strong metal door.
+</Look>
+
+<Go subject="west">
+@go(StatueHall);
+</Go>
+
+<Go subject="north">
+You reach for the doorknob but the door is locked. You hear a mysterious voice coming from the other side of the door. “Welcome brother, to the Cult of Baraffe. Only those who know the secret handshake may enter.”
+</Go>
+
+<Secret subject="handshake">
+“Wrong! You’re clearly an imposter! Guards! Place him in the holding cell! That’s what I’d say if this base had more rooms and one of them was a holding cell. Also, I’m the only guard here and am kind of lazy. I’d totally chain you to the wall or something, but they barely pay me enough to open this door, let alone chase people around. But consider this a warning. Now scram!” It appears that the statue supplied you with a fake secret password.
+</Secret>
+
+<Secret subject="blandshake">
+@go(GameshowEntrance);
+</Secret>
+</Room>
+
+
+<Room name="StatueHall">
+<Arrive>
+You walk through the door and find yourself in a small, ornate hallway. It doesn’t lead to any rooms, but there are several paintings, pedestals with busts of important-looking people on top of them, and a steel suit-of-armor style knight statue.
+</Arrive>
+
+<Look>
+It is a dimly-lit hallway lined with paintings, pedestals, and a steel knight statue. At the far end is a precious-looking blue vase on top of a small wooden table. The main hangar is back EAST.
+</Look>
+
+<Look subject="[statue, knight, knight statue, suit of armor]">
+You examine the knight statue. Its hands rest on the handle of a very real-looking sword, which is pointing down such that it cuts slightly into the raised platform the knight is standing on. This statue makes you feel very uneasy, like that it may suddenly come to life if you tried talking to it.
+</Look>
+
+<Talk subject="[statue, knight, knight statue, suit of armor]">
+The statue suddenly comes to life. You immediately dart for the exit, yelling “NOPE NOPE NOPE”, but the door closes, trapping you in the room. The knight, speaking in a low voice, utters something in a language you don’t understand. You scramble to pick the door lock, no use. The knight approaches you, again uttering what you can only guess is an ancient curse of some kind. Finally, accepting that you have met your match and preparing for the worst, you turn to face the statue, and it speaks to you yet again. This time, you can hear that it is actually speaking English, just in a thick Jamaican accent. “I heard you want to know the secret handshake, mon. I can teach it to you. All you gotta do is hold up your hand and yell SECRET HANDSHAKE. That’s all there is to it, doncha trust me mon?”
+</Talk>
+
+<I subject="[don’t trust you!, don’t trust you]">
+You shout at the statue “I DON’T TRUST YOU!” and rip its head off, causing the rest of the statue to tumble to the ground with a loud clang. The head that you now hold in your hand says “Okay okay, you’ve outsmarted me, mon! I’ll tell you the real secret handshake. It’s their original handshake, blandshake! All you have to do is hold up your hand and yell SECRET BLANDSHAKE, mon.” The statue then spontaneously reassembles itself on its raised platform, its head flying out of your hands and back onto the torso, and it goes silent as if nothing had happened.
+</I>
+
+<No>
+You shout at the statue “I DON’T TRUST YOU!” and rip its head off, causing the rest of the statue to tumble to the ground with a loud clang. The head that you now hold in your hand says “Okay okay, you’ve outsmarted me, mon! I’ll tell you the real secret handshake. It’s their original handshake, blandshake! All you have to do is hold up your hand and yell SECRET BLANDSHAKE, mon.” The statue then spontaneously reassembles itself on its raised platform, its head flying out of your hands and back onto the torso, and it goes silent as if nothing had happened.
+</No>
+
+<Go subject="EAST">
+@go(BarrelBase);
+</Go>
+</Room>
+
+<Room name="GameshowEntrance">
+<Arrive>
+You do the secret handshake, which doesn’t even make sense because the guard was behind the solid metal door and thus couldn’t shake your hand. It’s more of a secret passcode, you think to yourself. Nevertheless, the door opens up, revealing what can only be called a cave-like janitor’s closet. The walls, ceiling, and floor are made of rugged stone, the floor is slightly damp in places, and there’s a supply SHELF on your left side and a BROOM leaning against a BARREL on the right. You don’t see anyone in here, which you find odd seeing as a guard was talking to you just moments ago, and how he must’ve been the one who opened the door. You also find it odd that such a place would require a secret “blandshake” in order to enter. As you mull this over in your mind, and consider the possibility that there never was a guard and you are simply losing your mind, the door slams behind you, leaving you in complete darkness.
+</Arrive>
+
+<Look>
+You are in a pitch-black janitor’s closet and can’t see a thing. Luckily, you have your trusty HTC One, and you use the flashlight app to illuminate the ground in front of you. However, your flashlight has a fairly narrow field of view, so you can only see things that you LOOK directly at. Luckily, you remember everything of interest in this room… right?
+</Look>
+
+<Look subject="broom">
+The broom is leaning against a suspicious looking BARREL.
+</Look>
+
+<Look alt="talk" subject="barrel">
+You shine your flashlight right at the barrel and you swear you see it move. Not trusting it, you yell “BARRELS!!!” at which the barrel jumps an inch from the ground, and then replies “Alright, you caught me! I’ll talk! This room has a secret exit! All I know is that it has something to do with that supply SHELF! Between you and me, why does everyone feel the need to capitalize certain words?”
+</Look>
+
+<Look subject="[shelf, supply shelf]">
+You shine your light on the supply shelf. It’s a wooden shelf, mounted right onto the cave wall by some heavy-duty screws. On it are some fairly standard supplies. Some toilet paper, some cleaning spray, a secret button, some paper towels. You know, all the essentials. Nothing suspicious here.
+</Look>
+
+<Look subject="[button, secret button]">
+There’s a red button on the underside of this shelf. It looks like there’s a wire running from it up the wall, to the ceiling. You should totally PRESS it, I bet it won’t cause the ceiling to cave in. I mean, who would have a button in their janitor’s closet for making the ceiling cave in, amirite?
+</Look>
+
+<Press subject="[button, secret button]">
+@go(Gameshow0);
+</Press>
+</Room>
+
+<Room name="Gameshow0">
+<Arrive>
+You press the secret button. Suddenly, a large portion of the far wall slides into the ground with a loud “thump”. Light pours in behind it, revealing a brightly lit stage area, with two seats on opposite sides, and computer screens at each seat. You hear cheering as you walk onto the stage, and a voice that sounds suspiciously like Regis Philbin announces “WELCOME Ladies and Gentlebarrels, to Who Wants To Be A Barrelnaire! Please give a warm round of applause to tonight’s contestant, Cameron Ottley!” More cheering ensues. As your eyes adjust to the bright light, you look in the direction of the cheering, only to see bleachers filled with hundreds of barrels jumping up and down.
+
+You turn to the host, who appears to be a barrel wearing a large Donkey Kong tie which is just barely big enough to stretch around it and form a tie knot with the letters “DK” visible underneath. “Well Cameron, are you ready for your first question?” he asks, as you take your seat opposite from his. Possible choices are YES, NO, or UMM.
+</Arrive>
+<Look>
+The whole setup here seems to imitate the look of “Who Wants To Be A Millionaire?” fairly well, except for the host and audience being composed solely of barrels, and the fact that this whole thing is inside a weird cave place with stalagmites and stalagtites, a couple of the larger ones causing a gap between the bleachers.
+Regis: “Are you ready to start?” Possible choices are YES, NO, or UMM.
+</Look>
+<Yes alt="umm">
+@go(Gameshow1);
+</Yes>
+<No>
+@go(MillionYearsDungeon);
+</No>
+</Room>
+
+<Room name="MillionYearsDungeon">
+<Arrive>
+Regis: “WRONG ANSWER! You get one million years dungeon.” Suddenly a trapdoor opens up behind you, and your seat whirls around and tilts, dumping you into the pit. You don’t remember this being part of the game show the barrels are trying so hard to imitate, but you don’t have long to think on this, as you hit your head against the hard stone floor of the dungeon and are knocked unconscious.
+</Arrive>
+</Room>
+
+</CameronVenture>
