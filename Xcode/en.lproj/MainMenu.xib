@@ -1312,7 +1312,7 @@
 			<object class="NSWindowTemplate" id="546643199">
 				<int key="NSWindowStyleMask">263</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{297, 102}, {583, 446}}</string>
+				<string key="NSWindowRect">{{297, 102}, {583, 448}}</string>
 				<int key="NSWTFlags">1954021376</int>
 				<string key="NSWindowTitle">JustyVenture</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -1325,7 +1325,7 @@
 						<object class="NSTextField" id="945387856">
 							<reference key="NSNextResponder" ref="49439174"/>
 							<int key="NSvFlags">301</int>
-							<string key="NSFrame">{{20, 20}, {543, 30}}</string>
+							<string key="NSFrame">{{20, 22}, {543, 30}}</string>
 							<reference key="NSSuperview" ref="49439174"/>
 							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
@@ -1408,7 +1408,7 @@
 							<int key="NSTextFieldAlignmentRectInsetsVersion">1</int>
 						</object>
 					</array>
-					<string key="NSFrameSize">{583, 446}</string>
+					<string key="NSFrameSize">{583, 448}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 				</object>
