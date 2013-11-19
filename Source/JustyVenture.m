@@ -324,7 +324,7 @@ static JustyVenture *_sharedState;
     
     NSUInteger promptLocation = [output rangeOfString:@"@prompt("].location;
     if (promptLocation != NSNotFound) {
-        NSUInteger endLocation = [output rangeOfString:@");"].location;
+        NSUInteger endLocation = [[output substringFromIndex:promptLocation] rangeOfString:@");"].location + promptLocation;
         self.promptText = [output substringWithRange:NSMakeRange(promptLocation + 8, endLocation - promptLocation - 8)];
         
         // Do the right thing based on mode
