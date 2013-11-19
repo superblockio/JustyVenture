@@ -336,7 +336,6 @@ static JustyVenture *_sharedState;
         NSUInteger endLocation = [[output substringFromIndex:promptLocation] rangeOfString:@");"].location + promptLocation;
         self.promptText = [output substringWithRange:NSMakeRange(promptLocation + 8, endLocation - promptLocation - 8)];
         
-        // Do the right thing based on mode
         NSString *promptCommand = @"";
         if (output.length > endLocation + 2 && [output characterAtIndex:endLocation + 2] == '\n') {
             promptCommand = [output substringWithRange:NSMakeRange(promptLocation, endLocation - promptLocation + 3)];
