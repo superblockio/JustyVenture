@@ -20,6 +20,7 @@
 @property (nonatomic, readonly) NSMutableArray *commands;
 @property (nonatomic, strong) NSString *introText;
 @property (nonatomic, strong) NSString *promptText;
+@property (nonatomic, strong) NSString *adventureTitle;
 
 // This is where all the magic happens
 - (NSString*)runUserInput:(NSString*)input;

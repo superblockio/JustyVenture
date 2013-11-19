@@ -38,6 +38,7 @@ typedef enum {
     
 @property (nonatomic, strong) NSString *subject;
 @property (nonatomic, strong) NSString *verb;
+@property (nonatomic, assign) BOOL firstTag;
 
 @end
 
@@ -61,6 +62,7 @@ static JustyVenture *_sharedState;
         self.variables = [[NSMutableDictionary alloc] init];
         self.items = [[NSMutableDictionary alloc] init];
         self.commands = [[NSMutableArray alloc] init];
+        self.adventureTitle = @"Adventure!";
         [self parseAdventureFiles];
     }
     return self;
@@ -170,6 +172,13 @@ static JustyVenture *_sharedState;
             }
             else {
                 NSLog(@"XML Error: Intro tag does not contain firstRoom attribute!");
+            }
+        }
+        
+        // If this is the outmost tag, use its name attribute to define the name of the app
+        else if ([elementName caseInsensitiveCompare:@"Adventure"] == NSOrderedSame) {
+            if ([attributeDict objectForKey:@"name"] != nil) {
+                self.adventureTitle = [attributeDict objectForKey:@"name"];
             }
         }
     }

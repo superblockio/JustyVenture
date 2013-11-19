@@ -20,6 +20,7 @@
     self.questView.delegate = self;
     self.questView.whatWouldstThouDeauField.stringValue = @"What wouldst thou deau?";
     self.currentOutput = [[JustyVenture mainVenture] introText];
+    self.window.title = [[JustyVenture mainVenture] adventureTitle];
     [self startTyping];
 }
 

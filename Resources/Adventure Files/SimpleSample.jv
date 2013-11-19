@@ -1,9 +1,10 @@
-<JustyVenture>
+<Adventure name="SampleVenture">
 <Intro firstRoom="FirstRoom" type="append">In between the lines there's a lot of obscurity, I'm not inclined to resign to maturity.
 If it's alright,
 then you're all wrong.
 
 Why bounce around to the same down song?
+I'm telling you Chad, it doesn't say down.
 </Intro>
 <Commands>
 <Help>
@@ -26,7 +27,7 @@ You'd rather run when you can't crawl...
 </Arrive>
 <Look>Say woo! slender man
 Do it.</Look>
-<Look alt="    woo!" subject="[   doggy,  pie,    slender man]">I know
+<Look alt="    woo!" subject="[   doggy,  pie, doggy pile,   slender man]">I know
 you know
 that I'm not telling the TRUTH.</Look>
 <Truth>I know
@@ -54,4 +55,4 @@ Woo!
 Fix it!
 </No>
 </Room>
-</JustyVenture>
+</Adventure>
