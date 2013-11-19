@@ -25,7 +25,8 @@
 
 - (void)textWasEntered:(NSString *)input {
     if (input && [input length] > 0) {
-        self.currentOutput = [[JustyVenture mainVenture] runUserInput:input];
+        self.questView.whatWouldstThouDeauField.stringValue = [[JustyVenture mainVenture] runUserInput:input prompt:TRUE];
+        self.currentOutput = [[JustyVenture mainVenture] runUserInput:input prompt:FALSE];
         [self startTyping];
     }
 }

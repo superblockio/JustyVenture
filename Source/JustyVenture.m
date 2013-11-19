@@ -77,7 +77,7 @@ static JustyVenture *_sharedState;
     }
 }
 
-- (NSString*)runUserInput:(NSString*)input {
+- (NSString*)runUserInput:(NSString*)input prompt:(BOOL)prompt {
     self.verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
     self.subject = @"";
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
@@ -88,7 +88,7 @@ static JustyVenture *_sharedState;
     for (int i = 0; i < [currentRoom commands].count; i++) {
         Command *command = [[currentRoom commands] objectAtIndex:i];
         if ([command respondsToVerb:self.verb subject:self.subject]) {
-            return [self JustinTimeInterpret:[command result]];
+            return [self JustinTimeInterpret:[command result] prompt:prompt];
         }
     }
     
@@ -96,7 +96,7 @@ static JustyVenture *_sharedState;
     for (int i = 0; i <self.commands.count; i++) {
         Command *command = [self.commands objectAtIndex:i];
         if ([command respondsToVerb:self.verb subject:self.subject]) {
-            return [self JustinTimeInterpret:[command result]];
+            return [self JustinTimeInterpret:[command result] prompt:prompt];
         }
     }
     
@@ -314,13 +314,40 @@ static JustyVenture *_sharedState;
     return JVXMLOuterContext;
 }
 
-- (NSString*)JustinTimeInterpret:(NSString*)input {
+- (NSString*)JustinTimeInterpret:(NSString*)input prompt:(BOOL)prompt {
     NSString *output = [input copy];
     
-    // HACK: just look for go, verb, and subject for now!
+    // HACK: just look for go, prompt, verb, and subject for now!
     output = [output stringByReplacingOccurrencesOfString:@"@verb;" withString:self.verb];
     output = [output stringByReplacingOccurrencesOfString:@"@subject;" withString:self.subject];
     
+    
+    NSUInteger promptLocation = [output rangeOfString:@"@prompt("].location;
+    if (promptLocation != NSNotFound) {
+        NSUInteger endLocation = [output rangeOfString:@");"].location;
+        NSString *promptText = [output substringWithRange:NSMakeRange(promptLocation + 8, endLocation - promptLocation - 8)];
+        
+        // Do the right thing based on mode
+        NSString *promptCommand = @"";
+        if (output.length > endLocation + 2 && [output characterAtIndex:endLocation + 2] == '\n') {
+            promptCommand = [output substringWithRange:NSMakeRange(promptLocation, endLocation - promptLocation + 3)];
+        }
+        else {
+            promptCommand = [output substringWithRange:NSMakeRange(promptLocation, endLocation - promptLocation + 2)];
+        }
+        NSString *processedOutput = @"";
+        if (!prompt) {
+            processedOutput = [output stringByReplacingOccurrencesOfString:promptCommand withString:@""];
+        }
+        else {
+            processedOutput = promptText;
+        }
+        
+        return processedOutput;
+    }
+    else if (prompt) {
+        return @"What wouldst thou deau?";
+    }
     
     NSUInteger goLocation = [output rangeOfString:@"@go("].location;
     if (goLocation != NSNotFound) {

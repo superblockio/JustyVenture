@@ -21,6 +21,6 @@
 @property (nonatomic, strong) NSString *introText;
 
 // This is where all the magic happens
-- (NSString*)runUserInput:(NSString*)input;
+- (NSString*)runUserInput:(NSString*)input prompt:(BOOL)prompt;
 
 @end
