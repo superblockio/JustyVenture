@@ -15,6 +15,9 @@ Yolo: don't use this command.
 <Yolo>
 We told you not to use this command. You had to go and do it anyway didn't you?@prompt(Jelly Jam Ham Slam?);
 </Yolo>
+<Test subject="*">
+@subject;, this @verb; is just to make sure that having multiple commands@prompt(Did it work?) doesn't cause issues.@go(TestRoom, ignore);
+</Test>
 </Commands>
 
 <Room name="FirstRoom">
@@ -37,6 +40,12 @@ they just don't have any PROOF.</Truth>
 <Room name="FluffyRoom">
 <Arrive>
 You have arrived at the fluffy room! It's got very plushy carpet!
+</Arrive>
+</Room>
+
+<Room name="TestRoom">
+<Arrive>
+You have arrived at the test room.  You shouldn't be seeing this.
 </Arrive>
 </Room>
 </JustyVenture>

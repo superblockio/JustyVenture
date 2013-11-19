@@ -19,8 +19,9 @@
 @property (nonatomic, readonly) NSMutableDictionary *items;
 @property (nonatomic, readonly) NSMutableArray *commands;
 @property (nonatomic, strong) NSString *introText;
+@property (nonatomic, strong) NSString *promptText;
 
 // This is where all the magic happens
-- (NSString*)runUserInput:(NSString*)input prompt:(BOOL)prompt;
+- (NSString*)runUserInput:(NSString*)input;
 
 @end
