@@ -15,5 +15,6 @@
 @property (assign) IBOutlet QuestView *questView;
 @property (nonatomic, strong) NSString *currentOutput;
 @property (assign) int typingIndex;
+@property (assign) NSTimeInterval speed;
 
 @end
