@@ -103,6 +103,14 @@ static JustyVenture *_sharedState;
         }
     }
     
+    // Next see if there's a wildcard command defined.
+    for (int i = 0; i <self.commands.count; i++) {
+        Command *command = [self.commands objectAtIndex:i];
+        if ([command respondsToVerb:@"*" subject:self.subject]) {
+            return [self JustinTimeInterpret:[command result]];
+        }
+    }
+    
     if (![self.subject isEqual: @""])return [NSString stringWithFormat:@"You attempt to %@ the %@ but it-What's wrong with you!?  Why would even try such a thing?!  You need some serious HELP man.", self.verb, self.subject];
     return @"What you say?! Type HELP if you need it.";
 }
