@@ -37,7 +37,7 @@
     if (self.typingTimer) {
         [self.typingTimer invalidate];
     }
-    self.typingTimer = [NSTimer scheduledTimerWithTimeInterval:1/32.0f target:self selector:@selector(typeLetter) userInfo:nil repeats:YES];
+    self.typingTimer = [NSTimer scheduledTimerWithTimeInterval:1/42.0f target:self selector:@selector(typeLetter) userInfo:nil repeats:YES];
 }
 
 - (void)typeLetter {
