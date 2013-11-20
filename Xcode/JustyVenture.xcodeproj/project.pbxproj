@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63D816331820F28D0064F802 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63D816321820F28D0064F802 /* icon.icns */; };
 		63D89CF11820FD0900CE5AC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED21820365D00325259 /* MainMenu.xib */; };
 		63D89CF21820FD1500CE5AC4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F99181B98240063BB35 /* Credits.rtf */; };
 		63FF4D7E183C883C00556156 /* shibe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63FF4D7D183C883C00556156 /* shibe.jpg */; };
+		6B66EF0A183CA31100C9126B /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 6B66EF09183CA31100C9126B /* icon.icns */; };
 		6B7B5ED61820389200325259 /* QuestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED51820389200325259 /* QuestView.m */; };
 		6B7B5ED91820631D00325259 /* JustyVenture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED81820631D00325259 /* JustyVenture.m */; };
 		6B7B5EDC1820755A00325259 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5EDB1820755A00325259 /* Room.m */; };
@@ -24,8 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		63D816321820F28D0064F802 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = SOURCE_ROOT; };
 		63FF4D7D183C883C00556156 /* shibe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shibe.jpg; sourceTree = "<group>"; };
+		6B66EF09183CA31100C9126B /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		6B7B5ED21820365D00325259 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6B7B5ED41820389200325259 /* QuestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestView.h; sourceTree = "<group>"; };
 		6B7B5ED51820389200325259 /* QuestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestView.m; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		6B7B5EE018207A7B00325259 /* Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
 		6B7B5EE118207A7B00325259 /* Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Command.m; sourceTree = "<group>"; };
 		6BB0478A1820D7B8000AD239 /* Adventure Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Adventure Files"; path = "../Resources/Adventure Files"; sourceTree = "<group>"; };
-		6BE60F87181B98240063BB35 /* JustyVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustyVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BE60F87181B98240063BB35 /* CameronVenture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameronVenture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE60F8A181B98240063BB35 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		6BE60F8D181B98240063BB35 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		6BE60F8E181B98240063BB35 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -67,8 +67,8 @@
 		63115DF31820F1DE00E163E1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B66EF09183CA31100C9126B /* icon.icns */,
 				6BE60F99181B98240063BB35 /* Credits.rtf */,
-				63D816321820F28D0064F802 /* icon.icns */,
 				6BE60F93181B98240063BB35 /* InfoPlist.strings */,
 				6BE60F92181B98240063BB35 /* JustyVenture-Info.plist */,
 				6BE60F98181B98240063BB35 /* JustyVenture-Prefix.pch */,
@@ -92,7 +92,7 @@
 		6BE60F88181B98240063BB35 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6BE60F87181B98240063BB35 /* JustyVenture.app */,
+				6BE60F87181B98240063BB35 /* CameronVenture.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,7 +154,7 @@
 			);
 			name = JustyVenture;
 			productName = JustyVenture;
-			productReference = 6BE60F87181B98240063BB35 /* JustyVenture.app */;
+			productReference = 6BE60F87181B98240063BB35 /* CameronVenture.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -190,10 +190,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BB0478C1820D807000AD239 /* Adventure Files in Resources */,
+				6B66EF0A183CA31100C9126B /* icon.icns in Resources */,
 				6BE60F95181B98240063BB35 /* InfoPlist.strings in Resources */,
 				63D89CF21820FD1500CE5AC4 /* Credits.rtf in Resources */,
 				63D89CF11820FD0900CE5AC4 /* MainMenu.xib in Resources */,
-				63D816331820F28D0064F802 /* icon.icns in Resources */,
 				63FF4D7E183C883C00556156 /* shibe.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,7 +316,7 @@
 				INFOPLIST_FILE = "JustyVenture-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CameronVenture;
 				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
@@ -333,7 +333,7 @@
 				INFOPLIST_FILE = "JustyVenture-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CameronVenture;
 				SDKROOT = macosx10.8;
 				WRAPPER_EXTENSION = app;
 			};
