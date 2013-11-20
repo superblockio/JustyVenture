@@ -1,0 +1,431 @@
+<Adventure>
+<Room name="BarrelBase">
+<Arrive>
+You walk back out of the hallway into the landing chamber, looking just the same as when you left it with the metal door to the NORTH and the wood door to the WEST. The pilot is sitting in the helicopter watching you and waiting for you to find the syrup so he can fly you out of here, and the other helicopters remain where they were, untouched while you were gone.
+</Arrive>
+
+<Look>
+You don’t see any enemies around. At the very least, it doesn’t appear that your arrival alerted anyone inside the base. However, you do see several other helicopters, which fills you with a sense of foreboding. Unlike our Canadian secret base, there are only two rooms, one to the WEST with an inviting wooden door, and one to the NORTH with a strong metal door.
+</Look>
+
+<Go subject="west">
+@go(StatueHall);
+</Go>
+
+<Go subject="north">
+You reach for the doorknob but the door is locked. You hear a mysterious voice coming from the other side of the door. “Welcome brother, to the Cult of Baraffe. Only those who know the secret handshake may enter.”
+</Go>
+
+<Secret subject="handshake">
+“Wrong! You’re clearly an imposter! Guards! Place him in the holding cell! That’s what I’d say if this base had more rooms and one of them was a holding cell. Also, I’m the only guard here and am kind of lazy. I’d totally chain you to the wall or something, but they barely pay me enough to open this door, let alone chase people around. But consider this a warning. Now scram!” It appears that the statue supplied you with a fake secret password.
+</Secret>
+
+<Secret subject="blandshake">
+@go(GameshowEntrance);
+</Secret>
+</Room>
+
+
+<Room name="StatueHall">
+<Arrive>
+You walk through the door and find yourself in a small, ornate hallway. It doesn’t lead to any rooms, but there are several paintings, pedestals with busts of important-looking people on top of them, and a steel suit-of-armor knight statue. There's even a ukulele mounted on one of the walls.
+</Arrive>
+
+<Look>
+It is a dimly-lit hallway lined with paintings, pedestals, and a steel knight statue. At the far end is a precious-looking blue vase on top of a small wooden table. A ukulele is mounted on the wall. The main hangar is back EAST.
+</Look>
+
+<Look subject="ukulele">
+The inscription reads: The guy I bought it from said it was magical.
+You wonder why someone would mount a ukulele on the wall, and are skeptic of its claim. But taking a closer look, you judge that it looks pretty expensive, and is therefore pretty likely magical.
+</Look>
+
+<Get subject="*">
+You try to grab the @subject; but it looks like everything in this room is firmly bolted to either the ground or the walls. And the ground and walls are bolted to each other and to the ceiling. And the room itself is bolted to the main hangar. And the main hangar is bolted to the earth, which is quite unnecessary given the fact that it's already underground.
+</Get>
+
+<Look subject="[vase, blue vase]">
+You reach your hand inside the blue vase, because you believe there's treasure inside. There /has/ to be treasure inside! Instead you pull out a fistful of ash. Eww. It's probably the remains of some bald old guy. Suddenly, the ash forms into a face. It speaks: "Have you ever heard a story…" you quickly shake the face dust out of your hand because gross.
+</Look>
+
+<Look subject="[pedestals, busts]">
+The pedestals are made of skeleton bones, and the busts are actually just skeleton skulls. Poor guys. They don't even have a bow.
+</Look>
+
+<Look subject="paintings">
+Hey, these are just the default minecraft paintings! There's a couple of fighting guys, a giant donkey kong, and that lady with a pig on her canvas. There's a couple that don't quite fit in with the rest though. One is of a man who is heading out into the sunset for last bundle of wood. And the other is hard to make out… is that a camel? Yes! And he's in a flaming hot air balloon with a man.
+</Look>
+
+<Look subject="[statue, knight, knight statue, suit of armor]">
+You examine the knight statue. Its hands rest on the handle of a very real-looking sword, which is pointing down such that it cuts slightly into the raised platform the knight is standing on. This statue makes you feel very uneasy, like that it may suddenly come to life if you tried talking to it.
+</Look>
+
+<Talk subject="[statue, knight, knight statue, suit of armor]">
+The statue suddenly comes to life. You immediately dart for the exit, yelling “NOPE NOPE NOPE”, but the door closes, trapping you in the room. The knight, speaking in a low voice, utters something in a language you don’t understand. You scramble to pick the door lock, no use. The knight approaches you, again uttering what you can only guess is an ancient curse of some kind. Finally, accepting that you have met your match and preparing for the worst, you turn to face the statue, and it speaks to you yet again. This time, you can hear that it is actually speaking English, just in a thick Jamaican accent. “I heard you want to know the secret handshake, mon. I can teach it to you. All you gotta do is hold up your hand and yell SECRET HANDSHAKE. That’s all there is to it, doncha trust me mon?”
+</Talk>
+
+<I subject="[don&apos;t trust you!, don&apos;t trust you]">
+You shout at the statue “I DON’T TRUST YOU!” and rip its head off, causing the rest of the statue to tumble to the ground with a loud clang. The head that you now hold in your hand says “Okay okay, you’ve outsmarted me, mon! I’ll tell you the real secret handshake. It’s their original handshake, blandshake! All you have to do is hold up your hand and yell SECRET BLANDSHAKE, mon.” The statue then spontaneously reassembles itself on its raised platform, its head flying out of your hands and back onto the torso, and it goes silent as if nothing had happened.
+</I>
+
+<No>
+You shout at the statue “I DON’T TRUST YOU!” and rip its head off, causing the rest of the statue to tumble to the ground with a loud clang. The head that you now hold in your hand says “Okay okay, you’ve outsmarted me, mon! I’ll tell you the real secret handshake. It’s their original handshake, blandshake! All you have to do is hold up your hand and yell SECRET BLANDSHAKE, mon.” The statue then spontaneously reassembles itself on its raised platform, its head flying out of your hands and back onto the torso, and it goes silent as if nothing had happened.
+</No>
+
+<Go subject="EAST">
+@go(BarrelBase);
+</Go>
+</Room>
+
+<Room name="GameshowEntrance">
+<Arrive>
+You do the secret handshake, which doesn’t even make sense because the guard was behind the solid metal door and thus couldn’t shake your hand. It’s more of a secret passcode, you think to yourself. Nevertheless, the door opens up, revealing what can only be called a cave-like janitor’s closet. The walls, ceiling, and floor are made of rugged stone, the floor is slightly damp in places, and there’s a supply SHELF on your left side and a BROOM leaning against a BARREL on the right. You don’t see anyone in here, which you find odd seeing as a guard was talking to you just moments ago, and how he must’ve been the one who opened the door. You also find it odd that such a place would require a secret “blandshake” in order to enter. As you mull this over in your mind, and consider the possibility that there never was a guard and you are simply losing your mind, the door slams behind you, leaving you in complete darkness.
+</Arrive>
+
+<Look>
+You are in a pitch-black janitor’s closet and can’t see a thing. Luckily, you have your trusty HTC Two, and you use the flashlight app to illuminate the ground in front of you. However, your flashlight has a fairly narrow field of view, so you can only see things that you LOOK directly at. Luckily, you remember everything of interest in this room… right?
+</Look>
+
+<Look subject="broom">
+The broom is leaning against a suspicious looking BARREL.
+</Look>
+
+<Look alt="talk" subject="barrel">
+You shine your flashlight right at the barrel and you swear you see it move. Not trusting it, you yell “BARRELS!!!” at which the barrel jumps an inch from the ground, and then replies “Alright, you caught me! I’ll talk! This room has a secret exit! All I know is that it has something to do with that supply SHELF! Between you and me, why does everyone feel the need to capitalize certain words?”
+</Look>
+
+<Look subject="[shelf, supply shelf]">
+You shine your light on the supply shelf. It’s a wooden shelf, mounted right onto the cave wall by some heavy-duty screws. On it are some fairly standard supplies. Some toilet paper, some cleaning spray, a secret button, some paper towels. You know, all the essentials. Nothing suspicious here.
+</Look>
+
+<Look subject="[toilet paper, cleaning spray, paper towels]">
+You shine your light at the @subject; on the counter. Looks like a pretty standard @subject;... You could probably use it to make some... arts and crafts? Based on... janitorial supplies? For Bring Your Daughter To Work Day?... What do you want from me? Just be a good little stalemate associate and press that button so the adventure can continue.
+</Look>
+
+<Look subject="[button, secret button]">
+There’s a red button on the underside of this shelf. It looks like there’s a wire running from it up the wall, to the ceiling. You should totally PRESS it, I bet it won’t cause the ceiling to cave in. I mean, who would have a button in their janitor’s closet for making the ceiling cave in, amirite?
+</Look>
+
+<Press subject="[button, secret button]">
+You press the secret button. Suddenly, a large portion of the far wall slides into the ground with a loud “thump”. Light pours in behind it, revealing a brightly lit stage area, with two seats on opposite sides, and computer screens at each seat. You hear cheering as you walk onto the stage, and a voice that sounds suspiciously like Regis Philbin announces “WELCOME Ladies and Gentlebarrels, to Who Wants To Be A Barrelnaire! Please give a warm round of applause to tonight’s contestant, Cameron Ottley!” More cheering ensues. As your eyes adjust to the bright light, you look in the direction of the cheering, only to see bleachers filled with hundreds of barrels jumping up and down. @go(Gameshow0, append);
+</Press>
+</Room>
+
+<Room name="Gameshow0">
+<Arrive>
+You turn to the host, who appears to be a barrel wearing a Donkey Kong tie. “The rules are simple: answer all five questions correctly and you win ONE MILLION KILOGRAMS OF MAPLE SYRUP! Well Cameron, ready for your first question?”@prompt(Choices are YES, NO, or UMM.);
+</Arrive>
+
+<Look alt="*">
+The whole setup here seems to imitate the look of “Who Wants To Be A Millionaire?” fairly well, except for the host and audience being composed solely of barrels, and the fact that this whole thing is inside a weird cave place with stalagmites and stalagtites, a couple of the larger ones causing a gap between the bleachers.
+Regis: “Are you ready to start?”@prompt(Choices are YES, NO, or UMM.);
+</Look>
+
+<Look alt="*" subject="*">
+The whole setup here seems to imitate the look of “Who Wants To Be A Millionaire?” fairly well, except for the host and audience being composed solely of barrels, and the fact that this whole thing is inside a weird cave place with stalagmites and stalagtites, a couple of the larger ones causing a gap between the bleachers.
+Regis: “Are you ready to start?”@prompt(Choices are YES, NO, or UMM.);
+</Look>
+
+<Yes alt="umm">
+@go(Gameshow1);
+</Yes>
+
+<No>
+@go(MillionYearsDungeon);
+</No>
+</Room>
+
+<Room name="MillionYearsDungeon">
+<Arrive>
+Regis: “WRONG ANSWER! You get one million years dungeon.” Suddenly a trapdoor opens up behind you, and your seat whirls around and tilts, dumping you into the pit. You don’t remember this being part of the game show the barrels are trying so hard to imitate, but you don’t have long to think on this, as your head comes into contact with the cold, hard, stone brick floor of the dungeon and you are rendered unconscious. Upon awakening, you come to the shocking realization that the fall has blinded you and you can’t see. Unless it’s just really dark in here. You pull out your HTC Two, and sure enough you can see the bright little screen. You breathe a sigh of relief and open the flashlight app. Unfortunately your flashlight field of view is narrow and you really can’t see anything in here unless you’re looking right at it. Unfortunately you don’t know what is in this room, so you’ll just have to look in various directions!
+</Arrive>
+
+<Look>
+This dungeon is dank, dark, and smelly. You can’t see anything outside of your flashlight’s narrow beam, so you’ll have to LOOK in specific directions in order to see stuff.
+</Look>
+
+<Look subject = "[wall, walls, everywhere]">
+You run around the room with the navigation skills of a factory reset roomba, shining your flashlight at every single wall of the dungeon, over and over until you pass out from dizziness. When you come to, you have an epiphany that you should look at a wall in a specific direction instead of running around in the most confusing pattern a human being is capable of.
+</Look>
+
+<Look subject = "[west, west wall]">
+You shine your flashlight across the west wall, and see that there is a DOOR! Horray!
+</Look>
+
+<Look subject = "[floor, ground, down]">
+There’s some Ratman drawings scribbled on the floor, depicting Chell portal-ing in an elaborate pattern to get out of this dungeon. It also says “The question 5 is a lie” and shows cake, “Question 5”, and GLaDOS X’d out. It also shows a picture of a piece of pie, the symbol pi, and the companion cube together in a happy little circle.
+</Look>
+
+<Look alt="[go, open]" subject="door">
+You reach for the door knob, take a deep breath, and turn the knob. To your surprise, it is not locked! Today must be your lucky day! You swing open the door and take a step forward, ready to embrace your freedom and laugh in the face of your foolish enemies who left the door to their dungeon unlocked, when you slam face-first into a brick wall. There are graffiti’d words that read “Nice try!” Apparently they thought it would be good sport to give you false hope of escape. Some barrels just want to watch the world burn.
+</Look>
+
+<Look subject = "[east, east wall]">
+You look at the east wall and see that it is bare. You then shout “I DON’T TRUST YOU!” and take a closer look. You examine the wall, your face inches away from the stone bricks that make up its surface. “AHA!” you exclaim, as you notice a loose brick. You mock the barrels for their lack of originality and press in on the brick, opening up a secret passageway in the wall. Unfortunately, this secret passageway is just a dead end with the word “Nope! :P” painted on the wall. Those freaking barrels.
+</Look>
+
+<Look subject = "[south, south wall, box, shivs]">
+You shine your light on the south wall, and see that there’s a box with some shivs on top of it. Apparently one of the old inmates was feeling a little stabby. It’s a valid emotion, okay! Wait a second though, you know better than this. You push the box away from the wall, revealing a secret tunnel! “No dungeon is a problem for this guy!” you point and smirk at yourself to yourself. The tunnel ends in a dead-end, but there’s a LEVER you can PULL.
+</Look>
+
+<Look subject = "[north, north wall, barrel]">
+You look towards the northern wall and see a beat-up looking old BARREL. You normally wouldn’t think much of it, but you’ve recently discovered that some barrels are in fact sentient. You wonder if it can talk, or if it is dead or something.
+</Look>
+
+<Talk subject = "barrel">
+Barrel: “There’s a reason this prison is the worst place in this admittedly tiny secret base… hope. Every barrel who has rotted in here over the centuries has looked up to the rope attached to the ceiling and imagined climbing to freedom. Obviously, no one has made it. Well, except for the child of Raz al Barl. Batman references aside, there’s also some stuff on the floor you should probably look at.”
+</Talk>
+
+<Look subject="[up, ceiling]">
+Oh hey look at that! There’s a ROPE attached to the ceiling. You could probably pull on it and open up the trapdoor you fell through. It looks pretty high up though.
+</Look>
+
+<Pull alt="[grab, climb]" subject="rope">
+You jump up towards the ceiling a couple times, but the rope is just outside your reach. The barrel says: “You must do it as the child did. Without the rope.” This doesn’t make sense to you, considering the rope is the way out, but you respect his Batman reference and use the grappling hook on your HTC Two instead. It latches onto the roof of the trapdoor, and you pull it open. Then you quickly shoot your grappling hook again through the opening and use it to pull yourself back up onto the stage floor. The barrel chants “RICK IS AWESOME, AWESOME” and the trapdoor closes beneath you. Regis says “So, you’ve come back to die with your HTC Two’s battery!”, to which you respond in the most raspy voice you can muster: “No, I came back to stop you.” He shrugs and starts the game show, asking if you’re ready for question one.
+@go(Gameshow0, ignore);@prompt(Choices are YES, NO, or UMM.);
+</Pull>
+
+<Pull subject="lever">
+You pull the lever, feeling ever so clever… that rhymed. Anyway, you hear the sound of something… rushing… getting closer… !! You quickly crawl out of the tunnel and back into the dungeon, but not quickly enough to avoid getting wet with what you hope is water. You’re getting fed up with these barrels and their antics.
+</Pull>
+
+<Look subject="*">
+You feel around but there’s no @subject; in here as far as you can tell.
+</Look>
+</Room>
+
+<Room name="Gameshow1">
+<Arrive>
+Regis: “That’s the spirit!”
+The spotlights shine down and focus on you, and music plays as Regis Barrelm’n asks the first question.
+Regis: “First question, for 100 monopoly money. In the show Doctor Who, what does TARDIS (usually) stand for? Just give the letter of your answer.”
+A. Tethered Aerial Release Developed In Style
+B. Teleporting Acrobats Reportedly Discoing In Space
+C. Time And Relative Dimension In Space
+D. Tablets of Android Rarely Deserve iPad’s Scrutiny@prompt(What’s your answer?);
+</Arrive>
+
+<Look alt="*">
+Regis: “First question, for 100 monopoly money. In the show Doctor Who, what does TARDIS (usually) stand for? Just give the letter of your answer.”
+A. Tethered Aerial Release Developed In Style
+B. Teleporting Acrobats Reportedly Discoing In Space
+C. Time And Relative Dimension In Space
+D. Tablets of Android Rarely Deserve iPad’s Scrutiny@prompt(What’s your answer?);
+</Look>
+
+<Look alt="*" subject="*">
+Regis: “First question, for 100 monopoly money. In the show Doctor Who, what does TARDIS (usually) stand for? Just give the letter of your answer.”
+A. Tethered Aerial Release Developed In Style
+B. Teleporting Acrobats Reportedly Discoing In Space
+C. Time And Relative Dimension In Space
+D. Tablets of Android Rarely Deserve iPad’s Scrutiny@prompt(What’s your answer?);
+</Look>
+
+<A alt="[b, d]">
+@go(MillionYearsDungeon);
+</A>
+
+<C>
+@go(Gameshow2);
+</C>
+</Room>
+
+<Room name="Gameshow2">
+<Arrive>
+Regis: “Ding ding! You’re absolutely correct! Second question: Avengers! Where was Thor’s hammer forged?”
+A. Inside the Bifröst
+B. In the heart of a dying star
+C. At the sacred forge of Gallifrey
+D. Inside the Casket of Ancient Winters@prompt(What’s your answer?);
+</Arrive>
+
+<Look alt="*">
+Regis: “Where was Thor’s hammer forged?”
+A. Inside the Bifröst
+B. In the heart of a dying star
+C. At the sacred forge of Gallifrey
+D. Inside the Casket of Ancient Winters@prompt(What’s your answer?);
+</Look>
+
+<Look alt="*" subject="*">
+Regis: “Where was Thor’s hammer forged?”
+A. Inside the Bifröst
+B. In the heart of a dying star
+C. At the sacred forge of Gallifrey
+D. Inside the Casket of Ancient Winters@prompt(What’s your answer?);
+</Look>
+
+<A alt="[c, d]">
+@go(MillionYearsDungeon);
+</A>
+
+<B>
+@go(Gameshow3);
+</B>
+</Room>
+
+<Room name="Gameshow3">
+<Arrive>
+Regis: “Correct! That was a great answer. ANOTHER! Third question: which of the following answers contains a name that is NOT a member of Thorin’s Company?”
+A. Balin, Bilfur, Bofur, Bombur
+B. Dori, Nori, Fili, Kili
+C. Gloin, Oin, Ori, Nori
+D. Thorin, Gandalf, Bilbo, Dwalin@prompt(What’s your answer?);
+</Arrive>
+
+<Look alt="*">
+Regis: “Which of the following answers contains a name that is NOT a member of Thorin’s Company?”
+A. Balin, Bilfur, Bofur, Bombur
+B. Dori, Nori, Fili, Kili
+C. Gloin, Oin, Ori, Nori
+D. Thorin, Gandalf, Bilbo, Dwalin@prompt(What’s your answer?);
+</Look>
+
+<Look alt="*" subject="*">
+Regis: “Which of the following answers contains a name that is NOT a member of Thorin’s Company?”
+A. Balin, Bilfur, Bofur, Bombur
+B. Dori, Nori, Fili, Kili
+C. Gloin, Oin, Ori, Nori
+D. Thorin, Gandalf, Bilbo, Dwalin@prompt(What’s your answer?);
+</Look>
+
+<A>
+@go(Gameshow4);
+</A>
+
+<B alt="[c, d]">
+@go(MillionYearsDungeon);
+</B>
+</Room>
+
+<Room name="Gameshow4">
+<Arrive>
+Regis: “That’s right! His name is Bifur, not Bilfur! Fourth and second-to-last question: Which of the following places was NOT compromised by Moriarty at the beginning of The Reichenbach Fall?”
+A. Bank of England
+B. Pentonville Prison
+C. Tower of London
+D. Buckingham Palace@prompt(What’s your answer?);
+</Arrive>
+
+<Look alt="*">
+Regis: “Fourth and second-to-last question: Which of the following places was NOT compromised by Moriarty at the beginning of The Reichenbach Fall?”
+A. Bank of England
+B. Pentonville Prison
+C. Tower of London
+D. Buckingham Palace@prompt(What’s your answer?);
+</Look>
+
+<Look alt="*" subject="*">
+Regis: “Fourth and second-to-last question: Which of the following places was NOT compromised by Moriarty at the beginning of The Reichenbach Fall?”
+A. Bank of England
+B. Pentonville Prison
+C. Tower of London
+D. Buckingham Palace@prompt(What’s your answer?);
+</Look>
+
+<A alt="[b, c]">
+@go(MillionYearsDungeon);
+</A>
+
+<D>
+@go(Gameshow5);
+</D>
+</Room>
+
+<Room name="Gameshow5">
+<Arrive>
+Regis: “Brilliant deduction, Sherlock! Unfortunately, you can’t be allowed to continue, you just can’t.”
+You look down and see a laser dot aimed at your chest. Panicked, you look up to try and find the source… Oh, it’s just some jerk in the audience with a laser pointer.
+Regis: “Seriously though, you’ve done a great job, but we need this maple syrup for our worship rituals, and we can’t have some human winning it away from us in an admittedly unusual game show. So, I’m sorry to do this to you, but your last question is not going to be limited to four choices. I’m thinking of a number between 1 and 10. What is it?”@prompt(What’s your answer?);
+</Arrive>
+
+<Look alt="*">
+Regis: “Seriously though, you’ve done a great job, but we need this maple syrup for our worship rituals, and we can’t have some human winning it away from us in an admittedly unusual game show. So, I’m sorry to do this to you, but your last question is not going to be limited to four choices. I’m thinking of a number between 1 and 10. What is it?”@prompt(What’s your answer?);
+</Look>
+
+<Look alt="*" subject="*">
+Regis: “Seriously though, you’ve done a great job, but we need this maple syrup for our worship rituals, and we can’t have some human winning it away from us in an admittedly unusual game show. So, I’m sorry to do this to you, but your last question is not going to be limited to four choices. I’m thinking of a number between 1 and 10. What is it?”@prompt(What’s your answer?);
+</Look>
+
+<diglett alt="[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+@go(MillionYearsDungeon);
+</diglett>
+
+<dugtrio alt="[pi, pie, pinkie, pinkie pie, pinkie pi]">
+@go(Gameshow6);
+</dugtrio>
+</Room>
+
+<Room name="Gameshow6">
+<Arrive>
+Regis: “How… How could you have possibly known that I tricked you by not choosing an integer, and instead picked the number pi? Very well… You’ve proven yourself worthy. You may take back the maple syrup that we stole… It’s in the PRIZE ROOM just off to the north, past the audience there.”
+</Arrive>
+
+<Look>
+There’s a surreal silence as the barrels wait for you to walk past them and take back all the maple syrup they stole from the PRIZE ROOM. You begin to wonder whether this could be a trap, and more importantly, whether you can work in an Admiral Ackbar reference before they jump you.
+</Look>
+
+<Go subject = "[prize room, north]">
+@go(GameshowAmbush);
+</Go>
+</Room>
+
+<Room name="GameshowAmbush">
+<Arrive>
+Your footsteps echo as you walk between the bleachers, which are full of the now-silent barrels you are about to steal back the syrup from. You walk slowly and cautiously towards the prize room, eyes peeled for any suspicious behavior. Suddenly, in an instant, every single barrel in the entire audience goes ninja on you and start flying towards you from every angle. There’s only two options: KILL EVERYTHING or DIE HORRIBLY. It’s so heart-breaking, you wish it didn’t have to be this way, but there’s just no time. It’s just not in the cards, ya know? You have to crash this plane, I mean die horribly. Or you could do the other one. Plus look, there’s always look. But… stop stalling!
+</Arrive>
+
+<Look>
+The barrels are raining down upon you, about to pummel you senseless! You have two choices: KILL EVERYTHING, or DIE HORRIBLY. Options which may as well say: MAN UP, or YOUR CHARACTER IS ONE OF EXTREME LACKING AND DISAPPOINT. IN FACT I WOULD BE EMBARRASSED, I AM EMBARRASSED, TO EVEN BE THIS CHOICE, THAT YOU WOULD EVEN CONSIDER THIS AN OPTION, THAT YOU ARE SO BEREFT OF WILL AND TENACITY THAT YOU WOULD ABANDON THE MISSION YOU SO BRAZENLY SOUGHT, AND SO ON.
+</Look>
+
+<Kill subject="everything">
+@go(PrizeRoom);
+</Kill>
+
+<Die subject="horribly">
+Okay you called our bluff, there’s no way for you to actually die in this game. But seriously, you do have to KILL EVERYTHING to proceed.
+</Die>
+</Room>
+
+<Room name="PrizeRoom">
+<Arrive>
+You take a deep breath and clear your mind, focusing your energy while the barrels fly towards you. It seems as if time itself has stopped in preparation for the sheer epicness that you’re about to unleash. Unfortunately time hasn’t actually stopped, and a barrel pummels you right in the face, sending you into a violent rampage in which you flail your limbs about chaotically. Fortunately, your foes are all barrels, and the very fact that you have limbs is enough to render you victorious in this little skirmish, despite your utter lack of finesse, for which Regis shakes his head and holds up a judge card that reads “3/10” on it. Nevertheless, you now victoriously walk over the shattered remains of your adversaries, all of whom are completely intact, and enter the prize room. Your jaw drops, and you rub your eyes in utter disbelief of what you see. To put it another way, we’re out of room on the screen so you’ll have to take another LOOK.
+</Arrive>
+
+<Look>
+You are in the prize room, which is a massive cylindrical stadium with a raised balcony along the perimeter that you are standing on. As you walk in, you get a strong whiff of what is unmistakably pancakes and maple syrup. You look down from the balcony’s railing and see what has to be the biggest pancake on earth. There appears to be equally giant pancakes stacked underneath. Nearby sits a ridiculously huge container into which is pouring Canada’s supply of maple syrup, aided by the help of several barrels. Looks like Baraffe’s heinous worship ritual is to make giant pancakes. You ponder briefly about where they got all the pancake batter, but then you notice something strange: the barrels are taking their lids off! Something long is extending out of their interiors… it’s the necks of giraffes! You thought the barrels were the syrup thieves but you are wrong, you see the giraffes were the barrels all along! (type NEXT to continue.)
+</Look>
+
+<Next>
+Just as something exciting is about to happen, this adventure is interrupted by an advertisement:
+SOCKER BOPPERS! (Socker boppers!)
+You can sock all day, and bop all night!
+SOCKER BOPPERS!
+More fun than a pillow fight! Blow ‘em up, put your hand inside, get ready to have the time of your life!
+SOCKER BOPPERS! (Socker boppers!)
+Socker boppers, more fun than a pillow fight, by Big Time Toys.
+Type NEXT AGAIN to continue.
+</Next>
+
+<Next subject="again">
+Getting back to the story, you look on in disbelief as the giraffes extend their legs out of the bottom of the barrels and their necks out the top. You have no idea how they were able to fit in the barrels, but your eyes don’t lie… unless you’re on drugs. Are you on drugs? Right, sorry. You snap a picture with your HTC Two to show your mission president. Unfortunately your volume is up all the way and the camera sound is heard throughout the entire pancake stadium, courtesy of the HTC Two’s freakishly loud speakers. The giraffes all turn to face you. A couple of giraffes on the balcony on either side of you run over to take you prisoner, as do some of the barrels from the previous room behind you. That’s when your spy instincts kick in. You see the giant pancake stack resting below the balcony in front of you. Looks like you’re gonna have to JUMP!
+</Next>
+
+<Jump>
+You leap over the balcony’s railing and into the warm embrace of the pancake stack below. Unfortunately, it looks as if some repulsion gel got slipped into the pancake batter, and you bounce straight off the pancake stack and are sent flying towards the opposite end of the stadium. A giraffe stands where you’re about to land, with a look in its eye similar to a cow looking at an oncoming train. You collide with the giraffe head-on and the two of you tumble into the stadium’s wall with great force, causing it to rupture. As you open your eyes and wipe the dust from your face, you are surprised to find yourself sitting in the mission president’s office! Apparently these two secret bases were built closer to each other than you thought. You quickly explain to the shocked mission president that the enemy base has been a few feet behind his desk this whole time, and he sends in a polite-looking SWAT team to recover the syrup and arrest the giraffes.@prompt(You Win!);@go(Winning!, ignore);
+</Jump>
+</Room>
+
+<Room name="Winning!">
+<Look alt="*">
+You’ve won! The mission president is letting you keep the HTC Two, as well as some fancy-looking medal soaked in syrup for your service to the Canadian government. And why not, he’s letting you have some hot sauce too. Congratulations, and thank you so much for to playing our game! Now get lost. I mean, goodbye. No seriously, get lost.@prompt(You Win! Stop trying!);
+</Look>
+<Feed alt="*">
+Seriously, you won, it’s over, shoo!@prompt(Go away! We don’t love you anymore!);
+</Feed>
+<Feed alt="*" subject="*">
+Seriously, you won, it’s over, shoo!@prompt(Go away! We don’t love you anymore!);
+</Feed>
+</Room>
+</Adventure

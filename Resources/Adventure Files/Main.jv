@@ -1,0 +1,147 @@
+<Adventure name="CameronVenture">
+<Commands>
+<Help>
+Why are you asking for help? They spent millions of dollars training you to be a spy at night when you weren't out tracting for new converts! You already know everything you need to know! Good thing you have your Spy 101 The Cheat sheet as a text document on your HTC Smartwatch! 
+General Commands:
+LOOK: Always the first thing you should try if you don’t know what to do. Try LOOK to examine the room, or LOOK [name of thing] to examine a particular thing.
+GO: Go [place / direction] to travel places. Sometimes you can just use EXIT instead.
+TALK: Use TALK [subject name] to talk to things. Or people. Anything you suspect is sentient, really.
+There are plenty of other commands that are specific to each place, so just try things that make sense! ...or that don’t make sense but that might work just because its us!
+</Help>
+
+<Clubbing alt="spike" subject="[clubbing, spike]">
+Wow Cameron, I’m extremely surprised you thought to try this, seeing as its a reference to something from a fandom you’re not a part of.
+</Clubbing>
+
+<Talk>
+You talk to yourself out loud for a minute before you decide it’s not helping anything.
+</Talk>
+
+<Talk subject="*">
+Talking to @subject; seems to get you nowhere because @subject; doesn’t seem to exist at all.
+</Talk>
+
+<Look>
+What in the world are you even trying to look at anyway?
+</Look>
+
+<Look subject="*">
+You stare at the imaginary @subject; sitting in front of you and contemplate your insanity.
+</Look>
+
+<Go>
+You can’t go anywhere if you don’t even specify a place to go.
+</Go>
+
+<Go subject="*">
+All of your attempts to go @subject; are thwarted by the fact that it’s quite impossible to do so.  In fact I’m pretty sure you’ve made up whatever it is you seem to think you can reach by going @subject;.
+</Go>
+
+<Inventory alt="inv">
+You open your spy satchel and a fly flies out. It’s that empty.
+</Inventory>
+
+<Jungnananana alt="*" subject="Pedro">
+Stop pestering poor Pedro!  Would you like it if Pedro tried to @verb; you, huh?
+</Jungnananana>
+
+<Apply subject="peanut butter">
+Stop trying to rub peanut butter in places it doesn’t need to be! &gt;:(
+</Apply>
+
+<Fly>
+All of your attempts to fly fail miserably as you are just a lowly human. You’re not even a human Dalek.
+</Fly>
+
+<Fly subject="*">
+Your attempts to fly the @subject; are fruitless as it’s either incapable of flight or beyond your capability to do so.
+</Fly>
+
+<Git>
+usage: git [--help] [--lolcats] &lt;command&gt; [&lt;args&gt;] 
+
+The most commonly used git commands are:
+   add        The first thing they teach you in math.
+   checkout   The command you use on a hot girl.
+   commit     Not for people afraid of commitment.
+   branch     List, create, delete, or eat a tree branch.
+   init       A cool command, init?
+   merge      Cause conflicts for your friends to fix.
+   pull       Receive conflicts made for you to fix.
+   push       Enforce your order on the repository.
+
+See 'git help &lt;command&gt;' for more information on a specific command.
+</Git>
+
+<Git subject="[help add, help checkout, help commit, help branch, help init, help merge, help pull, help push, help rm]">
+We can’t help you with that, we’re not equipped for that kind of thing here.
+</Git>
+
+<Git subject="add">
+2+2=4
+</Git>
+
+<Git subject="checkout">
+You hear Bubs saying check it out in your head repeatedly.
+</Git>
+
+<Git subject="commit">
+Water on the knee, commit to it!
+</Git>
+
+<Git subject="branch">
+And the stick would be this big old tree that tried to eat everyone except The Cheat and me.
+</Git>
+
+<Git subject="init">
+Initiate countdown sequence. Countdown to YOUR MOM! Yeah, I got nothing.
+</Git>
+
+<Git subject="merge">
+These are for my twin brother.
+</Git>
+
+<Git subject="pull">
+You win the tug of war!  Not saying much given that it’s a tug of war versus nobody at all, but still!
+</Git>
+
+<Git subject="push">
+Are you British, and trying to push a stupid person?
+</Git>
+
+<Git subject="*">
+usage: git [--help] [--lolcats] &lt;command&gt; [&lt;args&gt;] 
+
+The most commonly used git commands are:
+   add        The first thing they teach you in math.
+   checkout   The command you use on a hot girl.
+   commit     Not for people afraid of commitment.
+   branch     List, create, delete, or eat a tree branch.
+   init       A cool command, init?
+   merge      Cause conflicts for your friends to fix.
+   pull       Receive conflicts made for you to fix.
+   push       Enforce your order on the repository.
+   rm         What the Canadian government says you are.
+
+See 'git help &lt;command&gt;' for more information on a specific command.
+</Git>
+
+<Secret subject="tunnels">
+Are you secretly here?
+Yes
+Õ_Õ  There’s a green cursor near the top of the document.  I’m pretty sure we’re being watched.
+It’s the NSA, I invited them to view this document, not that they need an invitation.
+So why aren’t they listed at the top then?
+Because vampire
+Where are you even at?
+I’m home now
+Then why aren’t you in the group chat?
+Your FACE needs progress.
+Okay, what’s next?
+</Secret>
+</Commands>
+
+<Intro firstRoom="SecretBase" type="replace">
+You find yourself once again dozing off in your Survey of Jazz class, waiting for it to end so you can get home and do fun things, when you hear a faint vibration in your backpack. Knowing this can only mean one thing, you discretely unzip the secret compartment and whip out your HTC One. As expected, there’s a text from your mission president. He informs you that a situation has arisen and you’re needed, so you hastily make your way to the nearest bathroom and push the secret button. By some extremely cool looking process that we’re too lazy to describe you end up in a fancy car speeding down a tunnel to the secret rendevous point where you get in a helicopter, buckle up, nod to the pilot, and the two of you whimsically fly over to the Canadian government’s secret base just inside Canada’s border, where a trapdoor opens up and you descend inside. You exit the chopper and are greeted by two men.
+</Intro>
+</Adventure

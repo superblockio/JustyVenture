@@ -1,0 +1,438 @@
+<Adventure>
+<Room name="VolcanoLanding">
+<Arrive>
+ and walk back over to the landing pad a little ways away.  Everything is how you left it, unsurprisingly, seeing as all you did was walk into a 7 Eleven and back out again. The helicopter pilot keeps pacing back and forth across the line while Jiffy Lube technicians replace the oil in the helicopter.
+</Arrive>
+
+<Look>
+You’re just standing off to the side on the helicopter landing pad as the pilot paces back and forth and the technicians replace the oil.  It looks about like your standard volcano in here, bubbling lava, shear walls to a little opening above, and Jiffy Lube in case your helicopter needs an oil change.  The yellow stripe marking the border is a bit different, but then again, there isn’t usually a 7 Eleven either.
+</Look>
+
+<Look subject="helicopter">
+It’s just having the oil changed by the technicians, which seems suspect because that sounds like something you’d do to a car, but you don’t have enough knowledge of helicopters to challenge us on that, so ha!
+</Look>
+
+<Look subject="lava">
+The lava bubbles, tempting you to swim in it. I’m sure it would be exactly like a hot tub. You know, the kind hot enough to burn off your flesh and melt your bones. So the only kind worth getting in I should say.
+</Look>
+
+<Look subject="volcano">
+Man oh man, this place is amazing. You can see tunnels in the walls and lava everywhere and even some diamonds down deep. If only they had these in Minecraft, that would be so sweet, you could just take out a pickaxe and mine your way down to those diamonds.
+</Look>
+
+<Look subject="pilot">
+The pilot looks a tad agitated as he paces back and forth across the border between Canada and America. Perhaps he just doesn’t like it when other people touch his helicopter. It’s hard to be sure what’s going on really.
+</Look>
+
+<Look subject="technicians">
+They’re just standard Jiffy Lube technicians doing their job, changing the oil in this helicopter.
+</Look>
+
+<Talk subject="pilot">
+Pilot: “I’ve been meaning to change my oil for a while, eh. I’ve been oot and aboot for so long that I haven’t gotten the chance to though.”
+
+He paces over the yellow line onto the American side.
+
+Pilot: “You c’n go get me a bag o’ Doritos from that 7 Eleven can’ ya?”
+
+He crosses back over into the Canadian side again.
+
+Pilot: “I don’t have any American money, so you’ll find some to buy them with, eh.”
+</Talk>
+
+<Talk subject="technicians">
+You try to talk to the technicians but they’re all too busy to be bothered with you.
+</Talk>
+
+<Go subject="[7 Eleven, 7 11, Seven Eleven]">
+@go(7ElevenNoMoney);
+</Go>
+
+<Go subject="Jiffy Lube">
+@go(JiffyLubeNoMoney);
+</Go>
+
+<Give alt="hand" subject="Doritos">
+You don’t have any Doritos, Einstein. You have to go get them first.
+</Give>
+</Room>
+
+
+<Room name="7ElevenNoMoney">
+<Arrive>
+You walk into the 7 Eleven and look around. There’s the most frail looking old man standing behind the counter, and the entire store seems to be empty other than a single bag of Doritos.  The air conditioning is running at full blast just to keep the place at a reasonable temperature and there’s a smell in the air that makes you wonder if anybody else has been in here for years. The volcano is back outside.
+</Arrive>
+
+<Look>
+Looking around the store you see empty shelves covered in cobwebs and broken down slushie machines. The fridges built into the walls are empty as well. The only thing left that a person could even buy is the single bag of Doritos, which is probably suspect at best given how long it must have been sitting here. The old man behind the counter seems to have shifty eyes and you’re not sure if you can trust him, but at the same time he’s so old you could probably snap him in half just by touching him. You can exit back to the volcano outside.
+</Look>
+
+<Look subject="[Doritos, isopod, giant isopod, creature]">
+Those are Doritos. “Nacho Cheese” flavored Doritos brand corn chips, it’s an old bag design we know.</Look>
+
+<Look subject="[old man, man, frail old man]">
+The frail old man stands behind the counter, just watching you walk around the store, his eyes dead and soulless. He’s so wrinkled you can see his skin just sort of hanging off him like a bad costume. It’s probably not best to dwell on how long this guy has been in here all by himself.
+</Look>
+
+<Talk subject="[old man, man, frail old man]">
+You say a pleasant hello to the old man and he just stares back at you with his lifeless eyes. This is probably the creepiest old man you’ve ever encountered.
+</Talk>
+
+<Exit alt="leave">
+You walk out of the 7 Eleven@go(VolcanoLanding, append);
+</Exit>
+
+<Go subject="[volcano, volcano landing, outside]">
+You walk out of the 7 Eleven@go(VolcanoLanding, append);
+</Go>
+
+<Buy alt="get" subject="Doritos">
+You take the Doritos bag to the front counter and the old man just stares at you with his soulless eyes until you admit you have no money and put them back.
+</Buy>
+</Room>
+
+
+<Room name="JiffyLubeNoMoney">
+<Arrive>
+You walk over to the Jiffy Lube and pull open the door and walk inside. There’s a bored looking teenager sitting behind the counter reading a magazine. She looks up at you when you walk in but quickly goes back to her reading. Walking over to the water cooler you pour yourself a nice cool glass of water to rehydrate after the buckets of sweat you lost due to standing around at the bottom of a volcano. At least I didn’t make some terrible pun related to cops and you telling them to freeze. Anyway, there’s some potted plants and chairs and junk around the room.
+</Arrive>
+
+<Look>
+The girl sits behind the counter lazily flipping pages of her magazine. There’s some couches arranged to make some nice little sitting areas around the room. The potted plants look quite real, although you can’t imagine how they’d manage to grow in such a hostile environment. The carpet is very plush as well. There’s a children’s play area in the corner with all the regular little play toys. There’s some sort of door behind the counter that appears to be locked or something.  It’s a big metal door sort of like some sort of safe door.
+</Look>
+
+<Look subject="[safe, into safe, into janitor’s closet, into closet, closet, safet, closet/safe, safe/closet]">
+There’s a janitor standing nearby it with the door propped open.  You should be able to sneak into it if you’re quiet enough.
+</Look>
+
+<Look subject="[toys, kid’s toys, children’s toys]">
+They’re just those regular toys you see for kids in doctor’s waiting rooms and such. You spend several minutes playing with them with a child-like fascination anyway, despite having seen them a million times before.
+</Look>
+
+<Look subject="[couch, couches]">
+It’s really quite premium material. All leather and what not. Who know why they went so all out for a Jiffy Lube.
+</Look>
+
+<Look subject="[wall, walls]">
+They’re painted a white color, but a soothing one. They smell of strawberries as well for some reason. It’s weird frankly.
+</Look>
+
+<Look subject="[plant, plants, potted plant, potted plants]">
+Closer inspection reveals that they are indeed real plants, which is very confusing and doesn’t make any sense really, but then you are in a Jiffy Lube inside a volcano, so why is it this you’re making a fuss over?
+</Look>
+
+<Look subject="[teenager, girl, worker, cashier]">
+She’s dressed up like one of those teen punks. You know what we mean. We’re not going to be anymore specific because meh. She reads that magazine like it’s some sort of religious text.
+</Look>
+
+<Look subject="magazine">
+It appears to be named “Volcano Teen” and features a muscled teenage boy laying on his back in the lava. It’s clearly photoshopped. You can tell because of the pixels.
+</Look>
+
+<Sneak subject="[safe, into safe, into janitor’s closet, into closet, closet, safet, door, metal door]">
+@go(JanitorSafet);
+</Sneak>
+
+<Talk subject="[teenager, girl, worker, cashier]">
+You say hi and she gives you the standard Jiffy Lube spiel. She doesn’t seem to be even remotely interested in talking to you. Also she seems to think you’re some sort of weirdo because of your spy suit. I mean, brown with a red bow tie? That’s not what the teenagers are wearing. At least you didn’t have to wear the fez on this mission.
+</Talk>
+
+<Go subject="[safe, into safe, into janitor’s closet, into closet, closet, safet, door, metal door]">
+You make entirely too much noise just strolling over to the safe without sneaking and the janitor glares at you. You have to spend several minutes reading a magazine on a couch to shake his suspicions. You should probably sneak in rather than just going to it like you usually would.
+</Go>
+
+<Go subject="[volcano, volcano landing, outside]">
+You walk out of the Jiffy Lube@go(VolcanoLanding, append);
+</Go>
+
+<Leave alt="exit">
+You walk out of the Jiffy Lube@go(VolcanoLanding, append);
+</Leave>
+</Room>
+
+
+<Room name="JanitorSafet">
+<Arrive>
+Slipping through the door while the janitor isn’t looking, you turn around and find yourself face to face with the most angry looking group of robed janitors you’ve seen in your whole life. They’re even angrier than that group in Michigan last year after you desecrated their monument to the perfect mop. They all seem to be gathered around a wildebeest that’s just laying on the ground with it’s mouth open farther than is physically possible. They also all appear to be holding bundles of cash that they were in the process of throwing into the mouth of said wildebeest when you walked in. You’d better think of something fast, because from the looks of it you’re not at all welcome here.
+</Arrive>
+
+<Look>
+The murderous hippies I mean *coughcough* janitors, yes janitors, have you surrounded and seem about ready to skewer you with their sharpened broom handles. The room seems to be half Janitor’s Closet, half shrine to the extremely bloated looking wildebeest sitting in the center with its mouth wide open. Some of the janitor seem frozen in the act of tossing in stacks of American money, and one or two even have shovels to shovel it in. You can’t imagine that’s good for the wildebeest (No you can’t! Stop trying! You’re not allowed! &gt;:( ) but it doesn’t appear to be dead yet at the very least.
+</Look>
+
+<Look subject="[wildebeest, yak]">
+The mouth on this thing almost looks like it might be big enough for you dive into to escape these janitors. You see absolutely no flaw in this plan (No you don’t! Stop sassing me!).
+</Look>
+
+<Look subject="[janitors, monks, hippies, janitor, monk, hippy]">
+    
+                  wow
+                  
+       
+       such anger
+                              
+                              much hate
+
+                                                 so cult
+
+
+          no happy
+
+                                     wow
+
+                       should flee@shibe;@prompt();
+</Look>
+
+<Jump alt="[dive, flee]" subject="[wildebeest, yak, into wildebeest, into yak]">
+@go(BellyoftheBeast);
+</Jump>
+
+<Flee>
+Flee where? They blocked off the door back out, and the only opening in the room /possibly/ large enough to accommodate you is the wildebeests mouth.
+</Flee>
+
+<Go subject="[wildebeest, yak]">
+@go(BellyoftheBeast);
+</Go>
+</Room>
+
+
+<Room name="BellyoftheBeast">
+<Arrive>
+You dive into the gaping mouth of the wildebeest to escape the janitor monks with a SHOOP and three of them hold up pictures of noses. As you land in a belly that rivals the TARDIS in its ability to be real and exist inside this wildebeest, you realize that this was a terrible plan as you’re now trapped inside the janitors’ sacred wildebeest. Looking around all you can see is a half digested gazelle carcass, a pineapple, piles and piles of American money, and a pedestal with what appears to be an extremely well fashioned shiv made from a pair of glasses.
+</Arrive>
+
+<Look>
+The half digested gazelle carcass looks like a good Christmas present for Nathan. All Justin got him was some sort of gift card for fashion. There’s stomach acid up to the top of your socks in here giving the pleasant sensation of the bottom of your legs burning off. The piles of money seem especially weird given the fact that you’re inside a wildebeest, although it probably takes a close second to the seemingly intentional placement of the pedestal holding the glasses shiv.
+</Look>
+
+<Look subject="[carcass, gazelle carcass, Gizelle carcass, gazelle, half digested gazelle carcass, half digested gazelle]">
+It’s quite gross really, I mean it’s very much dead and smelly and half digested. Why are you still staring at it? Stop that.
+</Look>
+
+<Look subject="[pedestal, shiv, glasses, glasses shiv, shiv made out of glasses, pedestal with glasses on it, pedestal with shiv on it, pedestal with glasses shiv on it, pedestal with shiv made out of glasses on it]">
+The shiv looks very sharp, and very well made. It’s an expertly crafted shiv really. Perhaps that’s why it’s on the pedastal.
+</Look>
+
+<Look subject="[money, piles of money, American money, piles of American money]">
+The money is quite enticing, and also exactly what you need to buy those Doritos the helicopter pilot so desperately seems to need.
+</Look>
+
+<Look subject="pineapple">
+Going along with the fact that you think every round fruit is an apple, you seem to think this one is some sort of pine apple.
+</Look>
+
+<Take alt="get" subject="[money, american money, shiv, glasses shiv, glasses, dagger]">
+@go(JiffyLubeMoney);
+</Take>
+</Room>
+
+
+<Room name="JiffyLubeMoney">
+<Arrive>
+You shovel enough cash to pay for a bag of Dorittos and nothing more into your spy satchel, grab the glasses shiv off the pedestal and hack your way out the side of the wildebeest, severely wounding it and causing the janitor monks (janitonks?  monkitors?) to be even more angry with you than before. You yell out “The British are coming!” and bowl your way through and out of the safe. Running out of the Janitor’s safe (or whatever it is they call that place…) dripping in blood still only garners a short glance from the girl behind the counter.  You’d think that there’d be some consequences for killing their sacred wildebeest, but now that you’ve escaped the safe all the religious zealots seem to have disappeared entirely.  It would appear that nobody is going to stop you from just chilling here.
+</Arrive>
+
+<Look>
+The girl sits behind the counter lazily flipping pages of her magazine. There’s some couches arranged to make some nice little sitting areas around the room. The potted plants look quite real, although you can’t imagine how they’d manage to grow in such a hostile environment. The carpet is very plush as well. There’s a children’s play area in the corner with all the regular little play toys. There’s some sort of door behind the counter that appears to be locked or something. It’s a big metal door sort of like some sort of safe door. Some sort of liquid drips down your leg, but luckily this time you’re certain it’s blood, and also that it doesn’t belong to you, but rather to that wildebeest you just slaughtered.
+</Look>
+
+<Look subject="[safe, into safe, into janitor’s closet, into closet, closet, safet, door, metal door]">
+You see all the janitors standing just inside the door with their eyes locked on you in the most murderous of all rages you’ve ever seen. It’s almost like there’s an invisible wall created by a defect in some engine or a lack of functionality is holding them there so that you can escape without much more happening. It’s kind of creepy really.
+</Look>
+
+<Look subject="[toys, kid’s toys, children’s toys]">
+They’re just those regular toys you see for kids in doctor’s waiting rooms and such. You spend several minutes playing with them with a child-like fascination anyway, despite having seen them a million times before. The blood all over you is now smeared on the toys. That’s gross man.
+</Look>
+
+<Look subject="[couch, couches]">
+It’s really quite premium material. All leather and what not. Who know why they went so all out for a Jiffy Lube. Unfortunately now you’ve gotten blood all over it. For shame.
+</Look>
+
+<Look subject="[wall, walls]">
+They’re painted a white color, but a soothing one. They smell of strawberries and blood as well for some reason. It’s weird frankly. Well the blood smell isn’t, but that’s your fault. Not cool man.
+</Look>
+
+<Look subject="[plant, plants, potted plant, potted plants]">
+Closer inspection reveals that they are indeed real plants, which is very confusing and doesn’t make any sense really, but then you are in a Jiffy Lube inside a volcano, so why is it this you’re making a fuss over? You water them with the blood and guts that drip off of you, although I get the feeling that isn’t intentional.
+</Look>
+
+<Look subject="[teenager, girl, worker, cashier]">
+She’s dressed up like one of those teen punks. You know what we mean. We’re not going to be anymore specific because meh. She reads that magazine like it’s some sort of religious text. I’m almost surprised she’s not staring at you now that you’re covered in gore, it seems like the kind of thing she’d be into.
+</Look>
+
+<Look subject="magazine">
+It appears to be named “Volcano Teen” and features a muscled teenage boy laying on his back in the lava. It’s clearly photoshopped. You can tell because of the pixels. You’d best not touch it, heaven knows how she’d freak out if you got blood all over it.
+</Look>
+
+<Talk subject="[teenager, girl, worker, cashier]">
+You say hi and she gives you the standard Jiffy Lube spiel. She doesn’t seem to be even remotely interested in talking to you. Also she seems to think you’re some sort of weirdo because of your spy suit. I mean, brown with a red bow tie? That’s not what the teenagers are wearing. At least you didn’t have to wear the fez on this mission. She’s so uninterested in talking to you she doesn’t even seem to care that you’re covered in blood.
+</Talk>
+
+<Go subject="[volcano, volcano landing, outside]">
+You stroll out of Jiffy Lube and the door seals itself behind you, preventing you from reentering. This is no great loss, as you already have the American money, but even still you feel your heart break just a little knowing you’ll never again see that magnificent wildebeest.@go(VolcanoMoney, ignore);
+</Go>
+
+<Leave alt="exit">
+You stroll out of Jiffy Lube and the door seals itself behind you, preventing you from reentering. This is no great loss, as you already have the American money, but even still you feel your heart break just a little knowing you’ll never again see that magnificent wildebeest.@go(VolcanoMoney, ignore);
+</Leave>
+
+<Inventory alt="inv">
+You’ve got the American money safely tucked away in your spy satchel next to that fly that flies out everytime you open it with nothing inside.
+</Inventory>
+</Room>
+
+
+<Room name="VolcanoMoney">
+<Arrive>
+You walk out of the 7 Eleven and walk back over to the landing pad a little ways away.  Everything is how you left it, unsurprisingly, seeing as all you did was walk into a 7 Eleven and back out again. The helicopter pilot keeps pacing back and forth across the line while Jiffy Lube technicians finish up replacing the oil in the helicopter.
+</Arrive>
+
+<Look>
+You’re just standing off to the side on the helicopter landing pad as the pilot paces back and forth and the technicians finish up replacing the oil.  It looks about like your standard volcano in here, bubbling lava, shear walls to a little opening above, and Jiffy Lube in case your helicopter needs an oil change.  The yellow stripe marking the border is a bit different, but then again, there isn’t usually a 7 Eleven either.
+</Look>
+
+<Look subject="helicopter">
+It’s almost done having the oil changed by the technicians, which seems suspect because that sounds like something you’d do to a car, but you don’t have enough knowledge of helicopters to challenge us on that, so ha!
+</Look>
+
+<Look subject="lava">
+The lava bubbles, tempting you to swim in it. I’m sure it would be exactly like a hot tub. You know, the kind hot enough to burn off your flesh and melt your bones. So the only kind worth getting in I should say.
+</Look>
+
+<Look subject="volcano">
+Man oh man, this place is amazing. You can see tunnels in the walls and lava everywhere and even some diamonds down deep. If only they had these in Minecraft, that would be so sweet, you could just take out a pickaxe and mine your way down to those diamonds.
+</Look>
+
+<Look subject="pilot">
+The pilot looks a tad agitated as he paces back and forth across the border between Canada and America. Perhaps he just doesn’t like it when other people touch his helicopter. It’s hard to be sure what’s going on really.
+</Look>
+
+<Look subject="technicians">
+They’re just standard Jiffy Lube technicians doing their job, wrapping up the oil change on this helicopter.
+</Look>
+
+<Talk subject="pilot">
+Pilot: “Well, eh?  Did you get the Doritos yet or not?  I feel like I’m aboot to explode, eh!”
+
+He paces over the yellow line onto the American side.
+
+Pilot: “Looks like yall least got s’me money ta use to buy them.”
+
+He crosses back over into the Canadian side again.
+
+Pilot: “I’d really appreciate if you’d hurry up, eh.”
+
+You’re not sure what the rush is, but perhaps it’s better that you don’t find out.
+</Talk>
+
+<Talk subject="technicians">
+You try to talk to the technicians but they’re all too busy to be bothered with you.
+</Talk>
+
+<Go subject="[7 Eleven, 7 11, Seven Eleven]">
+@go(7Eleven);
+</Go>
+
+<Go subject="Jiffy Lube">
+You walk over to the Jiffy Lube, but it’s still sealed tightly shut. You peer in a window and seen the murderous janitors staring back at you from the other side and wonder why they didn’t come out of the safe before you left the store.
+</Go>
+
+<Give alt="hand" subject="Doritos">
+You still don’t have any Doritos, Einstein. At least you have some money to buy them with now though.
+</Give>
+
+<Inventory alt="inv">
+You’ve got the American money safely tucked away in your spy satchel next to that fly that flies out everytime you open it with nothing inside.
+</Inventory>
+</Room>
+
+
+<Room name="7Eleven">
+<Arrive>
+You walk into the 7 Eleven and look around. There’s the most frail looking old man standing behind the counter, and the entire store seems to be empty other than a single bag of Doritos.  The air conditioning is running at full blast just to keep the place at a reasonable temperature and there’s a smell in the air that makes you wonder if anybody else has been in here for years. You can exit back to the volcano outside.
+</Arrive>
+
+<Look>
+Looking around the store you see empty shelves covered in cobwebs and broken down slushie machines. The fridges built into the walls are empty as well. The only thing left that a person could even buy is the single bag of Doritos, which is probably suspect at best given how long it must have been sitting here. The old man behind the counter seems to have shifty eyes and you’re not sure if you can trust him, but at the same time he’s so old you could probably snap him in half just by touching him. The volcano is back outside.
+</Look>
+
+<Look subject="[Doritos, giant isopod, creature]">
+Those are Doritos. “Nacho Cheese” flavored Doritos brand corn chips, it’s an old bag design we know.</Look>
+
+<Look subject="[old man, man, frail old man]">
+The frail old man stands behind the counter, just watching you walk around the store, his eyes dead and soulless. He’s so wrinkled you can see his skin just sort of hanging off him like a bad costume. It’s probably not best to dwell on how long this guy has been in here all by himself.
+</Look>
+
+<Talk subject="[old man, man, frail old man]">
+You say a pleasant hello to the old man and he just stares back at you with his lifeless eyes. This is probably the creepiest old man you’ve ever encountered.
+</Talk>
+
+<Exit alt="leave">
+@go(VolcanoMoney);
+</Exit>
+
+<Go subject="[volcano, volcano landing, outside]">
+@go(VolcanoMoney);
+</Go>
+
+<Buy alt="get" subject="Doritos">
+@go(VolcanoTakeOff);
+</Buy>
+
+<Inventory alt="inv">
+You’ve got the American money safely tucked away in your spy satchel next to that fly that flies out everytime you open it with nothing inside.
+</Inventory>
+</Room>
+
+
+<Room name="VolcanoTakeOff">
+<Arrive>
+You take the bag of Doritos to the front of the store and pay for them with the cash you have in your satchel.  You walk out of the door and the old man locks to door behind you and flips the open sign to closed.  With nothing left to sell there’s no reason to stay open I suppose.  You walk back over to the helicopter as the Jiffy Lube technicians finish up changing the oil and head back into the Jiffy Lube.
+</Arrive>
+
+<Look>
+The pilot is standing next to the helicopter looking at you expectantly while you stand there doing nothing.  You’ve got the bag of Doritos in your hand and the helicopter is all ready to go.  The volcano continues to bubble and let off so much heat that you’re sweating more than you can remember sweating in your life before.
+</Look>
+
+<Look subject="helicopter">
+Now that the oil is changed the helicopter is just sitting there doing nothing. The pilot is standing next to it looking at you expectantly.
+</Look>
+
+<Look subject="lava">
+The lava bubbles, tempting you to swim in it. I’m sure it would be exactly like a hot tub. You know, the kind hot enough to burn off your flesh and melt your bones. So the only kind worth getting in I should say.
+</Look>
+
+<Look subject="volcano">
+Man oh man, this place is amazing. You can see tunnels in the walls and lava everywhere and even some diamonds down deep. If only they had these in Minecraft, that would be so sweet, you could just take out a pickaxe and mine your way down to those diamonds.
+</Look>
+
+<Look subject="pilot">
+The pilot is just standing next to the helicopter on the Canadian side staring at you with an expectant look on his face. You’d swear he wants you to give him something or something.
+</Look>
+
+<Look subject="technicians">
+All the technicians went back inside the Jiffy Lube already, there aren’t any to see out here anymore.
+</Look>
+
+<Talk subject="pilot">
+Pilot: “Well what are you waiting for, eh? Hand over the Doritos or my skin will explode!”
+</Talk>
+
+<Go subject="[7 Eleven, 7 11, Seven Eleven]">
+You walk over to the 7 Eleven, and try to open the door, but it’s locked and all the lights are off. Peering in it looks exactly the same as it did before, but there’s no sign of the old man. There’s an eery feeling that’s creeping you out, so you walk back over to the helicopter to make it go away.
+</Go>
+
+<Go subject="Jiffy Lube">
+You walk over to the Jiffy Lube, but there’s no door for customers to go in and out because it’s fitted up specifically to handle helicopters.  It’s basically just a shop with air conditioning and such for the workers to hang out in while they wait for a helicopter to change the oil in.  You see all the workers standing around talking and playing poker through a window, but you can’t go inside, so you walk back over to the helicopter.
+</Go>
+
+<Give alt="hand" subject="Doritos">
+You hand the bag of Doritos over to the pilot and he opens it and rubs some of them all over his skin, then tells you to get into the helicopter so you can go. You take off and head down the border towards the Baraffe base, where you find yourself descending into a secret base hole identical to the Canadian government's base hole. It’s the same type of trapdoor and everything, the kind that just opens when it detects a helicopter. They must be popular among secret base enthusiasts. You make a mental note to tell your mission president about this so he can change our door to one that is less mainstream. You little hipster, you. You land and find yourself in a room that’s sort of cylindrical but bulges out halfway up and is brown with a slightly woodish texture.@go(BarrelBase, ignore);
+</Give>
+
+<Inventory alt="inv">
+You’re holding a bag of Doritos in your hand.
+</Inventory>
+</Room>
+</Adventure>
