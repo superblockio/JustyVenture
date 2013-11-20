@@ -95,6 +95,14 @@ static JustyVenture *_sharedState;
         }
     }
     
+    // Next, look to see if the room has a wildcard command
+    for (int i = 0; i < [currentRoom commands].count; i++) {
+        Command *command = [[currentRoom commands] objectAtIndex:i];
+        if ([command respondsToVerb:@"*" subject:self.subject]) {
+            return [self JustinTimeInterpret:[command result]];
+        }
+    }
+    
     // Next, see if one of our fallback commands can handle it.
     for (int i = 0; i <self.commands.count; i++) {
         Command *command = [self.commands objectAtIndex:i];
@@ -103,7 +111,7 @@ static JustyVenture *_sharedState;
         }
     }
     
-    // Next see if there's a wildcard command defined.
+    // Next see if there's a universal wildcard command defined.
     for (int i = 0; i <self.commands.count; i++) {
         Command *command = [self.commands objectAtIndex:i];
         if ([command respondsToVerb:@"*" subject:self.subject]) {
