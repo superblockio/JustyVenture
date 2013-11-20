@@ -81,7 +81,6 @@ static JustyVenture *_sharedState;
 
 - (NSString*)runUserInput:(NSString*)input {
     self.promptText = @"What wouldst thou deau?";
-    self.shibe = FALSE;
     self.verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
     self.subject = @"";
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
@@ -363,12 +362,6 @@ static JustyVenture *_sharedState;
         NSString *processedOutput = [output stringByReplacingOccurrencesOfString:promptCommand withString:@""];
         
         output = processedOutput;
-    }
-    
-    NSUInteger shibeLocation = [output rangeOfString:@"@shibe;"].location;
-    if (shibeLocation != NSNotFound) {
-        self.shibe = TRUE;
-         output = [output stringByReplacingOccurrencesOfString:@"@shibe;" withString:@""];
     }
 
     NSUInteger goLocation = [output rangeOfString:@"@go("].location;

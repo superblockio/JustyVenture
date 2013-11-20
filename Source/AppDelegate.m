@@ -29,16 +29,6 @@
         self.currentOutput = [[JustyVenture mainVenture] runUserInput:input];
         self.questView.whatWouldstThouDeauField.stringValue = [[JustyVenture mainVenture] promptText];
         [self startTyping];
-        if ([[JustyVenture mainVenture] shibe]) {
-            self.questView.textView.textColor = [NSColor colorWithCalibratedRed:0 green:0 blue:1 alpha:1];
-            self.questView.textView.drawsBackground = FALSE;
-            self.questView.whatWouldstThouDeauField.drawsBackground = FALSE;
-        }
-        else {
-            self.questView.textView.textColor = [NSColor colorWithCalibratedRed:0 green:0.863 blue:0 alpha:1];
-            self.questView.textView.drawsBackground = TRUE;
-            self.questView.whatWouldstThouDeauField.drawsBackground = TRUE;
-        }
     }
 }
 
