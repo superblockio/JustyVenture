@@ -293,8 +293,6 @@
 									<bytes key="NSRGB">MCAwLjg2Mjc0NTA5OCAwAA</bytes>
 								</object>
 							</object>
-							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-							<int key="NSTextFieldAlignmentRectInsetsVersion">1</int>
 						</object>
 						<object class="NSTextField" id="1025328845">
 							<reference key="NSNextResponder" ref="49439174"/>
@@ -316,8 +314,6 @@
 									<bytes key="NSRGB">MCAwLjg2Mjc0NTA5OCAwAA</bytes>
 								</object>
 							</object>
-							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-							<int key="NSTextFieldAlignmentRectInsetsVersion">1</int>
 						</object>
 						<object class="NSTextField" id="226725629">
 							<reference key="NSNextResponder" ref="49439174"/>
@@ -342,8 +338,6 @@
 									<bytes key="NSRGB">MCAwLjg2Mjc0NTA5OCAwAA</bytes>
 								</object>
 							</object>
-							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-							<int key="NSTextFieldAlignmentRectInsetsVersion">1</int>
 						</object>
 					</array>
 					<string key="NSFrameSize">{583, 448}</string>
@@ -415,94 +409,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">newDocument:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="308102414"/>
-					</object>
-					<string key="id">373</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">openDocument:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="129949379"/>
-					</object>
-					<string key="id">374</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">clearRecentDocuments:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="33094968"/>
-					</object>
-					<string key="id">127</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">performClose:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="282848278"/>
-					</object>
-					<string key="id">193</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">saveDocument:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="131453754"/>
-					</object>
-					<string key="id">362</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">saveDocumentAs:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="45655939"/>
-					</object>
-					<string key="id">363</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">revertDocumentToSaved:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="400573500"/>
-					</object>
-					<string key="id">364</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">runPageLayout:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="942785554"/>
-					</object>
-					<string key="id">87</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">print:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="141374531"/>
-					</object>
-					<string key="id">86</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">undo:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="827072335"/>
-					</object>
-					<string key="id">223</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">redo:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="351655660"/>
-					</object>
-					<string key="id">231</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">cut:</string>
 						<reference key="source" ref="137827083"/>
 						<reference key="destination" ref="986935411"/>
@@ -527,151 +433,7 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">pasteAsPlainText:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="1036371587"/>
-					</object>
-					<string key="id">486</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">delete:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="57598848"/>
-					</object>
-					<string key="id">235</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">selectAll:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="336446571"/>
-					</object>
-					<string key="id">232</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">performFindPanelAction:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="171119291"/>
-					</object>
-					<string key="id">241</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">performFindPanelAction:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="9183870"/>
-					</object>
-					<string key="id">487</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">performFindPanelAction:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="1020380053"/>
-					</object>
-					<string key="id">488</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">performFindPanelAction:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="987151711"/>
-					</object>
-					<string key="id">489</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">centerSelectionInVisibleArea:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="235908499"/>
-					</object>
-					<string key="id">245</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">showGuessPanel:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="801716589"/>
-					</object>
-					<string key="id">230</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">checkSpelling:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="597511021"/>
-					</object>
-					<string key="id">225</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleContinuousSpellChecking:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="868826157"/>
-					</object>
-					<string key="id">222</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleGrammarChecking:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="680922817"/>
-					</object>
-					<string key="id">347</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleAutomaticSpellingCorrection:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="342547774"/>
-					</object>
-					<string key="id">456</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">orderFrontSubstitutionsPanel:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="1006652240"/>
-					</object>
-					<string key="id">458</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleSmartInsertDelete:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="403889090"/>
-					</object>
-					<string key="id">355</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleAutomaticQuoteSubstitution:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="986403373"/>
-					</object>
-					<string key="id">356</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleAutomaticDashSubstitution:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="404269567"/>
-					</object>
-					<string key="id">461</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleAutomaticLinkDetection:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="711990504"/>
-					</object>
-					<string key="id">357</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleAutomaticTextReplacement:</string>
 						<reference key="source" ref="137827083"/>
 						<reference key="destination" ref="42608929"/>
 					</object>
