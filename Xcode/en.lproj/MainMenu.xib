@@ -473,14 +473,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">showHelp:</string>
-						<reference key="source" ref="137827083"/>
-						<reference key="destination" ref="1018235169"/>
-					</object>
-					<string key="id">493</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">textWasEntered:</string>
 						<reference key="source" ref="49439174"/>
 						<reference key="destination" ref="945387856"/>
@@ -510,46 +502,6 @@
 						<reference key="destination" ref="226725629"/>
 					</object>
 					<string key="id">581</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">orderFrontFontPanel:</string>
-						<reference key="source" ref="448847015"/>
-						<reference key="destination" ref="916707859"/>
-					</object>
-					<string key="id">424</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">addFontTrait:</string>
-						<reference key="source" ref="448847015"/>
-						<reference key="destination" ref="804048961"/>
-					</object>
-					<string key="id">421</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">addFontTrait:</string>
-						<reference key="source" ref="448847015"/>
-						<reference key="destination" ref="949057373"/>
-					</object>
-					<string key="id">422</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">modifyFont:</string>
-						<reference key="source" ref="448847015"/>
-						<reference key="destination" ref="1053336222"/>
-					</object>
-					<string key="id">425</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">modifyFont:</string>
-						<reference key="source" ref="448847015"/>
-						<reference key="destination" ref="926306327"/>
-					</object>
-					<string key="id">423</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -599,12 +551,8 @@
 						<reference key="object" ref="275140606"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="995199923"/>
-							<reference ref="57636914"/>
 							<reference ref="507121366"/>
-							<reference ref="792068283"/>
-							<reference ref="166138651"/>
 							<reference ref="683922433"/>
-							<reference ref="196115638"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -621,10 +569,6 @@
 						<reference key="object" ref="171144878"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="818780576"/>
-							<reference ref="617189161"/>
-							<reference ref="793629918"/>
-							<reference ref="4049084"/>
-							<reference ref="980899222"/>
 							<reference ref="233865146"/>
 							<reference ref="796708098"/>
 							<reference ref="643856599"/>
