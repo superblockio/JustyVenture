@@ -10,6 +10,7 @@
 		63D816331820F28D0064F802 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63D816321820F28D0064F802 /* icon.icns */; };
 		63D89CF11820FD0900CE5AC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED21820365D00325259 /* MainMenu.xib */; };
 		63D89CF21820FD1500CE5AC4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F99181B98240063BB35 /* Credits.rtf */; };
+		63FF4D7E183C883C00556156 /* shibe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63FF4D7D183C883C00556156 /* shibe.jpg */; };
 		6B7B5ED61820389200325259 /* QuestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED51820389200325259 /* QuestView.m */; };
 		6B7B5ED91820631D00325259 /* JustyVenture.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED81820631D00325259 /* JustyVenture.m */; };
 		6B7B5EDC1820755A00325259 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7B5EDB1820755A00325259 /* Room.m */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		63D816321820F28D0064F802 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = SOURCE_ROOT; };
+		63FF4D7D183C883C00556156 /* shibe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shibe.jpg; sourceTree = "<group>"; };
 		6B7B5ED21820365D00325259 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6B7B5ED41820389200325259 /* QuestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestView.h; sourceTree = "<group>"; };
 		6B7B5ED51820389200325259 /* QuestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestView.m; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				6BE60F92181B98240063BB35 /* JustyVenture-Info.plist */,
 				6BE60F98181B98240063BB35 /* JustyVenture-Prefix.pch */,
 				6B7B5ED21820365D00325259 /* MainMenu.xib */,
+				63FF4D7D183C883C00556156 /* shibe.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				63D89CF21820FD1500CE5AC4 /* Credits.rtf in Resources */,
 				63D89CF11820FD0900CE5AC4 /* MainMenu.xib in Resources */,
 				63D816331820F28D0064F802 /* icon.icns in Resources */,
+				63FF4D7E183C883C00556156 /* shibe.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
