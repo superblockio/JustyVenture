@@ -402,10 +402,10 @@ static JustyVenture *_sharedState;
             return processedOutput;
         }
         else if (type == JVIntroTypeAppend) {
-            return [processedOutput stringByAppendingString:arriveText];
+            return [processedOutput stringByAppendingString:[self JustinTimeInterpret:arriveText]];
         }
         else {
-            return arriveText;
+            return [self JustinTimeInterpret:arriveText];
         }
     }
     
