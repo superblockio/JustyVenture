@@ -11,15 +11,17 @@
 @interface Item : NSObject
 
 //Returns the proper description based on the number of items
-- (NSString*)shortDescription:(int)quantity;
-- (NSString*)longDescription:(int)quantity;
+- (NSString*)shortDescription;
+- (NSString*)longDescription;
+
 
 @property(nonatomic, strong) NSString *name;
 @property(nonatomic, strong) NSString *determiner;
-@property(nonatomic, assign) NSString *singularName;
-@property(nonatomic, assign) NSString *pluralName;
-@property(nonatomic, assign) NSString *singularDescription;
-@property(nonatomic, assign) NSString *pluralDescription;
+@property(nonatomic, strong) NSString *singularName;
+@property(nonatomic, strong) NSString *pluralName;
+@property(nonatomic, strong) NSString *singularDescription;
+@property(nonatomic, strong) NSString *pluralDescription;
+@property(nonatomic, assign) int quantity;
 
 //Possible subjects used to refer to the item.
 @property(nonatomic, strong) NSArray *keywords;

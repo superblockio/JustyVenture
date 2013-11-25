@@ -19,16 +19,17 @@
         self.pluralName = @"";
         self.singularDescription = @"";
         self.pluralDescription = @"";
+        self.quantity=1;
         self.keywords = [NSArray array];
     }
     return self;
 }
 
-- (NSString*)shortDescription:(int)quantity {
+- (NSString*)shortDescription {
     NSString *output = @"";
-    NSString *quant = [[NSString alloc] initWithFormat:@"%d", quantity];
+    NSString *quant = [[NSString alloc] initWithFormat:@"%d", self.quantity];
     
-    if (quantity == 1) {
+    if (self.quantity == 1) {
         output = [self.determiner stringByAppendingString:self.singularName];
     } else if ([self.pluralName isEqualToString:@""]) {
         output = [quant stringByAppendingString:self.singularName];
@@ -39,11 +40,11 @@
     return output;
 }
 
-- (NSString*)longDescription:(int)quantity {
+- (NSString*)longDescription {
     NSString *output = @"";
-    NSString *quant = [[NSString alloc] initWithFormat:@"%d", quantity];
+    NSString *quant = [[NSString alloc] initWithFormat:@"%d", self.quantity];
     
-    if (quantity == 1) {
+    if (self.quantity == 1) {
         output = [self.singularDescription copy];
         
         output = [output stringByReplacingOccurrencesOfString:@"@quantity;" withString:self.determiner];
