@@ -12,5 +12,6 @@
 
 @property(nonatomic, strong) NSString *name;
 @property(nonatomic, strong) NSArray *commands;
+@property(nonatomic, strong) NSArray *items;
 
 @end
