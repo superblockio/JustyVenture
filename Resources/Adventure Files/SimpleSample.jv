@@ -29,14 +29,14 @@ Chicken
 </PPPPPPAAAALL>
 </Commands>
 <Items>
-<Ham short="a @name;" long="a juicy, mouthwatering @name;">
-<Single>
-Butter Butter bacon Butter
-</Single>
-<Plural name="Hams">
+<JuicyHam keywords="[ham, hams, juicy ham, juicy hams]">
+<Single name="Ham" short="a @name;" long="a juicy, mouthwatering @name;">
 Looking at this @name; is like looking at heaven.
+</Single>
+<Plural name="Hams" short="@quantity; @name;" long="@quantity; juicy, mouthwatering @name;">
+Looking at these @name; is like looking at heaven.
 </Plural>
-</Ham>
+</JuicyHam>
 <Toast>
 Lemonpaste
 </Toast>
