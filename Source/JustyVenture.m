@@ -8,10 +8,13 @@
 
 #import "JustyVenture.h"
 #import "Command.h"
+#import "Item.h"
 
 typedef enum {
     JVXMLRoomContext,
     JVXMLCommandsContext,
+    JVXMLItemsContext,
+    JVXMLPluralityContext,
     JVXMLOuterContext
 }JVXMLContext;
 
@@ -30,12 +33,13 @@ typedef enum {
 @property(nonatomic, strong) NSMutableArray *currentTags;
 @property(nonatomic, strong) Room *currentRoomXML;
 @property(nonatomic, strong) Command *currentCommandXML;
+@property(nonatomic, strong) Item *currentItemXML;
 
 @property (nonatomic, strong) NSMutableDictionary *rooms;
 @property (nonatomic, strong) NSMutableDictionary *variables;
 @property (nonatomic, strong) NSMutableDictionary *items;
 @property (nonatomic, strong) NSMutableArray *commands;
-    
+
 @property (nonatomic, strong) NSString *subject;
 @property (nonatomic, strong) NSString *verb;
 @property (nonatomic, assign) BOOL firstTag;
@@ -83,6 +87,8 @@ static JustyVenture *_sharedState;
     self.promptText = @"What wouldst thou deau?";
     self.verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
     self.subject = @"";
+    
+    
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
         self.subject = [input substringFromIndex:self.verb.length + 1];
     }
@@ -111,7 +117,7 @@ static JustyVenture *_sharedState;
         }
     }
     
-    // Next see if there's a universal wildcard command defined.
+    // Last see if there's a universal wildcard command defined.
     for (int i = 0; i <self.commands.count; i++) {
         Command *command = [self.commands objectAtIndex:i];
         if ([command respondsToVerb:@"*" subject:self.subject]) {
@@ -161,6 +167,11 @@ static JustyVenture *_sharedState;
             else {
                 NSLog(@"XML Error: We just came across a room without a name and that is never supposed to happen");
             }
+            
+            if ([attributeDict objectForKey:@"drop"] != nil) {
+                if ([[attributeDict objectForKey:@"drop"] caseInsensitiveCompare:@"false"]) [room setAllowDrop:FALSE];
+            }
+            
             self.currentRoomXML = room;
         }
         
@@ -234,6 +245,105 @@ static JustyVenture *_sharedState;
         self.currentCommandXML = command;
     }
     
+    // If we're in an item tag, interpret each tag as an item
+    if ([self context] == JVXMLItemsContext) {
+        Item *item = [[Item alloc] init];
+        
+        // First, find all keywords associated with this command
+        if ([attributeDict objectForKey:@"keywords"] != nil) {
+            [item setKeywords:[self parseAttribute:[attributeDict objectForKey:@"keywords"]]];
+        }
+        else {
+            [item setKeywords:[self parseAttribute:elementName]];
+        }
+        
+        // Next the singular descriptive name
+        if ([attributeDict objectForKey:@"name"] != nil) {
+            [item setSingularName:[attributeDict objectForKey:@"name"]];
+        }
+        else {
+            [item setSingularName:elementName];
+        }
+        
+        // And the plural descriptive name
+        if ([attributeDict objectForKey:@"pname"] != nil) {
+            [item setPluralName:[attributeDict objectForKey:@"pname"]];
+        }
+        
+        // Then the singular short description
+        if ([attributeDict objectForKey:@"short"] != nil) {
+            [item setSingularDesc:[attributeDict objectForKey:@"short"]];
+        }
+        else {
+            [item setSingularDesc:@"@name;"];
+        }
+        
+        // And the plural short description
+        if ([attributeDict objectForKey:@"pshort"] != nil) {
+            [item setPluralDesc:[attributeDict objectForKey:@"pshort"]];
+        }
+        
+        // Then the singular long description
+        if ([attributeDict objectForKey:@"long"] != nil) {
+            [item setSingularDescription:[attributeDict objectForKey:@"long"]];
+        }
+        
+        // And the plural long description
+        if ([attributeDict objectForKey:@"plong"] != nil) {
+            [item setPluralDescription:[attributeDict objectForKey:@"plong"]];
+        }
+        
+        // Then the whether or not the item shows up in a room
+        if ([attributeDict objectForKey:@"hidden"] != nil) {
+            if ([[attributeDict objectForKey:@"hidden"] caseInsensitiveCompare:@"true"]) [item setHidden:TRUE];
+        }
+        
+        // And whether it's possible to drop the item once you pick it up
+        if ([attributeDict objectForKey:@"drop"] != nil) {
+            if ([[attributeDict objectForKey:@"drop"] caseInsensitiveCompare:@"false"]) [item setCanDrop:FALSE];
+        }
+        
+        // Finally, set the internal name for the item
+        [item setName:elementName];
+        
+        self.currentItemXML = item;
+    }
+    
+    // If we're setting a singular or plural look text, also check to see if they have attributes in them.
+    if ([self context] == JVXMLPluralityContext) {
+        Item *item = self.currentItemXML;
+        
+        if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
+            if ([attributeDict objectForKey:@"name"] != nil) {
+                [item setSingularName:[attributeDict objectForKey:@"name"]];
+            }
+            
+            if ([attributeDict objectForKey:@"short"] != nil) {
+                [item setSingularDesc:[attributeDict objectForKey:@"short"]];
+            }
+            
+            if ([attributeDict objectForKey:@"long"] != nil) {
+                [item setSingularDescription:[attributeDict objectForKey:@"long"]];
+            }
+        }
+        
+        else if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
+            if ([attributeDict objectForKey:@"name"] != nil) {
+                [item setPluralName:[attributeDict objectForKey:@"name"]];
+            }
+            
+            if ([attributeDict objectForKey:@"short"] != nil) {
+                [item setPluralDesc:[attributeDict objectForKey:@"short"]];
+            }
+            
+            if ([attributeDict objectForKey:@"long"] != nil) {
+                [item setPluralDescription:[attributeDict objectForKey:@"long"]];
+            }
+        }
+        
+        self.currentItemXML = item;
+    }
+    
     [self.currentTags addObject:elementName];
 }
 
@@ -248,6 +358,12 @@ static JustyVenture *_sharedState;
     // in the XML for formatting reasons n stuff
     if ([[self.currentElementBody substringToIndex:1] isEqualToString:@"\n"]) {
         self.currentElementBody = [self.currentElementBody substringFromIndex:1];
+    }
+    
+    // Next, remove ending linebreak if there is one because that gunk is ill and we need to be able to have a new line
+    // in the XML for formatting reasons n stuff
+    if ([[self.currentElementBody substringFromIndex:self.currentElementBody.length - 1] isEqualToString:@"\n"]) {
+        self.currentElementBody = [self.currentElementBody substringToIndex:self.currentElementBody.length - 1];
     }
     
     // Use our context to figure out what to do with the body (text)
@@ -273,6 +389,25 @@ static JustyVenture *_sharedState;
     else if ([self context] == JVXMLCommandsContext) {
         [self.currentCommandXML setResult:self.currentElementBody];
         [self.commands addObject:self.currentCommandXML];
+    }
+    
+    else if ([self context] == JVXMLItemsContext) {
+        if ([self.currentItemXML.singularLook isEqualToString:@""]) {
+            [self.currentItemXML setSingularLook:self.currentElementBody];
+            [self.items setObject:self.currentItemXML forKey:self.currentItemXML.name];
+        }
+    }
+    
+    else if ([self context] == JVXMLPluralityContext) {
+        
+        // Set the look text for the item.
+        if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
+            [self.currentItemXML setSingularLook:self.currentElementBody];
+        } else if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
+            [self.currentItemXML setPluralLook:self.currentElementBody];
+        }
+        
+        [self.items setObject:self.currentItemXML forKey:self.currentItemXML.name];
     }
 }
 
@@ -337,6 +472,10 @@ static JustyVenture *_sharedState;
     else if ([[self.currentTags objectAtIndex:1] caseInsensitiveCompare:@"Commands"] == NSOrderedSame) {
         return JVXMLCommandsContext;
     }
+    else if ([[self.currentTags objectAtIndex:1] caseInsensitiveCompare:@"Items"] == NSOrderedSame) {
+        if (self.currentTags.count == 2) return JVXMLItemsContext;
+        else return JVXMLPluralityContext;
+    }
     return JVXMLOuterContext;
 }
 
@@ -363,7 +502,7 @@ static JustyVenture *_sharedState;
         
         output = processedOutput;
     }
-
+    
     NSUInteger goLocation = [output rangeOfString:@"@go("].location;
     if (goLocation != NSNotFound) {
         NSUInteger endLocation = [output rangeOfString:@");"].location;

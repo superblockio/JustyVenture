@@ -28,6 +28,19 @@ Chicken
 @verb;ing people isn't very nice! Even if they are @subject;.
 </PPPPPPAAAALL>
 </Commands>
+<Items>
+<Ham short="a @name;" long="a juicy, mouthwatering @name;">
+<Single>
+Butter Butter bacon Butter
+</Single>
+<Plural name="Hams">
+Looking at this @name; is like looking at heaven.
+</Plural>
+</Ham>
+<Toast>
+Lemonpaste
+</Toast>
+</Items>
 
 <Room name="FirstRoom">
 <Arrive>
