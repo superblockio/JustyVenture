@@ -13,6 +13,9 @@
 //Returns a new copy of the items we have stored globally.
 - (id)initWithItem:(Item*)originalItem;
 
+// To check which items are being looked for
+- (BOOL)respondsToKeyword:(NSString*)keyword;
+
 //Returns the proper description based on the number of items
 - (NSString*)shortDescription;
 - (NSString*)longDescription;

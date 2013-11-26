@@ -50,6 +50,17 @@
     return self;
 }
 
+- (BOOL)respondsToKeyword:(NSString *)keyword {
+    BOOL respondsToKeyword = NO;
+    for (int i = 0; i < self.keywords.count; i++) {
+        if ([[self.keywords objectAtIndex:i] caseInsensitiveCompare:keyword] == NSOrderedSame) {
+            respondsToKeyword = YES;
+        }
+    }
+    
+    return respondsToKeyword;
+}
+
 - (NSString*)shortDescription {
     NSString *output = @"";
     NSString *quant = [[NSString alloc] initWithFormat:@"%d", self.quantity];

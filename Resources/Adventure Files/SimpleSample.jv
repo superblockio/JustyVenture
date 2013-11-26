@@ -56,6 +56,9 @@ Do it.</Look>
 <Look alt="    woo!" subject="[   doggy,  pie, doggy pile,   slender man]">I know
 you know
 that I'm not telling the TRUTH.</Look>
+<Look subject="@items;">
+@itemlook;
+</Look>
 <Truth>I know
 you know
 they just don't have any PROOF.</Truth>

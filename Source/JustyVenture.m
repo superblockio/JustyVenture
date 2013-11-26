@@ -98,7 +98,6 @@ static JustyVenture *_sharedState;
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
         self.subject = [input substringFromIndex:self.verb.length + 1];
     }
-    // First, look to see if the room can handle this shiz
     Room *currentRoom = [self.rooms objectForKey:self.currentRoomName];
     
     // Output all the values of all the items in the current room
@@ -108,6 +107,7 @@ static JustyVenture *_sharedState;
         NSLog(@"%@ {\nsname=\"%@\"\npname=\"%@\"\nsdesc=\"%@\"\npdesc=\"%@\"\nsdescription=\"%@\"\npdescription=\"%@\"\nslook=\"%@\"\nplook=\"%@\"\nkeywords=%@\nquantity=%d\nhidden=%s\ndrop=%s\n\nShort Description: \"%@\"\nLong Description: \"%@\"\nLook Description: \"%@\"\n}", key, [item singularName], [item pluralName], [item singularDesc], [item pluralDesc], [item singularDescription], [item pluralDescription], [item singularLook], [item pluralLook], [item keywords], [item quantity], [item hidden] ? "true" : "false", [item canDrop] ? "true" : "false", [item shortDescription], [item longDescription], [item lookDescription]);
      }*/
     
+    // First, look to see if the room can handle this shiz
     for (int i = 0; i < [currentRoom commands].count; i++) {
         Command *command = [[currentRoom commands] objectAtIndex:i];
         if ([command respondsToVerb:self.verb subject:self.subject]) {
@@ -242,7 +242,15 @@ static JustyVenture *_sharedState;
         
         // Now find the subjects (if any)
         if ([attributeDict objectForKey:@"subject"] != nil) {
-            [command setSubjects:[self parseAttribute:[attributeDict objectForKey:@"subject"]]];
+            if ([self context] == JVXMLRoomContext && [[attributeDict objectForKey:@"subject"] isEqualToString:@"@items;"]) {
+                NSMutableArray *subjects = [NSMutableArray array];
+                for(id key in self.currentRoomXML.items) {
+                    Item *item = [self.currentRoomXML.items objectForKey:key];
+                    [subjects addObjectsFromArray:item.keywords];
+                    [command setSubjects:subjects];
+                }
+            }
+            else [command setSubjects:[self parseAttribute:[attributeDict objectForKey:@"subject"]]];
         }
         
         // Finally, see if it's an internal command or not
@@ -451,6 +459,7 @@ static JustyVenture *_sharedState;
     NSLog(@"XML parsing failed with error: %@", parseError);
 }
 
+
 - (NSArray*)parseAttribute:(NSString*)attribute {
     // See if it's a list or just a single thing
     // (first, get rid of leading whitespace)
@@ -586,6 +595,16 @@ static JustyVenture *_sharedState;
     // HACK: just look for go, prompt, verb, and subject for now!
     output = [output stringByReplacingOccurrencesOfString:@"@verb;" withString:self.verb];
     output = [output stringByReplacingOccurrencesOfString:@"@subject;" withString:self.subject];
+    Room *currentRoom = [self.rooms objectForKey:self.currentRoomName];
+    NSString *itemLook = @"";
+    
+    for(id key in currentRoom.items) {
+        Item *item = [currentRoom.items objectForKey:key];
+        if ([item respondsToKeyword:self.subject]) {
+            itemLook = [item lookDescription];
+        }
+    }
+    output = [output stringByReplacingOccurrencesOfString:@"@itemlook;" withString:itemLook];
     
     NSUInteger promptLocation = [output rangeOfString:@"@prompt("].location;
     if (promptLocation != NSNotFound) {
