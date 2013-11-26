@@ -10,6 +10,9 @@
 
 @interface Item : NSObject
 
+//Returns a new copy of the items we have stored globally.
+- (id)initWithItem:(Item*)originalItem;
+
 //Returns the proper description based on the number of items
 - (NSString*)shortDescription;
 - (NSString*)longDescription;

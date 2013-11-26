@@ -15,7 +15,7 @@
     if (self) {
         self.name = @"";
         self.commands = [NSArray array];
-        self.items = [NSDictionary dictionary];
+        self.items = [NSMutableDictionary dictionary];
         self.allowDrop = TRUE;
     }
     return self;

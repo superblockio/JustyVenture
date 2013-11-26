@@ -4,6 +4,8 @@ If it's alright,
 then you're all wrong.
 
 Why bounce around to the same down song?
+
+
 </Intro>
 <Commands>
 <Help>
@@ -40,9 +42,12 @@ Looking at these @name; is like looking at heaven.
 <Toast>
 Lemonpaste
 </Toast>
+<Broom>
+It's just a regular @name;.
+</Broom>
 </Items>
 
-<Room name="FirstRoom">
+<Room name="FirstRoom" items="[(JuicyHam, 5); (Toast, 3); Broom; (Toast, 5); Toast]">
 <Arrive>
 You'd rather run when you can't crawl...
 </Arrive>

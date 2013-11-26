@@ -88,12 +88,26 @@ static JustyVenture *_sharedState;
     self.verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
     self.subject = @"";
     
+    // Output all the values of all the possible items
+    /*NSLog(@"Possible Items:");
+     for(id key in self.items) {
+        Item *item = [self.items objectForKey:key];
+        NSLog(@"%@ {\nsname=\"%@\"\npname=\"%@\"\nsdesc=\"%@\"\npdesc=\"%@\"\nsdescription=\"%@\"\npdescription=\"%@\"\nslook=\"%@\"\nplook=\"%@\"\nkeywords=%@\nquantity=%d\nhidden=%s\ndrop=%s\n\nShort Description: \"%@\"\nLong Description: \"%@\"\nLook Description: \"%@\"\n}", key, [item singularName], [item pluralName], [item singularDesc], [item pluralDesc], [item singularDescription], [item pluralDescription], [item singularLook], [item pluralLook], [item keywords], [item quantity], [item hidden] ? "true" : "false", [item canDrop] ? "true" : "false", [item shortDescription], [item longDescription], [item lookDescription]);
+     }*/
     
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
         self.subject = [input substringFromIndex:self.verb.length + 1];
     }
     // First, look to see if the room can handle this shiz
     Room *currentRoom = [self.rooms objectForKey:self.currentRoomName];
+    
+    // Output all the values of all the items in the current room
+    /*NSLog(@"Room Items:");
+     for(id key in currentRoom.items) {
+        Item *item = [currentRoom.items objectForKey:key];
+        NSLog(@"%@ {\nsname=\"%@\"\npname=\"%@\"\nsdesc=\"%@\"\npdesc=\"%@\"\nsdescription=\"%@\"\npdescription=\"%@\"\nslook=\"%@\"\nplook=\"%@\"\nkeywords=%@\nquantity=%d\nhidden=%s\ndrop=%s\n\nShort Description: \"%@\"\nLong Description: \"%@\"\nLook Description: \"%@\"\n}", key, [item singularName], [item pluralName], [item singularDesc], [item pluralDesc], [item singularDescription], [item pluralDescription], [item singularLook], [item pluralLook], [item keywords], [item quantity], [item hidden] ? "true" : "false", [item canDrop] ? "true" : "false", [item shortDescription], [item longDescription], [item lookDescription]);
+     }*/
+    
     for (int i = 0; i < [currentRoom commands].count; i++) {
         Command *command = [[currentRoom commands] objectAtIndex:i];
         if ([command respondsToVerb:self.verb subject:self.subject]) {
@@ -170,6 +184,10 @@ static JustyVenture *_sharedState;
             
             if ([attributeDict objectForKey:@"drop"] != nil) {
                 if ([[attributeDict objectForKey:@"drop"] caseInsensitiveCompare:@"false"]) [room setAllowDrop:FALSE];
+            }
+            
+            if ([attributeDict objectForKey:@"items"] != nil) {
+                [room setItems:[self parseItems:[attributeDict objectForKey:@"items"] roomItems:room.items]];
             }
             
             self.currentRoomXML = room;
@@ -460,6 +478,89 @@ static JustyVenture *_sharedState;
         return @[attribute];
     }
     return nil;
+}
+
+- (NSMutableDictionary*)parseItems:(NSString*)itemList roomItems:(NSMutableDictionary*)items {
+    // See if it's a list or just a single thing
+    // (first, get rid of leading whitespace)
+    while ([[itemList substringWithRange:NSMakeRange(0, 1)] isEqualToString:@" "]) {
+        itemList = [itemList substringFromIndex:1];
+    }
+    while ([itemList rangeOfString:@"[ "].location != NSNotFound) {
+        itemList = [itemList stringByReplacingOccurrencesOfString:@"[ " withString:@"["];
+    }
+    while ([itemList rangeOfString:@"( "].location != NSNotFound) {
+        itemList = [itemList stringByReplacingOccurrencesOfString:@"( " withString:@"("];
+    }
+    while ([itemList rangeOfString:@", "].location != NSNotFound) {
+        itemList = [itemList stringByReplacingOccurrencesOfString:@", " withString:@","];
+    }
+    while ([itemList rangeOfString:@"; "].location != NSNotFound) {
+        itemList = [itemList stringByReplacingOccurrencesOfString:@"; " withString:@";"];
+    }
+    if ([itemList length] < 1) {
+        return items;
+    }
+    else if ([[itemList substringToIndex:1] isEqualToString:@"["]) {
+        NSMutableArray *array = [NSMutableArray arrayWithArray:[itemList componentsSeparatedByString:@";"]];
+        NSString *firstThing = [[array objectAtIndex:0] substringFromIndex:1];
+        NSString *lastThing = [[array lastObject] substringToIndex:[[array lastObject] length] -1];
+        [array replaceObjectAtIndex:0 withObject:firstThing];
+        [array replaceObjectAtIndex:(array.count - 1) withObject:lastThing];
+        for (int i=0; i<array.count; i++) {
+            NSString *arrayItemName = [array objectAtIndex:i];
+            if ([[arrayItemName substringToIndex:1] isEqualToString:@"("]) {
+                NSMutableArray *itemArray = [NSMutableArray arrayWithArray:[arrayItemName componentsSeparatedByString:@","]];
+                NSString *itemName = [[itemArray objectAtIndex:0] substringFromIndex:1];
+                if ([self.items objectForKey:itemName] != nil) {
+                    NSString *quantity = [[itemArray lastObject] substringToIndex:[[itemArray lastObject] length] -1];
+                    Item *newItem = [[Item alloc] initWithItem:[self.items objectForKey:itemName]];
+                    Item *oldItem = [items objectForKey:itemName];
+                    [newItem setQuantity:[quantity intValue]];
+                    if (oldItem == nil) [items setObject:newItem forKey:itemName];
+                    else {
+                        [newItem setQuantity:newItem.quantity + oldItem.quantity];
+                        [items setObject:newItem forKey:itemName];
+                    }
+                }
+            }
+            else if ([self.items objectForKey:arrayItemName] != nil) {
+                Item *newItem = [[Item alloc] initWithItem:[self.items objectForKey:arrayItemName]];
+                Item *oldItem = [items objectForKey:arrayItemName];
+                if (oldItem == nil) [items setObject:newItem forKey:arrayItemName];
+                else {
+                    [newItem setQuantity:oldItem.quantity + 1];
+                    [items setObject:newItem forKey:arrayItemName];
+                }
+            }
+        }
+    }
+    else if ([[itemList substringToIndex:1] isEqualToString:@"("]) {
+        NSMutableArray *array = [NSMutableArray arrayWithArray:[itemList componentsSeparatedByString:@","]];
+        NSString *itemName = [[array objectAtIndex:0] substringFromIndex:1];
+        if ([self.items objectForKey:itemName] != nil) {
+            NSString *quantity = [[array lastObject] substringToIndex:[[array lastObject] length] -1];
+            Item *newItem = [[Item alloc] initWithItem:[self.items objectForKey:itemName]];
+            Item *oldItem = [items objectForKey:itemName];
+            [newItem setQuantity:[quantity intValue]];
+            if (oldItem == nil) [items setObject:newItem forKey:itemName];
+            else {
+                [newItem setQuantity:newItem.quantity + oldItem.quantity];
+                [items setObject:newItem forKey:itemName];
+            }
+        }
+    }
+    else if ([self.items objectForKey:itemList] != nil) {
+        Item *newItem = [[Item alloc] initWithItem:[self.items objectForKey:itemList]];
+        Item *oldItem = [items objectForKey:itemList];
+        if (oldItem == nil) [items setObject:newItem forKey:itemList];
+        else {
+            [newItem setQuantity:oldItem.quantity + 1];
+            [items setObject:newItem forKey:itemList];
+        }
+    }
+    
+    return items;
 }
 
 - (JVXMLContext)context {
