@@ -8,15 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "Room.h"
+#import "Player.h"
 
 @interface JustyVenture : NSObject <NSXMLParserDelegate>
 
 + (JustyVenture*)mainVenture;
 
-@property (nonatomic, strong) NSString *currentRoomName;
 @property (nonatomic, readonly) NSMutableDictionary *rooms;
 @property (nonatomic, readonly) NSMutableDictionary *variables;
 @property (nonatomic, readonly) NSMutableDictionary *items;
+@property (nonatomic, readonly) NSMutableDictionary *players;
 @property (nonatomic, readonly) NSMutableArray *commands;
 @property (nonatomic, strong) NSString *introText;
 @property (nonatomic, strong) NSString *promptText;

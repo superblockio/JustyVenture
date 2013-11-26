@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6367A68618446C7F00894E52 /* Mob.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367A68518446C7F00894E52 /* Mob.m */; };
+		6367A68918446CC500894E52 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367A68818446CC500894E52 /* Player.m */; };
+		6367A68C1844978A00894E52 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367A68B1844978A00894E52 /* Container.m */; };
+		6367A68F184497AA00894E52 /* Exit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6367A68E184497AA00894E52 /* Exit.m */; };
 		63D816331820F28D0064F802 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 63D816321820F28D0064F802 /* icon.icns */; };
 		63D89CF11820FD0900CE5AC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B7B5ED21820365D00325259 /* MainMenu.xib */; };
 		63D89CF21820FD1500CE5AC4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6BE60F99181B98240063BB35 /* Credits.rtf */; };
@@ -23,6 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6367A68418446C7F00894E52 /* Mob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mob.h; sourceTree = "<group>"; };
+		6367A68518446C7F00894E52 /* Mob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mob.m; sourceTree = "<group>"; };
+		6367A68718446CC500894E52 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		6367A68818446CC500894E52 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		6367A68A1844978A00894E52 /* Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
+		6367A68B1844978A00894E52 /* Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Container.m; sourceTree = "<group>"; };
+		6367A68D184497A900894E52 /* Exit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exit.h; sourceTree = "<group>"; };
+		6367A68E184497AA00894E52 /* Exit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exit.m; sourceTree = "<group>"; };
 		63D816321820F28D0064F802 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = SOURCE_ROOT; };
 		6B7B5ED21820365D00325259 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6B7B5ED41820389200325259 /* QuestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestView.h; sourceTree = "<group>"; };
@@ -118,17 +130,25 @@
 			children = (
 				6BE60F9C181B98240063BB35 /* AppDelegate.h */,
 				6BE60F9D181B98240063BB35 /* AppDelegate.m */,
-				6B7B5ED71820631D00325259 /* JustyVenture.h */,
-				6B7B5ED81820631D00325259 /* JustyVenture.m */,
-				6B7B5EDA1820755A00325259 /* Room.h */,
-				6B7B5EDB1820755A00325259 /* Room.m */,
 				6B7B5EE018207A7B00325259 /* Command.h */,
 				6B7B5EE118207A7B00325259 /* Command.m */,
+				6367A68A1844978A00894E52 /* Container.h */,
+				6367A68B1844978A00894E52 /* Container.m */,
+				6367A68D184497A900894E52 /* Exit.h */,
+				6367A68E184497AA00894E52 /* Exit.m */,
 				6B7B5EDD182077DD00325259 /* Item.h */,
 				6B7B5EDE182077DD00325259 /* Item.m */,
+				6B7B5ED71820631D00325259 /* JustyVenture.h */,
+				6B7B5ED81820631D00325259 /* JustyVenture.m */,
 				6BE60F96181B98240063BB35 /* main.m */,
+				6367A68418446C7F00894E52 /* Mob.h */,
+				6367A68518446C7F00894E52 /* Mob.m */,
+				6367A68718446CC500894E52 /* Player.h */,
+				6367A68818446CC500894E52 /* Player.m */,
 				6B7B5ED41820389200325259 /* QuestView.h */,
 				6B7B5ED51820389200325259 /* QuestView.m */,
+				6B7B5EDA1820755A00325259 /* Room.h */,
+				6B7B5EDB1820755A00325259 /* Room.m */,
 			);
 			name = Source;
 			path = ../Source;
@@ -208,6 +228,10 @@
 				6B7B5ED61820389200325259 /* QuestView.m in Sources */,
 				6B7B5ED91820631D00325259 /* JustyVenture.m in Sources */,
 				6BE60F97181B98240063BB35 /* main.m in Sources */,
+				6367A68618446C7F00894E52 /* Mob.m in Sources */,
+				6367A68918446CC500894E52 /* Player.m in Sources */,
+				6367A68C1844978A00894E52 /* Container.m in Sources */,
+				6367A68F184497AA00894E52 /* Exit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

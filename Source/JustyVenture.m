@@ -34,6 +34,7 @@ typedef enum {
 @property(nonatomic, strong) Room *currentRoomXML;
 @property(nonatomic, strong) Command *currentCommandXML;
 @property(nonatomic, strong) Item *currentItemXML;
+@property(nonatomic, strong) Player *currentPlayer;
 
 @property (nonatomic, strong) NSMutableDictionary *rooms;
 @property (nonatomic, strong) NSMutableDictionary *variables;
@@ -67,6 +68,7 @@ static JustyVenture *_sharedState;
         self.items = [[NSMutableDictionary alloc] init];
         self.commands = [[NSMutableArray alloc] init];
         self.adventureTitle = @"Adventure!";
+        self.currentPlayer = [[Player alloc] init];
         [self parseAdventureFiles];
     }
     return self;
@@ -98,7 +100,7 @@ static JustyVenture *_sharedState;
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
         self.subject = [input substringFromIndex:self.verb.length + 1];
     }
-    Room *currentRoom = [self.rooms objectForKey:self.currentRoomName];
+    Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
     
     // Output all the values of all the items in the current room
     /*NSLog(@"Room Items:");
@@ -213,7 +215,7 @@ static JustyVenture *_sharedState;
             
             // Set the room name
             if ([attributeDict objectForKey:@"firstRoom"] != nil) {
-                [self setCurrentRoomName:[attributeDict objectForKey:@"firstRoom"]];
+                [self.currentPlayer setCurrentRoomName:[attributeDict objectForKey:@"firstRoom"]];
             }
             else {
                 NSLog(@"XML Error: Intro tag does not contain firstRoom attribute!");
@@ -439,7 +441,7 @@ static JustyVenture *_sharedState;
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
     // We have to do the intro text here because the room might not be loaded when the intro tag is first read
-    Room *firstRoom = [self.rooms objectForKey:self.currentRoomName];
+    Room *firstRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
     if (self.introType != JVIntroTypeReplace) {
         for (int i = 0; i < firstRoom.commands.count; i++) {
             if ([[firstRoom.commands objectAtIndex:i] respondsToInternalName:@"arrive"]) {
@@ -595,7 +597,7 @@ static JustyVenture *_sharedState;
     // HACK: just look for go, prompt, verb, and subject for now!
     output = [output stringByReplacingOccurrencesOfString:@"@verb;" withString:self.verb];
     output = [output stringByReplacingOccurrencesOfString:@"@subject;" withString:self.subject];
-    Room *currentRoom = [self.rooms objectForKey:self.currentRoomName];
+    Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
     NSString *itemLook = @"";
     
     for(id key in currentRoom.items) {
@@ -630,7 +632,7 @@ static JustyVenture *_sharedState;
         NSArray *argsList = [args componentsSeparatedByString:@","];
         JVIntroType type = JVIntroTypeReplace;
         if (argsList.count > 0) {
-            self.currentRoomName = [argsList objectAtIndex:0];
+            self.currentPlayer.currentRoomName = [argsList objectAtIndex:0];
         }
         if (argsList.count > 1) {
             NSString *typeStr = [argsList objectAtIndex:1];
@@ -648,7 +650,7 @@ static JustyVenture *_sharedState;
         
         NSString *arriveText = @"";
         // Find the arrive command for this room
-        NSArray *commands = [[self.rooms objectForKey:self.currentRoomName] commands];
+        NSArray *commands = [[self.rooms objectForKey:self.currentPlayer.currentRoomName] commands];
         for (int i = 0; i < commands.count; i++) {
             Command *command = [commands objectAtIndex:i];
             if ([command respondsToInternalName:@"arrive"]) {

@@ -12,7 +12,11 @@
 
 @property(nonatomic, strong) NSString *name;
 @property(nonatomic, strong) NSArray *commands;
+@property(nonatomic, strong) NSArray *mobs;
 @property(nonatomic, strong) NSMutableDictionary *items;
+@property(nonatomic, strong) NSMutableDictionary *players;
+@property(nonatomic, strong) NSMutableDictionary *containers;
+@property(nonatomic, strong) NSMutableDictionary *exits;
 @property(nonatomic, assign) BOOL allowDrop;
 
 @end
