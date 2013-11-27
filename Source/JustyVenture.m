@@ -609,6 +609,11 @@ static JustyVenture *_sharedState;
             }
             
             // And whether it's possible to drop the mob once you pick it up
+            if ([attributeDict objectForKey:@"talk"] != nil) {
+                if ([[attributeDict objectForKey:@"talk"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [mob setCanTalk:true];
+            }
+            
+            // And whether it's possible to drop the mob once you pick it up
             if ([attributeDict objectForKey:@"hold"] != nil) {
                 if ([[attributeDict objectForKey:@"hold"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [mob setCanHold:true];
             }
@@ -737,6 +742,8 @@ static JustyVenture *_sharedState;
                 [self.currentMobXML setSingularLook:self.currentElementBody];
             } else if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
                 [self.currentMobXML setPluralLook:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Talk"] == NSOrderedSame) {
+                [self.currentMobXML setTalkText:self.currentElementBody];
             }
         }
     }

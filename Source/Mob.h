@@ -30,9 +30,11 @@
 @property(nonatomic, strong) NSString *pluralDescription;
 @property(nonatomic, strong) NSString *singularLook;
 @property(nonatomic, strong) NSString *pluralLook;
+@property(nonatomic, strong) NSString *talkText;
 @property(nonatomic, strong) NSString *currentRoomName;
 @property(nonatomic, strong) NSMutableDictionary *items;
 @property(nonatomic, assign) BOOL hidden;
+@property(nonatomic, assign) BOOL canTalk;
 @property(nonatomic, assign) BOOL canHold;
 
 //Possible subjects used to refer to the item.
