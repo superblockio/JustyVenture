@@ -10,8 +10,14 @@
 
 @interface Command : NSObject
 
+//Returns a new copy of the command for use in dynamic commands.
+- (id)initWithCommand:(Command*)originalCommand andSubjects:(NSArray*)subjects;
+
 // Only for commands the user types in, or that we are pretending the user typed in
 - (BOOL)respondsToVerb:(NSString*)verb subject:(NSString*)subject;
+
+// Used for checking the dynamic command list to save time by only generating the possibilites for the inputted verb
+- (BOOL)respondsToVerb:(NSString*)verb;
 
 // For "internal" commands that the user can't directly execute (the Arrive command, commands executed on a timer, etc)
 // Internal commands should only have one verb they are accessed by, which is their "internal" name

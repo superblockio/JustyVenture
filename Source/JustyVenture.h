@@ -19,6 +19,7 @@
 @property (nonatomic, readonly) NSMutableDictionary *items;
 @property (nonatomic, readonly) NSMutableDictionary *players;
 @property (nonatomic, readonly) NSMutableArray *commands;
+@property (nonatomic, readonly) NSMutableArray *dynamicCommands;
 @property (nonatomic, strong) NSString *introText;
 @property (nonatomic, strong) NSString *promptText;
 @property (nonatomic, strong) NSString *adventureTitle;

@@ -40,10 +40,12 @@ typedef enum {
 @property (nonatomic, strong) NSMutableDictionary *variables;
 @property (nonatomic, strong) NSMutableDictionary *items;
 @property (nonatomic, strong) NSMutableArray *commands;
+@property (nonatomic, strong) NSMutableArray *dynamicCommands;
 
 @property (nonatomic, strong) NSString *subject;
 @property (nonatomic, strong) NSString *verb;
 @property (nonatomic, assign) BOOL firstTag;
+@property (nonatomic, assign) BOOL dynamic;
 
 @end
 
@@ -67,6 +69,7 @@ static JustyVenture *_sharedState;
         self.variables = [[NSMutableDictionary alloc] init];
         self.items = [[NSMutableDictionary alloc] init];
         self.commands = [[NSMutableArray alloc] init];
+        self.dynamicCommands = [[NSMutableArray alloc] init];
         self.adventureTitle = @"Adventure!";
         self.currentPlayer = [[Player alloc] init];
         [self parseAdventureFiles];
@@ -90,26 +93,89 @@ static JustyVenture *_sharedState;
     self.verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
     self.subject = @"";
     
-    // Output all the values of all the possible items
-    /*NSLog(@"Possible Items:");
-     for(id key in self.items) {
-        Item *item = [self.items objectForKey:key];
-        NSLog(@"%@ {\nsname=\"%@\"\npname=\"%@\"\nsdesc=\"%@\"\npdesc=\"%@\"\nsdescription=\"%@\"\npdescription=\"%@\"\nslook=\"%@\"\nplook=\"%@\"\nkeywords=%@\nquantity=%d\nhidden=%s\ndrop=%s\n\nShort Description: \"%@\"\nLong Description: \"%@\"\nLook Description: \"%@\"\n}", key, [item singularName], [item pluralName], [item singularDesc], [item pluralDesc], [item singularDescription], [item pluralDescription], [item singularLook], [item pluralLook], [item keywords], [item quantity], [item hidden] ? "true" : "false", [item canDrop] ? "true" : "false", [item shortDescription], [item longDescription], [item lookDescription]);
-     }*/
-    
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
         self.subject = [input substringFromIndex:self.verb.length + 1];
     }
     Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
+    NSMutableArray *tempCommands = [NSMutableArray array];
     
-    // Output all the values of all the items in the current room
-    /*NSLog(@"Room Items:");
-     for(id key in currentRoom.items) {
-        Item *item = [currentRoom.items objectForKey:key];
-        NSLog(@"%@ {\nsname=\"%@\"\npname=\"%@\"\nsdesc=\"%@\"\npdesc=\"%@\"\nsdescription=\"%@\"\npdescription=\"%@\"\nslook=\"%@\"\nplook=\"%@\"\nkeywords=%@\nquantity=%d\nhidden=%s\ndrop=%s\n\nShort Description: \"%@\"\nLong Description: \"%@\"\nLook Description: \"%@\"\n}", key, [item singularName], [item pluralName], [item singularDesc], [item pluralDesc], [item singularDescription], [item pluralDescription], [item singularLook], [item pluralLook], [item keywords], [item quantity], [item hidden] ? "true" : "false", [item canDrop] ? "true" : "false", [item shortDescription], [item longDescription], [item lookDescription]);
-     }*/
+    // First, generate any dynamic commands for the room
+    for (int i = 0; i < [currentRoom dynamicCommands].count; i++) {
+        Command *command = [[currentRoom dynamicCommands] objectAtIndex:i];
+        if ([command respondsToVerb:self.verb]) {
+            NSMutableArray *subjects = [NSMutableArray array];
+            if ([command respondsToVerb:self.verb subject:@"@items;"]) {
+                for(id key in currentRoom.items) {
+                    Item *item = [currentRoom.items objectForKey:key];
+                    [subjects addObjectsFromArray:item.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+            }
+            else {
+                for(id key in currentRoom.items) {
+                    Item *item = [currentRoom.items objectForKey:key];
+                    NSString *itemName = @"@item(";
+                    itemName = [itemName stringByAppendingString:item.name];
+                    itemName = [itemName stringByAppendingString:@");"];
+                    [subjects addObjectsFromArray:item.keywords];
+                    if ([command respondsToVerb:self.verb subject:itemName]) {
+                        itemName = item.name;
+                        [subjects addObjectsFromArray:item.keywords];
+                        Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                        [tempCommands addObject:newCommand];
+                    }
+                }
+            }
+        }
+    }
     
-    // First, look to see if the room can handle this shiz
+    // Then, generate any dynamic commands for the universal commands
+    for (int i = 0; i < self.dynamicCommands.count; i++) {
+        Command *command = [self.dynamicCommands objectAtIndex:i];
+        if ([command respondsToVerb:self.verb]) {
+            NSMutableArray *subjects = [NSMutableArray array];
+            if ([command respondsToVerb:self.verb subject:@"@items;"]) {
+                for(id key in currentRoom.items) {
+                    Item *item = [currentRoom.items objectForKey:key];
+                    [subjects addObjectsFromArray:item.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+            }
+            else {
+                for(id key in currentRoom.items) {
+                    Item *item = [currentRoom.items objectForKey:key];
+                    NSString *itemName = @"@item(";
+                    itemName = [itemName stringByAppendingString:item.name];
+                    itemName = [itemName stringByAppendingString:@");"];
+                    [subjects addObjectsFromArray:item.keywords];
+                    if ([command respondsToVerb:self.verb subject:itemName]) {
+                        itemName = item.name;
+                        [subjects addObjectsFromArray:item.keywords];
+                        Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                        [tempCommands addObject:newCommand];
+                    }
+                }
+            }
+        }
+    }
+    
+    NSLog(@"%@", self.dynamicCommands);
+    NSLog(@"%@", [currentRoom dynamicCommands]);
+    NSLog(@"%@", tempCommands);
+    
+    // Then, look to see if one of our new dynamic commands fulfils the role
+    if (tempCommands != nil) {
+        for (int i = 0; i < tempCommands.count; i++) {
+            Command *command = [tempCommands objectAtIndex:i];
+            if ([command respondsToVerb:self.verb subject:self.subject]) {
+                return [self JustinTimeInterpret:[command result]];
+            }
+        }
+    }
+    
+    // Then, look to see if the room can otherwise handle this shiz
     for (int i = 0; i < [currentRoom commands].count; i++) {
         Command *command = [[currentRoom commands] objectAtIndex:i];
         if ([command respondsToVerb:self.verb subject:self.subject]) {
@@ -170,6 +236,7 @@ static JustyVenture *_sharedState;
 # pragma mark NSXMLParserDelegate methods
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     self.currentElementBody = @"";
+    self.dynamic = false;
     
     // If we're one of the top-level elements, do top-leveley stuff
     if ([self context] == JVXMLOuterContext) {
@@ -244,15 +311,12 @@ static JustyVenture *_sharedState;
         
         // Now find the subjects (if any)
         if ([attributeDict objectForKey:@"subject"] != nil) {
-            if ([self context] == JVXMLRoomContext && [[attributeDict objectForKey:@"subject"] isEqualToString:@"@items;"]) {
-                NSMutableArray *subjects = [NSMutableArray array];
-                for(id key in self.currentRoomXML.items) {
-                    Item *item = [self.currentRoomXML.items objectForKey:key];
-                    [subjects addObjectsFromArray:item.keywords];
-                    [command setSubjects:subjects];
-                }
-            }
-            else [command setSubjects:[self parseAttribute:[attributeDict objectForKey:@"subject"]]];
+            [command setSubjects:[self parseAttribute:[attributeDict objectForKey:@"subject"]]];
+        }
+        
+        // Check to see if this should be considered a dynamic command
+        if ([attributeDict objectForKey:@"dynamic"] != nil) {
+            if ([[attributeDict objectForKey:@"dynamic"] caseInsensitiveCompare:@"true"] == NSOrderedSame) self.dynamic = true;
         }
         
         // Finally, see if it's an internal command or not
@@ -323,12 +387,12 @@ static JustyVenture *_sharedState;
         
         // Then the whether or not the item shows up in a room
         if ([attributeDict objectForKey:@"hidden"] != nil) {
-            if ([[attributeDict objectForKey:@"hidden"] caseInsensitiveCompare:@"true"]) [item setHidden:TRUE];
+            if ([[attributeDict objectForKey:@"hidden"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [item setHidden:TRUE];
         }
         
         // And whether it's possible to drop the item once you pick it up
         if ([attributeDict objectForKey:@"drop"] != nil) {
-            if ([[attributeDict objectForKey:@"drop"] caseInsensitiveCompare:@"false"]) [item setCanDrop:FALSE];
+            if ([[attributeDict objectForKey:@"drop"] caseInsensitiveCompare:@"false"] == NSOrderedSame) [item setCanDrop:FALSE];
         }
         
         // Finally, set the internal name for the item
@@ -411,12 +475,14 @@ static JustyVenture *_sharedState;
     
     else if ([self context] == JVXMLRoomContext) {
         [self.currentCommandXML setResult:self.currentElementBody];
-        [self.currentRoomXML setCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
+        if (self.dynamic) [self.currentRoomXML setDynamicCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
+        else [self.currentRoomXML setCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
     }
     
     else if ([self context] == JVXMLCommandsContext) {
         [self.currentCommandXML setResult:self.currentElementBody];
-        [self.commands addObject:self.currentCommandXML];
+        if (self.dynamic) [self.dynamicCommands addObject:self.currentCommandXML];
+        else [self.commands addObject:self.currentCommandXML];
     }
     
     else if ([self context] == JVXMLItemsContext) {

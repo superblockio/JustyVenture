@@ -21,6 +21,17 @@
     return self;
 }
 
+- (id)initWithCommand:(Command *)originalCommand andSubjects:(NSArray *)subjects {
+    self = [super init];
+    if (self) {
+        self.verbs = originalCommand.verbs;
+        self.subjects = subjects;
+        self.internal = originalCommand.internal;
+        self.result = originalCommand.result;
+    }
+    return self;
+}
+
 - (BOOL)respondsToVerb:(NSString *)verb subject:(NSString *)subject {
     if (self.internal) {
         return NO;
@@ -45,6 +56,20 @@
     }
     
     return respondsToVerb && respondsToSubject;
+}
+
+- (BOOL)respondsToVerb:(NSString *)verb {
+    if (self.internal) {
+        return NO;
+    }
+    BOOL respondsToVerb = NO;
+    for (int i = 0; i < self.verbs.count; i++) {
+        if ([[self.verbs objectAtIndex:i] caseInsensitiveCompare:verb] == NSOrderedSame) {
+            respondsToVerb = YES;
+        }
+    }
+    
+    return respondsToVerb;
 }
 
 - (BOOL)respondsToInternalName:(NSString *)internalName {

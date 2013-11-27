@@ -14,6 +14,12 @@ Look: looks at stuff. Try looking at specific objects that you don't trust.
 Go: go to one of the adjacent exits.
 Yolo: don't use this command.
 </Help>
+<Look subject="@items;" dynamic="true">
+@itemlook;
+</Look>
+<Eat subject="@item(JuicyHam);" dynamic="true">
+You eat the succulent ham like it's made of ham.
+</Eat>
 <Yolo>
 We told you not to use this command. You had to go and do it anyway didn't you?@prompt(Jelly Jam Ham Slam?);
 </Yolo>
@@ -42,7 +48,7 @@ Looking at these @name; is like looking at heaven.
 <Toast>
 Lemonpaste
 </Toast>
-<Broom>
+<Broom hidden="true">
 It's just a regular @name;.
 </Broom>
 </Items>
@@ -51,14 +57,14 @@ It's just a regular @name;.
 <Arrive>
 You'd rather run when you can't crawl...
 </Arrive>
+<Poke subject="@item(JuicyHam);" dynamic="true">
+You poke the ham.
+</Poke>
 <Look>Say woo! slender man
 Do it.</Look>
 <Look alt="    woo!" subject="[   doggy,  pie, doggy pile,   slender man]">I know
 you know
 that I'm not telling the TRUTH.</Look>
-<Look subject="@items;">
-@itemlook;
-</Look>
 <Truth>I know
 you know
 they just don't have any PROOF.</Truth>
