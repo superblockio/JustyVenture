@@ -689,7 +689,7 @@ static JustyVenture *_sharedState;
                 [self.currentExitXML setBadKey:self.currentElementBody];
             }
         }
-        if ([self secondContext] == JVXMLSecondContainerContext) {
+        else if ([self secondContext] == JVXMLSecondContainerContext) {
             // Set the look text for the item.
             if ([elementName caseInsensitiveCompare:@"Locked"] == NSOrderedSame) {
                 [self.currentContainerXML setLockLook:self.currentElementBody];
