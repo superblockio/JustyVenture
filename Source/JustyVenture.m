@@ -101,66 +101,13 @@ static JustyVenture *_sharedState;
     NSMutableArray *tempRoomCommands = [NSMutableArray array];
     
     // First, generate any dynamic room commands
-    for (int i = 0; i < [currentRoom dynamicCommands].count; i++) {
-        Command *command = [[currentRoom dynamicCommands] objectAtIndex:i];
-        if ([command respondsToVerb:self.verb]) {
-            NSMutableArray *subjects = [NSMutableArray array];
-            if ([command respondsToVerb:self.verb subject:@"@items;"]) {
-                for(id key in currentRoom.items) {
-                    Item *item = [currentRoom.items objectForKey:key];
-                    [subjects addObjectsFromArray:item.keywords];
-                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
-                    [tempRoomCommands addObject:newCommand];
-                }
-            }
-            else {
-                for(id key in currentRoom.items) {
-                    Item *item = [currentRoom.items objectForKey:key];
-                    NSString *itemName = @"@item(";
-                    itemName = [itemName stringByAppendingString:item.name];
-                    itemName = [itemName stringByAppendingString:@");"];
-                    [subjects addObjectsFromArray:item.keywords];
-                    if ([command respondsToVerb:self.verb subject:itemName]) {
-                        itemName = item.name;
-                        [subjects addObjectsFromArray:item.keywords];
-                        Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
-                        [tempRoomCommands addObject:newCommand];
-                    }
-                }
-            }
-        }
-    }
+    tempRoomCommands = [self GenerateDynamicCommands:[currentRoom dynamicCommands] tempCommands:tempRoomCommands];
     
     // Then, generate any dynamic fallback commands
-    for (int i = 0; i < self.dynamicCommands.count; i++) {
-        Command *command = [self.dynamicCommands objectAtIndex:i];
-        if ([command respondsToVerb:self.verb]) {
-            NSMutableArray *subjects = [NSMutableArray array];
-            if ([command respondsToVerb:self.verb subject:@"@items;"]) {
-                for(id key in currentRoom.items) {
-                    Item *item = [currentRoom.items objectForKey:key];
-                    [subjects addObjectsFromArray:item.keywords];
-                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
-                    [tempCommands addObject:newCommand];
-                }
-            }
-            else {
-                for(id key in currentRoom.items) {
-                    Item *item = [currentRoom.items objectForKey:key];
-                    NSString *itemName = @"@item(";
-                    itemName = [itemName stringByAppendingString:item.name];
-                    itemName = [itemName stringByAppendingString:@");"];
-                    [subjects addObjectsFromArray:item.keywords];
-                    if ([command respondsToVerb:self.verb subject:itemName]) {
-                        itemName = item.name;
-                        [subjects addObjectsFromArray:item.keywords];
-                        Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
-                        [tempCommands addObject:newCommand];
-                    }
-                }
-            }
-        }
-    }
+    tempCommands = [self GenerateDynamicCommands:self.dynamicCommands tempCommands:tempCommands];
+    
+    NSLog(@"%@", tempRoomCommands);
+    NSLog(@"%@", tempCommands);
     
     // Next, look to see if one of our new dynamic room commands fulfils the role
     if (tempRoomCommands != nil) {
@@ -662,6 +609,41 @@ static JustyVenture *_sharedState;
         else return JVXMLPluralityContext;
     }
     return JVXMLOuterContext;
+}
+
+- (NSMutableArray*)GenerateDynamicCommands:(NSArray*)dynamicCommands tempCommands:(NSMutableArray*)tempCommands {
+    Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
+    
+    for (int i = 0; i < dynamicCommands.count; i++) {
+        Command *command = [dynamicCommands objectAtIndex:i];
+        if ([command respondsToVerb:self.verb]) {
+            NSMutableArray *subjects = [NSMutableArray array];
+            if ([command respondsToVerb:self.verb subject:@"@items;"]) {
+                for(id key in currentRoom.items) {
+                    Item *item = [currentRoom.items objectForKey:key];
+                    [subjects addObjectsFromArray:item.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+            }
+            else {
+                for(id key in currentRoom.items) {
+                    Item *item = [currentRoom.items objectForKey:key];
+                    NSString *itemName = @"@item(";
+                    itemName = [itemName stringByAppendingString:item.name];
+                    itemName = [itemName stringByAppendingString:@");"];
+                    if ([command respondsToVerb:self.verb subject:itemName]) {
+                        itemName = item.name;
+                        [subjects addObjectsFromArray:item.keywords];
+                        Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                        [tempCommands addObject:newCommand];
+                    }
+                }
+            }
+        }
+    }
+    
+    return tempCommands;
 }
 
 - (NSString*)JustinTimeInterpret:(NSString*)input {
