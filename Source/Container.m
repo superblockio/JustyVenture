@@ -10,4 +10,51 @@
 
 @implementation Container
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.name = @"";
+        self.lockDesc = @"";
+        self.unlockDesc = @"";
+        self.lockDescription = @"";
+        self.unlockDescription = @"";
+        self.lockLook = @"";
+        self.unlockLook = @"";
+        self.keyName = @"";
+        self.unlockText = @"";
+        self.badKey = @"";
+        self.hidden = false;
+        self.locked = false;
+        self.items = [NSMutableDictionary dictionary];
+        self.keywords = [NSArray array];
+    }
+    return self;
+}
+
+- (BOOL)respondsToKeyword:(NSString *)keyword {
+    BOOL respondsToKeyword = NO;
+    for (int i = 0; i < self.keywords.count; i++) {
+        if ([[self.keywords objectAtIndex:i] caseInsensitiveCompare:keyword] == NSOrderedSame) {
+            respondsToKeyword = YES;
+        }
+    }
+    
+    return respondsToKeyword;
+}
+
+- (NSString*)shortDescription {
+    if (self.locked) return self.lockDesc;
+    else return self.unlockDesc;
+}
+
+- (NSString*)longDescription {
+    if (self.locked) return self.lockDescription;
+    else return self.unlockDescription;
+}
+
+- (NSString*)lookDescription {
+    if (self.locked) return self.lockLook;
+    else return self.lockLook;
+}
+
 @end

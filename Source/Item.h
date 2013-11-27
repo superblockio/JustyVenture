@@ -10,7 +10,7 @@
 
 @interface Item : NSObject
 
-//Returns a new copy of the items we have stored globally.
+//Returns a new copy of the item we have stored globally.
 - (id)initWithItem:(Item*)originalItem;
 
 // To check which items are being looked for

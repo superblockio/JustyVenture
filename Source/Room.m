@@ -16,7 +16,11 @@
         self.name = @"";
         self.commands = [NSArray array];
         self.dynamicCommands = [NSArray array];
+        self.mobs = [NSMutableArray array];
+        self.containers = [NSDictionary dictionary];
+        self.exits = [NSDictionary dictionary];
         self.items = [NSMutableDictionary dictionary];
+        self.players = [NSMutableDictionary dictionary];
         self.allowDrop = TRUE;
     }
     return self;
