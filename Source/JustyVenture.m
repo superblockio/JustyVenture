@@ -992,7 +992,7 @@ static JustyVenture *_sharedState;
                 }
                 for(id bley in currentRoom.containers) {
                     Container *container = [currentRoom.containers objectForKey:bley];
-                    if (container.locked){
+                    if (!container.locked){
                         for(id key in container.items) {
                             Item *item = [container.items objectForKey:key];
                             [subjects addObjectsFromArray:item.keywords];
@@ -1002,7 +1002,8 @@ static JustyVenture *_sharedState;
                     }
                 }
             }
-            else if ([command respondsToVerb:self.verb subject:@"@exits;"]) {
+            
+            if ([command respondsToVerb:self.verb subject:@"@exits;"]) {
                 for(id key in currentRoom.exits) {
                     Exit *exit = [currentRoom.exits objectForKey:key];
                     [subjects addObjectsFromArray:exit.keywords];
@@ -1010,7 +1011,8 @@ static JustyVenture *_sharedState;
                     [tempCommands addObject:newCommand];
                 }
             }
-            else if ([command respondsToVerb:self.verb subject:@"@containers;"]) {
+            
+            if ([command respondsToVerb:self.verb subject:@"@containers;"]) {
                 for(id key in currentRoom.containers) {
                     Container *container = [currentRoom.containers objectForKey:key];
                     [subjects addObjectsFromArray:container.keywords];
@@ -1018,7 +1020,8 @@ static JustyVenture *_sharedState;
                     [tempCommands addObject:newCommand];
                 }
             }
-            else if ([command respondsToVerb:self.verb subject:@"@mobs;"]) {
+            
+            if ([command respondsToVerb:self.verb subject:@"@mobs;"]) {
                 for(int i = 0; i < currentRoom.mobs.count; i++) {
                     Mob *mob = [currentRoom.mobs objectAtIndex:i];
                     [subjects addObjectsFromArray:mob.keywords];
@@ -1026,47 +1029,66 @@ static JustyVenture *_sharedState;
                     [tempCommands addObject:newCommand];
                 }
             }
-            else {
-                for(id key in currentRoom.items) {
-                    Item *item = [currentRoom.items objectForKey:key];
-                    NSString *itemName = @"@item(";
-                    itemName = [itemName stringByAppendingString:item.name];
-                    itemName = [itemName stringByAppendingString:@");"];
-                    if ([command respondsToVerb:self.verb subject:itemName]) {
-                        itemName = item.name;
-                        [subjects addObjectsFromArray:item.keywords];
-                        Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
-                        [tempCommands addObject:newCommand];
-                    }
+            
+            for(id key in currentRoom.items) {
+                Item *item = [currentRoom.items objectForKey:key];
+                NSString *itemName = @"@item(";
+                itemName = [itemName stringByAppendingString:item.name];
+                itemName = [itemName stringByAppendingString:@");"];
+                if ([command respondsToVerb:self.verb subject:itemName]) {
+                    [subjects addObjectsFromArray:item.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
                 }
-                for(id bley in currentRoom.containers) {
-                    Container *container = [currentRoom.containers objectForKey:bley];
-                    if (container.locked){
-                        for(id key in container.items) {
-                            Item *item = [container.items objectForKey:key];
-                            NSString *itemName = @"@item(";
-                            itemName = [itemName stringByAppendingString:item.name];
-                            itemName = [itemName stringByAppendingString:@");"];
-                            if ([command respondsToVerb:self.verb subject:itemName]) {
-                                itemName = item.name;
-                                [subjects addObjectsFromArray:item.keywords];
-                                Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
-                                [tempCommands addObject:newCommand];
-                            }
+            }
+            
+            for(id key in currentRoom.exits) {
+                Exit *exit = [currentRoom.exits objectForKey:key];
+                NSString *exitName = @"@exit(";
+                exitName = [exitName stringByAppendingString:exit.name];
+                exitName = [exitName stringByAppendingString:@");"];
+                if ([command respondsToVerb:self.verb subject:exitName]) {
+                    [subjects addObjectsFromArray:exit.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+            }
+            
+            for(id bley in currentRoom.containers) {
+                Container *container = [currentRoom.containers objectForKey:bley];
+                NSString *containerName = @"@container(";
+                containerName = [containerName stringByAppendingString:container.name];
+                containerName = [containerName stringByAppendingString:@");"];
+                if ([command respondsToVerb:self.verb subject:containerName]) {
+                    [subjects addObjectsFromArray:container.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+                
+                if (!container.locked){
+                    for(id key in container.items) {
+                        Item *item = [container.items objectForKey:key];
+                        NSString *itemName = @"@item(";
+                        itemName = [itemName stringByAppendingString:item.name];
+                        itemName = [itemName stringByAppendingString:@");"];
+                        if ([command respondsToVerb:self.verb subject:itemName]) {
+                            [subjects addObjectsFromArray:item.keywords];
+                            Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                            [tempCommands addObject:newCommand];
                         }
                     }
                 }
-                for(int i = 0; i < currentRoom.mobs.count; i++) {
-                    Mob *mob = [currentRoom.mobs objectAtIndex:i];
-                    NSString *mobName = @"@mob(";
-                    mobName = [mobName stringByAppendingString:mob.name];
-                    mobName = [mobName stringByAppendingString:@");"];
-                    if ([command respondsToVerb:self.verb subject:mobName]) {
-                        mobName = mob.name;
-                        [subjects addObjectsFromArray:mob.keywords];
-                        Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
-                        [tempCommands addObject:newCommand];
-                    }
+            }
+            
+            for(int i = 0; i < currentRoom.mobs.count; i++) {
+                Mob *mob = [currentRoom.mobs objectAtIndex:i];
+                NSString *mobName = @"@mob(";
+                mobName = [mobName stringByAppendingString:mob.name];
+                mobName = [mobName stringByAppendingString:@");"];
+                if ([command respondsToVerb:self.verb subject:mobName]) {
+                    [subjects addObjectsFromArray:mob.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
                 }
             }
         }
