@@ -1139,15 +1139,41 @@ static JustyVenture *_sharedState;
     output = [output stringByReplacingOccurrencesOfString:@"@verb;" withString:self.verb];
     output = [output stringByReplacingOccurrencesOfString:@"@subject;" withString:self.subject];
     Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
-    NSString *itemLook = @"";
+    NSString *look = @"";
     
     for(id key in currentRoom.items) {
         Item *item = [currentRoom.items objectForKey:key];
         if ([item respondsToKeyword:self.subject]) {
-            itemLook = [item lookDescription];
+            look = [item lookDescription];
         }
     }
-    output = [output stringByReplacingOccurrencesOfString:@"@itemlook;" withString:itemLook];
+    
+    for (int i = 0; i < currentRoom.mobs.count; i++) {
+        Mob *mob = [currentRoom.mobs objectAtIndex:i];
+        if ([mob respondsToKeyword:self.subject]) {
+            int quantity = 0;
+            for (int j = 0; j < currentRoom.mobs.count; j++) {
+                Mob *quantMob = [currentRoom.mobs objectAtIndex:j];
+                if ([mob.name isEqualToString:quantMob.name]) quantity++;
+            }
+            look = [mob lookDescription:quantity];
+        }
+    }
+    
+    for(id key in currentRoom.exits) {
+        Exit *exit = [currentRoom.exits objectForKey:key];
+        if ([exit respondsToKeyword:self.subject]) {
+            look = [exit lookDescription];
+        }
+    }
+    
+    for(id key in currentRoom.containers) {
+        Container *container = [currentRoom.containers objectForKey:key];
+        if ([container respondsToKeyword:self.subject]) {
+            look = [container lookDescription];
+        }
+    }
+    output = [output stringByReplacingOccurrencesOfString:@"@look;" withString:look];
     
     NSUInteger promptLocation = [output rangeOfString:@"@prompt("].location;
     if (promptLocation != NSNotFound) {
