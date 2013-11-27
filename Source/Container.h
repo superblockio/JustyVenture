@@ -12,5 +12,7 @@
 
 @property(nonatomic, strong) NSMutableDictionary *items;
 @property(nonatomic, strong) NSString *name;
+@property(nonatomic, strong) NSString *keyName;
+@property(nonatomic, assign) BOOL locked;
 
 @end
