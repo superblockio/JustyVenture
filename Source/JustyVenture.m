@@ -121,7 +121,7 @@ static JustyVenture *_sharedState;
     if (fallbackResult != nil) return fallbackResult;
     
     // If we have no valid commands, give them the standard speil
-    if (![self.subject isEqual: @""])return [NSString stringWithFormat:@"You attempt to %@ the %@ but it-What's wrong with you!?  Why would even try such a thing?!  You need some serious HELP man.", self.verb, self.subject];
+    if (![self.subject isEqual: @""])return [NSString stringWithFormat:@"You attempt to %@ the %@ but it-What's wrong with you!? Why would you even try such a thing?! You need some serious HELP man...", self.verb, self.subject];
     return @"What you say?! Type HELP if you need it.";
 }
 
