@@ -989,9 +989,9 @@ static JustyVenture *_sharedState;
     for (int i = 0; i < dynamicCommands.count; i++) {
         Command *command = [dynamicCommands objectAtIndex:i];
         if ([command respondsToVerb:self.verb]) {
-            NSMutableArray *subjects = [NSMutableArray array];
             if ([command respondsToVerb:self.verb subject:@"@items;"]) {
                 for(id key in currentRoom.items) {
+                    NSMutableArray *subjects = [NSMutableArray array];
                     Item *item = [currentRoom.items objectForKey:key];
                     [subjects addObjectsFromArray:item.keywords];
                     Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
@@ -1001,6 +1001,7 @@ static JustyVenture *_sharedState;
                     Container *container = [currentRoom.containers objectForKey:bley];
                     if (!container.locked){
                         for(id key in container.items) {
+                            NSMutableArray *subjects = [NSMutableArray array];
                             Item *item = [container.items objectForKey:key];
                             [subjects addObjectsFromArray:item.keywords];
                             Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
@@ -1010,8 +1011,19 @@ static JustyVenture *_sharedState;
                 }
             }
             
+            if ([command respondsToVerb:self.verb subject:@"@inv;"]) {
+                for(id key in self.currentPlayer.items) {
+                    NSMutableArray *subjects = [NSMutableArray array];
+                    Item *item = [self.currentPlayer.items objectForKey:key];
+                    [subjects addObjectsFromArray:item.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+            }
+            
             if ([command respondsToVerb:self.verb subject:@"@exits;"]) {
                 for(id key in currentRoom.exits) {
+                    NSMutableArray *subjects = [NSMutableArray array];
                     Exit *exit = [currentRoom.exits objectForKey:key];
                     [subjects addObjectsFromArray:exit.keywords];
                     Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
@@ -1021,6 +1033,7 @@ static JustyVenture *_sharedState;
             
             if ([command respondsToVerb:self.verb subject:@"@containers;"]) {
                 for(id key in currentRoom.containers) {
+                    NSMutableArray *subjects = [NSMutableArray array];
                     Container *container = [currentRoom.containers objectForKey:key];
                     [subjects addObjectsFromArray:container.keywords];
                     Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
@@ -1030,6 +1043,7 @@ static JustyVenture *_sharedState;
             
             if ([command respondsToVerb:self.verb subject:@"@mobs;"]) {
                 for(int i = 0; i < currentRoom.mobs.count; i++) {
+                    NSMutableArray *subjects = [NSMutableArray array];
                     Mob *mob = [currentRoom.mobs objectAtIndex:i];
                     [subjects addObjectsFromArray:mob.keywords];
                     Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
@@ -1038,6 +1052,7 @@ static JustyVenture *_sharedState;
             }
             
             for(id key in currentRoom.items) {
+                NSMutableArray *subjects = [NSMutableArray array];
                 Item *item = [currentRoom.items objectForKey:key];
                 NSString *itemName = @"@item(";
                 itemName = [itemName stringByAppendingString:item.name];
@@ -1049,7 +1064,21 @@ static JustyVenture *_sharedState;
                 }
             }
             
+            for(id key in self.currentPlayer.items) {
+                NSMutableArray *subjects = [NSMutableArray array];
+                Item *item = [self.currentPlayer.items objectForKey:key];
+                NSString *itemName = @"@inv(";
+                itemName = [itemName stringByAppendingString:item.name];
+                itemName = [itemName stringByAppendingString:@");"];
+                if ([command respondsToVerb:self.verb subject:itemName]) {
+                    [subjects addObjectsFromArray:item.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+            }
+            
             for(id key in currentRoom.exits) {
+                NSMutableArray *subjects = [NSMutableArray array];
                 Exit *exit = [currentRoom.exits objectForKey:key];
                 NSString *exitName = @"@exit(";
                 exitName = [exitName stringByAppendingString:exit.name];
@@ -1067,6 +1096,7 @@ static JustyVenture *_sharedState;
                 containerName = [containerName stringByAppendingString:container.name];
                 containerName = [containerName stringByAppendingString:@");"];
                 if ([command respondsToVerb:self.verb subject:containerName]) {
+                    NSMutableArray *subjects = [NSMutableArray array];
                     [subjects addObjectsFromArray:container.keywords];
                     Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
                     [tempCommands addObject:newCommand];
@@ -1074,6 +1104,7 @@ static JustyVenture *_sharedState;
                 
                 if (!container.locked){
                     for(id key in container.items) {
+                        NSMutableArray *subjects = [NSMutableArray array];
                         Item *item = [container.items objectForKey:key];
                         NSString *itemName = @"@item(";
                         itemName = [itemName stringByAppendingString:item.name];
@@ -1088,6 +1119,7 @@ static JustyVenture *_sharedState;
             }
             
             for(int i = 0; i < currentRoom.mobs.count; i++) {
+                NSMutableArray *subjects = [NSMutableArray array];
                 Mob *mob = [currentRoom.mobs objectAtIndex:i];
                 NSString *mobName = @"@mob(";
                 mobName = [mobName stringByAppendingString:mob.name];
