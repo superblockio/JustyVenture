@@ -110,7 +110,7 @@
     else if ([subject isEqualToString:@"glove"] || [subject isEqualToString:@"gloves"])
         return @"The blood dried them to the drawer and you can't get them unstuck.  I'm pretty sure blood can do that!  About 30% sure!";
     else if ([subject isEqualToString:@"comforter"])
-        return @"We understand you're going through some difficult times, but that isn't going to help, you'll have to just continue one without it.";
+        return @"We understand you're going through some difficult times, but that isn't going to help, you'll have to just continue on without it.";
     else if ([subject isEqualToString:@"paper"] || [subject isEqualToString:@"papers"])
         return @"You try to pick up the paper but it's too slippery and small for your hands. Must be photo paper or something. Photo paper covered in butter...";
     else return @"You don't need to get the same thing more than once.";
