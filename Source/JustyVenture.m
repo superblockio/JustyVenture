@@ -739,6 +739,8 @@ static JustyVenture *_sharedState;
     }
     else if ([[self.currentTags objectAtIndex:1] caseInsensitiveCompare:@"Items"] == NSOrderedSame) {
         return JVXMLItemsContext;
+    }else if ([[self.currentTags objectAtIndex:1] caseInsensitiveCompare:@"Mobs"] == NSOrderedSame) {
+        return JVXMLMobsContext;
     }
     return JVXMLOuterContext;
 }
