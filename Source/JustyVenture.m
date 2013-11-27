@@ -16,9 +16,14 @@ typedef enum {
     JVXMLRoomContext,
     JVXMLCommandsContext,
     JVXMLItemsContext,
-    JVXMLPluralityContext,
+    JVXMLMobsContext,
     JVXMLOuterContext
 }JVXMLContext;
+
+typedef enum {
+    JVXMLSecondPluralityContext,
+    JVXMLSecondOuterContext
+}JVXMLSecondContext;
 
 typedef enum {
     JVIntroTypeReplace,
@@ -36,11 +41,14 @@ typedef enum {
 @property(nonatomic, strong) Room *currentRoomXML;
 @property(nonatomic, strong) Command *currentCommandXML;
 @property(nonatomic, strong) Item *currentItemXML;
+@property(nonatomic, strong) Mob *currentMobXML;
 @property(nonatomic, strong) Player *currentPlayer;
 
 @property (nonatomic, strong) NSMutableDictionary *rooms;
 @property (nonatomic, strong) NSMutableDictionary *variables;
 @property (nonatomic, strong) NSMutableDictionary *items;
+@property (nonatomic, strong) NSMutableDictionary *mobs;
+@property (nonatomic, strong) NSMutableDictionary *players;
 @property (nonatomic, strong) NSMutableArray *commands;
 @property (nonatomic, strong) NSMutableArray *dynamicCommands;
 
@@ -161,6 +169,10 @@ static JustyVenture *_sharedState;
                 [room setItems:[self parseItems:[attributeDict objectForKey:@"items"] roomItems:room.items]];
             }
             
+            if ([attributeDict objectForKey:@"mobs"] != nil) {
+                [room setMobs:[self parseMobs:[attributeDict objectForKey:@"mobs"] roomMobs:room.mobs]];
+            }
+            
             self.currentRoomXML = room;
         }
         
@@ -243,99 +255,196 @@ static JustyVenture *_sharedState;
     if ([self context] == JVXMLItemsContext) {
         Item *item = [[Item alloc] init];
         
-        // First, find all keywords associated with this command
-        if ([attributeDict objectForKey:@"keywords"] != nil) {
-            [item setKeywords:[self parseAttribute:[attributeDict objectForKey:@"keywords"]]];
+        // If we're setting a singular or plural look text, also check to see if they have attributes in them.
+        if ([self secondContext] == JVXMLSecondPluralityContext) {
+            item = self.currentItemXML;
+            
+            if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
+                if ([attributeDict objectForKey:@"name"] != nil) {
+                    [item setSingularName:[attributeDict objectForKey:@"name"]];
+                }
+                
+                if ([attributeDict objectForKey:@"short"] != nil) {
+                    [item setSingularDesc:[attributeDict objectForKey:@"short"]];
+                }
+                
+                if ([attributeDict objectForKey:@"long"] != nil) {
+                    [item setSingularDescription:[attributeDict objectForKey:@"long"]];
+                }
+            }
+            
+            if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
+                if ([attributeDict objectForKey:@"name"] != nil) {
+                    [item setPluralName:[attributeDict objectForKey:@"name"]];
+                }
+                
+                if ([attributeDict objectForKey:@"short"] != nil) {
+                    [item setPluralDesc:[attributeDict objectForKey:@"short"]];
+                }
+                
+                if ([attributeDict objectForKey:@"long"] != nil) {
+                    [item setPluralDescription:[attributeDict objectForKey:@"long"]];
+                }
+            }
         }
         else {
-            [item setKeywords:[self parseAttribute:elementName]];
+            // First, find all keywords associated with this command
+            if ([attributeDict objectForKey:@"keywords"] != nil) {
+                [item setKeywords:[self parseAttribute:[attributeDict objectForKey:@"keywords"]]];
+            }
+            else {
+                [item setKeywords:[self parseAttribute:elementName]];
+            }
+            
+            // Next the singular descriptive name
+            if ([attributeDict objectForKey:@"name"] != nil) {
+                [item setSingularName:[attributeDict objectForKey:@"name"]];
+            }
+            else {
+                [item setSingularName:elementName];
+            }
+            
+            // And the plural descriptive name
+            if ([attributeDict objectForKey:@"pname"] != nil) {
+                [item setPluralName:[attributeDict objectForKey:@"pname"]];
+            }
+            
+            // Then the singular short description
+            if ([attributeDict objectForKey:@"short"] != nil) {
+                [item setSingularDesc:[attributeDict objectForKey:@"short"]];
+            }
+            else {
+                [item setSingularDesc:@"@name;"];
+            }
+            
+            // And the plural short description
+            if ([attributeDict objectForKey:@"pshort"] != nil) {
+                [item setPluralDesc:[attributeDict objectForKey:@"pshort"]];
+            }
+            
+            // Then the singular long description
+            if ([attributeDict objectForKey:@"long"] != nil) {
+                [item setSingularDescription:[attributeDict objectForKey:@"long"]];
+            }
+            
+            // And the plural long description
+            if ([attributeDict objectForKey:@"plong"] != nil) {
+                [item setPluralDescription:[attributeDict objectForKey:@"plong"]];
+            }
+            
+            // Then the whether or not the item shows up in a room
+            if ([attributeDict objectForKey:@"hidden"] != nil) {
+                if ([[attributeDict objectForKey:@"hidden"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [item setHidden:false];
+            }
+            
+            // And whether it's possible to drop the item once you pick it up
+            if ([attributeDict objectForKey:@"drop"] != nil) {
+                if ([[attributeDict objectForKey:@"drop"] caseInsensitiveCompare:@"false"] == NSOrderedSame) [item setCanDrop:false];
+            }
+            
+            // Finally, set the internal name for the item
+            [item setName:elementName];
         }
-        
-        // Next the singular descriptive name
-        if ([attributeDict objectForKey:@"name"] != nil) {
-            [item setSingularName:[attributeDict objectForKey:@"name"]];
-        }
-        else {
-            [item setSingularName:elementName];
-        }
-        
-        // And the plural descriptive name
-        if ([attributeDict objectForKey:@"pname"] != nil) {
-            [item setPluralName:[attributeDict objectForKey:@"pname"]];
-        }
-        
-        // Then the singular short description
-        if ([attributeDict objectForKey:@"short"] != nil) {
-            [item setSingularDesc:[attributeDict objectForKey:@"short"]];
-        }
-        else {
-            [item setSingularDesc:@"@name;"];
-        }
-        
-        // And the plural short description
-        if ([attributeDict objectForKey:@"pshort"] != nil) {
-            [item setPluralDesc:[attributeDict objectForKey:@"pshort"]];
-        }
-        
-        // Then the singular long description
-        if ([attributeDict objectForKey:@"long"] != nil) {
-            [item setSingularDescription:[attributeDict objectForKey:@"long"]];
-        }
-        
-        // And the plural long description
-        if ([attributeDict objectForKey:@"plong"] != nil) {
-            [item setPluralDescription:[attributeDict objectForKey:@"plong"]];
-        }
-        
-        // Then the whether or not the item shows up in a room
-        if ([attributeDict objectForKey:@"hidden"] != nil) {
-            if ([[attributeDict objectForKey:@"hidden"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [item setHidden:TRUE];
-        }
-        
-        // And whether it's possible to drop the item once you pick it up
-        if ([attributeDict objectForKey:@"drop"] != nil) {
-            if ([[attributeDict objectForKey:@"drop"] caseInsensitiveCompare:@"false"] == NSOrderedSame) [item setCanDrop:FALSE];
-        }
-        
-        // Finally, set the internal name for the item
-        [item setName:elementName];
         
         self.currentItemXML = item;
     }
     
-    // If we're setting a singular or plural look text, also check to see if they have attributes in them.
-    if ([self context] == JVXMLPluralityContext) {
-        Item *item = self.currentItemXML;
+    // If we're in a mob tag, interpret each tag as a mob
+    if ([self context] == JVXMLMobsContext) {
+        Mob *mob = [[Mob alloc] init];
         
-        if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
-            if ([attributeDict objectForKey:@"name"] != nil) {
-                [item setSingularName:[attributeDict objectForKey:@"name"]];
+        // If we're setting a singular or plural look text, also check to see if they have attributes in them.
+        if ([self secondContext] == JVXMLSecondPluralityContext) {
+            mob = self.currentMobXML;
+            
+            if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
+                if ([attributeDict objectForKey:@"name"] != nil) {
+                    [mob setSingularName:[attributeDict objectForKey:@"name"]];
+                }
+                
+                if ([attributeDict objectForKey:@"short"] != nil) {
+                    [mob setSingularDesc:[attributeDict objectForKey:@"short"]];
+                }
+                
+                if ([attributeDict objectForKey:@"long"] != nil) {
+                    [mob setSingularDescription:[attributeDict objectForKey:@"long"]];
+                }
             }
             
-            if ([attributeDict objectForKey:@"short"] != nil) {
-                [item setSingularDesc:[attributeDict objectForKey:@"short"]];
-            }
-            
-            if ([attributeDict objectForKey:@"long"] != nil) {
-                [item setSingularDescription:[attributeDict objectForKey:@"long"]];
+            if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
+                if ([attributeDict objectForKey:@"name"] != nil) {
+                    [mob setPluralName:[attributeDict objectForKey:@"name"]];
+                }
+                
+                if ([attributeDict objectForKey:@"short"] != nil) {
+                    [mob setPluralDesc:[attributeDict objectForKey:@"short"]];
+                }
+                
+                if ([attributeDict objectForKey:@"long"] != nil) {
+                    [mob setPluralDescription:[attributeDict objectForKey:@"long"]];
+                }
             }
         }
-        
-        else if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
+        else {
+            // First, find all keywords associated with this command
+            if ([attributeDict objectForKey:@"keywords"] != nil) {
+                [mob setKeywords:[self parseAttribute:[attributeDict objectForKey:@"keywords"]]];
+            }
+            else {
+                [mob setKeywords:[self parseAttribute:elementName]];
+            }
+            
+            // Next the singular descriptive name
             if ([attributeDict objectForKey:@"name"] != nil) {
-                [item setPluralName:[attributeDict objectForKey:@"name"]];
+                [mob setSingularName:[attributeDict objectForKey:@"name"]];
+            }
+            else {
+                [mob setSingularName:elementName];
             }
             
+            // And the plural descriptive name
+            if ([attributeDict objectForKey:@"pname"] != nil) {
+                [mob setPluralName:[attributeDict objectForKey:@"pname"]];
+            }
+            
+            // Then the singular short description
             if ([attributeDict objectForKey:@"short"] != nil) {
-                [item setPluralDesc:[attributeDict objectForKey:@"short"]];
+                [mob setSingularDesc:[attributeDict objectForKey:@"short"]];
+            }
+            else {
+                [mob setSingularDesc:@"@name;"];
             }
             
-            if ([attributeDict objectForKey:@"long"] != nil) {
-                [item setPluralDescription:[attributeDict objectForKey:@"long"]];
+            // And the plural short description
+            if ([attributeDict objectForKey:@"pshort"] != nil) {
+                [mob setPluralDesc:[attributeDict objectForKey:@"pshort"]];
             }
+            
+            // Then the singular long description
+            if ([attributeDict objectForKey:@"long"] != nil) {
+                [mob setSingularDescription:[attributeDict objectForKey:@"long"]];
+            }
+            
+            // And the plural long description
+            if ([attributeDict objectForKey:@"plong"] != nil) {
+                [mob setPluralDescription:[attributeDict objectForKey:@"plong"]];
+            }
+            
+            // Then the whether or not the mob shows up in a room
+            if ([attributeDict objectForKey:@"hidden"] != nil) {
+                if ([[attributeDict objectForKey:@"hidden"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [mob setHidden:true];
+            }
+            
+            // And whether it's possible to drop the mob once you pick it up
+            if ([attributeDict objectForKey:@"hold"] != nil) {
+                if ([[attributeDict objectForKey:@"hold"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [mob setCanHold:true];
+            }
+            
+            // Finally, set the internal name for the mob
+            [mob setName:elementName];
         }
         
-        self.currentItemXML = item;
+        self.currentMobXML = mob;
     }
     
     [self.currentTags addObject:elementName];
@@ -388,22 +497,33 @@ static JustyVenture *_sharedState;
     }
     
     else if ([self context] == JVXMLItemsContext) {
-        if ([self.currentItemXML.singularLook isEqualToString:@""]) {
-            [self.currentItemXML setSingularLook:self.currentElementBody];
+        if ([self secondContext] == JVXMLSecondOuterContext) {
+            if ([self.currentItemXML.singularLook isEqualToString:@""]) [self.currentItemXML setSingularLook:self.currentElementBody];
             [self.items setObject:self.currentItemXML forKey:self.currentItemXML.name];
+        }
+        else {
+            // Set the look text for the item.
+            if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
+                [self.currentItemXML setSingularLook:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
+                [self.currentItemXML setPluralLook:self.currentElementBody];
+            }
         }
     }
     
-    else if ([self context] == JVXMLPluralityContext) {
-        
-        // Set the look text for the item.
-        if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
-            [self.currentItemXML setSingularLook:self.currentElementBody];
-        } else if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
-            [self.currentItemXML setPluralLook:self.currentElementBody];
+    else if ([self context] == JVXMLMobsContext) {
+        if ([self secondContext] == JVXMLSecondOuterContext) {
+            if ([self.currentMobXML.singularLook isEqualToString:@""]) [self.currentMobXML setSingularLook:self.currentElementBody];
+            [self.mobs setObject:self.currentMobXML forKey:self.currentMobXML.name];
         }
-        
-        [self.items setObject:self.currentItemXML forKey:self.currentItemXML.name];
+        else {
+            // Set the look text for the mob.
+            if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
+                [self.currentMobXML setSingularLook:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
+                [self.currentMobXML setPluralLook:self.currentElementBody];
+            }
+        }
     }
 }
 
@@ -457,6 +577,71 @@ static JustyVenture *_sharedState;
         return @[attribute];
     }
     return nil;
+}
+
+- (NSMutableArray*)parseMobs:(NSString*)mobList roomMobs:(NSMutableArray*)mobs {
+    // See if it's a list or just a single thing
+    // (first, get rid of leading whitespace)
+    while ([[mobList substringWithRange:NSMakeRange(0, 1)] isEqualToString:@" "]) {
+        mobList = [mobList substringFromIndex:1];
+    }
+    while ([mobList rangeOfString:@"[ "].location != NSNotFound) {
+        mobList = [mobList stringByReplacingOccurrencesOfString:@"[ " withString:@"["];
+    }
+    while ([mobList rangeOfString:@"( "].location != NSNotFound) {
+        mobList = [mobList stringByReplacingOccurrencesOfString:@"( " withString:@"("];
+    }
+    while ([mobList rangeOfString:@", "].location != NSNotFound) {
+        mobList = [mobList stringByReplacingOccurrencesOfString:@", " withString:@","];
+    }
+    while ([mobList rangeOfString:@"; "].location != NSNotFound) {
+        mobList = [mobList stringByReplacingOccurrencesOfString:@"; " withString:@";"];
+    }
+    if ([mobList length] < 1) {
+        return mobs;
+    }
+    else if ([[mobList substringToIndex:1] isEqualToString:@"["]) {
+        NSMutableArray *array = [NSMutableArray arrayWithArray:[mobList componentsSeparatedByString:@";"]];
+        NSString *firstThing = [[array objectAtIndex:0] substringFromIndex:1];
+        NSString *lastThing = [[array lastObject] substringToIndex:[[array lastObject] length] -1];
+        [array replaceObjectAtIndex:0 withObject:firstThing];
+        [array replaceObjectAtIndex:(array.count - 1) withObject:lastThing];
+        for (int i=0; i<array.count; i++) {
+            NSString *arrayMobName = [array objectAtIndex:i];
+            if ([[arrayMobName substringToIndex:1] isEqualToString:@"("]) {
+                NSMutableArray *mobArray = [NSMutableArray arrayWithArray:[arrayMobName componentsSeparatedByString:@","]];
+                NSString *mobName = [[mobArray objectAtIndex:0] substringFromIndex:1];
+                if ([self.mobs objectForKey:mobName] != nil) {
+                    NSString *quantity = [[mobArray lastObject] substringToIndex:[[mobArray lastObject] length] -1];
+                    Mob *newMob = [[Mob alloc] initWithMob:[self.mobs objectForKey:mobName]];
+                    for (int j=0; j<[quantity intValue]; j++) {
+                        [mobs addObject:newMob];
+                    }
+                }
+            }
+            else if ([self.mobs objectForKey:arrayMobName] != nil) {
+                Mob *newMob = [[Mob alloc] initWithMob:[self.mobs objectForKey:arrayMobName]];
+                [mobs addObject:newMob];
+            }
+        }
+    }
+    else if ([[mobList substringToIndex:1] isEqualToString:@"("]) {
+        NSMutableArray *array = [NSMutableArray arrayWithArray:[mobList componentsSeparatedByString:@","]];
+        NSString *mobName = [[array objectAtIndex:0] substringFromIndex:1];
+        if ([self.mobs objectForKey:mobName] != nil) {
+            NSString *quantity = [[array lastObject] substringToIndex:[[array lastObject] length] -1];
+            Mob *newMob = [[Mob alloc] initWithMob:[self.mobs objectForKey:mobName]];
+            for (int j=0; j<[quantity intValue]; j++) {
+                [mobs addObject:newMob];
+            }
+        }
+    }
+    else if ([self.mobs objectForKey:mobList] != nil) {
+        Mob *newMob = [[Mob alloc] initWithMob:[self.mobs objectForKey:mobList]];
+        [mobs addObject:newMob];
+    }
+    
+    return mobs;
 }
 
 - (NSMutableDictionary*)parseItems:(NSString*)itemList roomItems:(NSMutableDictionary*)items {
@@ -553,10 +738,19 @@ static JustyVenture *_sharedState;
         return JVXMLCommandsContext;
     }
     else if ([[self.currentTags objectAtIndex:1] caseInsensitiveCompare:@"Items"] == NSOrderedSame) {
-        if (self.currentTags.count == 2) return JVXMLItemsContext;
-        else return JVXMLPluralityContext;
+        return JVXMLItemsContext;
     }
     return JVXMLOuterContext;
+}
+
+- (JVXMLSecondContext)secondContext {
+    if (self.currentTags.count < 3) {
+        return JVXMLSecondOuterContext;
+    }
+    else {
+        return JVXMLSecondPluralityContext;
+    }
+    return JVXMLSecondOuterContext;
 }
 
 - (NSMutableArray*)GenerateDynamicCommands:(NSArray*)dynamicCommands tempCommands:(NSMutableArray*)tempCommands {
@@ -572,6 +766,17 @@ static JustyVenture *_sharedState;
                     [subjects addObjectsFromArray:item.keywords];
                     Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
                     [tempCommands addObject:newCommand];
+                }
+                for(id bley in currentRoom.containers) {
+                    Container *container = [currentRoom.containers objectForKey:bley];
+                    if (container.locked){
+                        for(id key in container.items) {
+                            Item *item = [container.items objectForKey:key];
+                            [subjects addObjectsFromArray:item.keywords];
+                            Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                            [tempCommands addObject:newCommand];
+                        }
+                    }
                 }
             }
             else if ([command respondsToVerb:self.verb subject:@"@exits;"]) {
@@ -609,6 +814,23 @@ static JustyVenture *_sharedState;
                         [subjects addObjectsFromArray:item.keywords];
                         Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
                         [tempCommands addObject:newCommand];
+                    }
+                }
+                for(id bley in currentRoom.containers) {
+                    Container *container = [currentRoom.containers objectForKey:bley];
+                    if (container.locked){
+                        for(id key in container.items) {
+                            Item *item = [container.items objectForKey:key];
+                            NSString *itemName = @"@item(";
+                            itemName = [itemName stringByAppendingString:item.name];
+                            itemName = [itemName stringByAppendingString:@");"];
+                            if ([command respondsToVerb:self.verb subject:itemName]) {
+                                itemName = item.name;
+                                [subjects addObjectsFromArray:item.keywords];
+                                Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                                [tempCommands addObject:newCommand];
+                            }
+                        }
                     }
                 }
                 for(int i = 0; i < currentRoom.mobs.count; i++) {

@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSMutableDictionary *rooms;
 @property (nonatomic, readonly) NSMutableDictionary *variables;
 @property (nonatomic, readonly) NSMutableDictionary *items;
+@property (nonatomic, readonly) NSMutableDictionary *mobs;
 @property (nonatomic, readonly) NSMutableDictionary *players;
 @property (nonatomic, readonly) NSMutableArray *commands;
 @property (nonatomic, readonly) NSMutableArray *dynamicCommands;
