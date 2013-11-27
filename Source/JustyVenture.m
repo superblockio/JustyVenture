@@ -98,8 +98,9 @@ static JustyVenture *_sharedState;
     }
     Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
     NSMutableArray *tempCommands = [NSMutableArray array];
+    NSMutableArray *tempRoomCommands = [NSMutableArray array];
     
-    // First, generate any dynamic commands for the room
+    // First, generate any dynamic room commands
     for (int i = 0; i < [currentRoom dynamicCommands].count; i++) {
         Command *command = [[currentRoom dynamicCommands] objectAtIndex:i];
         if ([command respondsToVerb:self.verb]) {
@@ -109,7 +110,7 @@ static JustyVenture *_sharedState;
                     Item *item = [currentRoom.items objectForKey:key];
                     [subjects addObjectsFromArray:item.keywords];
                     Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
-                    [tempCommands addObject:newCommand];
+                    [tempRoomCommands addObject:newCommand];
                 }
             }
             else {
@@ -123,14 +124,14 @@ static JustyVenture *_sharedState;
                         itemName = item.name;
                         [subjects addObjectsFromArray:item.keywords];
                         Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
-                        [tempCommands addObject:newCommand];
+                        [tempRoomCommands addObject:newCommand];
                     }
                 }
             }
         }
     }
     
-    // Then, generate any dynamic commands for the universal commands
+    // Then, generate any dynamic fallback commands
     for (int i = 0; i < self.dynamicCommands.count; i++) {
         Command *command = [self.dynamicCommands objectAtIndex:i];
         if ([command respondsToVerb:self.verb]) {
@@ -161,14 +162,10 @@ static JustyVenture *_sharedState;
         }
     }
     
-    NSLog(@"%@", self.dynamicCommands);
-    NSLog(@"%@", [currentRoom dynamicCommands]);
-    NSLog(@"%@", tempCommands);
-    
-    // Then, look to see if one of our new dynamic commands fulfils the role
-    if (tempCommands != nil) {
-        for (int i = 0; i < tempCommands.count; i++) {
-            Command *command = [tempCommands objectAtIndex:i];
+    // Next, look to see if one of our new dynamic room commands fulfils the role
+    if (tempRoomCommands != nil) {
+        for (int i = 0; i < tempRoomCommands.count; i++) {
+            Command *command = [tempRoomCommands objectAtIndex:i];
             if ([command respondsToVerb:self.verb subject:self.subject]) {
                 return [self JustinTimeInterpret:[command result]];
             }
@@ -183,7 +180,7 @@ static JustyVenture *_sharedState;
         }
     }
     
-    // Next, look to see if the room has a wildcard command
+    // Then, look to see if the room has a wildcard command
     for (int i = 0; i < [currentRoom commands].count; i++) {
         Command *command = [[currentRoom commands] objectAtIndex:i];
         if ([command respondsToVerb:@"*" subject:self.subject]) {
@@ -191,7 +188,17 @@ static JustyVenture *_sharedState;
         }
     }
     
-    // Next, see if one of our fallback commands can handle it.
+    // Now, look to see if one of our new dynamic fallback commands fulfils the role
+    if (tempCommands != nil) {
+        for (int i = 0; i < tempCommands.count; i++) {
+            Command *command = [tempCommands objectAtIndex:i];
+            if ([command respondsToVerb:self.verb subject:self.subject]) {
+                return [self JustinTimeInterpret:[command result]];
+            }
+        }
+    }
+    
+    // Then, see if one of our fallback commands can handle it.
     for (int i = 0; i <self.commands.count; i++) {
         Command *command = [self.commands objectAtIndex:i];
         if ([command respondsToVerb:self.verb subject:self.subject]) {
@@ -199,7 +206,7 @@ static JustyVenture *_sharedState;
         }
     }
     
-    // Last see if there's a universal wildcard command defined.
+    // Last see if there's a fallback wildcard command defined.
     for (int i = 0; i <self.commands.count; i++) {
         Command *command = [self.commands objectAtIndex:i];
         if ([command respondsToVerb:@"*" subject:self.subject]) {
