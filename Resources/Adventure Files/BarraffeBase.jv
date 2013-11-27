@@ -13,7 +13,7 @@ You don’t see any enemies around. At the very least, it doesn’t appear that 
 </Go>
 
 <Go subject="north">
-You reach for the doorknob but the door is locked. You hear a mysterious voice coming from the other side of the door. “Welcome brother, to the Cult of Baraffe. Only those who know the secret handshake may enter.”
+You reach for the doorknob but the door is locked. You hear a mysterious voice coming from the other side of the door. “Welcome brother, to the Cult of Barraffe. Only those who know the secret handshake may enter.”
 </Go>
 
 <Secret subject="handshake">
@@ -267,7 +267,7 @@ D. Inside the Casket of Ancient Winters@prompt(What’s your answer?);
 <Room name="Gameshow3">
 <Arrive>
 Regis: “Correct! That was a great answer. ANOTHER! Third question: which of the following answers contains a name that is NOT a member of Thorin’s Company?”
-A. Balin, Bilfur, Bofur, Bombur
+A. Baldor, Balin, Bofur, Bombur
 B. Dori, Nori, Fili, Kili
 C. Gloin, Oin, Ori, Nori
 D. Thorin, Gandalf, Bilbo, Dwalin@prompt(What’s your answer?);
@@ -275,7 +275,7 @@ D. Thorin, Gandalf, Bilbo, Dwalin@prompt(What’s your answer?);
 
 <Look alt="*">
 Regis: “Which of the following answers contains a name that is NOT a member of Thorin’s Company?”
-A. Balin, Bilfur, Bofur, Bombur
+A. Baldor, Balin, Bofur, Bombur
 B. Dori, Nori, Fili, Kili
 C. Gloin, Oin, Ori, Nori
 D. Thorin, Gandalf, Bilbo, Dwalin@prompt(What’s your answer?);
@@ -283,7 +283,7 @@ D. Thorin, Gandalf, Bilbo, Dwalin@prompt(What’s your answer?);
 
 <Look alt="*" subject="*">
 Regis: “Which of the following answers contains a name that is NOT a member of Thorin’s Company?”
-A. Balin, Bilfur, Bofur, Bombur
+A. Baldor, Balin, Bofur, Bombur
 B. Dori, Nori, Fili, Kili
 C. Gloin, Oin, Ori, Nori
 D. Thorin, Gandalf, Bilbo, Dwalin@prompt(What’s your answer?);
@@ -300,7 +300,7 @@ D. Thorin, Gandalf, Bilbo, Dwalin@prompt(What’s your answer?);
 
 <Room name="Gameshow4">
 <Arrive>
-Regis: “That’s right! His name is Bifur, not Bilfur! Fourth and second-to-last question: Which of the following places was NOT compromised by Moriarty at the beginning of The Reichenbach Fall?”
+Regis: “That’s right! His name is Bifur, not Baldor! Fourth and second-to-last question: Which of the following places was NOT compromised by Moriarty at the beginning of The Reichenbach Fall?”
 A. Bank of England
 B. Pentonville Prison
 C. Tower of London
@@ -394,7 +394,7 @@ You take a deep breath and clear your mind, focusing your energy while the barre
 </Arrive>
 
 <Look>
-You are in the prize room, which is a massive cylindrical stadium with a raised balcony along the perimeter that you are standing on. As you walk in, you get a strong whiff of what is unmistakably pancakes and maple syrup. You look down from the balcony’s railing and see what has to be the biggest pancake on earth. There appears to be equally giant pancakes stacked underneath. Nearby sits a ridiculously huge container into which is pouring Canada’s supply of maple syrup, aided by the help of several barrels. Looks like Baraffe’s heinous worship ritual is to make giant pancakes. You ponder briefly about where they got all the pancake batter, but then you notice something strange: the barrels are taking their lids off! Something long is extending out of their interiors… it’s the necks of giraffes! You thought the barrels were the syrup thieves but you are wrong, you see the giraffes were the barrels all along! (type NEXT to continue.)
+You are in the prize room, which is a massive cylindrical stadium with a raised balcony along the perimeter that you are standing on. As you walk in, you get a strong whiff of what is unmistakably pancakes and maple syrup. You look down from the balcony’s railing and see what has to be the biggest pancake on earth. There appears to be equally giant pancakes stacked underneath. Nearby sits a ridiculously huge container into which is pouring Canada’s supply of maple syrup, aided by the help of several barrels. Looks like Barraffe’s heinous worship ritual is to make giant pancakes. You ponder briefly about where they got all the pancake batter, but then you notice something strange: the barrels are taking their lids off! Something long is extending out of their interiors… it’s the necks of giraffes! You thought the barrels were the syrup thieves but you are wrong, you see the giraffes were the barrels all along! (type NEXT to continue.)
 </Look>
 
 <Next>

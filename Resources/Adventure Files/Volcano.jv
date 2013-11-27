@@ -426,7 +426,7 @@ You walk over to the Jiffy Lube, but there’s no door for customers to go in an
 </Go>
 
 <Give alt="hand" subject="Doritos">
-You hand the bag of Doritos over to the pilot and he opens it and rubs some of them all over his skin, then tells you to get into the helicopter so you can go. You take off and head down the border towards the Baraffe base, where you find yourself descending into a secret base hole identical to the Canadian government's base hole. It’s the same type of trapdoor and everything, the kind that just opens when it detects a helicopter. They must be popular among secret base enthusiasts. You make a mental note to tell your mission president about this so he can change our door to one that is less mainstream. You little hipster, you. You land and find yourself in a room that’s sort of cylindrical but bulges out halfway up and is brown with a slightly woodish texture.@go(BarrelBase, ignore);
+You hand the bag of Doritos over to the pilot and he opens it and rubs some of them all over his skin, then tells you to get into the helicopter so you can go. You take off and head down the border towards the Barraffe base, where you find yourself descending into a secret base hole identical to the Canadian government's base hole. It’s the same type of trapdoor and everything, the kind that just opens when it detects a helicopter. They must be popular among secret base enthusiasts. You make a mental note to tell your mission president about this so he can change our door to one that is less mainstream. You little hipster, you. You land and find yourself in a room that’s sort of cylindrical but bulges out halfway up and is brown with a slightly woodish texture.@go(BarrelBase, ignore);
 </Give>
 
 <Inventory alt="inv">
