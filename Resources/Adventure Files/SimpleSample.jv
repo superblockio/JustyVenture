@@ -26,15 +26,15 @@ We told you not to use this command. You had to go and do it anyway didn't you?@
 <Test subject="*">
 @subject;, this @verb; is just to make sure that having multiple commands@prompt(Did it work?); doesn't cause issues.@go(TestRoom, ignore);
 </Test>
-<PPPPPPAAAALL alt="*">
+<Wildcard>
 Toast
-</PPPPPPAAAALL>
-<PPPPPPAAAALL alt="*" subject="Mario">
+</Wildcard>
+<Wildcard subject="Mario">
 Chicken
-</PPPPPPAAAALL>
-<PPPPPPAAAALL alt="*" subject="*">
+</Wildcard>
+<Wildcard subject="*">
 @verb;ing people isn't very nice! Even if they are @subject;.
-</PPPPPPAAAALL>
+</Wildcard>
 </Commands>
 <Items>
 <JuicyHam keywords="[ham, hams, juicy ham, juicy hams]">

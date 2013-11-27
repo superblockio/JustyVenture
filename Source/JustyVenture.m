@@ -1131,7 +1131,7 @@ static JustyVenture *_sharedState;
     // Last, look to see if we have a wildcard command
     for (int i = 0; i < commands.count; i++) {
         Command *command = [commands objectAtIndex:i];
-        if ([command respondsToVerb:@"*" subject:self.subject]) {
+        if ([command respondsToVerb:@"wildcard" subject:self.subject]) {
             return [self JustinTimeInterpret:[command result]];
         }
     }
