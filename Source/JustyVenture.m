@@ -89,6 +89,7 @@ static JustyVenture *_sharedState;
 }
 
 - (NSString*)runUserInput:(NSString*)input {
+    Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
     self.promptText = @"What wouldst thou deau?";
     self.verb = [[input componentsSeparatedByString:@" "] objectAtIndex:0];
     self.subject = @"";
@@ -96,71 +97,16 @@ static JustyVenture *_sharedState;
     if ([[input componentsSeparatedByString:@" "] count] > 1) {
         self.subject = [input substringFromIndex:self.verb.length + 1];
     }
-    Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
-    NSMutableArray *tempCommands = [NSMutableArray array];
-    NSMutableArray *tempRoomCommands = [NSMutableArray array];
     
-    // First, generate any dynamic room commands
-    tempRoomCommands = [self GenerateDynamicCommands:[currentRoom dynamicCommands] tempCommands:tempRoomCommands];
+    // First, check the room commands
+    NSString *roomResult = [self RunCommands:[currentRoom commands] dynamicCommands:[currentRoom dynamicCommands]];
+    if (roomResult != nil) return roomResult;
     
-    // Then, generate any dynamic fallback commands
-    tempCommands = [self GenerateDynamicCommands:self.dynamicCommands tempCommands:tempCommands];
+    // Next, check the fallback commands
+    NSString *fallbackResult = [self RunCommands:self.commands dynamicCommands:self.dynamicCommands];
+    if (fallbackResult != nil) return fallbackResult;
     
-    NSLog(@"%@", tempRoomCommands);
-    NSLog(@"%@", tempCommands);
-    
-    // Next, look to see if one of our new dynamic room commands fulfils the role
-    if (tempRoomCommands != nil) {
-        for (int i = 0; i < tempRoomCommands.count; i++) {
-            Command *command = [tempRoomCommands objectAtIndex:i];
-            if ([command respondsToVerb:self.verb subject:self.subject]) {
-                return [self JustinTimeInterpret:[command result]];
-            }
-        }
-    }
-    
-    // Then, look to see if the room can otherwise handle this shiz
-    for (int i = 0; i < [currentRoom commands].count; i++) {
-        Command *command = [[currentRoom commands] objectAtIndex:i];
-        if ([command respondsToVerb:self.verb subject:self.subject]) {
-            return [self JustinTimeInterpret:[command result]];
-        }
-    }
-    
-    // Then, look to see if the room has a wildcard command
-    for (int i = 0; i < [currentRoom commands].count; i++) {
-        Command *command = [[currentRoom commands] objectAtIndex:i];
-        if ([command respondsToVerb:@"*" subject:self.subject]) {
-            return [self JustinTimeInterpret:[command result]];
-        }
-    }
-    
-    // Now, look to see if one of our new dynamic fallback commands fulfils the role
-    if (tempCommands != nil) {
-        for (int i = 0; i < tempCommands.count; i++) {
-            Command *command = [tempCommands objectAtIndex:i];
-            if ([command respondsToVerb:self.verb subject:self.subject]) {
-                return [self JustinTimeInterpret:[command result]];
-            }
-        }
-    }
-    
-    // Then, see if one of our fallback commands can handle it.
-    for (int i = 0; i <self.commands.count; i++) {
-        Command *command = [self.commands objectAtIndex:i];
-        if ([command respondsToVerb:self.verb subject:self.subject]) {
-            return [self JustinTimeInterpret:[command result]];
-        }
-    }
-    
-    // Last see if there's a fallback wildcard command defined.
-    for (int i = 0; i <self.commands.count; i++) {
-        Command *command = [self.commands objectAtIndex:i];
-        if ([command respondsToVerb:@"*" subject:self.subject]) {
-            return [self JustinTimeInterpret:[command result]];
-        }
-    }
-    
+    // If we have no valid commands, give them the standard speil
     if (![self.subject isEqual: @""])return [NSString stringWithFormat:@"You attempt to %@ the %@ but it-What's wrong with you!?  Why would even try such a thing?!  You need some serious HELP man.", self.verb, self.subject];
     return @"What you say?! Type HELP if you need it.";
 }
@@ -644,6 +590,41 @@ static JustyVenture *_sharedState;
     }
     
     return tempCommands;
+}
+
+- (NSString*)RunCommands:(NSArray*)commands dynamicCommands:(NSArray*)dynamicCommands {
+    NSMutableArray *tempCommands = [NSMutableArray array];
+    
+    // First, generate any dynamic commands
+    tempCommands = [self GenerateDynamicCommands:dynamicCommands tempCommands:tempCommands];
+    
+    // Next, look to see if one of our new dynamic room commands fulfils the role
+    if (tempCommands != nil) {
+        for (int i = 0; i < tempCommands.count; i++) {
+            Command *command = [tempCommands objectAtIndex:i];
+            if ([command respondsToVerb:self.verb subject:self.subject]) {
+                return [self JustinTimeInterpret:[command result]];
+            }
+        }
+    }
+    
+    // Then, look to see if we can otherwise handle this shiz
+    for (int i = 0; i < commands.count; i++) {
+        Command *command = [commands objectAtIndex:i];
+        if ([command respondsToVerb:self.verb subject:self.subject]) {
+            return [self JustinTimeInterpret:[command result]];
+        }
+    }
+    
+    // Last, look to see if we have a wildcard command
+    for (int i = 0; i < commands.count; i++) {
+        Command *command = [commands objectAtIndex:i];
+        if ([command respondsToVerb:@"*" subject:self.subject]) {
+            return [self JustinTimeInterpret:[command result]];
+        }
+    }
+    
+    return nil;
 }
 
 - (NSString*)JustinTimeInterpret:(NSString*)input {
