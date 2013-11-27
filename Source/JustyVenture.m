@@ -9,6 +9,8 @@
 #import "JustyVenture.h"
 #import "Command.h"
 #import "Item.h"
+#import "Exit.h"
+#import "Container.h"
 
 typedef enum {
     JVXMLRoomContext,
@@ -572,6 +574,30 @@ static JustyVenture *_sharedState;
                     [tempCommands addObject:newCommand];
                 }
             }
+            else if ([command respondsToVerb:self.verb subject:@"@exits;"]) {
+                for(id key in currentRoom.exits) {
+                    Exit *exit = [currentRoom.exits objectForKey:key];
+                    [subjects addObjectsFromArray:exit.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+            }
+            else if ([command respondsToVerb:self.verb subject:@"@containers;"]) {
+                for(id key in currentRoom.containers) {
+                    Container *container = [currentRoom.containers objectForKey:key];
+                    [subjects addObjectsFromArray:container.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+            }
+            else if ([command respondsToVerb:self.verb subject:@"@mobs;"]) {
+                for(int i = 0; i < currentRoom.mobs.count; i++) {
+                    Mob *mob = [currentRoom.mobs objectAtIndex:i];
+                    [subjects addObjectsFromArray:mob.keywords];
+                    Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                    [tempCommands addObject:newCommand];
+                }
+            }
             else {
                 for(id key in currentRoom.items) {
                     Item *item = [currentRoom.items objectForKey:key];
@@ -581,6 +607,18 @@ static JustyVenture *_sharedState;
                     if ([command respondsToVerb:self.verb subject:itemName]) {
                         itemName = item.name;
                         [subjects addObjectsFromArray:item.keywords];
+                        Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
+                        [tempCommands addObject:newCommand];
+                    }
+                }
+                for(int i = 0; i < currentRoom.mobs.count; i++) {
+                    Mob *mob = [currentRoom.mobs objectAtIndex:i];
+                    NSString *mobName = @"@mob(";
+                    mobName = [mobName stringByAppendingString:mob.name];
+                    mobName = [mobName stringByAppendingString:@");"];
+                    if ([command respondsToVerb:self.verb subject:mobName]) {
+                        mobName = mob.name;
+                        [subjects addObjectsFromArray:mob.keywords];
                         Command *newCommand = [[Command alloc] initWithCommand:command andSubjects:subjects];
                         [tempCommands addObject:newCommand];
                     }
