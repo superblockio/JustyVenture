@@ -22,6 +22,7 @@
         self.unlockLook = @"";
         self.keyName = @"";
         self.unlockText = @"";
+        self.emptyText = @"";
         self.badKey = @"";
         self.hidden = false;
         self.locked = false;
@@ -54,7 +55,7 @@
 
 - (NSString*)lookDescription {
     if (self.locked) return self.lockLook;
-    else return self.lockLook;
+    else return self.unlockLook;
 }
 
 @end

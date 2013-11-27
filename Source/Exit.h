@@ -19,6 +19,7 @@
 - (NSString*)lookDescription;
 
 @property(nonatomic, strong) NSString *name;
+@property(nonatomic, strong) NSString *destination;
 @property(nonatomic, strong) NSString *lockDesc;
 @property(nonatomic, strong) NSString *unlockDesc;
 @property(nonatomic, strong) NSString *lockDescription;

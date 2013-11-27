@@ -14,6 +14,7 @@
     self = [super init];
     if (self) {
         self.name = @"";
+        self.destination = @"";
         self.lockDesc = @"";
         self.unlockDesc = @"";
         self.lockDescription = @"";
@@ -53,7 +54,7 @@
 
 - (NSString*)lookDescription {
     if (self.locked) return self.lockLook;
-    else return self.lockLook;
+    else return self.unlockLook;
 }
 
 @end

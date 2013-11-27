@@ -27,6 +27,7 @@
 @property(nonatomic, strong) NSString *unlockLook;
 @property(nonatomic, strong) NSString *keyName;
 @property(nonatomic, strong) NSString *unlockText;
+@property(nonatomic, strong) NSString *emptyText;
 @property(nonatomic, strong) NSString *badKey;
 @property(nonatomic, strong) NSMutableDictionary *items;
 @property(nonatomic, assign) BOOL hidden;

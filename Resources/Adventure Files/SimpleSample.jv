@@ -14,8 +14,8 @@ Look: looks at stuff. Try looking at specific objects that you don't trust.
 Go: go to one of the adjacent exits.
 Yolo: don't use this command.
 </Help>
-<Look subject="@items;" dynamic="true">
-@itemlook;
+<Look subject="[@items;, @containers;]" dynamic="true">
+@look;
 </Look>
 <Eat subject="@item(JuicyHam);" dynamic="true">
 You eat the succulent ham like it's made of ham.
@@ -71,6 +71,10 @@ they just don't have any PROOF.</Truth>
 <Proof>Embrace the deception, learn how to bend, your worst inhibitions tend to PSYCH you out in the end!</Proof>
 <Psych>Pineapples!</Psych>
 <Go>Hamhamhamham@go(FluffyRoom);</Go>
+
+<Container name="Douglas">
+<Unlocked>This is most definitely a container named Douglas, and not a horrible monster lurking and waiting to eat you.</Unlocked>
+</Container>
 </Room>
 
 <Room name="FluffyRoom">

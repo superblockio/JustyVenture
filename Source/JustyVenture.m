@@ -22,6 +22,8 @@ typedef enum {
 
 typedef enum {
     JVXMLSecondPluralityContext,
+    JVXMLSecondExitContext,
+    JVXMLSecondContainerContext,
     JVXMLSecondOuterContext
 }JVXMLSecondContext;
 
@@ -42,6 +44,8 @@ typedef enum {
 @property(nonatomic, strong) Command *currentCommandXML;
 @property(nonatomic, strong) Item *currentItemXML;
 @property(nonatomic, strong) Mob *currentMobXML;
+@property(nonatomic, strong) Exit *currentExitXML;
+@property(nonatomic, strong) Container *currentContainerXML;
 @property(nonatomic, strong) Player *currentPlayer;
 
 @property (nonatomic, strong) NSMutableDictionary *rooms;
@@ -166,7 +170,7 @@ static JustyVenture *_sharedState;
             }
             
             if ([attributeDict objectForKey:@"items"] != nil) {
-                [room setItems:[self parseItems:[attributeDict objectForKey:@"items"] roomItems:room.items]];
+                [room setItems:[self parseItems:[attributeDict objectForKey:@"items"] items:room.items]];
             }
             
             if ([attributeDict objectForKey:@"mobs"] != nil) {
@@ -213,42 +217,211 @@ static JustyVenture *_sharedState;
     
     // If we're in a room or command tag, interpret each tag as a command
     if ([self context] == JVXMLRoomContext || [self context] == JVXMLCommandsContext) {
-        Command *command = [[Command alloc] init];
-        
-        // First, find all verbs associated with this command
-        NSMutableArray *verbs = [NSMutableArray array];
-        [verbs addObject:elementName];
-        if ([attributeDict objectForKey:@"alt"] != nil) {
-            [verbs addObjectsFromArray:[self parseAttribute:[attributeDict objectForKey:@"alt"]]];
+        if ([elementName caseInsensitiveCompare:@"Exit"] == NSOrderedSame) {
+            Exit *exit = [[Exit alloc] init];
+            
+            // First, find all keywords associated with this command
+            if ([attributeDict objectForKey:@"keywords"] != nil) {
+                [exit setKeywords:[self parseAttribute:[attributeDict objectForKey:@"keywords"]]];
+            }
+            else {
+                [exit setKeywords:[self parseAttribute:[attributeDict objectForKey:@"name"]]];
+            }
+            
+            // Next the name
+            if ([attributeDict objectForKey:@"name"] != nil) {
+                [exit setName:[attributeDict objectForKey:@"name"]];
+            } else {
+                NSLog(@"XML Error: We just came across an exit without a name and that is never supposed to happen");
+            }
+            
+            if ([attributeDict objectForKey:@"destination"] != nil) {
+                [exit setDestination:[attributeDict objectForKey:@"destination"]];
+            }
+            else {
+                NSLog(@"XML Error: We just came across an exit without a destination and that is never supposed to happen");
+            }
+            
+            // And the plural short description
+            if ([attributeDict objectForKey:@"lshort"] != nil) {
+                [exit setLockDesc:[attributeDict objectForKey:@"lshort"]];
+            }
+            
+            // Then the singular short description
+            if ([attributeDict objectForKey:@"short"] != nil) {
+                [exit setUnlockDesc:[attributeDict objectForKey:@"short"]];
+            }
+            else {
+                [exit setUnlockDesc:[attributeDict objectForKey:@"name"]];
+            }
+            
+            // And the plural long description
+            if ([attributeDict objectForKey:@"llong"] != nil) {
+                [exit setLockDescription:[attributeDict objectForKey:@"llong"]];
+            }
+            
+            // Then the singular long description
+            if ([attributeDict objectForKey:@"long"] != nil) {
+                [exit setUnlockDescription:[attributeDict objectForKey:@"long"]];
+            }
+            
+            // Then whether or not the exit shows up in a room
+            if ([attributeDict objectForKey:@"hidden"] != nil) {
+                if ([[attributeDict objectForKey:@"hidden"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [exit setHidden:false];
+            }
+            
+            // And whether it's locked
+            if ([attributeDict objectForKey:@"locked"] != nil) {
+                if ([[attributeDict objectForKey:@"locked"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [exit setLocked:true];
+            }
+            
+            self.currentExitXML = exit;
         }
-        [command setVerbs:verbs];
-        
-        // Now find the subjects (if any)
-        if ([attributeDict objectForKey:@"subject"] != nil) {
-            [command setSubjects:[self parseAttribute:[attributeDict objectForKey:@"subject"]]];
+        else if ([elementName caseInsensitiveCompare:@"Container"] == NSOrderedSame) {
+            Container *container = [[Container alloc] init];
+            
+            // First, find all keywords associated with this command
+            if ([attributeDict objectForKey:@"keywords"] != nil) {
+                [container setKeywords:[self parseAttribute:[attributeDict objectForKey:@"keywords"]]];
+            }
+            else {
+                [container setKeywords:[self parseAttribute:[attributeDict objectForKey:@"name"]]];
+            }
+            
+            // Next the name
+            if ([attributeDict objectForKey:@"name"] != nil) {
+                [container setName:[attributeDict objectForKey:@"name"]];
+            } else {
+                NSLog(@"XML Error: We just came across a container without a name and that is never supposed to happen");
+            }
+            
+            // And the plural short description
+            if ([attributeDict objectForKey:@"lshort"] != nil) {
+                [container setLockDesc:[attributeDict objectForKey:@"lshort"]];
+            }
+            
+            // Then the singular short description
+            if ([attributeDict objectForKey:@"short"] != nil) {
+                [container setUnlockDesc:[attributeDict objectForKey:@"short"]];
+            }
+            else {
+                [container setUnlockDesc:[attributeDict objectForKey:@"name"]];
+            }
+            
+            // And the plural long description
+            if ([attributeDict objectForKey:@"llong"] != nil) {
+                [container setLockDescription:[attributeDict objectForKey:@"llong"]];
+            }
+            
+            // Then the singular long description
+            if ([attributeDict objectForKey:@"long"] != nil) {
+                [container setUnlockDescription:[attributeDict objectForKey:@"long"]];
+            }
+            
+            if ([attributeDict objectForKey:@"items"] != nil) {
+                [container setItems:[self parseItems:[attributeDict objectForKey:@"items"] items:container.items]];
+            }
+            
+            // Then whether or not the container shows up in a room
+            if ([attributeDict objectForKey:@"hidden"] != nil) {
+                if ([[attributeDict objectForKey:@"hidden"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [container setHidden:false];
+            }
+            
+            // And whether it's locked
+            if ([attributeDict objectForKey:@"locked"] != nil) {
+                if ([[attributeDict objectForKey:@"locked"] caseInsensitiveCompare:@"true"] == NSOrderedSame) [container setLocked:true];
+            }
+            
+            self.currentContainerXML = container;
         }
-        
-        // Check to see if this should be considered a dynamic command
-        if ([attributeDict objectForKey:@"dynamic"] != nil) {
-            if ([[attributeDict objectForKey:@"dynamic"] caseInsensitiveCompare:@"true"] == NSOrderedSame) self.dynamic = true;
+        else if ([self secondContext] == JVXMLSecondExitContext) {
+            Exit *exit = self.currentExitXML;
+            
+            if ([elementName caseInsensitiveCompare:@"Locked"] == NSOrderedSame) {
+                if ([attributeDict objectForKey:@"short"] != nil) {
+                    [exit setLockDesc:[attributeDict objectForKey:@"short"]];
+                }
+                
+                if ([attributeDict objectForKey:@"long"] != nil) {
+                    [exit setLockDescription:[attributeDict objectForKey:@"long"]];
+                }
+            }
+            
+            if ([elementName caseInsensitiveCompare:@"Unlocked"] == NSOrderedSame) {
+                if ([attributeDict objectForKey:@"short"] != nil) {
+                    [exit setUnlockDesc:[attributeDict objectForKey:@"short"]];
+                }
+                
+                if ([attributeDict objectForKey:@"long"] != nil) {
+                    [exit setUnlockDescription:[attributeDict objectForKey:@"long"]];
+                }
+            }
+            
+            self.currentExitXML = exit;
         }
-        
-        // Finally, see if it's an internal command or not
-        if ([attributeDict objectForKey:@"internal"] != nil) {
-            command.internal = [[[self parseAttribute:[attributeDict objectForKey:@"internal"]] objectAtIndex:0] boolValue];
+        else if ([self secondContext] == JVXMLSecondContainerContext) {
+            Container *container = self.currentContainerXML;
+            
+            if ([elementName caseInsensitiveCompare:@"Locked"] == NSOrderedSame) {
+                if ([attributeDict objectForKey:@"short"] != nil) {
+                    [container setLockDesc:[attributeDict objectForKey:@"short"]];
+                }
+                
+                if ([attributeDict objectForKey:@"long"] != nil) {
+                    [container setLockDescription:[attributeDict objectForKey:@"long"]];
+                }
+            }
+            
+            if ([elementName caseInsensitiveCompare:@"Unlocked"] == NSOrderedSame) {
+                if ([attributeDict objectForKey:@"short"] != nil) {
+                    [container setUnlockDesc:[attributeDict objectForKey:@"short"]];
+                }
+                
+                if ([attributeDict objectForKey:@"long"] != nil) {
+                    [container setUnlockDescription:[attributeDict objectForKey:@"long"]];
+                }
+            }
+            
+            self.currentContainerXML = container;
         }
         else {
-            // The Arrive command is internal by default
-            if([elementName caseInsensitiveCompare:@"Arrive"] == NSOrderedSame) {
-                command.internal = true;
+            Command *command = [[Command alloc] init];
+            
+            // First, find all verbs associated with this command
+            NSMutableArray *verbs = [NSMutableArray array];
+            [verbs addObject:elementName];
+            if ([attributeDict objectForKey:@"alt"] != nil) {
+                [verbs addObjectsFromArray:[self parseAttribute:[attributeDict objectForKey:@"alt"]]];
             }
-            // All other commands are external by default
+            [command setVerbs:verbs];
+            
+            // Now find the subjects (if any)
+            if ([attributeDict objectForKey:@"subject"] != nil) {
+                [command setSubjects:[self parseAttribute:[attributeDict objectForKey:@"subject"]]];
+            }
+            
+            // Check to see if this should be considered a dynamic command
+            if ([attributeDict objectForKey:@"dynamic"] != nil) {
+                if ([[attributeDict objectForKey:@"dynamic"] caseInsensitiveCompare:@"true"] == NSOrderedSame) self.dynamic = true;
+            }
+            
+            // Finally, see if it's an internal command or not
+            if ([attributeDict objectForKey:@"internal"] != nil) {
+                command.internal = [[[self parseAttribute:[attributeDict objectForKey:@"internal"]] objectAtIndex:0] boolValue];
+            }
             else {
-                command.internal = false;
+                // The Arrive command is internal by default
+                if([elementName caseInsensitiveCompare:@"Arrive"] == NSOrderedSame) {
+                    command.internal = true;
+                }
+                // All other commands are external by default
+                else {
+                    command.internal = false;
+                }
             }
+            
+            self.currentCommandXML = command;
         }
-        
-        self.currentCommandXML = command;
     }
     
     // If we're in an item tag, interpret each tag as an item
@@ -485,9 +658,51 @@ static JustyVenture *_sharedState;
     }
     
     else if ([self context] == JVXMLRoomContext) {
-        [self.currentCommandXML setResult:self.currentElementBody];
-        if (self.dynamic) [self.currentRoomXML setDynamicCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
-        else [self.currentRoomXML setCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
+        if ([elementName caseInsensitiveCompare:@"Exit"] == NSOrderedSame) {
+            if ([self.currentExitXML.unlockLook isEqualToString:@""]) [self.currentExitXML setUnlockLook:self.currentElementBody];
+            NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+            [dictionary addEntriesFromDictionary:self.currentRoomXML.exits];
+            [dictionary setObject:self.currentExitXML forKey:self.currentExitXML.name];
+            [self.currentRoomXML setExits:dictionary];
+        }
+        else if ([elementName caseInsensitiveCompare:@"Container"] == NSOrderedSame) {
+            if ([self.currentContainerXML.unlockLook isEqualToString:@""]) [self.currentContainerXML setUnlockLook:self.currentElementBody];
+            NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+            [dictionary addEntriesFromDictionary:self.currentRoomXML.containers];
+            [dictionary setObject:self.currentContainerXML forKey:self.currentContainerXML.name];
+            [self.currentRoomXML setContainers:dictionary];
+        }
+        else if ([self secondContext] == JVXMLSecondExitContext) {
+            // Set the look text for the item.
+            if ([elementName caseInsensitiveCompare:@"Locked"] == NSOrderedSame) {
+                [self.currentExitXML setLockLook:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Unlocked"] == NSOrderedSame) {
+                [self.currentExitXML setUnlockLook:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Unlock"] == NSOrderedSame) {
+                [self.currentExitXML setUnlockText:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Key"] == NSOrderedSame) {
+                [self.currentExitXML setBadKey:self.currentElementBody];
+            }
+        }
+        if ([self secondContext] == JVXMLSecondContainerContext) {
+            // Set the look text for the item.
+            if ([elementName caseInsensitiveCompare:@"Locked"] == NSOrderedSame) {
+                [self.currentContainerXML setLockLook:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Unlocked"] == NSOrderedSame) {
+                [self.currentContainerXML setUnlockLook:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Unlock"] == NSOrderedSame) {
+                [self.currentContainerXML setUnlockText:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Empty"] == NSOrderedSame) {
+                [self.currentContainerXML setEmptyText:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Key"] == NSOrderedSame) {
+                [self.currentContainerXML setBadKey:self.currentElementBody];
+            }
+        }
+        else {
+            [self.currentCommandXML setResult:self.currentElementBody];
+            if (self.dynamic) [self.currentRoomXML setDynamicCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
+            else [self.currentRoomXML setCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
+        }
     }
     
     else if ([self context] == JVXMLCommandsContext) {
@@ -644,7 +859,7 @@ static JustyVenture *_sharedState;
     return mobs;
 }
 
-- (NSMutableDictionary*)parseItems:(NSString*)itemList roomItems:(NSMutableDictionary*)items {
+- (NSMutableDictionary*)parseItems:(NSString*)itemList items:(NSMutableDictionary*)items {
     // See if it's a list or just a single thing
     // (first, get rid of leading whitespace)
     while ([[itemList substringWithRange:NSMakeRange(0, 1)] isEqualToString:@" "]) {
@@ -748,6 +963,12 @@ static JustyVenture *_sharedState;
 - (JVXMLSecondContext)secondContext {
     if (self.currentTags.count < 3) {
         return JVXMLSecondOuterContext;
+    }
+    else if ([[self.currentTags objectAtIndex:2] caseInsensitiveCompare:@"Exit"] == NSOrderedSame) {
+        return JVXMLSecondExitContext;
+    }
+    else if ([[self.currentTags objectAtIndex:2] caseInsensitiveCompare:@"Container"] == NSOrderedSame) {
+        return JVXMLSecondContainerContext;
     }
     else {
         return JVXMLSecondPluralityContext;
