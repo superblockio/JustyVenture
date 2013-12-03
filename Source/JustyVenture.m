@@ -1457,6 +1457,32 @@ static JustyVenture *_sharedState;
         output = item.getText;
     }
     
+    NSUInteger useLocation = [output rangeOfString:@"@use("].location;
+    if (useLocation != NSNotFound) {
+        NSUInteger endLocation = [[output substringFromIndex:useLocation] rangeOfString:@");"].location + useLocation;
+        NSString *args = [output substringWithRange:NSMakeRange(useLocation + 5, endLocation - useLocation - 5)];
+        args = [args stringByReplacingOccurrencesOfString:@", " withString:@","];
+        NSArray *argsList = [args componentsSeparatedByString:@","];
+        int quantity = 1;
+        
+        if (argsList.count > 0) {
+            NSString *name = [argsList objectAtIndex:0];
+            if (argsList.count == 2) quantity = [[argsList objectAtIndex:1] intValue];
+                Item *item = [self.currentPlayer.items objectForKey:name];
+                item.quantity = [[self.currentPlayer.items objectForKey:name] quantity] - quantity;
+                if (item.quantity < 1) [self.currentPlayer.items removeObjectForKey:name];
+        }
+        
+        NSString *useCommand = @"";
+        if (output.length > endLocation + 2 && [output characterAtIndex:endLocation + 2] == '\n') {
+            useCommand = [output substringWithRange:NSMakeRange(useLocation, endLocation - useLocation + 3)];
+        }
+        else {
+            useCommand = [output substringWithRange:NSMakeRange(useLocation, endLocation - useLocation + 2)];
+        }
+        output = [output stringByReplacingOccurrencesOfString:useCommand withString:@""];
+    }
+    
     NSUInteger promptLocation = [output rangeOfString:@"@prompt("].location;
     if (promptLocation != NSNotFound) {
         NSUInteger endLocation = [[output substringFromIndex:promptLocation] rangeOfString:@");"].location + promptLocation;
