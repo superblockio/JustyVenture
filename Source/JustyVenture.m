@@ -1174,6 +1174,12 @@ static JustyVenture *_sharedState;
 - (NSString*)JustinTimeInterpret:(NSString*)input {
     NSString *output = [input copy];
     
+    NSUInteger runLocation = [output rangeOfString:@"@run("].location;
+    if (runLocation != NSNotFound) {
+        NSUInteger endLocation = [[output substringFromIndex:runLocation] rangeOfString:@");"].location + runLocation;
+        return [self runUserInput:[output substringWithRange:NSMakeRange(runLocation + 5, endLocation - runLocation - 5)]];
+    }
+    
     // HACK: just look for go, prompt, verb, and subject for now!
     output = [output stringByReplacingOccurrencesOfString:@"@verb;" withString:self.verb];
     output = [output stringByReplacingOccurrencesOfString:@"@subject;" withString:self.subject];
