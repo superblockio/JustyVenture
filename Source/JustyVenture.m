@@ -705,7 +705,7 @@ static JustyVenture *_sharedState;
         }
         else {
             [self.currentCommandXML setResult:self.currentElementBody];
-            if (self.dynamic) [self.currentRoomXML setDynamicCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
+            if (self.dynamic) [self.currentRoomXML setDynamicCommands:[self.currentRoomXML.dynamicCommands arrayByAddingObject:self.currentCommandXML]];
             else [self.currentRoomXML setCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
         }
     }
@@ -757,10 +757,10 @@ static JustyVenture *_sharedState;
             if ([[firstRoom.commands objectAtIndex:i] respondsToInternalName:@"arrive"]) {
                 NSString *arrive = [[firstRoom.commands objectAtIndex:i] result];
                 if (self.introType == JVIntroTypeAppend) {
-                    self.introText = [self.introText stringByAppendingString:arrive];
+                    self.introText = [self.introText stringByAppendingString:[self JustinTimeInterpret:arrive]];
                 }
                 else {
-                    self.introText = arrive;
+                    self.introText = [self JustinTimeInterpret:arrive];
                 }
             }
         }
