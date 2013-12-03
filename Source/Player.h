@@ -10,4 +10,6 @@
 
 @interface Player : Mob
 
+@property(nonatomic, strong) NSString *currentRoomName;
+
 @end

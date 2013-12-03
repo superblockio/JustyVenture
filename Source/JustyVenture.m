@@ -22,6 +22,7 @@ typedef enum {
 
 typedef enum {
     JVXMLSecondPluralityContext,
+    JVXMLSecondConditionContext,
     JVXMLSecondExitContext,
     JVXMLSecondContainerContext,
     JVXMLSecondOuterContext
@@ -32,6 +33,14 @@ typedef enum {
     JVIntroTypeAppend,
     JVIntroTypeIgnore
 }JVIntroType;
+
+typedef enum {
+    JVVariableTypeBool,
+    JVVariableTypeString,
+    JVVariableTypeInt,
+    JVVariableTypeFloat,
+    JVVariableTypeDouble
+}JVVariableType;
 
 @interface JustyVenture () {
 }
@@ -46,6 +55,7 @@ typedef enum {
 @property(nonatomic, strong) Mob *currentMobXML;
 @property(nonatomic, strong) Exit *currentExitXML;
 @property(nonatomic, strong) Container *currentContainerXML;
+@property(nonatomic, strong) NSString *currentConditionXML;
 @property(nonatomic, strong) Player *currentPlayer;
 
 @property (nonatomic, strong) NSMutableDictionary *rooms;
@@ -82,6 +92,7 @@ static JustyVenture *_sharedState;
         self.rooms = [[NSMutableDictionary alloc] init];
         self.variables = [[NSMutableDictionary alloc] init];
         self.items = [[NSMutableDictionary alloc] init];
+        self.mobs = [[NSMutableDictionary alloc] init];
         self.commands = [[NSMutableArray alloc] init];
         self.dynamicCommands = [[NSMutableArray alloc] init];
         self.adventureTitle = @"Adventure!";
@@ -150,7 +161,6 @@ static JustyVenture *_sharedState;
 # pragma mark NSXMLParserDelegate methods
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     self.currentElementBody = @"";
-    self.dynamic = false;
     
     // If we're one of the top-level elements, do top-leveley stuff
     if ([self context] == JVXMLOuterContext) {
@@ -384,8 +394,20 @@ static JustyVenture *_sharedState;
             
             self.currentContainerXML = container;
         }
-        else {
+        else if ([self secondContext] == JVXMLSecondConditionContext) {
+            NSString *condition = @"Else";
+            
+            
+            // Now find the subjects (if any)
+            if ([attributeDict objectForKey:@"condition"] != nil) {
+                condition = [attributeDict objectForKey:@"condition"];
+            }
+            
+            self.currentConditionXML = condition;
+        }
+        else if ([self secondContext] == JVXMLSecondOuterContext) {
             Command *command = [[Command alloc] init];
+            self.dynamic = false;
             
             // First, find all verbs associated with this command
             NSMutableArray *verbs = [NSMutableArray array];
@@ -703,17 +725,57 @@ static JustyVenture *_sharedState;
                 [self.currentContainerXML setBadKey:self.currentElementBody];
             }
         }
-        else {
-            [self.currentCommandXML setResult:self.currentElementBody];
+        else if ([self secondContext] == JVXMLSecondConditionContext) {
+            // Set the look text for the item.
+            NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+            if ([elementName caseInsensitiveCompare:@"If"] == NSOrderedSame) {
+                [dictionary addEntriesFromDictionary:self.currentCommandXML.result];
+                [dictionary setObject:self.currentElementBody forKey:self.currentConditionXML];
+                [self.currentCommandXML setResult:dictionary];
+            } else if ([elementName caseInsensitiveCompare:@"Else"] == NSOrderedSame) {
+                [dictionary addEntriesFromDictionary:self.currentCommandXML.result];
+                [dictionary setObject:self.currentElementBody forKey:@"Else"];
+                [self.currentCommandXML setResult:dictionary];
+            }
+        }
+        else if ([self secondContext] == JVXMLSecondOuterContext) {
+            if ([self.currentCommandXML.result objectForKey:@"Else"] == nil)
+            {
+                NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+                [dictionary addEntriesFromDictionary:self.currentCommandXML.result];
+                [dictionary setObject:self.currentElementBody forKey:@"Else"];
+                [self.currentCommandXML setResult:dictionary];
+            }
             if (self.dynamic) [self.currentRoomXML setDynamicCommands:[self.currentRoomXML.dynamicCommands arrayByAddingObject:self.currentCommandXML]];
             else [self.currentRoomXML setCommands:[self.currentRoomXML.commands arrayByAddingObject:self.currentCommandXML]];
         }
     }
     
     else if ([self context] == JVXMLCommandsContext) {
-        [self.currentCommandXML setResult:self.currentElementBody];
-        if (self.dynamic) [self.dynamicCommands addObject:self.currentCommandXML];
-        else [self.commands addObject:self.currentCommandXML];
+        if ([self secondContext] == JVXMLSecondConditionContext) {
+            // Set the look text for the item.
+            NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+            if ([elementName caseInsensitiveCompare:@"If"] == NSOrderedSame) {
+                [dictionary addEntriesFromDictionary:self.currentCommandXML.result];
+                [dictionary setObject:self.currentElementBody forKey:self.currentConditionXML];
+                [self.currentCommandXML setResult:dictionary];
+            } else if ([elementName caseInsensitiveCompare:@"Else"] == NSOrderedSame) {
+                [dictionary addEntriesFromDictionary:self.currentCommandXML.result];
+                [dictionary setObject:self.currentElementBody forKey:@"Else"];
+                [self.currentCommandXML setResult:dictionary];
+            }
+        }
+        else if ([self secondContext] == JVXMLSecondOuterContext) {
+            if ([self.currentCommandXML.result objectForKey:@"Else"] == nil)
+            {
+                NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+                [dictionary addEntriesFromDictionary:self.currentCommandXML.result];
+                [dictionary setObject:self.currentElementBody forKey:@"Else"];
+                [self.currentCommandXML setResult:dictionary];
+            }
+            if (self.dynamic) [self.dynamicCommands addObject:self.currentCommandXML];
+            else [self.commands addObject:self.currentCommandXML];
+        }
     }
     
     else if ([self context] == JVXMLItemsContext) {
@@ -721,12 +783,16 @@ static JustyVenture *_sharedState;
             if ([self.currentItemXML.singularLook isEqualToString:@""]) [self.currentItemXML setSingularLook:self.currentElementBody];
             [self.items setObject:self.currentItemXML forKey:self.currentItemXML.name];
         }
-        else {
+        else if ([self secondContext] == JVXMLSecondPluralityContext) {
             // Set the look text for the item.
             if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
                 [self.currentItemXML setSingularLook:self.currentElementBody];
             } else if ([elementName caseInsensitiveCompare:@"Plural"] == NSOrderedSame) {
                 [self.currentItemXML setPluralLook:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Get"] == NSOrderedSame) {
+                [self.currentItemXML setGetText:self.currentElementBody];
+            } else if ([elementName caseInsensitiveCompare:@"Drop"] == NSOrderedSame) {
+                [self.currentItemXML setDropText:self.currentElementBody];
             }
         }
     }
@@ -736,7 +802,7 @@ static JustyVenture *_sharedState;
             if ([self.currentMobXML.singularLook isEqualToString:@""]) [self.currentMobXML setSingularLook:self.currentElementBody];
             [self.mobs setObject:self.currentMobXML forKey:self.currentMobXML.name];
         }
-        else {
+        else if ([self secondContext] == JVXMLSecondPluralityContext) {
             // Set the look text for the mob.
             if ([elementName caseInsensitiveCompare:@"Single"] == NSOrderedSame) {
                 [self.currentMobXML setSingularLook:self.currentElementBody];
@@ -755,7 +821,7 @@ static JustyVenture *_sharedState;
     if (self.introType != JVIntroTypeReplace) {
         for (int i = 0; i < firstRoom.commands.count; i++) {
             if ([[firstRoom.commands objectAtIndex:i] respondsToInternalName:@"arrive"]) {
-                NSString *arrive = [[firstRoom.commands objectAtIndex:i] result];
+                NSString *arrive = [self CheckConditions:[[firstRoom.commands objectAtIndex:i] result]];
                 if (self.introType == JVIntroTypeAppend) {
                     self.introText = [self.introText stringByAppendingString:[self JustinTimeInterpret:arrive]];
                 }
@@ -977,7 +1043,15 @@ static JustyVenture *_sharedState;
     else if ([[self.currentTags objectAtIndex:2] caseInsensitiveCompare:@"Container"] == NSOrderedSame) {
         return JVXMLSecondContainerContext;
     }
-    else {
+    else if ([[self.currentTags objectAtIndex:1] caseInsensitiveCompare:@"Room"] == NSOrderedSame) {
+        return JVXMLSecondConditionContext;
+    }
+    else if ([[self.currentTags objectAtIndex:1] caseInsensitiveCompare:@"Commands"] == NSOrderedSame) {
+        return JVXMLSecondConditionContext;
+    }
+    else if ([[self.currentTags objectAtIndex:1] caseInsensitiveCompare:@"Items"] == NSOrderedSame) {
+        return JVXMLSecondPluralityContext;
+    }else if ([[self.currentTags objectAtIndex:1] caseInsensitiveCompare:@"Mobs"] == NSOrderedSame) {
         return JVXMLSecondPluralityContext;
     }
     return JVXMLSecondOuterContext;
@@ -1147,7 +1221,7 @@ static JustyVenture *_sharedState;
         for (int i = 0; i < tempCommands.count; i++) {
             Command *command = [tempCommands objectAtIndex:i];
             if ([command respondsToVerb:self.verb subject:self.subject]) {
-                return [self JustinTimeInterpret:[command result]];
+                return [self JustinTimeInterpret:[self CheckConditions:[command result]]];
             }
         }
     }
@@ -1156,7 +1230,7 @@ static JustyVenture *_sharedState;
     for (int i = 0; i < commands.count; i++) {
         Command *command = [commands objectAtIndex:i];
         if ([command respondsToVerb:self.verb subject:self.subject]) {
-            return [self JustinTimeInterpret:[command result]];
+            return [self JustinTimeInterpret:[self CheckConditions:[command result]]];
         }
     }
     
@@ -1164,11 +1238,125 @@ static JustyVenture *_sharedState;
     for (int i = 0; i < commands.count; i++) {
         Command *command = [commands objectAtIndex:i];
         if ([command respondsToVerb:@"wildcard" subject:self.subject]) {
-            return [self JustinTimeInterpret:[command result]];
+            return [self JustinTimeInterpret:[self CheckConditions:[command result]]];
         }
     }
     
     return nil;
+}
+
+- (NSString*)CheckConditions:(NSDictionary*)result {
+    Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
+    
+    for(id screy in result) {
+        NSString *output = [result objectForKey:screy];
+        for(id key in currentRoom.items) {
+            Item *item = [currentRoom.items objectForKey:key];
+            NSString *itemName = @"@item(";
+            itemName = [itemName stringByAppendingString:item.name];
+            itemName = [itemName stringByAppendingString:@");"];
+            if ([screy isEqualToString:itemName]) {
+                return output;
+            }
+        }
+        
+        for(id key in self.currentPlayer.items) {
+            Item *item = [self.currentPlayer.items objectForKey:key];
+            NSString *itemName = @"@inv(";
+            itemName = [itemName stringByAppendingString:item.name];
+            itemName = [itemName stringByAppendingString:@");"];
+            if ([screy isEqualToString:itemName]) {
+                return output;
+            }
+        }
+        
+        for(id key in currentRoom.exits) {
+            Exit *exit = [currentRoom.exits objectForKey:key];
+            NSString *exitName = @"@exit(";
+            exitName = [exitName stringByAppendingString:exit.name];
+            exitName = [exitName stringByAppendingString:@");"];
+            if ([screy isEqualToString:exitName]) {
+                return output;
+            }
+        }
+        
+        for(id bley in currentRoom.containers) {
+            Container *container = [currentRoom.containers objectForKey:bley];
+            NSString *containerName = @"@container(";
+            containerName = [containerName stringByAppendingString:container.name];
+            containerName = [containerName stringByAppendingString:@");"];
+            if ([screy isEqualToString:containerName]) {
+                return output;
+            }
+            
+            if (!container.locked){
+                for(id key in container.items) {
+                    Item *item = [container.items objectForKey:key];
+                    NSString *itemName = @"@item(";
+                    itemName = [itemName stringByAppendingString:item.name];
+                    itemName = [itemName stringByAppendingString:@");"];
+                    if ([screy isEqualToString:itemName]) {
+                        return output;
+                    }
+                }
+            }
+        }
+        
+        for(id key in self.variables) {
+            NSUInteger varLocation = [screy rangeOfString:@"@var("].location;
+            if (varLocation != NSNotFound) {
+                NSUInteger endLocation = [screy rangeOfString:@");"].location;
+                NSString *args = [screy substringWithRange:NSMakeRange(varLocation + 5, endLocation - varLocation - 5)];
+                args = [args stringByReplacingOccurrencesOfString:@", " withString:@","];
+                NSArray *argsList = [args componentsSeparatedByString:@","];
+                if (argsList.count == 3)
+                {
+                    JVVariableType type = JVVariableTypeBool;
+                    if ([[argsList objectAtIndex:0] caseInsensitiveCompare:@"int"] == NSOrderedSame) type = JVVariableTypeInt;
+                    if ([[argsList objectAtIndex:0] caseInsensitiveCompare:@"string"] == NSOrderedSame) type = JVVariableTypeString;
+                    if ([[argsList objectAtIndex:0] caseInsensitiveCompare:@"double"] == NSOrderedSame) type = JVVariableTypeDouble;
+                    if ([[argsList objectAtIndex:0] caseInsensitiveCompare:@"float"] == NSOrderedSame) type = JVVariableTypeFloat;
+                    NSString *varName = [argsList objectAtIndex:1];
+                    NSString *varValue = [argsList objectAtIndex:2];
+                    
+                    if ([varName isEqualToString:key]) {
+                        if (type == JVVariableTypeBool) {
+                            BOOL var = [[self.variables objectForKey:key] boolValue];
+                            if ([varValue caseInsensitiveCompare:@"true"] == NSOrderedSame) if (var == true) return output;
+                            if ([varValue caseInsensitiveCompare:@"false"] == NSOrderedSame) if (var == false) return output;
+                        }
+                        if (type == JVVariableTypeString) {
+                            NSString *var = [self.variables objectForKey:key];
+                            if ([varValue isEqualToString:var]) return output;
+                        }
+                        if (type == JVVariableTypeInt) {
+                            int var = [[self.variables objectForKey:key] intValue];
+                            if ([varValue intValue] == var) return output;
+                        }
+                        if (type == JVVariableTypeFloat) {
+                            float var = [[self.variables objectForKey:key] floatValue];
+                            if ([varValue floatValue] == var) return output;
+                        }
+                        if (type == JVVariableTypeDouble) {
+                            double var = [[self.variables objectForKey:key] doubleValue];
+                            if ([varValue doubleValue] == var) return output;
+                        }
+                    }
+                }
+            }
+        }
+        
+        for(int i = 0; i < currentRoom.mobs.count; i++) {
+            Mob *mob = [currentRoom.mobs objectAtIndex:i];
+            NSString *mobName = @"@mob(";
+            mobName = [mobName stringByAppendingString:mob.name];
+            mobName = [mobName stringByAppendingString:@");"];
+            if ([screy isEqualToString:mobName]) {
+                return output;
+            }
+        }
+    }
+    return [result objectForKey:@"Else"];
 }
 
 - (NSString*)JustinTimeInterpret:(NSString*)input {
@@ -1185,6 +1373,15 @@ static JustyVenture *_sharedState;
     output = [output stringByReplacingOccurrencesOfString:@"@subject;" withString:self.subject];
     Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
     NSString *look = @"";
+    NSString *returnInv = @"";
+    NSString *commaInv = @"";
+    
+    for(id key in self.currentPlayer.items) {
+        Item *item = [self.currentPlayer.items objectForKey:key];
+        commaInv = returnInv = [returnInv stringByAppendingString:[item shortDescription]];
+        returnInv = [returnInv stringByAppendingString:@"\n"];
+        commaInv = [commaInv stringByAppendingString:@", "];
+    }
     
     for(id key in currentRoom.items) {
         Item *item = [currentRoom.items objectForKey:key];
@@ -1219,6 +1416,32 @@ static JustyVenture *_sharedState;
         }
     }
     output = [output stringByReplacingOccurrencesOfString:@"@look;" withString:look];
+    output = [output stringByReplacingOccurrencesOfString:@"@inv(linebreak);" withString:returnInv];
+    output = [output stringByReplacingOccurrencesOfString:@"@inv(comma);" withString:commaInv];
+    
+    
+    NSUInteger getLocation = [output rangeOfString:@"@get("].location;
+    if (getLocation != NSNotFound) {
+        NSUInteger endLocation = [[output substringFromIndex:getLocation] rangeOfString:@");"].location + getLocation;
+        NSString *itemName = [output substringWithRange:NSMakeRange(getLocation + 5, endLocation - getLocation - 5)];
+        
+        Item *item = [currentRoom.items objectForKey:itemName];
+        if ([self.currentPlayer.items objectForKey:itemName] != nil) {
+            Item *newItem = [self.currentPlayer.items objectForKey:itemName];
+            [newItem setQuantity:newItem.quantity + 1];
+        }
+        else {
+            Item *newItem = [[Item alloc] initWithItem:item];
+            [newItem setQuantity:1];
+            NSMutableDictionary *dictionary = self.currentPlayer.items;
+            [dictionary setObject:newItem forKey:itemName];
+            [self.currentPlayer setItems:dictionary];
+        }
+        item.quantity = [[currentRoom.items objectForKey:itemName] quantity] - 1;
+        if (item.quantity == 0) [currentRoom.items removeObjectForKey:itemName];
+        
+        output = item.getText;
+    }
     
     NSUInteger promptLocation = [output rangeOfString:@"@prompt("].location;
     if (promptLocation != NSNotFound) {
@@ -1235,6 +1458,130 @@ static JustyVenture *_sharedState;
         NSString *processedOutput = [output stringByReplacingOccurrencesOfString:promptCommand withString:@""];
         
         output = processedOutput;
+    }
+    
+    NSUInteger setLocation = [output rangeOfString:@"@set("].location;
+    if (setLocation != NSNotFound) {
+        NSUInteger endLocation = [[output substringFromIndex:setLocation] rangeOfString:@");"].location;
+        NSString *args = [output substringWithRange:NSMakeRange(setLocation + 5, endLocation - setLocation - 5)];
+        args = [args stringByReplacingOccurrencesOfString:@", " withString:@","];
+        NSArray *argsList = [args componentsSeparatedByString:@","];
+        if (argsList.count == 3)
+        {
+            JVVariableType type = JVVariableTypeBool;
+            if ([[argsList objectAtIndex:0] caseInsensitiveCompare:@"int"] == NSOrderedSame) type = JVVariableTypeInt;
+            if ([[argsList objectAtIndex:0] caseInsensitiveCompare:@"string"] == NSOrderedSame) type = JVVariableTypeString;
+            if ([[argsList objectAtIndex:0] caseInsensitiveCompare:@"double"] == NSOrderedSame) type = JVVariableTypeDouble;
+            if ([[argsList objectAtIndex:0] caseInsensitiveCompare:@"float"] == NSOrderedSame) type = JVVariableTypeFloat;
+            NSString *varName = [argsList objectAtIndex:1];
+            NSString *varValue = [argsList objectAtIndex:2];
+            
+            if (type == JVVariableTypeBool) {
+                NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+                [f setNumberStyle:NSNumberFormatterNoStyle];
+                NSNumber *falseNum = [f numberFromString:@"0"];
+                NSNumber *trueNum = [f numberFromString:@"1"];
+                if ([varValue caseInsensitiveCompare:@"true"] == NSOrderedSame) [self.variables setObject:trueNum forKey:varName];
+                if ([varValue caseInsensitiveCompare:@"false"] == NSOrderedSame) [self.variables setObject:falseNum forKey:varName];
+            }
+            if (type == JVVariableTypeString) {
+                NSString *var = varValue;
+                [self.variables setObject:var forKey:varName];
+            }
+            if (type == JVVariableTypeInt || type == JVVariableTypeFloat || type == JVVariableTypeDouble) {
+                NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+                [f setNumberStyle:NSNumberFormatterDecimalStyle];
+                NSNumber *var = [f numberFromString:varValue];
+                [self.variables setObject:var forKey:varName];
+            }
+        }
+        
+        
+        NSString *setCommand = @"";
+        if (output.length > endLocation + 2 && [output characterAtIndex:endLocation + 2] == '\n') {
+            setCommand = [output substringWithRange:NSMakeRange(setLocation, endLocation - setLocation + 3)];
+        }
+        else {
+            setCommand = [output substringWithRange:NSMakeRange(setLocation, endLocation - setLocation + 2)];
+        }
+        output = [output stringByReplacingOccurrencesOfString:setCommand withString:@""];
+    }
+    
+    NSUInteger addLocation = [output rangeOfString:@"@add("].location;
+    if (addLocation != NSNotFound) {
+        NSUInteger endLocation = [[output substringFromIndex:addLocation] rangeOfString:@");"].location + addLocation;
+        NSString *args = [output substringWithRange:NSMakeRange(addLocation + 5, endLocation - addLocation - 5)];
+        args = [args stringByReplacingOccurrencesOfString:@", " withString:@","];
+        NSArray *argsList = [args componentsSeparatedByString:@","];
+        int quantity = 1;
+        
+        if (argsList.count > 1) {
+            NSString *name = [argsList objectAtIndex:0];
+            if (argsList.count == 3) quantity = [[argsList objectAtIndex:2] intValue];
+            if ([[argsList objectAtIndex:1] caseInsensitiveCompare:@"item"] == NSOrderedSame) {
+                Item *item = [[Item alloc] initWithItem:[self.items objectForKey:name]];
+                if ([currentRoom.items objectForKey:name] != nil) {
+                    Item *newItem = [currentRoom.items objectForKey:name];
+                    [newItem setQuantity:newItem.quantity + quantity];
+                }
+                else {
+                    Item *newItem = [[Item alloc] initWithItem:item];
+                    [newItem setQuantity:quantity];
+                    [currentRoom.items setObject:newItem forKey:name];
+                }
+            }
+            if ([[argsList objectAtIndex:1] caseInsensitiveCompare:@"mob"] == NSOrderedSame) {
+                Mob *mob = [self.mobs objectForKey:name];
+                for (int i = 0; i < quantity; i++) {
+                    Mob *newMob = [[Mob alloc] initWithMob:mob];
+                    [currentRoom.mobs addObject:newMob];
+                }
+            }
+        }
+        
+        NSString *addCommand = @"";
+        if (output.length > endLocation + 2 && [output characterAtIndex:endLocation + 2] == '\n') {
+            addCommand = [output substringWithRange:NSMakeRange(addLocation, endLocation - addLocation + 3)];
+        }
+        else {
+            addCommand = [output substringWithRange:NSMakeRange(addLocation, endLocation - addLocation + 2)];
+        }
+        output = [output stringByReplacingOccurrencesOfString:addCommand withString:@""];
+    }
+    
+    NSUInteger removeLocation = [output rangeOfString:@"@remove("].location;
+    if (removeLocation != NSNotFound) {
+        NSUInteger endLocation = [[output substringFromIndex:removeLocation] rangeOfString:@");"].location + removeLocation;
+        NSString *args = [output substringWithRange:NSMakeRange(removeLocation + 8, endLocation - removeLocation - 8)];
+        args = [args stringByReplacingOccurrencesOfString:@", " withString:@","];
+        NSArray *argsList = [args componentsSeparatedByString:@","];
+        int quantity = 1;
+        
+        if (argsList.count > 1) {
+            NSString *name = [argsList objectAtIndex:0];
+            if (argsList.count == 3) quantity = [[argsList objectAtIndex:2] intValue];
+            if ([[argsList objectAtIndex:1] caseInsensitiveCompare:@"item"] == NSOrderedSame) {
+                Item *item = [currentRoom.items objectForKey:name];
+                item.quantity = [[currentRoom.items objectForKey:name] quantity] - quantity;
+                if (item.quantity < 1) [currentRoom.items removeObjectForKey:name];
+            }
+            if ([[argsList objectAtIndex:1] caseInsensitiveCompare:@"mob"] == NSOrderedSame) {
+                for (int i = 0; i < quantity; i++) {
+                    if ([[[currentRoom.mobs objectAtIndex:i] name] caseInsensitiveCompare:name] == NSOrderedSame) {
+                        [currentRoom.mobs removeObjectAtIndex:i];
+                    }
+                }
+            }
+        }
+        
+        NSString *removeCommand = @"";
+        if (output.length > endLocation + 2 && [output characterAtIndex:endLocation + 2] == '\n') {
+            removeCommand = [output substringWithRange:NSMakeRange(removeLocation, endLocation - removeLocation + 3)];
+        }
+        else {
+            removeCommand = [output substringWithRange:NSMakeRange(removeLocation, endLocation - removeLocation + 2)];
+        }
+        output = [output stringByReplacingOccurrencesOfString:removeCommand withString:@""];
     }
     
     NSUInteger goLocation = [output rangeOfString:@"@go("].location;
@@ -1266,7 +1613,7 @@ static JustyVenture *_sharedState;
         for (int i = 0; i < commands.count; i++) {
             Command *command = [commands objectAtIndex:i];
             if ([command respondsToInternalName:@"arrive"]) {
-                arriveText = [command result];
+                arriveText = [self CheckConditions:[command result]];
             }
         }
         

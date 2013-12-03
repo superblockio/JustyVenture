@@ -10,4 +10,12 @@
 
 @implementation Player
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.currentRoomName = @"";
+    }
+    return self;
+}
+
 @end

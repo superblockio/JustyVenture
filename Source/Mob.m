@@ -23,7 +23,6 @@
         self.singularLook = @"";
         self.pluralLook = @"";
         self.talkText = @"";
-        self.currentRoomName = @"";
         self.items = [NSMutableDictionary dictionary];
         self.hidden = false;
         self.canTalk = false;
@@ -46,7 +45,6 @@
         self.singularLook = originalMob.singularLook;
         self.pluralLook = originalMob.pluralLook;
         self.talkText = originalMob.talkText;
-        self.currentRoomName = originalMob.currentRoomName;
         self.items = originalMob.items;
         self.hidden = originalMob.hidden;
         self.canTalk = originalMob.canTalk;

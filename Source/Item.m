@@ -22,6 +22,8 @@
         self.pluralDescription = @"";
         self.singularLook = @"";
         self.pluralLook = @"";
+        self.getText = @"";
+        self.dropText = @"";
         self.quantity = 1;
         self.hidden = FALSE;
         self.canDrop = TRUE;
@@ -42,6 +44,8 @@
         self.pluralDescription = originalItem.pluralDescription;
         self.singularLook = originalItem.singularLook;
         self.pluralLook = originalItem.pluralLook;
+        self.getText = originalItem.getText;
+        self.dropText = originalItem.dropText;
         self.quantity = originalItem.quantity;
         self.hidden = originalItem.hidden;
         self.canDrop = originalItem.canDrop;

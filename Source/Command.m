@@ -16,7 +16,7 @@
         self.verbs = [NSArray array];
         self.subjects = [NSArray array];
         self.internal = NO;
-        self.result = @"";
+        self.result = [NSDictionary dictionary];
     }
     return self;
 }

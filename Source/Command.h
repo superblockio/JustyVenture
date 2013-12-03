@@ -28,6 +28,6 @@
 @property(nonatomic, assign) BOOL internal;
 
 // The XML body to be processed when this command executes.
-@property(nonatomic, strong) NSString *result;
+@property(nonatomic, strong) NSDictionary *result;
 
 @end
