@@ -1451,8 +1451,8 @@ static JustyVenture *_sharedState;
             [dictionary setObject:newItem forKey:itemName];
             [self.currentPlayer setItems:dictionary];
         }
-        item.quantity = [[currentRoom.items objectForKey:itemName] quantity] - 1;
-        if (item.quantity == 0) [currentRoom.items removeObjectForKey:itemName];
+        //item.quantity = [[currentRoom.items objectForKey:itemName] quantity] - 1;
+        //if (item.quantity == 0) [currentRoom.items removeObjectForKey:itemName];
         
         output = item.getText;
     }
