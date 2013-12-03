@@ -1,0 +1,119 @@
+<Adventure name="Quest2">
+<Commands>
+<Help>This adventure game ist fairly simplistic. All instructions are exactly one or two words long, never longer. There art only 7 command types: help, inventory, look (name of thing optional. Just plain 'look' works but may not revealeth everything), go (name of place), get (name of item), use (name of item in inventory), and talk (name of person / inanimant object). There beeth no secret commands except ones that follow ye aformentionedeth format. Ye stuff is not case sensitive, so yE cAN MiX iT UPeth. Thou can'tst save thy game or anything fancyeth like that. That ability is only granted to level 10 dark wizards. To quit, press the red circle in the top-left corner or press Command+Q-eth. Enjoy thine wanderings!</Help>
+<Inventory>Ye hast the following:
+@inv(linebreak);</Inventory>
+<Use subject="*">You no hath.</Use>
+<Get subject="@items;" dynamic="true">You already hath.</Get>
+<Get subject="flask">Yeah I getteth the reference. Now focus on the adventure at hand.</Get>
+<Get subject="*">You cannot get ye @subject;, it is firmly bolted to thine overactive imagination.</Get>
+<Look subject="*">You shouldn't be looking at that. It wilt give you nightmares of warlocks sending trolls to command orcs to tell sea monsters to alert dragons to inform pidgeons to let spiders know that they should crawl all over thy flesh in a manner most creepy. And thou hast already had that dream twice this week.</Look>
+<Look subject="@items;" dynamic="true">@look;</Look>
+<Go subject="*">Ye can't go there. An ancient band of monks doth closely guard it.</Go>
+<Use subject="@inv;" dynamic="true">Mysterious voice: "Justy, there's a time and place for everything. But not now."</Use>
+<Talk subject="*">Ye engage @subject; in leisurely conversation. Ye discover that @subject; agrees with several of your political views and enjoys several of the same activities you do. Howevereth, the conversation turns awkward when ye bring up your habit of talking to inanimant / imaginary objects, at which point @subject; suggests ye see a therapist... again.</Talk>
+<Wildcard>Ye hath offended the syntax wizards. Depart from thine vile ways or a curse shall befall ye. Type help if ye needs it.</Wildcard>
+<Wildcard subject="*">Ye hath offended the syntax wizards. Depart from thine vile ways or a curse shall befall ye. Type help if ye needs it.</Wildcard>
+</Commands>
+<Items>
+<Sword><Single>It doth look to be a roughly-crafted stone sword, just lying on the workbench. It seemeth like it would be easy to get... almost too easy.</Single><Get>Ye thought it would be that easy? Didst ye suppose that ye couldst just waltz merrily into ye room and grab yon sword without any skeletons or trappethed doors to stop thee? Well, ye areth right. Ye gettest ye sword and doth hold it aloft, swinging it about in a manner that seemeth cool to thee.</Get></Sword>
+<Pickaxe><Single>Ye doth gaze upon the pickaxe and it looketh verily quite pixely.
+</Single><Get>Got the pickaxe.</Get></Pickaxe>
+<Spider><Single>It doth creep around and appeareth to make the old man uneasy. Strange, it appeareth that the spider is jumping up and down as if it hath something to say.</Single><Get>Ye grabbeth yon spider and stuffeth it into your pocket, weirdo. Congrats.</Get></Spider>
+<Smartphone><Single>Unfortunately it beith a Droid X, not an iPhone. Oh wellth, beggars can't be choosers.</Single><Get>Ye grabbeth the smartphone. Unfortunately its just a Droid X, but at least Verizon offereth better dungeon coverage than AT&amp;T.</Get></Smartphone>
+</Items>
+<Mobs>
+<Spider>Hey! Listen! That's a spider. Its eyes gloweth red... aren't spiders weak against SWORDs?</Spider>
+</Mobs>
+<Intro firstRoom="MinecraftDungeon" type="replace">Thou findest thyself in yon dungeon! Ye are surrounded by stone walls, a stone floor, a stone ceiling, and a stone CHANDELIER which doth dimly light the dungeon.</Intro>
+
+
+<Room name="MinecraftDungeon">
+<Arrive>@run(look);</Arrive>
+<Look>Thou art in a dungeon. Ye are surrounded by stone walls, a stone floor, a stone ceiling, and a stone CHANDELIER which doth dimly light the dungeon. On the bright side, there doth appear to be a stone staircase leading out of the room. One set of stairs goeth UP, and one goeth DOWN.</Look>
+<Look subject="chandelier">Several torches are bolted to the stone chandelier, which do dimly light the room. Unfortunately they appeareth to be out of reach. And even if thou couldst reach them, you probably wouldn't be strong enough to pull them down, wimp.</Look>
+<Look subject="stairs">Yep, some fine looking stairs indeed. Wait, what's this? A trapped door? Hah, just kiddingeth. Had your hopes up didn't I?</Look>
+<Look subject="[up, upstairs]">The upper staircase appeareth to lead to a well-lit room. But ye can't see what's up there unless ye goeth upstairs.</Look>
+<Look subject="[down, downstairs]">The lower staircase leadeth to a dark, creepy layer of the dungeon. It would be unwise to go down there without a light or at least a weapon.</Look>
+<Get subject="[chandelier, torch, torches]">Ye jumpeth and jumpeth but ye can'tst reach it because you can only jump one block high.</Get>
+<Go subject="[down, downstairs]">@go(Downstairs);</Go>
+<Go subject="[up, upstairs]">@go(Upstairs);</Go>
+</Room>
+
+
+<Room name="Upstairs" items="Sword">
+<Arrive>@run(look);</Arrive>
+<Look><If condition="@inv(Sword);">Ye are in a small room, well-lit by the many TORCHES attached to the walls. There is no longer a SWORD on the workbench because thou tookest it. The exit ist still DOWNSTAIRS.</If><Else>Ye are in a small room, well-lit by the many TORCHES that are attached to the walls. On a small WORKBENCH ye see a SWORD. The only exit appeareth to be DOWNSTAIRS.</Else></Look>
+<Look subject="[torch, torches, torchic]">Some fine torches to be sure, but they are firmly bolted in place. Thou breifly ponderest why it is that everything seemeth to be bolted down these days. It seemeth so restrictive. Ye shrug thy shoulders and attribute it to bolt fairies.</Look>
+<Look subject="workbench">It appeareth to be a nice workbench. Ye can'tst seeth any potential traps here.</Look>
+<Get subject="@item(Sword);" dynamic="true">@get(Sword);</Get>
+<Get subject="workbench">@go(MinecraftDungeon, ignore);Got the workbench. But apparently it didst cover a hole in the floor, which ye fallest into while getting it. Oh, and ye dids't accidently drop the workbench back where ye found it whilst falling down. Clumbsy thee. Anyway, ye're now in the lower dungeon and doth not have a workbench. Way to go.</Get>
+<Get subject="[torch, torches, torchic]">Ye can't, the torches areth all bolted to the walls. A nearby sign readeth: "Torches are bolted to the walls for thine own safety. Remember, only thou canst prevent dungeon fires! --The Management"</Get>
+<Go subject="[down, downstairs]">@go(MinecraftDungeon);</Go>
+<Use subject="@inv(Sword);" dynamic="true">Ye swingeth it about in a most reckless manner. Ye doth pretend to be a knight most nobly fighting a dragon, but then the dragon didst eat thee, jarring thee awake from thy daydream. Now focus!</Use>
+<Use subject="@inv(Pickaxe);" dynamic="true">@go(JustysBasement, ignore);Now thou rememberest! Thou wast just playing minecraft this whole time. Thou wast never in any real danger. Thou tunnelest thy way out of ye dungeon with ye pickaxe. As thou closest thy lappy to go do something else, *rumble rumble* FROOSH! The floor collapsed beneath thee! Now thou art in a REAL dungeon with a REAL spider! Well except its only a quarter of an inch big and isn't poisonous. In any case, thou areth in a far less blocky dungeon now. Ye are walled in on all sides by umm, walls, except there is a chasm in front of you that is too large for ye to jump across. Oh, and a creepy old man is here too.</Use>
+</Room>
+
+
+<Room name="Downstairs">
+<Arrive>@run(look);</Arrive>
+<Look>Ye are in a creepy lower layer of the dungeon. It is very dark and dangerous-looking, filled with a dank musty smell. There is a long straight pathway leading WEST, and one to the EAST that looks like it goes around a corner. There ist also a staircase leading UP.</Look>
+<Look subject="[east, corner]">Ye can't see around the corner, but ye do hear a faint 'SSSsss' sound.</Look>
+<Look subject="[west, straight]">Ye can see that the pathway WEST goes straight, but it is too dark to see what is at the end.</Look>
+<Go subject="[up, upstairs]">@go(MinecraftDungeon);</Go>
+<Go subject="west">@go(DownstairsRight);</Go>
+<Go subject="east">@go(DownstairsLeft);</Go>
+</Room>
+
+
+<Room name="DownstairsLeft">
+<Arrive>@run(look);</Arrive>
+<Look>@failed;As ye goeth to the east, a Creeper doth pop out from behind the corner! Before you can even react, the Creeper blows up this adventure game, causing this application to quit before you can even finish reading the rest of this message! How can you see this far into the message? The app should've already quit. You must be looking at the source code.</Look>
+<Look subject="creeper">Yep, it's a creeper and ye be dying.</Look>
+<Use subject="@inv(Sword);" dynamic="true">@cancelDeath;@go(Win, ignore);Using thy lightning-quick reflexes, ye doth smite the Creeper that lieth around the corner with thy sword. "This may kill ye a little!" ye cry. After the creeper didst die, ye find that it was guarding a large pile of gold blocks. Ye stuffeth thems into your loin cloth and run out of the dungeon yelling "I'm rich!" then ye useth some of the money to bribe Nathan into giving you the passcode for the next quest: FOSSILHUNT. Oh, and ye maketh a watch out of the gold too, since that's about all else its good for. By the way, this isn't the 'right' way to win, be sure to playeth the whole adventure later if you want to.</Use>
+</Room>
+
+
+<Room name="DownstairsRight" items="Pickaxe">
+<Arrive>@run(look);</Arrive>
+<Look><If condition="@mob(Spider);">The spider doeth block thy way out! Doeth something.</If><If condition="@var(bool, spiderHappened, true);">Ye are in the dark room where ye beat the spider. STRING layeth on the ground, but I won't let you get it because I'm mean.</If><Else>Ye are in a very dark room. Ye have to look closely to even see anything at all. The only exit is back EAST.</Else></Look>
+<Look subject="closely"><If condition="@mob(Spider);">Ye look closely and find that there is a pickaxe lying at thy feet! You rejoice at thy good fortune. Unfortunately, the spider behind you rejoices in its good fortune too. Ye art being attacked!</If><Else>@set(bool, spiderHappened, true);@add(Spider, mob);Ye look closely and find that there is a pickaxe lying at thy feet! You rejoice at thy good fortune. Unfortunately, the spider behind you rejoices in its good fortune too. Ye art being attacked!</Else></Look>
+<Look subject="@mob(Spider);" dynamic="true">@look;</Look>
+<Go subject="east">@go(Downstairs);</Go>
+<Get subject="@item(Pickaxe);" dynamic="true"><If condition="@mob(Spider);">@failed;As ye reach down to grab ye pickaxe, the spider doth pounce on thee and kill thee. Thou art dead.</If><If condition="@var(bool, spiderHappened, true);">@get(Pickaxe);</If><Else>@set(bool, spiderHappened, true);@add(Spider, mob);Got the pickaxe. Oh yeah, now ye remember, ye were here earlier but dropped this after that spider behind thee killed thee. Here it comes again!</Else></Get>
+<Get subject="string"><If condition="@var(bool, spiderHappened, true);">You cannot get ye string. Before the spider disappeared, it made sure to bolt the string to the floor.</If><Else>You cannot get ye @subject;, it is firmly bolted to thine overactive imagination.</Else></Get>
+<Use subject="@inv(Sword);" dynamic="true"><If condition="@mob(Spider);">@remove(Spider, mob);Ye smiteth the spider to the earth. It disappeareth in a puff and leaves behind some STRING.</If><Else>Mysterious voice: "Justy, there's a time and place for everything. But not now."</Else></Use>
+<Use subject="@inv(Pickaxe);" dynamic="true">@go(JustysBasement);</Use>
+</Room>
+
+
+<Room name="JustysBasement" items="Spider">
+<Arrive>Now thou rememberest! Thou wast just playing minecraft this whole time. Thou wast never in any real danger. Thou tunnelest thy way out of ye dungeon with ye pickaxe. As thou closest thy lappy to go do something else, *rumble rumble* FROOSH! The floor collapsed beneath thee! Now thou art in a REAL dungeon with a REAL spider! Well except its only a quarter of an inch big and isn't poisonous. In any case, thou areth in a far less blocky dungeon now. Ye are walled in on all sides by umm, walls, except there is a chasm in front of you that is too large for ye to jump across. Oh, and a creepy old MAN is here too, and he looketh like he hath been here a while...</Arrive>
+<Look><If condition="@inv(Smartphone);">Thou areth in a real dungeon now, which no longer hath the spider ye put in thine pants. In front of ye is a CHASM that is too big to jump across, and ye are walled in on all other sides by umm walls. On the other side of the CHASM ye seeth a small TUNNEL and the creepy old MAN that ye spider'd away.</If><If condition="@var(bool, phoneHappened, true);">Thou areth in a real dungeon now, which no longer hath the spider ye put in thine pants. In front of ye is that CHASM that is too big to jump across, and ye are walled in on all other sides by umm walls. On the other side of the CHASM ye seeth a small TUNNEL and also the MAN who didst spring over there after ye spider'd him away. But he left his SMARTPHONE behind.</If><If condition="@inv(Spider);">Thou areth in a real dungeon now, which no longer hath the spider ye put in thine pants. In front of ye is that CHASM that is too big to jump across, and ye are walled in on all other sides by umm walls. On the other side of the CHASM ye seeth a small TUNNEL. A creepy old bearded MAN sitteth next to thee, and it looketh like he has been here a WHILE, er, while.</If><Else>Thou areth in a real dungeon now, with a real SPIDER. But the SPIDER is only a quarter of an inch big and isn't deadly like the minecraft variety. In front of ye is a CHASM that is too big to jump across, and ye are walled in on all other sides by umm walls. On the other side of the CHASM ye seeth a small TUNNEL. A creepy old bearded MAN sitteth next to thee, and it looketh like he has been here a WHILE, er, while.</Else></Look>
+<Look subject="man">Yep, a creepy old thin man with a scraggely beard and tattered clothes. He doth appear to be surprisingly tech savvy though. Mayhaps ye shouldst talk to him.</Look>
+<Look subject="tunnel">That's definitely a tunnel. It beith just big enough for ye to crawl through. It appeareth to lead out of this dungeon, but it ith on the other side of yon chasm.</Look>
+<Look subject="chasm">Ye see a stone floor way below you at the bottom of the chasm. It would be suicide to jump down there unless ye had some kind of springy SHOES.</Look>
+<Talk subject="man"><If condition="@var(bool, phoneHappened, true);">"Gimme back my smartphone you meddling kid!"</If><Else>"Well howdy! I just got here a couple minutes ago. I got bored and decided to dig a cavern under your house. Hope that's ok. Boy I sure am thirsty though. What? You want to get across this chasm? Well you could if you had my springy SHOES, but I would never lend them to you."</Else></Talk>
+<Talk subject="@item(Spider);" dynamic="true">"Hey, I'm Steve the Spider! Between you and me, I think that old MAN is afraid of me. Haha, fear of spiders. Can you imagine? I guess I shouldn't criticize, I have my share of weird fears. Like I had this nightmare the other night that I was being stuffed into some guy's pants. Weird, right? I mean what sicko would want to GET SPIDER?"</Talk>
+<Talk subject="@inv(Spider);" dynamic="true">"This isn't happening!" Well at least he's facing his fears, right?</Talk>
+<Get subject="shoes">Old man: "Hah! You can't get my springy shoes, I bolted them to my socks. Yeah that's right, I'm too good for laces."</Get>
+<Get subject="@item(Spider);" dynamic="true">@get(Spider);</Get>
+<Get subject="socks">@go(OtherSideofChasm, ignore);Ye grabbeth the old man's socks and the springy shoes come off as well. Before the old man can do anything ye thrust on the springy shoes, jump down the chasm, bounce off the floor, and leapeth to the other side. But just to be polite, ye throweth back the springy shoes to the old man after ye useth them. How nice of you. Anyways, ye are on the other side of ye chasm now. And the old man bounceth up through the hole ye left in ye house's floor, so now ye have an old man wandering about inside your house. Good times.</Get>
+<Get subject="@item(Smartphone);" dynamic="true">@get(Smartphone);</Get>
+<Go subject="[chasm, tunnel]">@failed;Ye falleth down the chasm and dieth. Way to go. Your score is negative 5 billion.</Go>
+<Use subject="@inv(Spider);" dynamic="true"><If condition="@var(bool, phoneHappened, true);">Mysterious voice: "Justy, there's a time and place for everything. But not now."</If><Else>@set(bool, phoneHappened, true);Ye pull out the spider and hold it aloft. The old man, apparently afraid of spiders, leapeth off the edge of the chasm in fear. Luckily he useth his springy shoes to bounce off yon chasm floor and land on the other side. He leaveth behind a SMARTPHONE.</Else></Use>
+<Use subject="[@inv(Sword);, @inv(Pickaxe);]" dynamic="true">@go(Win, ignore);Alright, alright, I know you still have your inventory from the minecraft segment of the adventure. Just for noticing that, the mighty inventory wizards hath granted thee victory. The password be FOSSILHUNT. Come back sometime and win the right way. :)</Use>
+<Use subject="@inv(Smartphone);" dynamic="true">@go(OtherSideofChasm, ignore);Which app dost thou desire to use? There beith at least 50 of them, includething one called "Old man adventure game." Ye'll save that one for another day perhaps. For now, I'll goeth out on a limb and say ye want to use the phone app to call Nathan. He cometh over and immediately throweth thee across the chasm. "Uhh, thanks?" ye shout. "What are friends for?" he replieth. Oh, and the old man grabbeth his phone and leaveth. But I didn't write a function to delete things from your inventory, so... err, I mean the mighty Wireless Wizard decided to duplicate the phone so that ye can have one too. Yeah, wizard.</Use>
+</Room>
+
+
+<Room name="OtherSideofChasm">
+<Wildcard><If condition="@inv(Smartphone);">Whatever command you just entered, it worked. Ye wenteth into yon TUNNEL and out of the dungeon. On thy way out, ye seeith the password inscribed on the right wall of the tunnel: FOSSILHUNT. But then... ye wake up and find out this is all a dream! And now ye are in a REAL, HONEST-TO-GOODNESS DUNGEON, with a REALLY REAL SPIDER the size of Texas... Ah, who am I kidding? You won. This IS one of the 'right' ways to win by the way. But if you haven't found one of the alternate ways by now, you haven't played long enough. But that's ok. Thanks for playing! :)</If><Else>Ok whatever command you just entered, it worked. You crawled through the TUNNEL and out of the dungeon to a happy ending. This IS one of the right ways to win by the way. The other correct way was slightly creepier so this is probably the best way to win. CONGRATULATIONS! Anyway, ye password is FOSSILHUNT. Play more if you want to find other ways to win. :)</Else></Wildcard>
+<Wildcard subject="*"><If condition="@inv(Smartphone);">Whatever command you just entered, it worked. Ye wenteth into yon TUNNEL and out of the dungeon. On thy way out, ye seeith the password inscribed on the right wall of the tunnel: FOSSILHUNT. But then... ye wake up and find out this is all a dream! And now ye are in a REAL, HONEST-TO-GOODNESS DUNGEON, with a REALLY REAL SPIDER the size of Texas... Ah, who am I kidding? You won. This IS one of the 'right' ways to win by the way. But if you haven't found one of the alternate ways by now, you haven't played long enough. But that's ok. Thanks for playing! :)</If><Else>Ok whatever command you just entered, it worked. You crawled through the TUNNEL and out of the dungeon to a happy ending. This IS one of the right ways to win by the way. The other correct way was slightly creepier so this is probably the best way to win. CONGRATULATIONS! Anyway, ye password is FOSSILHUNT. Play more if you want to find other ways to win. :)</Else></Wildcard>
+</Room>
+
+<Room name="Win">
+<Wildcard>No, you already won. Go away. The password is FOSSILHUNT. Bye.</Wildcard>
+<Wildcard subject="*">No, you already won. Go away. The password is FOSSILHUNT. Bye.</Wildcard>
+</Room>
+</Adventure>
