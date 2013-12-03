@@ -74,6 +74,7 @@ typedef enum {
 @end
 
 @implementation JustyVenture
+@synthesize delegate=_delegate;
 
 static JustyVenture *_sharedState;
 
@@ -1371,6 +1372,19 @@ static JustyVenture *_sharedState;
     // HACK: just look for go, prompt, verb, and subject for now!
     output = [output stringByReplacingOccurrencesOfString:@"@verb;" withString:self.verb];
     output = [output stringByReplacingOccurrencesOfString:@"@subject;" withString:self.subject];
+    
+    NSUInteger failLocation = [output rangeOfString:@"@failed;"].location;
+    if (failLocation != NSNotFound) {
+        [_delegate failed];
+        output = [output stringByReplacingOccurrencesOfString:@"@failed;" withString:@""];
+    }
+    
+    NSUInteger cancelLocation = [output rangeOfString:@"@cancelDeath;"].location;
+    if (cancelLocation != NSNotFound) {
+        [_delegate cancelDeath];
+        output = [output stringByReplacingOccurrencesOfString:@"@cancelDeath;" withString:@""];
+    }
+    
     Room *currentRoom = [self.rooms objectForKey:self.currentPlayer.currentRoomName];
     NSString *look = @"";
     NSString *returnInv = @"";

@@ -10,7 +10,17 @@
 #import "Room.h"
 #import "Player.h"
 
+@protocol JustyVentureDelegate
+
+-(void)failed;
+-(void)cancelDeath;
+
+@end
+
 @interface JustyVenture : NSObject <NSXMLParserDelegate>
+{
+    NSObject <JustyVentureDelegate>* _delegate;
+}
 
 + (JustyVenture*)mainVenture;
 
@@ -24,6 +34,7 @@
 @property (nonatomic, strong) NSString *introText;
 @property (nonatomic, strong) NSString *promptText;
 @property (nonatomic, strong) NSString *adventureTitle;
+@property(retain) NSObject<JustyVentureDelegate>* delegate;
 
 // This is where all the magic happens
 - (NSString*)runUserInput:(NSString*)input;

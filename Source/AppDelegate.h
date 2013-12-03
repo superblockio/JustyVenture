@@ -8,11 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import "QuestView.h"
+#import "JustyVenture.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, QuestViewTextEntered>
+@interface AppDelegate : NSObject <NSApplicationDelegate, QuestViewTextEntered, JustyVentureDelegate>
+
+-(void)terminateApp;
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet QuestView *questView;
+@property (assign) IBOutlet JustyVenture *justyVenture;
 @property (nonatomic, strong) NSString *currentOutput;
 @property (assign) int typingIndex;
 
