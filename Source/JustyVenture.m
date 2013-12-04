@@ -96,6 +96,8 @@ static JustyVenture *_sharedState;
         self.commands = [[NSMutableArray alloc] init];
         self.dynamicCommands = [[NSMutableArray alloc] init];
         self.adventureTitle = @"Adventure!";
+        self.verb = @"";
+        self.subject = @"";
         self.currentPlayer = [[Player alloc] init];
         [self parseAdventureFiles];
     }
@@ -680,7 +682,7 @@ static JustyVenture *_sharedState;
         
         // Handle intro
         if ([elementName caseInsensitiveCompare:@"Intro"] == NSOrderedSame) {
-            self.introText = self.currentElementBody;
+            self.introText = [self JustinTimeInterpret:self.currentElementBody];
         }
     }
     
@@ -1375,13 +1377,21 @@ static JustyVenture *_sharedState;
     NSString *look = @"";
     NSString *returnInv = @"";
     NSString *commaInv = @"";
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithDictionary:self.currentPlayer.items];
     
     for(id key in self.currentPlayer.items) {
         Item *item = [self.currentPlayer.items objectForKey:key];
-        commaInv = returnInv = [returnInv stringByAppendingString:[item shortDescription]];
-        returnInv = [returnInv stringByAppendingString:@"\n"];
-        commaInv = [commaInv stringByAppendingString:@", "];
+        [dictionary removeObjectForKey:key];
+        returnInv = [returnInv stringByAppendingString:[item shortDescription]];
+        commaInv = [commaInv stringByAppendingString:[item shortDescription]];
+        if (dictionary.count > 0) {
+            returnInv = [returnInv stringByAppendingString:@"\n"];
+            if (dictionary.count == 1) commaInv = [commaInv stringByAppendingString:@", and "];
+            else commaInv = [commaInv stringByAppendingString:@", "];
+        }
     }
+    
+    if (self.currentPlayer.items.count == 0) commaInv = returnInv = @"nothing";
     
     for(id key in currentRoom.items) {
         Item *item = [currentRoom.items objectForKey:key];
@@ -1441,6 +1451,32 @@ static JustyVenture *_sharedState;
         if (item.quantity == 0) [currentRoom.items removeObjectForKey:itemName];
         
         output = item.getText;
+    }
+    
+    NSUInteger useLocation = [output rangeOfString:@"@use("].location;
+    if (useLocation != NSNotFound) {
+        NSUInteger endLocation = [[output substringFromIndex:useLocation] rangeOfString:@");"].location + useLocation;
+        NSString *args = [output substringWithRange:NSMakeRange(useLocation + 5, endLocation - useLocation - 5)];
+        args = [args stringByReplacingOccurrencesOfString:@", " withString:@","];
+        NSArray *argsList = [args componentsSeparatedByString:@","];
+        int quantity = 1;
+        
+        if (argsList.count > 0) {
+            NSString *name = [argsList objectAtIndex:0];
+            if (argsList.count == 2) quantity = [[argsList objectAtIndex:1] intValue];
+            Item *item = [self.currentPlayer.items objectForKey:name];
+            item.quantity = [[self.currentPlayer.items objectForKey:name] quantity] - quantity;
+            if (item.quantity < 1) [self.currentPlayer.items removeObjectForKey:name];
+        }
+        
+        NSString *useCommand = @"";
+        if (output.length > endLocation + 2 && [output characterAtIndex:endLocation + 2] == '\n') {
+            useCommand = [output substringWithRange:NSMakeRange(useLocation, endLocation - useLocation + 3)];
+        }
+        else {
+            useCommand = [output substringWithRange:NSMakeRange(useLocation, endLocation - useLocation + 2)];
+        }
+        output = [output stringByReplacingOccurrencesOfString:useCommand withString:@""];
     }
     
     NSUInteger promptLocation = [output rangeOfString:@"@prompt("].location;
