@@ -1,0 +1,647 @@
+<Adventure name="JustyVenture">
+<Commands>
+<Help>
+You should know better than to ask for help from me, remember what I wanted to put as the help message for CameronVenture? You’re doomed in here, trapped in Justin’s body, unable to unlock your present until you jump through my impossible to jump through hoops! Mwahahahahaha!
+
+                                                                              
+
+Try licking things.
+</Help>
+
+<Talk subject="*">
+You try to talk to @subject;, but the sound of Justy’s hideous, nasally voice only serves to underline @subject;’s lack of response.
+</Talk>
+
+<Go subject="*">
+You’re much too large to fit into @subject;. That hole is only big enough for a feral cat at best! Don’t ask why the cat has to be feral, we hate questions!
+</Go>
+
+<Why subject="does the cat have to be feral?">
+I TOLD YOU NOT TO ASK THAT! ONE MILLION YEARS DUNGEON!
+</Why>
+
+<Get subject="*">
+All attempts to pick up @subject; are thwarted by how thoroughly it is covered in melted butter and/or bolted to the object closest to it. Yes, that’s a good response.
+</Get>
+
+<Look subject="*">
+Man, isn’t that just the shiniest @subject; you ever did see?
+</Look>
+
+<Talk subject="self">
+Yeah, that seems like something crazy old man Justy would do, so you say a few Justy type words to yourself to try to fit the part. “Um… Nintendo. Pokemon. Zelda. Mario. Fluttershy. Uh… free stuff. Not job. Hm… Christmas?”  Nothing’s happening, perhaps you should berate Nathan (yourself?) for liking dumb things and not playing with you. Ah well, better get back to work.
+</Talk>
+
+<Get subject="[flask, ye flask]">
+Listen, man. It’s a funny joke still but… does it have to be in every text based adventure? I mean, come on. You cannot get ye flask, and get some ye creative inputs instead.
+</Get>
+
+<Look subject="mirror">
+Plausible deniability man, plausible deniability. Look it up. It’s totally a thing. It totally applies here. I’m not full of it.
+</Look>
+
+<Get subject="mirror">
+Well look at that, you picked up air, in no way is that air a mirror. It’s not happening bro.
+</Get>
+
+<Lick subject="mirror">
+Mmm, isn’t that a tasty mirror?
+
+What? Nope, I don’t believe you. I said no such thing about a mirror. You’re just a crazym’n.
+</Lick>
+
+<Lick subject="east Germany">
+Mmmmm, Nazis. (I’m assuming you meant 1940s East Germany. AKA Best East Gerpony).
+</Lick>
+
+<Lick subject="*">
+Your attempts to lick @subject; are successful. Wait no they aren’t, that’s not an actual thing you can lick! You think you’re so sneaky don’t you?
+</Lick>
+
+<Wake subject="up">
+@go(Breadroom, ignore);You open your eyes and immediately something seems wrong. Not only is everything blurrier than your usual hangover, but looking down you find someone else’s body entirely. Rushing to the mirror you find you’ve switched bodies with Justin, and you suddenly realize that you must be stuck doing his adventure this year for him because of it. And now I feel a sudden onslaught of laziness causing me to realize I don’t want to incorporate any mirror into the environment, so I’ll now exercise my powers of plausible deniability to get rid of it. You can’t prove I mentioned a mirror, and I won’t listen to you even if you do. Anyway, you find Justy’s glasses on the floor and put them on.@prompt(Thy Dungeonman’s Words echo…);
+</Wake>
+
+<Relax>
+<If condition="@var(bool, steamSimulator, true);">
+You bask in the polygons and allow your pores to open up. You a terribly recorded cough and open your eyes to see the most polygonal old man sitting across from you, stark naked.
+
+Old Man: “Well, you’re not who I’m used to seeing around this time of year. How’d you get here anyway? I was just minding my own business in that cabin last year when you showed up, and after that I was all alone until I blacked out a month ago and woke up in this tiny little steam room!”
+
+Feeling uncomfortable with the entire situation you blink twice quickly to end the simulation.
+</If>
+<Else>
+@run(lemon);
+</Else>
+</Relax>
+</Commands>
+
+
+<Intro firstRoom="Breadroom" type="replace">
+You open your eyes and immediately something seems wrong. Not only is everything blurrier than your usual hangover, but looking down you find someone else’s body entirely. Rushing to the mirror you find you’ve switched bodies with Justin, and you suddenly realize that you must be stuck doing his adventure this year for him because of it. And now I feel a sudden onslaught of laziness causing me to realize I don’t want to incorporate any mirror into the environment, so I’ll now exercise my powers of plausible deniability to get rid of it. You can’t prove I mentioned a mirror, and I won’t listen to you even if you do. Anyway, you find Justy’s glasses on the floor and put them on.@prompt(Thy Dungeonman’s Words echo…);
+</Intro>
+
+
+<Room name="Breadroom">
+<Arrive>
+You walk back into what appears to be a bedroom with a plaque on the door stating “Breadroom”. It’s clearly just an empty room with a bed and a dresser with a mir-No! You thought you could trick me didn’t you!? It’s got a non reflective surface that you couldn’t possibly have used to look at yourself a few minutes ago. Stop pretending that I said anything about a mirror because I most definitely did not. End of story.
+</Arrive>
+
+<Look>
+It’s a tiny bedroom that consists of a bed and an ornate dresser with the best painting you’ve ever seen attached to the top of it. Also a door that you can leave through. Please leave, there’s nothing for you here.
+</Look>
+
+<Look subject="dresser">
+Upon closer inspection it’s actually just a painting of a dresser on the wall with some words scrawled alongside it. Why somebody would try to trick you into thinking that this painting was a real dresser all along is beyond me. Must be bullets.
+</Look>
+
+<Look alt="read" subject="words">
+It reads, “I’m lazy and didn’t want an actual dresser that you could interact with, so it’s actually just a painting on the wall. This is why I can’t have nice things.” - Chad Ian Anderson
+</Look>
+
+<Look subject="painting">
+It’s a stunningly realistic portrayal of Justy, complete with a detailed, opulent beard. Almost as if it’s his reflection. Isn’t that just wild?
+
+What? A mirror? No, I don’t see one anywhere, sorry.
+</Look>
+
+<Look subject="[bed, comforter]">
+It has a Justy shaped imprint in it. Also a blue comforter with a giant Creeper depiction on it. Suddenly you hear it: "Sssssssssssss". Best get out of here before Justy (or you, whichever it is) gets explody. 
+</Look>
+
+<Get subject="comforter">
+You try to pick up the comforter, but you somehow get it tangled around your feet, trip, and fall. You would have taken 30 fall damage, but fortunately there was a little tiny puddle of water that your face landed on so you were fine.
+</Get>
+
+<Look subject="door">
+It’s a door.  It appears that by turning the handle and pushing one is able to open it, allowing them to leave.  You should try doing that.
+</Look>
+
+<Lick subject="dresser">
+Well, in case you didn’t take a moment to look at the dresser first, it’s actually just painted onto the wall, so it just tastes of paint and wall, not particularly appetizing really, but perhaps the paint is banana flavored...who knows really?
+</Lick>
+
+<Lick subject="words">
+They taste like ink. You probably shouldn’t lick everything you weirdo.
+</Lick>
+
+<Lick subject="painting">
+It tastes like glass. That’s not surprising, it seems like it has glass over it. Probably to preserve it from the elements or something.
+</Lick>
+
+<Lick subject="[bed, comforter]">
+It tastes vaguely of bread. How odd.
+</Lick>
+
+<Lick subject="door">
+It tastes like wood. Who would have imagined a wood door would taste like wood? I know I didn’t see that coming. I typed it coming. With my hands. Because it’s me writing the story.
+</Lick>
+
+<Leave alt="[exit, go]">
+@run(go hallway);
+</Leave>
+
+<Go subject="hallway">
+@go(Hallway, append);You open the door and step out into the hallway, finally. Took you long enough. Next time stop trying to lick everything, seriously, it’s just weird. Anyway, 
+</Go>
+</Room>
+
+
+<Room name="Hallway">
+<Arrive>
+I have no idea what you expect to happen when you step out into the hallway, it’s not especially interesting.  Just some doors and no Windows really.  No Mac either.  That’s right, the hallway runs on Linux, and it's not Android, so deal with it.
+</Arrive>
+
+<Look>
+<If condition="@var(bool, magicalImmunity, true);">
+There are three doors leading off this hallway.  The one you came from initially, which bears a plaque that reads “Breadroom”, how odd.  Another appears to be composed entirely of smaller doors and is labelled “Grasshopper Farm”.  The last door has a little plaque on it with “Secret Closet” inscribed on it. It seems you’re newfound immunity to silly physics we just made up allows you to look directly at the door now!
+</If>
+<Else>
+There are three doors leading off this hallway.  The one you came from initially, which bears a plaque that reads “Breadroom”, how odd.  Another appears to be composed entirely of smaller doors and is labelled “Grasshopper Farm”.  And the last one doesn’t like you looking at it. It must be shy; the plaque says, “Look Away”.
+</Else>
+</Look>
+
+<Look subject="[Breadroom, Breadroom door]">
+It’s nondescript, there’s absolutely nothing interesting or important in that room, leave it alone. It never asked for this! It just wanted to get married and raise a family and hold down a nice job so it could feel good about its life! Are you some sort of monster, to make it question its existence like this!?
+</Look>
+
+<Look subject="[Grasshopper Farm, Grasshopper Farm door, Grasshopper door, Grasshopper, Farm, Farm door]">
+It’s kind of bizarre that anyone felt the need to make a door out of smaller doors, but what are you gonna do? Other than that one obvious oddity there’s nothing especially noticeable about it though.  It is a nice fuschia color, but you probably wouldn’t know about that. The real question is why the plaque calls it the Grasshopper Farm, because I’m pretty sure that when I get around to making the room in a few minutes it’ll have absolutely /nothing/ to do with grasshoppers.
+</Look>
+
+<Look subject="[Look Away, Look Away door, Look, Look door, Away, Away door, Secret closet, closet]">
+<If condition="@var(bool, magicalImmunity, true);">
+Yeah! Sticking it to the man! I can’t stop you from looking at that door! Wait…
+
+                                                                              
+
+It says “Secret Closet” on it now.
+</If>
+<Else>
+It appears that you are unable to look directly at it. All of your attempts are foiled for… ‘reasons’. Yes that’s right, reasons that totally exist and I’m just too lazy to explain and it’s not that I’m too lazy to come up with any reasons at all. It probably has to do with physics! Phyyyysics! Physssics. Physiiiiiics.
+</Else>
+</Look>
+
+<Lick subject="[Breadroom, Breadroom door]">
+It tastes like boring. It’s just so nondescript even in taste. You’re not even sure you’re really licking the door because you can’t taste anything, so just stop it ok?
+</Lick>
+
+<Lick subject="[Grasshopper Farm, Grasshopper Farm door, Grasshopper door, Grasshopper, Farm, Farm door]">
+It tastes like orange chicken from Panda Express, but you have no idea why a door labeled "Grasshopper Farm" would taste this way, oh well, at least it tastes good. Before you have time to consult your better judgement you've licked a full layer of orange-chicken-tasting-paint away from the door. Hopefully it wasn't poisonous. Who are we kidding, of course it’s poisonous, but it’s slow acting. Good job poisoning Justin! Now hurry up and switch back before you die!
+</Lick>
+
+<Lick subject="[Look Away, Look Away door, Look, Look door, Away, Away door, Secret closet, closet]">
+<If condition="@var(bool, magicalImmunity, true);">
+This door tastes of lies and false hopes. Your favorite flavor!
+</If>
+<Else>
+The door isn’t into that shiz either, you’re making it uncomfortable. Stop it before it calls the police.
+</Else>
+</Lick>
+
+<Go subject="[Breadroom, Breadroom door]">
+@go(Breadroom);
+</Go>
+
+<Go subject="[Grasshopper Farm, Grasshopper Farm door, Grasshopper door, Grasshopper, Farm, Farm door]">
+@go(GrasshopperFarm);
+</Go>
+
+<Go subject="[Look Away, Look Away door, Look, Look door, Away, Away door, Secret closet, closet]">
+<If condition="@var(bool, magicalImmunity, true);">
+@go(Wizards);
+</If>
+<Else>
+@go(LookAway);
+</Else>
+</Go>
+</Room>
+
+
+<Room name="GrasshopperFarm">
+<Arrive>
+You open the door and mosey on through, all self important, only to find yourself in a room just packed to the brim with pickle jars. That’s right, this room is also ridiculous, deal with it! It’s not like this is just some dream you can wake up from, this is your sad miserable life now!
+</Arrive>
+
+<Look>
+Looking around you see countless identical jars of pickles and something that looks kinda like a jar of pickles except it’s all shiny and gunmetal. You also see a note taped to the back of the door with text scribbled on it. And other than that there’s some evidence of bedroom furniture that appears to have been removed hastily. It’s almost as if I wanted to be lazy and not give you more things to look at. Isn’t that strange?
+</Look>
+
+<Lick subject="[pickle jar, jars, pickle jars]">
+You lick the pickle jar. Hmmmmm, for some reason it just tastes like a jar. How strange.
+</Lick>
+
+<Look subject="[pickle jar, jars, pickle jars]">
+You look at the pickle jars, expecting to see nothing but unexciting pickles but then you notice that the pickles are all standing up and chanting at you! “Nathan is awesome! Awesome! Nathan is awesome! Awesome!
+</Look>
+
+<Look subject="[lemon jar]">
+Looks like life just gave you lemons. Well, don’t make lemonade!! Make life take the lemons back! Get mad! I don’t want your dang lemons, what the heck am I supposed to do with these? Demand to see life’s manager! Make life rue the day it thought it could give Nathan (or Justy, whoever you are) lemons! Do you know who I am? I’m the man who’s gonna burn your house down! With the lemons! I’m gonna get my engineers to invent a combustible lemon that burns your house down!”
+</Look>
+
+<Look subject="[note, door]">
+It reads, “Hello Justin, I’ve brought you here to what used to be Sarah’s room before she spilled all her crickets and I used the opportunity to claim it as mine and use it as pickle storage. What did I tell you, nothing to do with grasshoppers, it’s crickets! Anyway, I’m just showing off my room full of pickle jars and pickle jars only and not anything else that you’d be interested in at all.”  You remember why Chad needs you for JustyVentures, this note sounds much more like it should be addressed to you than Justin.
+</Look>
+
+<Lick subject="[note, door]">
+Despite all of your warnings you still can’t resist the urge to lick everything can you? Didn’t you mother ever tell you not to lick things or else you’d end up with some strange disease?
+</Lick>
+
+<Look subject="[down, floor]">
+No! Stop it! You’re ruining it! I can’t be lazy if you keep looking all over the place!!
+</Look>
+
+<Lick subject="[down, floor]">
+The floor has a light lemony flavor to it. Apparently it’s been cleaned recently. 
+</Lick>
+
+<Look subject="[up, ceiling]">
+Why must you do this to me? I mean, really, it’s not that interesting. It’s just a ceiling, made of ceiling stuff, there’s nothing of any interes….wow! What’s that?! It’s a bag of Doritos! And there’s these super weird creatures all around the Doritos. What the heck?
+</Look>
+
+<Lick subject="[up, ceiling]">
+Try as you might, your tongue is just not able to reach the ceiling to lick it. Look, it’s just not in the cards. It’s not going to happen. You’re just going to have to crash this airplane. There’s no other way, and no, you can’t just turn around and fly it back to Germany!
+</Lick>
+
+<Look subject="[doritos, bag of doritos]">
+What? It’s just a bag of Doritos man. What are you staring at?
+</Look>
+
+<Lick subject="[doritos, bag of doritos]">
+Mmmmmmmm, tasty Blue Ranch Doritos. There’s nothing else here but tasty Doritos. What? No! That’s impossible! If there were actually a bunch of really weird creatures walking around the bag of Doritos I think I would have noticed them since I would have had to have written them into this Venture in the first place!!
+</Lick>
+
+<Look subject="[shiny jar, gunmetal jar, mac pro, trash can, trashcan, shiny trash can, shiny trashcan]">
+Oh what do you know, it’s a fancy new Mac Pro in all of its non-portable glory. I’ll bet you wish it were portable so you could pick it up and carry it around with you, don’t you, Squidward? You wonder if you can boot it up.
+</Look>
+
+<Lick subject="[shiny jar, gunmetal jar, mac pro, trash can, trashcan, shiny trash can, shiny trashcan]">
+You lick the beautiful new Mac Pro, then suddenly the ghost of Christmas past….I mean, Steve Jobs appears in front of you. He yells at you for five minutes about ruining beautiful design and then disappears into thin air. That was strange.
+</Lick>
+
+<Get subject="[shiny jar, gunmetal jar, mac pro, trash can, trashcan, shiny trash can, shiny trashcan]">
+Man, it would definitely be cool if you could pick up this Mac Pro.  Too bad it’s smaller size and lighter weight are just the result of designing a better computer and not at all related to making it more easy to carry around!
+</Get>
+
+<Start alt="boot" subject="[shiny jar, gunmetal jar, mac pro, trash can, trashcan, shiny trash can, shiny trashcan, up]">
+@go(LazinessMacProRoom);
+</Start>
+
+<Leave alt="[exit, go]">
+@run(go hallway);
+</Leave>
+
+<Go subject="hallway">
+@go(Hallway, append);You open the door and step back out into the hallway. Really, 
+</Go>
+</Room>
+
+
+<Room name="LazinessMacProRoom">
+<Arrive>
+You boot up the Mac Pro and find yourself unable to do anything but interact with it. It’s strange given the distinct lack of anything being plugged into it, but somehow all you can see is the desktop, and you’re entirely able to move the mouse with your hand. Or maybe it’s just your brain moving the mouse when you try to move your hand as if you were moving a mouse. Perhaps it would be better not to think about it. Also don’t think about the fact that I’m probably just too lazy to make it so that you can interact with the Mac Pro and the room at the same time. Because that’s totally not what’s going on right now.
+</Arrive>
+
+<Look>
+On the Desktop there’s a drive called Macintosh HD, pretty standard really. Unsurprisingly it is I who set this up and I like my drives to appear on the desktop, so deal with it. Anyway yeah, there’s also a folder labelled ‘super powers’, and an external drive labelled ‘Nathan’s Brian’. Other than that there’s not really anything to do but turn the computer off.
+</Look>
+
+<Look subject="[Nathan’s Brian, Nathan’s Brain, Brain, Nathan]">
+Well, there’s about 30gb of free space on here, and about 6tb of Planetside 2. You wonder if maybe that’s too much. Careful consideration confirms that it is in fact not enough, but that’s something to fix later. You can delete all this stuff about ponies to make room if you need to.
+</Look>
+
+<Look subject="Macintosh HD">
+It seems to be as fresh as the day it was received from the factory. The user appears to be named “Not Crazy-Evil-Scientist” and his desktop has the superpowers folder on it, but other 
+</Look>
+
+<Look subject="[Superpowers, super powers, folder, superpowers folder, super powers folder]">
+You open the folder and find a bunch of installers for various programs:
+
+Wallitude, Wibbly Wobbly, Physics Immunity, Doge, Steam, Windows, and Rock Breathing.
+</Look>
+
+<Lick subject="*">
+You’re unable to lick anything due to being mentally tied into the computer. It just tastes vaguely of ones and zeros in here, and the taste won’t go away, no matter what you do.
+</Lick>
+
+<Install subject="Physics Immunity">
+@set(bool, magicalImmunity, true);You eagerly double click the Physics Immunity installer, eager to know what sort of things you’ll be capable of once you’re no longer bound by the laws of physics. Perhaps you’ll be able to fly! A little screen pops up with “Dr. Crazy-Evil-Scientist’s Immunity to Ridiculous-Physics-Chad-Just-Made-Up Patch” plastered across it in big letters. Feeling let down, but unable to stop the process now that it’s already started, you gain an immunity to my stupid antics. Or at least, the ones involving physics!
+</Install>
+
+<Install subject="Wallitude">
+Sorry, you’re unable to install Wallitude at this time due to the fact that you’re holding a mug of coffee in one hand and the other hand took the day off. Yes, I know I just told you your hands are tied to the computer, don’t question the logic! &gt;:(
+</Install>
+
+<Install subject="Doge">
+Your mind is very briefly filled with an infinite number of pictures of dogs with the most inane text imaginable written on the before it crashes and restores itself from a previous backup. Wow. Such overload.
+</Install>
+
+<Install subject="Steam">
+@set(bool, steamSimulator, true);You launch the installer with visions of virtual reality to beat all others and as it finishes you find that you’ve successfully installed a 90’s Steam Room simulator in your brain. Now you can RELAX whenever you’d like!
+</Install>
+
+<Install subject="Windows">
+Your curiosity gets the better of you and you double click the Windows installer. Midway through the installation your brain BSODs and point at a file named: EATAPIZZA.SYS. Your brain reboots back into OS X. Windows computers. Not even once.
+</Install>
+
+<Install subject="Wibbly Wobbly">
+Suddenly you have the amazing ability to move through time!!...at the speed of time.
+</Install>
+
+<Install subject="Rock Breathing">
+Amazing! You now have the ability to breath rock! Or at least you would, if there hadn’t been an issue with incompatible drivers during installation. You need to get your own body back.
+</Install>
+
+<Turn subject="off">
+@run(shutdown);
+</Turn>
+
+<Shutdown>
+@go(GrasshopperFarm, ignore);You shutdown the Mac Pro and somehow regain your facilities. It’s all a giant mystery! Ooh! It’s like a ghost, but with laziness and a poorly written storyline! So it’s just a Scooby Doo story! Ooh! *wiggles fingers at you*
+</Shutdown>
+</Room>
+
+
+<Room name="LookAway">
+<Arrive>
+With great difficulty you fumble around trying to grab at the door handle before you realize you can simply close your eyes and walk through the door. Upon closing the door behind you and opening your eyes you find yourself unable to focus on anything in the room. Your head starts spinning and you turn into a cabbage. Wow! I guess Justin really was a cabbage all along!
+</Arrive>
+
+<Look>
+Even as a cabbage you’re not immune to the room’s powers of dissuasion, and you find yourself unable to look at anything. Or perhaps cabbages don’t have eyes, that could be it. Anyway, you somehow become a human again and are transported by some sort of motion back through the door into the hallway. Nothing interesting happens out here, and @go(Hallway, append);
+</Look>
+
+<Feel>
+There’s a gentle wind that rustles your leaves in the most pleasing of manners. It calms you and makes you pine for the countryside of your youth.
+</Feel>
+
+<Smell>
+Can you smell that? That’s the smell of success, and also of fresh pine. It’s too bad you’re just a cabbage. Cabbages don’t need success, or pine.  Not even if it’s actually Pine-Sol®.
+</Smell>
+
+<Lick>
+“You taste the room, and it fills you, and it is good.” -Chad 13:56
+</Lick>
+</Room>
+
+
+<Room name="Wizards">
+<Arrive>
+You enter the room, and your eyes quickly adjust to the dim glow of several blacklights mounted on the walls. You’re startled by an incessant chanting coming from beneath them. There are three shady-looking men wearing robes and pointy hats… wait. These are wizards! You realize that they’re chanting “woodle woodle” over and over again! The rumors were all true! And if you flash your lights at a car with its headlights off, you get shot by gangsters! These wizards must be the reason why you have to do all this manual labor this year instead of being in charge of producing it… you have to do something!
+</Arrive>
+
+<Look subject="[blacklight, blacklights]">
+Your eyes quickly start to sunburn because I don’t understand how blacklights work and that they aren’t all that bad. Either way, it doesn’t accomplish much, so you decide to focus on the task at hand, which is… uh… you’re not sure. Something about wizards.
+</Look>
+
+<Look subject="[Wizard, Wizards]">
+It’s so amazing. After all these years, that laser tag guy was right all along. You’re in awe. You’d be a bit more excited if you weren’t pressingly aware that you’re still the wrong person and if you didn’t have the sinking feeling that these wizards weren’t only the blacklight powering type, but must somehow be connected to the fact that you’re the one having to do this JustyVenture. You better GET rid of them.
+</Look>
+
+<Talk subject="[Wizard, Wizards]">
+Woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle woodle… you’re not making much progress.
+</Talk>
+
+<Lick subject="[Wizard, Wizards]">
+The wizard giggles, but doesn’t stop chanting. Even though you were being the creepy one, you wound up even more creeped out by him. That’s what happens when you try to creep out a creepy wizard. I hope you’ve learned something.
+</Lick>
+
+<Lick subject="[blacklight, blacklights]">
+It tastes like sunburns. Mm.
+</Lick>
+
+<Get subject="[blacklight, blacklights]">
+It is firmly bolted to a wall which is bolted to the rest of the dungeon which is probably bolted to a castle, and yes, the castle is likely bolted to the Earth. At least it isn’t load-bearing.
+</Get>
+
+<Get subject="[Wizard, Wizards]">
+You pick up one of the wizards. He breaks his chant and shouts, “Unhand me! You’ll ruin everything! These blacklights have to remain lit at all times!” But it’s too late for Mr. Wizard. The room suddenly goes black, and not black like black lights (which is really a stupid name ‘cause they’re kinda purplish, not black, but I guess they were named that just ‘cause they’re not like regular lights, but you’d think they could just call ‘em UV lights, you know?) Anyway, yeah, it’s pitch black in here now. Way to go. Always causing trouble.@go(Shed, append);
+</Get>
+</Room>
+
+
+<Room name="Shed">
+<Arrive>
+You hear the Wizards scramble out a door and realize you’d closed your eyes. Opening them everything is still pitch black.
+</Arrive>
+
+<Look>
+It’s pitch black in here, so you pull out your trusty iPhone 5 and-Oh right, you’re Justin, you only have your old iPhone 4. Uh… you can still use the flashlight on this one though, so you flick it on and look around and it appears as if you’re in some sort of strange closet. On the wall you can see a small sign with something written on it. Other than that it’s just a void around you. That’s right, it’s just you floating in a void with a wall floating in front of you, deal with it!
+</Look>
+
+<Look subject="[text, sign, words, wall]">
+This exit: BYU
+Please say the keywords to make the door appear when ready: BristleSpruts.
+</Look>
+
+<Look subject="[void, nothingness]">
+As you stare into the void and contemplate how much you’d rather be playing Planetside 2 right now. You seem to be immune to the void’s ability to suck all meaning and hope from a person. Stupid PS2...
+</Look>
+
+<Talk subject="Fluttershy">
+Fluttershy: “Hey hey hey! What’d I tell y’all about coming in my shed?”
+
+
+                                                                              
+
+
+You’d best get out of here as fast as you possibly can.
+</Talk>
+
+<BristleSpruts>
+You mutter @verb; and a door appears on the wall. You open it and step through and it disappears behind you. @go(BYU, append);
+</BristleSpruts>
+</Room>
+
+
+<Room name="BYU">
+<Arrive>
+This is it. The horrible den of villainy. You’ve heard fables, but now it is time to test your mettle and brave its horrors. You step onto the campus and brace yourself for an explosion or a poison arrow or a Book of Mormon. ...But nothing happens. It’s a pretty regular campus, with a Library, a Bookstore, and a bunch of classroom styled buildings (the closest is the Jesse Knight Building, or JKB for short (look, I’m not gonna sit and alias every single way you could refer to that building. Just type JKB)).
+</Arrive>
+
+<Look>
+To your south you see a building calling itself the Harold B. Lee Library. To the East, you can see the Wilkinson Center, where the Bookstore is. And to your West is one of many classroom buildings, the Jesse Knight Building (JKB).
+</Look>
+
+<Look subject="[Library, Bookstore, JKB]">
+Eh, I’ve said enough in the Look description. I mean, it’s just a building. Maybe you should GO do that THING you were supposed to be DOing. *Stares at you angrily*
+</Look>
+
+<Lick subject="[Library, Bookstore, JKB]">
+A campus policeman spots you licking the bricks on the side of the building. He’s real weirded out, ‘cause you’re a weirdo, and starts yelling at you. You quickly run away due to your crippling anxiety about policemen, and long story short, you wind up in jail because you happened to have a bottle of Coke with you on a campus that looks upon caffeinated beverages with the greatest degree of distaste. Way to go, Dennis.
+</Lick>
+
+<Go subject="Library">
+@go(Library);
+</Go>
+
+<Go subject="JKB">
+You stroll into the classroom building. Suddenly, something doesn’t feel right. Alarms start whirring, and a white light shines in your face. Through open doors, you see students staring at you in horror. “A NON-STUDENT!” they cry. It seems they can sense your uncleanliness (you don’t even have an ecclesiastical endorsement), and no unclean thing can stand in the Lord’s schoolrooms. As the brightness of the light exceeds that of ten refreshing blasts, you flee the building, barely escaping with your life. You’re back in the center of the campus. Maybe you’ll be safer in the more “public friendly” buildings.
+</Go>
+
+<Go subject="Bookstore">
+@go(Bookstore);
+</Go>
+</Room>
+
+
+<Room name="Bookstore">
+<Arrive>
+You enter the bo-- OOH THEY HAVE A CERTIFIED APPLE RETAILER IN HERE. You drop everything and run upstairs. Who cares if it’s a phony-ish apple store! There’s iPads and MacBooks galore! A young man stands behind the counter wearing a suit, tie, and a black nameplate that says “ELDER JOHNSON.” That’s odd… but maybe he knows if they have any Mac Pros?
+</Arrive>
+
+<Talk subject="[Man, Elder, Elder Johnson, Johnson, Missionary]">
+You walk up to Elder Johnson. “Uh… do you work here?” “Of course,” he replies, “everything’s a missionary at BYU!” Ah, that makes sense. Anyway, you ask “Well, I’m looking to get my hands on a new Mac Pro…” “Hahaha, you think a college student can afford a Mac Pro?” “Uh… well… yeah?” “Brother, remember the words of Jacob 2:18 -- But before ye seek for riches, seek ye for the kingdom of God.” Dejected and feeling a little bit guilty, you thank the missionary and stop talking to him. There seems to be nothing else here. Maybe you should LEAVE.
+</Talk>
+
+<Lick subject="[Man, Elder, Elder Johnson, Johnson, Missionary]">
+For a brief moment you wonder to yourself why you would ever think of doing such a weird thing, and then you remember that you’re in Justy’s body, so you won’t even get it trouble for it! But all things considered, maybe it’s best that you not engage in such strange activities.
+</Lick>
+
+<Look>
+Who cares if it’s a phony-ish apple store! There’s iPads and MacBooks galore! A young man stands behind the counter wearing a suit, tie, and a black nameplate that says “ELDER JOHNSON.” That’s odd… but maybe he knows if they have any Mac Pros?
+</Look>
+
+<Look subject="[Man, Elder, Elder Johnson, Johnson, Missionary]">
+He holds an iPad in his hands. He appears to be reading the scriptures on it. Odd.
+</Look>
+
+<Look alt="Get" subject="[iPad, MacBook, MacBook Pro]">
+If you didn’t already have a million @subject;s you would love to take one of these. Except, upon closer inspection, they each only have one app installed… “Gospel Library 3.0”. Well, at least they commit to the whole “Our school is God’s school” thing. So instead of buying yet another gadget that will fill up your house, you simply just change the screensaver to say “Brigham Young University Meth Lab”
+</Look>
+
+<Look alt="Get" subject="[iPads, MacBooks, MacBook Pros]">
+If you didn’t already have a million @subject; you would love to take one of these. Except, upon closer inspection, they each only have one app installed… “Gospel Library 3.0”. Well, at least they commit to the whole “Our school is God’s school” thing. 
+</Look>
+
+<Lick subject="[iPads, MacBooks, MacBook Pros]">
+Hmmmmmm, tastes like aluminum...and good design taste. Suddenly, out of thin air, the ghost of Steve Jobs appears. He spends five minutes rebuking you using bad words that you didn’t even know existed. He rebukes you for ruining beautiful design that they spent years creating. When the rant is finished, he disappears back into thin air.
+</Lick>
+
+<Leave alt="[exit, go]">
+@go(BYU, ignore);You step back outside. It’s a pretty regular campus, with a Library, a Bookstore, and a bunch of classroom styled buildings (the closest is the Jesse Knight Building, or JKB for short (look, I’m not gonna sit and alias every single way you could refer to that building. Just type JKB)).
+</Leave>
+</Room>
+
+
+<Room name="Library">
+<Arrive>
+You stroll into the entrance to the library, a large glass room with a big staircase in the middle. Immediately you see everyone flashing you dirty looks, but they don’t seem to be meeting your eye… ah, it’s the beard. Now you know how Justy feels. You’re considering the newfound realization that having such a magnificent beard could have its downsides when you hear an old man yelling at people to get off his lawn. Turning to look he appears to recognize you and runs up to you shouting, “JUSTY! It’s me! Sarah!” He… she… /it/ suddenly hugs you. Well this is the most uncomfortable you’ve been in your life! “You’ll never believe what happened! My parents cursed me to switch places with this old man so that I could learn the true meaning of Christmas! I met some wizards, and found this super nifty little Mac Pro! Look at how easy it is to carry this thing around!” Your lust just to hold the Mac Pro in your hands drive you to make a decision. Do you...@prompt(PLAY IT COOL, or TELL THE TRUTH?);
+</Arrive>
+
+<Talk subject="[Sarah, Old Man]">
+“Get off my lawn!” You look taken aback. “Sorry. I’m starting to get used to being an old man. I’m actually still not sure whether I’ll switch back. I’m keeping my options open.” Yeah… you’ll just let Justin deal with that later. Right now, you’ve gotta make your choice.@prompt(PLAY IT COOL, or TELL THE TRUTH?);
+</Talk>
+
+<Take alt="get" subject="[shiny jar, gunmetal jar, mac pro, trash can, trashcan, shiny trash can, shiny trashcan]">
+You greedily grasp at the Mac Pro while yelling something about “My Precious!” in a shrill voice. This prompts Old Man Sarah to give you a very strange look, but she keeps it out of your grasp nonetheless.@prompt(PLAY IT COOL, or TELL THE TRUTH?);
+</Take>
+
+<Look subject="[shiny jar, gunmetal jar, mac pro, trash can, trashcan, shiny trash can, shiny trashcan]">
+You gaze longingly at the Mac Pro clutched tightly in hi-her grasp. Sarah seems a bit disturbed by the level of desire in your eyes.@prompt(PLAY IT COOL, or TELL THE TRUTH?);
+</Look>
+
+<Look subject="[Sarah, Old Man]">
+The person standing in front of you looks absolutely delighted to see you. Also very much like an old old man you don’t want to hug you anymore.@prompt(PLAY IT COOL, or TELL THE TRUTH?);
+</Look>
+
+<Lick subject="[Sarah, Old Man]">
+ಠ_ಠ No.
+</Lick>
+
+<Look>
+You’re standing in a big glass room in the entryway to the library. Old Man Sarah is staring at you expectantly. You’ve gotta make up your mind, Swensen. Madson. Whatever.@prompt(PLAY IT COOL, or TELL THE TRUTH?);
+</Look>
+
+<Play subject="it cool">
+Quick on your feet, you decide to play along. “Oh, yep. Well, it’s totally shady old… er I mean, uh… cool old Justy, is the person that’s me, haha. It’s a good thing you found me, and not Nathan, because I’m not Nathan!” Fortunately for you, Justy is just weird enough that Sarah just thinks you’re being weird, like usual. But it’s still enough to make her suspicious of what’s going on. After some arguing, she refuses to give you the Mac Pro but suddenly the wizards appear as if from nowhere and reality disolves around you and resembles as your house. @go(NathansHouse, append);
+</Play>
+
+<Tell subject="The Truth">
+@go(Unconscious);
+</Tell>
+</Room>
+
+
+<Room name="Unconscious">
+<Arrive>
+Your conscience suddenly appears and you decide to level with her. “Actually Sarah, my dad put a curse on me too, and I’m actually Nathan. I think I’m learning the true meaning of being a mexican working at McDonald’s, but apparently that means I have to be Justy? Look, I’m not clear on the specifics, but…” You finish telling Sarah all the deets. Looking horrified, she lifts the Mac Pro in her hands and smashes it into your head as hard as possible, knocking you into an unconscious blackness.
+</Arrive>
+
+<Look>
+Wavy blackness surrounds you and your head aches.  That’s right, the blackness is wavy, don’t ask me how that’s possible! It just is!
+</Look>
+
+<Wildcard>
+@run(wake up);
+</Wildcard>
+
+<Wildcard subject="*">
+@run(wake up);
+</Wildcard>
+</Room>
+
+
+<Room name="NathansHouse">
+<Arrive>
+Old Man Sarah looks shocked, and you’re a bit amazed at how cool that all looked yourself. You spot yourself playing Batman Arkham Asylum on Orangie, being a freeloader as usual. Sarah’s regular body is sleeping next to him; you wonder if he knows about her switch, but you will soon enough. Right now the wizards are closing in on you.
+</Arrive>
+
+<Look>
+You’re surrounded on all sides by wizards! Stop looking around and do something about it! Isn’t anyone else home to save you!? What time is it even anyway?
+</Look>
+
+<Look alt="check" subject="[clock, time]">
+It’s not even noon yet! That must mean you’re dad is still asleep upstairs. You’d better make sure nobody YELLs and wakes him up.
+</Look>
+
+<Lick subject="clock">
+It tastes of wasted time. Stop wasting so much time!
+</Lick>
+
+<Look subject="[Justin, Sarah, Old Man, Nathan]">
+Nope, there’s too much ambiguity here, I’m not even gonna try and understand who you’re actually trying to look at.
+</Look>
+
+<Lick subject="[Justin, Sarah, Old Man, Nathan]">
+You know what, how about we compromise? Everyone licks their own arm. There, now I don’t have to try and sort out who you’re talking about specifically.
+</Lick>
+
+<Look subject="[Wizard, Wizards]">
+They’re closing in on you. Also they’re Wizards. If only there was some way of getting help. What time of day is it even? Perhaps you should check.
+</Look>
+
+<Lick subject="[Wizard, Wizards]">
+They’re closing in for the kill! Or something! Either way they’re closing in! Why are you trying to lick them!?
+</Lick>
+
+<Wildcard subject="*">
+Look, we probably should have made it so that you could @verb; @subject;, but we’re getting tired and to be honest, you’ve had plenty of time to @verb other stuff.
+</Wildcard>
+
+<Yell>
+You yell and in the distance you hear your dad bellow in rage and seconds later he comes bursting into the room. Before you can say anything, he grabs the Mac Pro, starts shouting at you about jobs and mexicans and Christmas and Justy and speed limits, and in his rage he smashes it on the ground. The curse is immediately lifted, and suddenly you find /yourself/ seated at Orangie, Justy looking dejected, Sarah looking elated, and the Old Man saying, “Finally, I’ve got my KNIFE back!” He doth pull out a knife and screameth, “THIS IS FOR STEALING MINE SPRINGY SHOES!” and stabs Justy. Your good old friend dieth, but ye can taketh a little comfort in that the spider, the selfsame spider he didst take away from the old man back in Quest 2, crawleth out of his pocket (ye must not have noticed ye had it with you all along) and killeth him. I guesseth he resented the OLD MAN’s fear of him. The moral of the story is, never GET SPIDER. I think. Anyway, in chair you sit.@go(Chair, ignore);
+</Yell>
+</Room>
+
+
+<Room name="Chair">
+<Arrive>Ham</Arrive>
+
+<Wildcard>
+@run(look);
+</Wildcard>
+
+<Wildcard subject="*">
+@run(look);
+</Wildcard>
+
+<Look>
+You look at your lappy and see you’ve received a couple of emails. Clicking through you find a hyperlink from Chad and a code from Cameron. Justy never emails anyone. Also he was too busy being a chair. I mean you. Maybe you’ll hear from him later.
+
+Chad: “Hey Nathan!  Happy Christmas!  I mean Merry!  DANGIT!  Anyway, I wrote you a side story to Chicken Finger: http://superblockio.com/secrets/ShoppingCart.pdf”
+
+Cameron: “Merry Christmas Nathan!! So remember how I said I was going to give you your Christmas gift last night? Well, I lied, because then I realized that it would be so much cooler to hold it hostage until you finished this. Well, I guess I can’t hold it from you any longer. Just tell me the code word: Bullets!”@prompt(You Win!);
+</Look>
+</Room>
+</Adventure>
